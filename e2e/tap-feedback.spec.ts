@@ -151,6 +151,9 @@ test("touch presses use rounded palette feedback immediately across task control
     await page.keyboard.press("Escape");
     await page.locator(".options-trigger").tap();
     await probe(page.locator("#date-order"));
+    await page
+      .getByRole("button", { name: "Display preferences", exact: true })
+      .tap();
     await probe(page.locator("#time-format"));
     await probe(
       page.locator("#source-zone").locator("..").locator(".choice-toggle"),
@@ -172,6 +175,9 @@ test("touch presses use rounded palette feedback immediately across task control
     await page.keyboard.press("Escape");
     await probe(page.getByRole("button", { name: "Reset preferences" }));
     await page.locator(".options-trigger").tap();
+    await page
+      .getByRole("button", { name: "Display preferences", exact: true })
+      .tap();
   }
 });
 
