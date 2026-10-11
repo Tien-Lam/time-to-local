@@ -200,7 +200,7 @@ test("convert, inspect ambiguity, copy manually and protect privacy", async ({
   await expect(page.getByText("2 possible interpretations")).toBeVisible();
   await page
     .getByRole("button", {
-      name: /^Copy this .*US Central Standard.*UTC-06:00/,
+      name: /^Copy .*US Central Standard.*UTC-06:00/,
     })
     .click();
   await expect(page.getByLabel("Text to copy")).toHaveValue(

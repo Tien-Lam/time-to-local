@@ -406,7 +406,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                 contextNumeric))
               ? {
                   numericDate: {
-                    date: selectedDate.toString(),
+                    date: civil.toPlainDate().toString(),
                     order: options.dateOrder || "mdy",
                   },
                 }
