@@ -221,7 +221,9 @@ for (const width of [320, 1280]) {
       await page.goto(baseURL!);
       await page.getByRole("button", { name: /More options/ }).click();
       await expect(page.getByText("Loading date controls…")).toBeVisible();
-      const format = page.getByRole("button", { name: /Date format$/ });
+      const format = page.getByRole("button", {
+        name: /Date order in messages$/,
+      });
       const initial = (await format.boundingBox())!;
       await page.mouse.move(
         initial.x + initial.width / 2,

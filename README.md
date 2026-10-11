@@ -4,7 +4,9 @@ Formerly ChronoShift. The repository is [Tien-Lam/time-to-local](https://github.
 
 [Open Time to Local](https://timetolocal.com/) — a private timezone converter that works offline after its first complete online load.
 
-Paste or type a message and choose your destination timezone. Results convert automatically as you type; copy them with their date and zone. Time to Local handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. Corrections and display preferences are under **Adjust interpretation & format**.
+Paste or type a message and choose your destination timezone. Results convert automatically as you type; copy them with their date and zone. Time to Local handles natural-language dates/times, cities, explicit offsets and IANA zones, ranges, Unix seconds and labeled ambiguity. **Try example** starts with a fully specified conversion. **Message interpretation** controls the fallback source, reference date and date order in messages; contextual result actions open the relevant field. **Display preferences** controls the clock format separately, and support diagnostics remain optional.
+
+Ambiguous messages show a warning before the alternatives and Copy actions. Numeric dates disclose the calendar date and date order used. Unambiguous ranges share one result card with **Copy range**; ambiguous endpoints stay separate choices. Human-readable source and reference summaries retain expandable interpretation details and the original message excerpt.
 
 The layout adapts to phones, tablets, desktop windows and foldable displays. Supported browsers place input and results clear of a hinge. Conversion runs entirely on your device with no account, conversion server or mandatory model download.
 

@@ -28,6 +28,8 @@ const timezoneHints = {
   ),
   ...Object.fromEntries(Object.keys(REGIONAL).map((k) => [k, 0])),
 };
+const numericDate =
+  /\b(?:\d{1,2}[/.]\d{1,2}(?:[/.]\d{2,4})?|\d{1,2}-\d{1,2}-\d{4})\b/;
 
 function componentDate(c: ParsedComponents): TemporalTypes.PlainDate {
   return Temporal.PlainDate.from(
@@ -249,6 +251,14 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           original: r.text,
           sourceIndex: r.index,
           dateOnly: date.toString(),
+          ...(numericDate.test(r.text)
+            ? {
+                numericDate: {
+                  date: date.toString(),
+                  order: options.dateOrder || "mdy",
+                },
+              }
+            : {}),
           sourceZone: options.sourceZone,
           sourceLabel: "Date only",
           assumptions: [
@@ -363,11 +373,12 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         if (priorResults.length)
           priorResults.forEach((result) => {
             result.endpoint = "start";
+            result.rangeId = `range-${prior.index}`;
           });
         const resolved = civilInstants(civil, choice.zone);
         if (resolved.nonexistent) {
           warnings.push(
-            `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or choose a source timezone.`,
+            `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or timezone in your message${choice.assumption?.startsWith("Source timezone assumed:") ? ", or change Source timezone in Message interpretation" : ""}.`,
           );
           continue;
         }
@@ -379,6 +390,23 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             original,
             sourceIndex: r.index,
             endpoint: priorResults.length ? "end" : endpoint,
+            ...(r.end || priorResults.length
+              ? {
+                  rangeId: `range-${priorResults.length ? prior.index : r.index}`,
+                }
+              : {}),
+            ...(numericDate.test(matchedText) ||
+            (!explicitDate && contextDate && numericDate.test(contextText))
+              ? {
+                  numericDate: {
+                    date: (explicitDate
+                      ? componentDate(local?.start || r.start)
+                      : contextDate || selectedDate
+                    ).toString(),
+                    order: options.dateOrder || "mdy",
+                  },
+                }
+              : {}),
             instant,
             sourceZone: choice.zone,
             sourceLabel: choice.label,
@@ -412,7 +440,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   const merged = new Map<string, TimeResult>();
   for (const r of results.sort((a, b) => a.sourceIndex - b.sourceIndex)) {
     const source = r.sourceZone === "+00:00" ? "UTC" : r.sourceZone;
-    const key = `${r.instant || r.dateOnly}|${source}|${r.endpoint || ""}`;
+    const key = `${r.instant || r.dateOnly}|${source}|${r.endpoint || ""}|${r.rangeId || ""}`;
     const previous = merged.get(key);
     if (previous) {
       if (

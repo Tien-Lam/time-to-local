@@ -644,9 +644,9 @@ for (const reduced of [false, true]) {
     const input = page.getByLabel("Message with a date or time");
     await beginMotionProbe(page, [".message.error"]);
     await input.fill("No timestamp here");
-    await expect(page.getByRole("alert")).toContainText("No timestamp found");
+    await expect(page.getByRole("alert")).toContainText("No time found");
     const error = await finishMotionProbe(page, info, "error-state-frames");
-    await expect(page.getByRole("alert")).toContainText("No timestamp found");
+    await expect(page.getByRole("alert")).toContainText("No time found");
     await beginMotionProbe(page, [".result-placeholder"]);
     await page.getByRole("button", { name: "Clear", exact: true }).click();
     await expect(
@@ -1177,29 +1177,23 @@ test("explicit and live System themes preserve contrast in actual semantic text 
   }
 });
 
-test("random example fills directly, varies on repeated pointer and keyboard activation and preserves editing", async ({
+test("example sequence fills directly, advances on repeated pointer and keyboard activation and preserves editing", async ({
   page,
 }, info) => {
   await installMotionProbe(page);
-  await page.addInitScript(() => {
-    Math.random = () => 0;
-  });
   await page.goto("/");
-  const button = page.getByRole("button", {
-    name: "Random example",
-    exact: true,
-  });
+  const button = page.locator(".example-button");
   const input = page.getByLabel("Message with a date or time");
   await input.fill("User draft: April 9, 2026 3pm UTC");
   await beginMotionProbe(page, [".example-button"]);
   await button.click();
-  await expect(input).toHaveValue("April 9 at 9am PT / 12pm ET");
+  await expect(input).toHaveValue("April 9, 2026 3pm in Tokyo");
   await expect(input).toBeFocused();
   await expect(button).not.toHaveAttribute("aria-haspopup");
   await expect(page.getByRole("menu")).toHaveCount(0);
   await button.focus();
   await page.keyboard.press("Enter");
-  await expect(input).toHaveValue("Tomorrow at 3pm in Tokyo");
+  await expect(input).toHaveValue("April 9, 2026 9am–11am UTC");
   await expect(input).toBeFocused();
   await button.focus();
   await page.keyboard.press("Space");

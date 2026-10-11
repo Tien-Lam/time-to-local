@@ -34,7 +34,7 @@ test("a phone exposes the result shortcut while optional defaults stay collapsed
   await expect(options).toHaveAttribute("aria-expanded", "false");
   // A failed interpretation is still discoverable through the same shortcut.
   await input.fill("no time in this message");
-  await expect(page.getByRole("alert")).toContainText("No timestamp found");
+  await expect(page.getByRole("alert")).toContainText("No time found");
   await shortcut.focus();
   await shortcut.press("Enter");
   await expect(page.locator("#result-title")).toBeFocused();

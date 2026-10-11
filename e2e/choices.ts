@@ -1,4 +1,5 @@
 import { expect, type Page } from "@playwright/test";
+import { zoneName } from "../web/src/engine/zones";
 
 // Exercise the visible app menu; React Aria's hidden form select does not
 // establish that the user can open, navigate or choose from the themed popup.
@@ -8,6 +9,13 @@ export function choiceTrigger(page: Page, label: string) {
 }
 
 export async function choose(page: Page, label: string, value: string) {
+  if (
+    label === "Time format" &&
+    !(await page.locator("#time-format").isVisible())
+  )
+    await page
+      .getByRole("button", { name: "Display preferences", exact: true })
+      .click();
   const trigger = choiceTrigger(page, label);
   await trigger.click();
   await page.locator(`[role="option"][data-value="${value}"]`).click();
@@ -25,7 +33,9 @@ export async function enterZone(
   // Commit custom input and leave the combobox before addressing other
   // accessible controls: its open suggestions intentionally hide outside UI.
   await input.press("Tab");
-  await expect(input).toHaveValue(value);
+  await expect(input).toHaveValue(
+    value.includes("/") ? zoneName(value) : value,
+  );
 }
 
 export async function enterReferenceDate(page: Page, isoDate: string) {

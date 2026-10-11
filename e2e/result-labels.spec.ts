@@ -41,7 +41,7 @@ const cases = [
       "US Central Standard",
       "China Standard",
     ],
-    alternatives: 2,
+    alternatives: 1,
   },
   {
     name: "ambiguous abbreviation",
@@ -56,10 +56,7 @@ const cases = [
     text: "April 5, 2026 2:30am Australia/Sydney",
     times: ["15:30", "16:30"],
     labels: [],
-    sources: [
-      "First occurrence (clocks move back)",
-      "Second occurrence (clocks move back)",
-    ],
+    sources: ["Sydney", "Sydney"],
     alternatives: 1,
   },
   {

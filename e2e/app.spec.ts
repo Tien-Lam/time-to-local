@@ -278,7 +278,7 @@ test("input errors recover, edits invalidate results, keyboard keeps multiline i
   await convert(page);
   await input.fill("not a time");
   await expect(page.locator(".result")).toHaveCount(0);
-  await expect(page.getByRole("alert")).toContainText("No timestamp");
+  await expect(page.getByRole("alert")).toContainText("No time");
   await input.fill("x".repeat(10001));
   await expect(page.getByRole("alert")).toContainText("10,000");
   await expect(input).toHaveValue("x".repeat(10001));

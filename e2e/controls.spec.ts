@@ -74,6 +74,9 @@ test("themed choices align and their opened menus fit every breakpoint without l
   await expect(page.locator(".hero-time")).toBeVisible();
   const result = await page.locator(".hero-time").innerText();
   await page.getByRole("button", { name: /More options/ }).click();
+  await page
+    .getByRole("button", { name: "Display preferences", exact: true })
+    .click();
   await page.getByLabel("Appearance", { exact: true }).click();
   const backgrounds = new Map<string, string>();
   for (const theme of ["dark", "light"]) {
@@ -134,7 +137,11 @@ test("themed choices align and their opened menus fit every breakpoint without l
         expect(panel.y - appearance.y - appearance.height).toBeCloseTo(8, 1);
         expect(panel.x).toBeGreaterThanOrEqual(0);
         expect(panel.x + panel.width).toBeLessThanOrEqual(width);
-        for (const label of ["Theme", "Date format", "Time format"]) {
+        for (const label of [
+          "Theme",
+          "Date order in messages",
+          "Time format",
+        ]) {
           const trigger = choiceTrigger(page, label);
           await trigger.click();
           const background = await expectPopup(page, trigger, width);
@@ -259,6 +266,9 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await expect(page.getByLabel("Appearance", { exact: true })).toBeFocused();
 
   await page.getByRole("button", { name: /More options/ }).click();
+  await page
+    .getByRole("button", { name: "Display preferences", exact: true })
+    .click();
   const time = choiceTrigger(page, "Time format");
   await time.focus();
   await time.press("ArrowDown");
@@ -279,7 +289,7 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
   await expect(page.getByRole("listbox")).toHaveCount(0);
   await expect(time).toHaveAttribute("data-value", "24");
 
-  await choose(page, "Date format", "dmy");
+  await choose(page, "Date order in messages", "dmy");
   await enterZone(page, "UTC");
   await page
     .getByLabel("Message with a date or time")
@@ -288,7 +298,7 @@ test("choice menus support keyboard selection, nested Escape and pointer dismiss
     /4 Sep(?:t(?:ember)?)? 2026/,
   );
   await expect(page.locator(".hero-time")).toHaveText("15:00");
-  await choose(page, "Date format", "mdy");
+  await choose(page, "Date order in messages", "mdy");
   await expect(page.locator(".result-date")).toHaveText(/9 Apr(?:il)? 2026/);
   await enterReferenceDate(page, "2026-04-09");
   await page
@@ -463,7 +473,7 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await target.press("Escape");
   await target.fill("Tokyo");
   await page.getByRole("option", { name: /Tokyo/ }).click();
-  await expect(target).toHaveValue("Asia/Tokyo");
+  await expect(target).toHaveValue("Tokyo");
   await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
   await source.fill("New York");
   await page.getByRole("option", { name: /New York/ }).click();
@@ -511,7 +521,7 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await alias.hover();
     await expect(alias).toHaveAttribute("data-hovered", "true");
     await input.press("Tab");
-    await expect(input).toHaveValue("Asia/Tokyo");
+    await expect(input).toHaveValue("Tokyo");
     await expect(other).toHaveValue(otherValue);
     await expect(page.getByRole("listbox")).toHaveCount(0);
     await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
@@ -525,7 +535,7 @@ test("hovering timezone suggestions preserves typed values while explicit select
     await input.press("End");
     await expect(alias).toHaveAttribute("data-focused", "true");
     await input.press("Tab");
-    await expect(input).toHaveValue("osaka");
+    await expect(input).toHaveValue("Osaka");
     await expect(page.getByRole("listbox")).toHaveCount(0);
     // A real pointer interaction brings the field into view before typing.
     // Focusing an offscreen input with fill() can scroll its ancestor after

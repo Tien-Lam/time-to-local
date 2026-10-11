@@ -50,7 +50,7 @@ test("live feedback covers debounce and worker completion, then settles or cance
   await expect(panel).toHaveAttribute("aria-busy", "false");
   await expect(page.locator(".result")).toHaveCount(0);
   await input.fill("No timestamp here");
-  await expect(page.getByRole("alert")).toContainText("No timestamp found");
+  await expect(page.getByRole("alert")).toContainText("No time found");
   await expect(indicator).toHaveAttribute("data-state", "error");
   await expect(panel).toHaveAttribute("aria-busy", "false");
   await input.fill("June 18, 2026 at 6:20pm in Tokyo");

@@ -46,7 +46,7 @@ Static style attributes permit only the exact hashes of React Aria's hidden
 select geometry and the initially hidden result shortcut, scoped to
 `style-src-attr`. Arbitrary inline styles and scripts remain blocked.
 The original hashed CSS remains in the integrity precache. Date controls load
-when More options first opens and stay mounted after closing so partial date
+when Message interpretation first opens and stay mounted after closing so partial date
 edits and validation survive. Their styles are included initially, and a failed
 code request exposes a retry without replacing the converter or its draft.
 Loading, failure and retry reserve the date field's height so format controls

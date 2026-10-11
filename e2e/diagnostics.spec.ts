@@ -5,7 +5,9 @@ import type { Page } from "@playwright/test";
 import { consoleDiagnostics } from "./console";
 
 async function toggle(page: Page) {
-  await page.getByRole("button", { name: /More options/ }).click();
+  await page
+    .getByRole("button", { name: "Support diagnostics", exact: true })
+    .click();
   return page.getByRole("checkbox", { name: "Enable detailed logs" });
 }
 
