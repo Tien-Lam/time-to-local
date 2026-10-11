@@ -95,6 +95,8 @@ test("DST error and source-picker alternatives guide deliberate recovery", async
   await expect(page.locator(".choice-guidance")).toContainText(
     "CST has multiple meanings",
   );
+  await expect(source).toHaveAttribute("aria-expanded", "true");
+  await expect(source).toHaveAttribute("aria-controls", /.+/);
   const list = page.locator(
     `[id="${await source.getAttribute("aria-controls")}"]`,
   );

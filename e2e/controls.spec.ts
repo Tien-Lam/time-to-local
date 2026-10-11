@@ -500,7 +500,8 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await target.press("Escape");
   await target.fill("Tokyo");
   await page.getByRole("option", { name: /Tokyo/ }).click();
-  await expect(target).toHaveValue("Tokyo");
+  await expect(target).toBeFocused();
+  await expect(target).toHaveValue("Asia/Tokyo");
   await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
   await source.fill("New York");
   await page.getByRole("option", { name: /New York/ }).click();

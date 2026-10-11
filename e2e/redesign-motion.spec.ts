@@ -923,10 +923,16 @@ test("an entering zone menu follows an immediate viewport resize and still accep
     expect(element.transforms).toEqual([]);
   await toggle.scrollIntoViewIfNeeded();
   await toggle.click();
+  await expect(target).toBeFocused();
   await target.press("Escape");
-  await expect(target).toHaveValue("Tokyo");
+  // The toggle preserves input focus, so the explicitly selected canonical
+  // draft remains until ordinary blur restores its inactive city label.
+  await expect(target).toHaveValue("Asia/Tokyo");
   await expect(target).toHaveAttribute("aria-expanded", "false");
   await expect(page.getByRole("option")).toHaveCount(0);
+  await target.press("Tab");
+  await expect(target).not.toBeFocused();
+  await expect(target).toHaveValue("Tokyo");
 });
 
 for (const mode of [
