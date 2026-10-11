@@ -72,6 +72,49 @@ test("numeric interpretation has a working contextual correction without changin
   );
   await expect(input).toHaveValue("04/09/2026 3pm UTC");
   await expect(page.locator(".result-date")).toContainText(/4 Sep(?:t)? 2026/);
+
+  // An equivalent spelled-out mention must not hide a numeric assumption.
+  await choose(page, "Date order in messages", "mdy");
+  await input.fill("April 9, 2026 3pm UTC\n04/09/2026 3pm UTC");
+  await expect(page.locator(".numeric-interpretation")).toContainText(
+    "Read as 9 April 2026 · Month/day",
+  );
+  await expect(page.locator(".result")).toHaveCount(1);
+  await page
+    .getByRole("button", { name: "Change date order", exact: true })
+    .click();
+  await choose(page, "Date order in messages", "dmy");
+  await expect(page.locator(".result")).toHaveCount(2);
+  await expect(page.locator(".numeric-interpretation")).toContainText(
+    "Read as 4 September 2026 · Day/month",
+  );
+});
+
+test("keyboard disclosure controls identify their actual preference panels", async ({
+  page,
+}) => {
+  await page.goto("/");
+  for (const name of [
+    "Message interpretation (More options)",
+    "Display preferences",
+    "Support diagnostics",
+  ]) {
+    const trigger = page.getByRole("button", { name, exact: true });
+    await trigger.press("Enter");
+    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+    const panelId = await trigger.getAttribute("aria-controls");
+    expect(panelId).toBeTruthy();
+    const panel = page.locator(`[id="${panelId}"]`);
+    await expect(panel).toBeVisible();
+    await expect(panel).toHaveAttribute(
+      "aria-labelledby",
+      (await trigger.getAttribute("id"))!,
+    );
+    await trigger.press("Enter");
+    await expect(trigger).toHaveAttribute("aria-expanded", "false");
+    await expect(panel).toBeHidden();
+    await expect(trigger).toBeFocused();
+  }
 });
 
 test("DST error and source-picker alternatives guide deliberate recovery", async ({

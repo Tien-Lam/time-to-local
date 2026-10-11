@@ -193,3 +193,81 @@ test("reference summary explains the source-local day", () => {
     "Reference: Sat, 10 Oct 2026 in Los Angeles",
   );
 });
+
+test("unambiguous numeric dates disclose the effective order across parser merges", () => {
+  for (const [dateOrder, input, order] of [
+    ["mdy", "13/04/2026", "dmy"],
+    ["dmy", "04/13/2026", "mdy"],
+    ["mdy", "13.04.2026", "dmy"],
+    ["dmy", "04-13-2026", "mdy"],
+  ] as const) {
+    for (const text of [input, `${input} 3pm UTC`, `${input}\n3pm UTC`]) {
+      const result = convert(text, { ...options, dateOrder }).results[0];
+      expect(result.numericDate).toEqual({ date: "2026-04-13", order });
+      expect(result.instant || result.dateOnly).toBe(
+        text === input ? "2026-04-13" : "2026-04-13T15:00:00Z",
+      );
+    }
+  }
+  const inherited = convert(
+    "13/04/2026 11pm in Tokyo to 1am in Tokyo",
+    options,
+  ).results;
+  expect(inherited.map((entry) => entry.instant)).toEqual([
+    "2026-04-13T14:00:00Z",
+    "2026-04-13T16:00:00Z",
+  ]);
+  expect(inherited.map((entry) => entry.numericDate)).toEqual([
+    { date: "2026-04-13", order: "dmy" },
+    { date: "2026-04-14", order: "dmy" },
+  ]);
+  const endpoints = convert(
+    "04/13/2026 11pm to 14/04/2026 1am UTC",
+    options,
+  ).results;
+  expect(endpoints.map((entry) => entry.numericDate)).toEqual([
+    { date: "2026-04-13", order: "mdy" },
+    { date: "2026-04-14", order: "dmy" },
+  ]);
+});
+
+test("deduplication retains numeric interpretation without losing explicit source context", () => {
+  for (const text of [
+    "April 9, 2026 3pm UTC\n04/09/2026 3pm UTC",
+    "04/09/2026 3pm UTC\nApril 9, 2026 3pm UTC",
+    "04/09/2026 3pm\nApril 9, 2026 3pm UTC",
+    "April 9, 2026 3pm UTC\n04/09/2026 3pm",
+  ]) {
+    const entries = convert(text, options).results;
+    expect(entries).toHaveLength(1);
+    expect(entries[0].instant).toBe("2026-04-09T15:00:00Z");
+    expect(entries[0].occurrences).toBe(2);
+    expect(entries[0].numericDate).toEqual({
+      date: "2026-04-09",
+      order: "mdy",
+    });
+    expect(entries[0].assumptions).toEqual([]);
+    const changed = convert(text, { ...options, dateOrder: "dmy" }).results;
+    expect(changed.map((entry) => entry.instant).sort()).toEqual([
+      "2026-04-09T15:00:00Z",
+      "2026-09-04T15:00:00Z",
+    ]);
+  }
+});
+
+test("date-only reference summaries name the zone anchoring their day", () => {
+  for (const [sourceZone, reference, date] of [
+    ["America/Los_Angeles", "Sat, 10 Oct 2026", "2026-10-11"],
+    ["Australia/Sydney", "Sun, 11 Oct 2026", "2026-10-12"],
+  ]) {
+    const result = convert("Tomorrow", {
+      ...options,
+      sourceZone,
+      now: "2026-10-11T00:30:00Z",
+    }).results[0];
+    expect(result.dateOnly).toBe(date);
+    expect(referenceSummary(result, "en-AU")).toBe(
+      `Reference: ${reference} in ${sourceZone === "America/Los_Angeles" ? "Los Angeles" : "Sydney"}`,
+    );
+  }
+});

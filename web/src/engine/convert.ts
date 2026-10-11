@@ -1,4 +1,9 @@
-import { dayFirst, monthFirst, usesReferenceDate } from "./parser";
+import {
+  dayFirst,
+  monthFirst,
+  numericDateOrder,
+  usesReferenceDate,
+} from "./parser";
 import type { ParsedComponents } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
 import { temporal as Temporal } from "./temporal";
@@ -194,6 +199,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   let contextDate: TemporalTypes.PlainDate | undefined,
     contextText = "",
     contextNumeric = false,
+    contextOrder = options.dateOrder || "mdy",
     contextParagraph = -1,
     previousEnd = 0;
   const hasTime = parsed.some((r) => r.start.isCertain("hour"));
@@ -246,6 +252,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       contextDate = date;
       contextText = r.text;
       contextNumeric = hasNumericDate(r.start);
+      contextOrder = numericDateOrder(r.start, options.dateOrder || "mdy");
     }
     if (!r.start.isCertain("hour") && !r.start.isCertain("minute")) {
       if (!hasTime)
@@ -259,7 +266,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             ? {
                 numericDate: {
                   date: date.toString(),
-                  order: options.dateOrder || "mdy",
+                  order: numericDateOrder(r.start, options.dateOrder || "mdy"),
                 },
               }
             : {}),
@@ -407,7 +414,18 @@ export function convert(text: string, options: ConversionOptions): Conversion {
               ? {
                   numericDate: {
                     date: civil.toPlainDate().toString(),
-                    order: options.dateOrder || "mdy",
+                    order: numericDateOrder(
+                      hasNumericDate(c)
+                        ? c
+                        : hasNumericDate(r.start)
+                          ? r.start
+                          : r.end && hasNumericDate(r.end)
+                            ? r.end
+                            : c,
+                      contextNumeric
+                        ? contextOrder
+                        : options.dateOrder || "mdy",
+                    ),
                   },
                 }
               : {}),
@@ -453,8 +471,15 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         ) &&
         !r.assumptions.some((a) => a.startsWith("Source timezone assumed:"))
       )
-        merged.set(key, { ...r, occurrences: previous.occurrences + 1 });
-      else previous.occurrences++;
+        merged.set(key, {
+          ...r,
+          numericDate: r.numericDate || previous.numericDate,
+          occurrences: previous.occurrences + 1,
+        });
+      else {
+        previous.numericDate ||= r.numericDate;
+        previous.occurrences++;
+      }
     } else merged.set(key, r);
   }
   if (merged.size > 200)

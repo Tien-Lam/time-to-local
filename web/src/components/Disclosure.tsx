@@ -49,15 +49,12 @@ export function Disclosure({
             ? "Message interpretation (More options)"
             : label
         }
-        aria-expanded={open}
-        aria-controls={id}
       >
         <ControlIcon name="chevron" className="disclosure-chevron" />
         {label}
       </CollapsibleTrigger>
       <CollapsibleContent
         ref={content}
-        id={id}
         className={
           id === "interpretation-options" ? "option-fields" : "settings-fields"
         }

@@ -1,5 +1,6 @@
 import { temporal as Temporal } from "./temporal";
 import { formatResult, copyText } from "./time";
+import { zoneName } from "./zones";
 import type { ConversionOptions, TimeResult } from "./types";
 
 export interface ResultGroup {
@@ -90,7 +91,7 @@ export function referenceSummary(
     .find((value) => value.startsWith("Reference date used: "))
     ?.slice(21);
   return date
-    ? `Reference: ${humanDate(date, locale)} in ${result.sourceLabel}`
+    ? `Reference: ${humanDate(date, locale)} in ${result.dateOnly ? zoneName(result.sourceZone) : result.sourceLabel}`
     : undefined;
 }
 
