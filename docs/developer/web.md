@@ -156,7 +156,7 @@ Old tabs may still need their own hashed worker. Cache cleanup retains older ver
 
 ### Detailed console diagnostics
 
-Open **Adjust interpretation & format → Enable detailed logs** before reproducing a problem. Logging is off by default; the explicit opt-in lasts for the current tab session, including reloads and accepted updates. It works in memory if session storage is denied. Uncheck it or reset preferences to stop future logs. Previously printed console entries remain until the browser clears them.
+Open **Support diagnostics → Enable detailed logs** before reproducing a problem. Logging is off by default; the explicit opt-in lasts for the current tab session, including reloads and accepted updates. It works in memory if session storage is denied. Uncheck it or reset preferences to stop future logs. Previously printed console entries remain until the browser clears them.
 
 `[Time to Local]` console entries record timestamps, field focus/open events, conversion duration/counts, registration attempts, installation states, readiness probe reasons/durations, controller cache version and update availability. The current worker additionally reports missing/corrupt bundled asset paths and bounded repair counts/failure categories. Older installed workers can report only their existing protocol fields until an explicit update is accepted; absent repair details are unknown. Message text, parsed dates/locations, selected zones, clipboard/share content and URL queries are excluded. No diagnostic event history or telemetry is stored or sent; session storage contains only the opt-in flag. Browser-generated errors and the installation-banner notice are independent of this logger.
 
