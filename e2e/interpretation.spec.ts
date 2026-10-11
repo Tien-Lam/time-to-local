@@ -161,3 +161,60 @@ test("first-use guidance and contextual reference date coexist with separate pre
   await expect(page.locator(".hero-time")).toHaveText(/pm/i);
   await expect(input).toHaveValue("Tomorrow at 3pm PT");
 });
+
+test("a delayed first reference editor respects newer message focus and typing", async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    serviceWorkers: "block",
+    locale: "en-AU",
+    timezoneId: "Australia/Sydney",
+  });
+  let release!: () => void;
+  const stalled = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  try {
+    const page = await context.newPage();
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    const html = await (await page.request.get(baseURL!)).text();
+    const eager = [
+      ...html.matchAll(/<link\b[^>]*rel="modulepreload"[^>]*href="([^"]+)"/g),
+    ].map((match) => new URL(match[1], baseURL).href);
+    let pending = false;
+    await page.route(
+      /\/assets\/DateChoice-[^/]+\.js(?:\?.*)?$/,
+      async (route) => {
+        if (!eager.includes(route.request().url())) {
+          pending = true;
+          await stalled;
+        }
+        await route.continue();
+      },
+    );
+    await page.goto(baseURL!);
+    const input = page.getByLabel("Message with a date or time");
+    await input.fill("Tomorrow at 3pm PT");
+    await page
+      .getByRole("button", { name: "Change reference date", exact: true })
+      .click();
+    await expect.poll(() => pending).toBe(true);
+    await input.click();
+    await input.press("End");
+    await input.pressSequentially(" please");
+    release();
+    await expect(
+      page.locator('#reference-date [role="spinbutton"]').first(),
+    ).toBeVisible();
+    await expect(input).toBeFocused();
+    await input.pressSequentially("!");
+    await expect(input).toHaveValue("Tomorrow at 3pm PT please!");
+    await expect(page.locator(".result")).toHaveCount(1);
+    expect(errors).toEqual([]);
+  } finally {
+    release();
+    await context.close();
+  }
+});

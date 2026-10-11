@@ -414,6 +414,33 @@ for (const label of ["Convert to", "Source timezone"]) {
   }
 }
 
+test("focusing a displayed city preserves its text and replacing the zone keeps identities independent", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await enterZone(page, "Asia/Tokyo");
+  const target = page.getByLabel("Convert to", { exact: true });
+  await target.click();
+  await expect(target).toHaveValue("Tokyo");
+  await target.press("End");
+  await target.pressSequentially("!");
+  await expect(target).toHaveValue("Tokyo!");
+  await enterZone(page, "Pacific/Chatham");
+  await expect(target).toHaveValue("Chatham");
+  await page.getByRole("button", { name: /Message interpretation/ }).click();
+  await enterZone(page, "UTC", "Source timezone");
+  await page
+    .getByLabel("Message with a date or time")
+    .fill("April 9, 2026 3pm");
+  await expect(page.locator(".hero-time")).toHaveText(/3:45 am/i);
+  await expect(page.locator(".result-date")).toContainText("10 Apr 2026");
+  await enterZone(page, "UTC");
+  await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
+  await expect(page.getByLabel("Source timezone", { exact: true })).toHaveValue(
+    "UTC",
+  );
+});
+
 test("timezone search preserves freeform offsets and recovers from empty and invalid choices", async ({
   page,
   isMobile,
@@ -478,7 +505,7 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   await source.fill("New York");
   await page.getByRole("option", { name: /New York/ }).click();
   await expect(source).toHaveValue("America/New_York");
-  await expect(target).toHaveValue("Asia/Tokyo");
+  await expect(target).toHaveValue("Tokyo");
   await expect(page.locator(".hero-time")).toHaveText(/12:00 am/i);
 });
 
@@ -500,8 +527,8 @@ test("hovering timezone suggestions preserves typed values while explicit select
       label === "Convert to" ? "Source timezone" : "Convert to",
       { exact: true },
     );
-    const otherValue = await other.inputValue();
     await enterZone(page, "CST", label);
+    const otherValue = await other.inputValue();
     // Bring the field back into view after Tab focused the next control.
     // fill() can otherwise focus an offscreen field and dismiss the newly
     // opened suggestions when the browser performs its delayed focus scroll.
@@ -579,7 +606,7 @@ test("hovering timezone suggestions preserves typed values while explicit select
   await expect(page.getByRole("listbox")).toHaveCount(0);
   await expect(source).toHaveValue("Asia/Tokyo");
   await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
-    "Asia/Tokyo",
+    "Tokyo",
   );
   await expect(page.getByLabel("Message with a date or time")).toHaveValue(
     "April 9, 2026 3pm UTC",

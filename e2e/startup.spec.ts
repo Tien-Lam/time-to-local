@@ -39,7 +39,7 @@ test("initial styles work without a CSS request and date controls load on demand
         .evaluate((el) => getComputedStyle(el).backgroundColor),
     ).not.toBe("rgba(0, 0, 0, 0)");
     const initialRequests = [...dateRequests];
-    await page.getByRole("button", { name: /Adjust interpretation/ }).click();
+    await page.getByRole("button", { name: /Message interpretation/ }).click();
     await expect(
       page.getByRole("button", { name: "Choose reference date" }),
     ).toBeVisible();
@@ -99,7 +99,7 @@ test("failed date loading preserves the converter and retries without losing the
     const message = page.getByLabel("Message with a date or time");
     const draft = "April 9, 2026 3pm UTC";
     await message.fill(draft);
-    await page.getByRole("button", { name: /Adjust interpretation/ }).click();
+    await page.getByRole("button", { name: /Message interpretation/ }).click();
     await expect(page.getByText("Unable to load dates.")).toBeVisible();
     await expect(message).toHaveValue(draft);
     await expect(page.locator(".hero-time")).not.toHaveText("");
@@ -108,8 +108,8 @@ test("failed date loading preserves the converter and retries without losing the
       page.getByRole("button", { name: "Choose reference date" }),
     ).toBeVisible();
     await expect(message).toHaveValue(draft);
-    await page.getByRole("button", { name: /Adjust interpretation/ }).click();
-    await page.getByRole("button", { name: /Adjust interpretation/ }).click();
+    await page.getByRole("button", { name: /Message interpretation/ }).click();
+    await page.getByRole("button", { name: /Message interpretation/ }).click();
     await expect(
       page.getByRole("button", { name: "Choose reference date" }),
     ).toBeVisible();

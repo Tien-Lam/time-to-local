@@ -185,13 +185,17 @@ export function ZoneChoice({
   // collection on first opening and retain it through dismissal and exit.
   const [choicesLoaded, setChoicesLoaded] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(value);
   const selectedOptions = useMemo(
     () => timezoneOptions.filter((option) => option.id === value),
     [value],
   );
   const options = choicesLoaded ? timezoneOptions : selectedOptions;
-  const displayValue =
-    !editing && selectedOptions.length ? selectedOptions[0].label : value;
+  const displayValue = editing
+    ? draft
+    : selectedOptions.length
+      ? selectedOptions[0].label
+      : value;
   const current = useRef(value);
   current.current = value;
   const commit = (next: string) => {
@@ -211,11 +215,17 @@ export function ZoneChoice({
       aria-label={label}
       inputValue={displayValue}
       onInputChange={(next) => {
-        if (next !== displayValue) commit(next);
+        if (next !== displayValue) {
+          setDraft(next);
+          commit(next);
+        }
       }}
       value={optionIds.has(value) ? value : null}
       onChange={(key) => {
-        if (key !== null) commit(String(key));
+        if (key !== null) {
+          setDraft(String(key));
+          commit(String(key));
+        }
       }}
       defaultItems={options}
       defaultFilter={(text, query) =>
@@ -233,6 +243,9 @@ export function ZoneChoice({
           aria-describedby={describedBy}
           autoComplete="off"
           onFocus={() => {
+            // Focusing must not replace the displayed city with its IANA ID:
+            // that changes the text/caret while the user starts an edit.
+            setDraft(displayValue);
             setEditing(true);
             diagnostic("ui.zone-focus", {
               field: id === "target-zone" ? "target-zone" : "source-zone",
