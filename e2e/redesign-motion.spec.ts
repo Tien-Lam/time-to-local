@@ -271,6 +271,65 @@ test("normal motion keeps zone anchors and outer overlays stationary through imm
   ).toBe(false);
 });
 
+test("a delayed result animation owns completion beyond the former cleanup deadline", async ({
+  page,
+}, info) => {
+  await installMotionProbe(page);
+  await holdConversion(page);
+  await page.goto("/");
+  await enterZone(page, "UTC");
+  const input = page.getByLabel("Message with a date or time");
+  await input.fill("April 9, 2026 3pm UTC");
+  await expect
+    .poll(() => page.evaluate(() => (window as any).completions.length))
+    .toBe(1);
+  await beginMotionProbe(page, [".result-group", ".result .copy-button"]);
+  await page.evaluate(() => {
+    const state = window as any;
+    const observer = new MutationObserver(() => {
+      const animation = document
+        .querySelector(".result-group.is-new-group")
+        ?.getAnimations()
+        .find(
+          (animation) =>
+            animation instanceof CSSAnimation &&
+            animation.animationName === "surface-fade",
+        );
+      if (!animation) return;
+      animation.pause();
+      animation.currentTime = 0;
+      state.delayedResultAnimation = animation;
+      state.delayedResultAt = performance.now();
+      observer.disconnect();
+    });
+    observer.observe(document, { childList: true, subtree: true });
+  });
+  await deliverConversion(page, 0);
+  await expect
+    .poll(() => page.evaluate(() => !!(window as any).delayedResultAnimation))
+    .toBe(true);
+  await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
+  // Deliberately keep the native animation pending beyond the previous 240ms
+  // wall-clock cleanup. This is a failure boundary, not a settling wait.
+  await expect
+    .poll(() =>
+      page.evaluate(() => performance.now() - (window as any).delayedResultAt),
+    )
+    .toBeGreaterThan(350);
+  await expect(page.locator(".result-group")).toHaveClass(/is-new-group/);
+  await expect(input).toBeFocused();
+  await expect(page.getByRole("button", { name: /^Copy / })).toBeEnabled();
+  await page.evaluate(() => (window as any).delayedResultAnimation.play());
+  await expect(page.locator(".result-group")).not.toHaveClass(/is-new-group/);
+  const record = await finishMotionProbe(page, info, "delayed-result-frames");
+  expectStationary(record, [".result .copy-button"]);
+  expect(
+    record.events.filter(
+      (event) => event.type === "animationend" && event.name === "surface-fade",
+    ),
+  ).toHaveLength(1);
+});
+
 test("new groups reveal once, numeric replacements are atomic and Copy reports only the clipboard outcome", async ({
   page,
 }, info) => {

@@ -371,12 +371,6 @@ export default function App({
       media.removeEventListener("change", changed);
     };
   }, []);
-  useEffect(() => {
-    if (!newGroups.size) return;
-    const timer = setTimeout(() => setNewGroups(new Set()), 240);
-    return () => clearTimeout(timer);
-  }, [newGroups]);
-
   useLayoutEffect(() => {
     if (optionsOpen && correctionFocus.current) {
       correctionFocus.current = false;
@@ -1145,6 +1139,32 @@ export default function App({
                   key={group.id}
                   style={{
                     animationDelay: `${Math.min(groupIndex, 2) * 30}ms`,
+                  }}
+                  onAnimationEnd={(event) => {
+                    if (
+                      event.target !== event.currentTarget ||
+                      event.animationName !== "surface-fade" ||
+                      event.currentTarget
+                        .getAnimations()
+                        .some(
+                          (animation) =>
+                            animation instanceof CSSAnimation &&
+                            animation.animationName === "surface-fade" &&
+                            animation.playState !== "finished",
+                        )
+                    )
+                      return;
+                    // A queued event from an older animation must not consume
+                    // a replacement still running on this same DOM surface.
+                    const completed = new Set(
+                      group.entries.map((entry) => entry.group),
+                    );
+                    setNewGroups(
+                      (current) =>
+                        new Set(
+                          [...current].filter((id) => !completed.has(id)),
+                        ),
+                    );
                   }}
                 >
                   <ResultCard
