@@ -924,7 +924,7 @@ test("an entering zone menu follows an immediate viewport resize and still accep
   await toggle.scrollIntoViewIfNeeded();
   await toggle.click();
   await target.press("Escape");
-  await expect(target).toHaveValue("Asia/Tokyo");
+  await expect(target).toHaveValue("Tokyo");
   await expect(target).toHaveAttribute("aria-expanded", "false");
   await expect(page.getByRole("option")).toHaveCount(0);
 });
