@@ -154,6 +154,18 @@ test("qualified numeric overnight ranges disclose the source date of each endpoi
     { date: "2026-04-09", order: "mdy" },
     { date: "2026-04-10", order: "mdy" },
   ]);
+  const iana = convert(
+    "04/09/2026 11pm America/New_York to 1am America/New_York",
+    options,
+  ).results;
+  expect(iana.map((entry) => entry.instant)).toEqual([
+    "2026-04-10T03:00:00Z",
+    "2026-04-10T05:00:00Z",
+  ]);
+  expect(iana.map((entry) => entry.numericDate)).toEqual([
+    { date: "2026-04-09", order: "mdy" },
+    { date: "2026-04-10", order: "mdy" },
+  ]);
 });
 test("DST gap recovery respects explicit message-zone precedence", () => {
   const text = "March 8, 2026 2:30am in New York";
