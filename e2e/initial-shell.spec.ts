@@ -123,9 +123,9 @@ test("hydration restores preferences and an initial About route", async ({
   await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
     "UTC",
   );
-  await page.getByRole("button", { name: "More options" }).click();
+  await page.getByRole("button", { name: /Message interpretation/ }).click();
   await expect(page.getByLabel("Source timezone", { exact: true })).toHaveValue(
-    "Asia/Tokyo",
+    "Tokyo",
   );
   await page.getByLabel("Message with a date or time").fill("9/4/2026 15:00");
   await expect(page.locator(".hero-time")).toHaveText("06:00");

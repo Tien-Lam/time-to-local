@@ -24,7 +24,7 @@ for (const legacyDesign of ["lens", "command"])
       legacyDesign,
     );
     await page.reload();
-    await expect(page.getByLabel("Convert to")).toHaveValue("Asia/Tokyo");
+    await expect(page.getByLabel("Convert to")).toHaveValue("Tokyo");
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect(page.locator("html")).toHaveAttribute(
       "data-design",

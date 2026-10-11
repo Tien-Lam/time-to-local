@@ -446,7 +446,7 @@ test("timezone search preserves freeform offsets and recovers from empty and inv
   if (isMobile) await target.tap({ position: { x: 24, y: 22 } });
   else await target.click();
   await target.fill("Definitely/Not-A-Timezone");
-  await expect(page.getByText("No matches", { exact: true })).toBeVisible();
+  await expect(page.getByText(/^No matches\./)).toBeVisible();
   await expect(page.locator('[role="option"][data-value]')).toHaveCount(0);
   await target.press("Escape");
   await expect(target).toHaveValue("Definitely/Not-A-Timezone");

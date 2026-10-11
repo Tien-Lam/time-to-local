@@ -405,8 +405,12 @@ export default function App({
       return true;
     };
     if (focus()) return;
+    // Collapsible mounts its content after expansion commits. Observe the
+    // persistent disclosure owner so a first-open request can await that mount.
+    const disclosure = document.querySelector(".options");
+    if (!disclosure) return;
     const observer = new MutationObserver(focus);
-    observer.observe(document.getElementById("interpretation-options")!, {
+    observer.observe(disclosure, {
       childList: true,
       subtree: true,
     });

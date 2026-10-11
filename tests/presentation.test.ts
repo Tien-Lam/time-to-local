@@ -113,6 +113,34 @@ test("numeric date provenance follows selected message date order without labeli
     convert("2026-04-09T15:00:00Z", options).results[0].numericDate,
   ).toBeUndefined();
 });
+test("numeric range dates belong to each endpoint and clocks do not imply date order", () => {
+  for (const [dateOrder, text] of [
+    ["mdy", "04/09/2026 11pm to 04/10/2026 1am UTC"],
+    ["dmy", "09/04/2026 11pm to 10/04/2026 1am UTC"],
+  ] as const) {
+    const entries = convert(text, { ...options, dateOrder }).results;
+    expect(entries.map((entry) => entry.instant)).toEqual([
+      "2026-04-09T23:00:00Z",
+      "2026-04-10T01:00:00Z",
+    ]);
+    expect(entries.map((entry) => entry.numericDate)).toEqual([
+      { date: "2026-04-09", order: dateOrder },
+      { date: "2026-04-10", order: dateOrder },
+    ]);
+  }
+  for (const text of [
+    "April 9, 2026 15.30 UTC",
+    "April 9, 2026 15:30:04.09 UTC",
+  ]) {
+    expect(convert(text, options).results[0].numericDate).toBeUndefined();
+  }
+  expect(convert("04.09.2026 3pm UTC", options).results[0].numericDate).toEqual(
+    {
+      date: "2026-04-09",
+      order: "mdy",
+    },
+  );
+});
 test("DST gap recovery respects explicit message-zone precedence", () => {
   const text = "March 8, 2026 2:30am in New York";
   for (const sourceZone of ["UTC", "Asia/Tokyo"]) {

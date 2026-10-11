@@ -1197,7 +1197,7 @@ test("example sequence fills directly, advances on repeated pointer and keyboard
   await expect(input).toBeFocused();
   await button.focus();
   await page.keyboard.press("Space");
-  await expect(input).toHaveValue("April 9 at 9am PT / 12pm ET");
+  await expect(input).toHaveValue("Tomorrow at 3pm in Tokyo");
   await expect(input).toBeFocused();
   await input.fill("April 9, 2026 3pm UTC");
   await enterZone(page, "UTC");

@@ -28,8 +28,9 @@ const timezoneHints = {
   ),
   ...Object.fromEntries(Object.keys(REGIONAL).map((k) => [k, 0])),
 };
-const numericDate =
-  /\b(?:\d{1,2}[/.]\d{1,2}(?:[/.]\d{2,4})?|\d{1,2}-\d{1,2}-\d{4})\b/;
+function hasNumericDate(c: ParsedComponents): boolean {
+  return c.tags().has("parser/SlashDateFormatParser");
+}
 
 function componentDate(c: ParsedComponents): TemporalTypes.PlainDate {
   return Temporal.PlainDate.from(
@@ -192,6 +193,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     );
   let contextDate: TemporalTypes.PlainDate | undefined,
     contextText = "",
+    contextNumeric = false,
     contextParagraph = -1,
     previousEnd = 0;
   const hasTime = parsed.some((r) => r.start.isCertain("hour"));
@@ -234,6 +236,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     ) {
       contextDate = undefined;
       contextText = "";
+      contextNumeric = false;
       contextParagraph = block;
     }
     previousEnd = r.index + r.text.length;
@@ -242,6 +245,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     if (explicitDate) {
       contextDate = date;
       contextText = r.text;
+      contextNumeric = hasNumericDate(r.start);
     }
     if (!r.start.isCertain("hour") && !r.start.isCertain("minute")) {
       if (!hasTime)
@@ -251,7 +255,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           original: r.text,
           sourceIndex: r.index,
           dateOnly: date.toString(),
-          ...(numericDate.test(r.text)
+          ...(hasNumericDate(r.start)
             ? {
                 numericDate: {
                   date: date.toString(),
@@ -395,14 +399,14 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                   rangeId: `range-${priorResults.length ? prior.index : r.index}`,
                 }
               : {}),
-            ...(numericDate.test(matchedText) ||
-            (!explicitDate && contextDate && numericDate.test(contextText))
+            ...(hasNumericDate(c) ||
+            (!c.isCertain("day") &&
+              (hasNumericDate(r.start) ||
+                (r.end && hasNumericDate(r.end)) ||
+                contextNumeric))
               ? {
                   numericDate: {
-                    date: (explicitDate
-                      ? componentDate(local?.start || r.start)
-                      : contextDate || selectedDate
-                    ).toString(),
+                    date: selectedDate.toString(),
                     order: options.dateOrder || "mdy",
                   },
                 }

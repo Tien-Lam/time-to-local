@@ -36,10 +36,10 @@ const cases = [
     times: ["15:00", "01:00", "17:00", "03:00"],
     labels: ["From", "From", "To", "To"],
     sources: [
-      "US Central Standard",
-      "China Standard",
-      "US Central Standard",
-      "China Standard",
+      "CST · US Central Standard",
+      "CST · China Standard",
+      "CST · US Central Standard",
+      "CST · China Standard",
     ],
     alternatives: 1,
   },
@@ -48,7 +48,7 @@ const cases = [
     text: "April 9, 2026 3pm CST",
     times: ["21:00", "07:00"],
     labels: [],
-    sources: ["US Central Standard", "China Standard"],
+    sources: ["CST · US Central Standard", "CST · China Standard"],
     alternatives: 1,
   },
   {

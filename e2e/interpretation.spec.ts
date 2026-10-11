@@ -71,7 +71,7 @@ test("numeric interpretation has a working contextual correction without changin
     "Read as 4 September 2026 · Day/month",
   );
   await expect(input).toHaveValue("04/09/2026 3pm UTC");
-  await expect(page.locator(".result-date")).toContainText("4 Sept 2026");
+  await expect(page.locator(".result-date")).toContainText(/4 Sep(?:t)? 2026/);
 });
 
 test("DST error and source-picker alternatives guide deliberate recovery", async ({
