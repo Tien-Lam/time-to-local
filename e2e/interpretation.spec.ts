@@ -91,6 +91,11 @@ test("DST error and source-picker alternatives guide deliberate recovery", async
   await expect(page.locator(".hero-time")).toHaveText("07:30");
   await input.fill("April 9, 2026 3pm");
   const source = page.getByLabel("Source timezone", { exact: true });
+  // Reach the visible field before opening suggestions. Synthetic fill on an
+  // offscreen field can open its popup before delayed focus scrolling, which
+  // intentionally dismisses the popup through React Aria's scroll owner.
+  await source.scrollIntoViewIfNeeded();
+  await source.click();
   await source.fill("CST");
   await expect(page.locator(".choice-guidance")).toContainText(
     "CST has multiple meanings",
