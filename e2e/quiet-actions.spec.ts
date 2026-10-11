@@ -191,7 +191,7 @@ for (const theme of ["dark", "light"] as const) {
       }
       const input = page.locator("#message");
       if (filled) await input.fill("April 9, 2026 3pm UTC");
-      const neighbour = page.getByRole("button", { name: "Random example" });
+      const neighbour = page.getByRole("button", { name: "Try example" });
       const samples: Record<string, Awaited<ReturnType<typeof geometry>>> = {};
       for (const name of filled ? ["Paste", "Clear"] : ["Paste"]) {
         const control = page.getByRole("button", { name, exact: true });

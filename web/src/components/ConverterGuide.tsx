@@ -21,10 +21,13 @@ export function ConverterGuide() {
         April 9. You can also convert time ranges and Unix timestamps.
       </p>
       <p>
-        If the message has no timezone, open More options and set Source
-        timezone. Regional timezones account for daylight saving time; fixed UTC
-        offsets stay fixed. Ambiguous abbreviations or dates are flagged so you
-        can clarify them.
+        If the message has no timezone, open Message interpretation and set
+        Source timezone. Regional timezones account for daylight saving time;
+        fixed UTC offsets stay fixed. Choose an interpretation for ambiguous
+        abbreviations, and check the displayed date order for numeric dates.
+        Copy range includes both endpoints of an unambiguous interval. Display
+        preferences controls the clock format without changing what the message
+        means.
       </p>
       <p>
         Conversions run on your device and your message is not sent to a server.

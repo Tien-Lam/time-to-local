@@ -600,7 +600,7 @@ input::placeholder {
   margin-top: 6px;
   overflow-wrap: anywhere;
 }
-.options {
+:is(.options, .settings-disclosure) {
   margin-top: 16px;
   padding-top: 12px;
   border-top: 1px solid var(--border);
@@ -628,7 +628,7 @@ input::placeholder {
   min-height: 44px;
   text-align: left;
 }
-.options-trigger {
+:is(.options-trigger, .settings-trigger) {
   cursor: pointer;
   min-height: 44px;
   padding: 10px 12px;
@@ -638,7 +638,7 @@ input::placeholder {
   color: var(--muted);
   text-align: left;
 }
-.options-trigger {
+:is(.options-trigger, .settings-trigger) {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -646,7 +646,7 @@ input::placeholder {
   font-size: var(--text-small);
 }
 @media (hover: hover) {
-  .options-trigger:hover {
+  :is(.options-trigger, .settings-trigger):hover {
     background: var(--soft);
   }
 }
@@ -655,19 +655,21 @@ input::placeholder {
   rotate: -90deg;
   transition: rotate var(--motion-fast) var(--motion-ease);
 }
-.options[data-expanded] .disclosure-chevron {
+:is(.options, .settings-disclosure)[data-expanded] .disclosure-chevron {
   rotate: 0deg;
 }
-.option-fields {
+:is(.option-fields, .settings-fields) {
   padding: 0 0 12px;
   opacity: 1;
   transition: opacity 220ms var(--motion-ease);
 }
-.options[data-expanded] .option-fields {
+:is(.options, .settings-disclosure)[data-expanded]
+  :is(.option-fields, .settings-fields) {
   transition: none;
   animation: surface-fade 220ms var(--motion-ease);
 }
-.options:not([data-expanded]) .option-fields {
+:is(.options, .settings-disclosure):not([data-expanded])
+  :is(.option-fields, .settings-fields) {
   opacity: 0;
   pointer-events: none;
 }
@@ -745,7 +747,7 @@ input::placeholder {
   margin: 0 0 4px;
 }
 .result-context {
-  margin-top: 12px;
+  margin: 0 0 12px;
 }
 .result + .result {
   border-top: 1px solid var(--border);
@@ -1034,8 +1036,8 @@ footer p {
     margin-bottom: 12px;
   }
   #message {
-    min-height: 154px;
-    height: 154px;
+    min-height: 104px;
+    height: 104px;
   }
   .hero-time {
     font-size: 2.25rem;
@@ -1050,6 +1052,108 @@ footer p {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
+  }
+}
+
+.live-help {
+  color: var(--muted);
+  font-size: var(--text-small);
+  margin: 8px 0 0;
+}
+.interpretation-warning {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+.interpretation-warning .ambiguity {
+  color: inherit;
+}
+.interpretation-warning p {
+  margin: 0;
+}
+.range-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.range-copy.copy-button {
+  width: max(116px, 7.5rem);
+}
+.range-endpoints {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.range-endpoints .result + .result {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.range-endpoints .result-top {
+  grid-template-columns: minmax(0, 1fr);
+}
+.range-endpoints .hero-time {
+  font-size: min(2rem, 16cqi);
+}
+.range-endpoints .result-top[data-precision="true"] .hero-time {
+  font-size: min(2rem, 12cqi);
+}
+.range-endpoints .endpoint-copy {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+  width: max(104px, 6.5rem);
+}
+.numeric-interpretation,
+.reference-summary,
+.provenance {
+  font-size: var(--text-small);
+  color: var(--muted);
+  line-height: 1.6;
+}
+.numeric-interpretation {
+  margin-bottom: 12px;
+}
+.numeric-interpretation p,
+.reference-summary p {
+  margin: 0;
+}
+.reference-summary,
+.provenance {
+  margin-top: 12px;
+}
+.provenance summary {
+  cursor: pointer;
+  padding-block: 10px;
+  min-height: 44px;
+}
+.reset-preferences {
+  margin-top: 8px;
+  color: var(--muted);
+}
+.choice-guidance {
+  padding: 12px 12px 4px;
+  margin: 0;
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: var(--muted);
+}
+@container (max-width: 360px) {
+  .range-endpoints {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .range-endpoints .hero-time {
+    font-size: 2rem;
+  }
+  .range-endpoints .result + .result {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
   }
 }
 @media (max-width: 480px) {

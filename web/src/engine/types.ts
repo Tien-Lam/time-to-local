@@ -14,6 +14,9 @@ export interface TimeResult {
   original: string;
   sourceIndex: number;
   endpoint?: "start" | "end";
+  /** Shared only by endpoints parsed as one range, never inferred by the UI. */
+  rangeId?: string;
+  numericDate?: { date: string; order: "mdy" | "dmy" };
   instant?: string;
   dateOnly?: string;
   sourceZone: string;

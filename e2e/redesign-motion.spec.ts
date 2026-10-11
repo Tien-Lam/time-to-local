@@ -271,6 +271,65 @@ test("normal motion keeps zone anchors and outer overlays stationary through imm
   ).toBe(false);
 });
 
+test("a delayed result animation owns completion beyond the former cleanup deadline", async ({
+  page,
+}, info) => {
+  await installMotionProbe(page);
+  await holdConversion(page);
+  await page.goto("/");
+  await enterZone(page, "UTC");
+  const input = page.getByLabel("Message with a date or time");
+  await input.fill("April 9, 2026 3pm UTC");
+  await expect
+    .poll(() => page.evaluate(() => (window as any).completions.length))
+    .toBe(1);
+  await beginMotionProbe(page, [".result-group", ".result .copy-button"]);
+  await page.evaluate(() => {
+    const state = window as any;
+    const observer = new MutationObserver(() => {
+      const animation = document
+        .querySelector(".result-group.is-new-group")
+        ?.getAnimations()
+        .find(
+          (animation) =>
+            animation instanceof CSSAnimation &&
+            animation.animationName === "surface-fade",
+        );
+      if (!animation) return;
+      animation.pause();
+      animation.currentTime = 0;
+      state.delayedResultAnimation = animation;
+      state.delayedResultAt = performance.now();
+      observer.disconnect();
+    });
+    observer.observe(document, { childList: true, subtree: true });
+  });
+  await deliverConversion(page, 0);
+  await expect
+    .poll(() => page.evaluate(() => !!(window as any).delayedResultAnimation))
+    .toBe(true);
+  await expect(page.locator(".hero-time")).toHaveText(/3:00 pm/i);
+  // Deliberately keep the native animation pending beyond the previous 240ms
+  // wall-clock cleanup. This is a failure boundary, not a settling wait.
+  await expect
+    .poll(() =>
+      page.evaluate(() => performance.now() - (window as any).delayedResultAt),
+    )
+    .toBeGreaterThan(350);
+  await expect(page.locator(".result-group")).toHaveClass(/is-new-group/);
+  await expect(input).toBeFocused();
+  await expect(page.getByRole("button", { name: /^Copy / })).toBeEnabled();
+  await page.evaluate(() => (window as any).delayedResultAnimation.play());
+  await expect(page.locator(".result-group")).not.toHaveClass(/is-new-group/);
+  const record = await finishMotionProbe(page, info, "delayed-result-frames");
+  expectStationary(record, [".result .copy-button"]);
+  expect(
+    record.events.filter(
+      (event) => event.type === "animationend" && event.name === "surface-fade",
+    ),
+  ).toHaveLength(1);
+});
+
 test("new groups reveal once, numeric replacements are atomic and Copy reports only the clipboard outcome", async ({
   page,
 }, info) => {
@@ -644,9 +703,9 @@ for (const reduced of [false, true]) {
     const input = page.getByLabel("Message with a date or time");
     await beginMotionProbe(page, [".message.error"]);
     await input.fill("No timestamp here");
-    await expect(page.getByRole("alert")).toContainText("No timestamp found");
+    await expect(page.getByRole("alert")).toContainText("No time found");
     const error = await finishMotionProbe(page, info, "error-state-frames");
-    await expect(page.getByRole("alert")).toContainText("No timestamp found");
+    await expect(page.getByRole("alert")).toContainText("No time found");
     await beginMotionProbe(page, [".result-placeholder"]);
     await page.getByRole("button", { name: "Clear", exact: true }).click();
     await expect(
@@ -923,10 +982,16 @@ test("an entering zone menu follows an immediate viewport resize and still accep
     expect(element.transforms).toEqual([]);
   await toggle.scrollIntoViewIfNeeded();
   await toggle.click();
+  await expect(target).toBeFocused();
   await target.press("Escape");
+  // The toggle preserves input focus, so the explicitly selected canonical
+  // draft remains until ordinary blur restores its inactive city label.
   await expect(target).toHaveValue("Asia/Tokyo");
   await expect(target).toHaveAttribute("aria-expanded", "false");
   await expect(page.getByRole("option")).toHaveCount(0);
+  await target.press("Tab");
+  await expect(target).not.toBeFocused();
+  await expect(target).toHaveValue("Tokyo");
 });
 
 for (const mode of [
@@ -1177,33 +1242,27 @@ test("explicit and live System themes preserve contrast in actual semantic text 
   }
 });
 
-test("random example fills directly, varies on repeated pointer and keyboard activation and preserves editing", async ({
+test("example sequence fills directly, advances on repeated pointer and keyboard activation and preserves editing", async ({
   page,
 }, info) => {
   await installMotionProbe(page);
-  await page.addInitScript(() => {
-    Math.random = () => 0;
-  });
   await page.goto("/");
-  const button = page.getByRole("button", {
-    name: "Random example",
-    exact: true,
-  });
+  const button = page.locator(".example-button");
   const input = page.getByLabel("Message with a date or time");
   await input.fill("User draft: April 9, 2026 3pm UTC");
   await beginMotionProbe(page, [".example-button"]);
   await button.click();
-  await expect(input).toHaveValue("April 9 at 9am PT / 12pm ET");
+  await expect(input).toHaveValue("April 9, 2026 3pm in Tokyo");
   await expect(input).toBeFocused();
   await expect(button).not.toHaveAttribute("aria-haspopup");
   await expect(page.getByRole("menu")).toHaveCount(0);
   await button.focus();
   await page.keyboard.press("Enter");
-  await expect(input).toHaveValue("Tomorrow at 3pm in Tokyo");
+  await expect(input).toHaveValue("April 9, 2026 9am–11am UTC");
   await expect(input).toBeFocused();
   await button.focus();
   await page.keyboard.press("Space");
-  await expect(input).toHaveValue("April 9 at 9am PT / 12pm ET");
+  await expect(input).toHaveValue("Tomorrow at 3pm in Tokyo");
   await expect(input).toBeFocused();
   await input.fill("April 9, 2026 3pm UTC");
   await enterZone(page, "UTC");

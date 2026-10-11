@@ -11,16 +11,22 @@ export function Disclosure({
   open,
   onOpenChange,
   children,
+  label = "Message interpretation",
+  id = "interpretation-options",
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   children: ReactNode;
+  label?: string;
+  id?: string;
 }) {
   const content = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   return (
     <Collapsible
-      className="options"
+      className={
+        id === "interpretation-options" ? "options" : "settings-disclosure"
+      }
       isExpanded={open}
       onExpandedChange={(next) => {
         // Programmatic/virtual activation need not move focus before collapse.
@@ -32,19 +38,26 @@ export function Disclosure({
     >
       <CollapsibleTrigger
         ref={trigger}
-        className="options-trigger"
+        className={
+          id === "interpretation-options"
+            ? "options-trigger"
+            : "settings-trigger"
+        }
         type="button"
-        aria-label="Adjust interpretation & format (More options)"
-        aria-expanded={open}
-        aria-controls="interpretation-options"
+        aria-label={
+          label === "Message interpretation"
+            ? "Message interpretation (More options)"
+            : label
+        }
       >
         <ControlIcon name="chevron" className="disclosure-chevron" />
-        More options
+        {label}
       </CollapsibleTrigger>
       <CollapsibleContent
         ref={content}
-        id="interpretation-options"
-        className="option-fields"
+        className={
+          id === "interpretation-options" ? "option-fields" : "settings-fields"
+        }
         hidden={!open}
         inert={!open}
         aria-hidden={!open}

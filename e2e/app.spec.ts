@@ -199,7 +199,9 @@ test("convert, inspect ambiguity, copy manually and protect privacy", async ({
   await convert(page, "July 15, 2026 3pm CST");
   await expect(page.getByText("2 possible interpretations")).toBeVisible();
   await page
-    .getByRole("button", { name: /^Copy .*US Central Standard$/ })
+    .getByRole("button", {
+      name: /^Copy .*US Central Standard.*UTC-06:00/,
+    })
     .click();
   await expect(page.getByLabel("Text to copy")).toHaveValue(
     /2026.*UTC\+10:00.*Sydney/s,
@@ -251,7 +253,7 @@ test("preferences persist, input does not; denied storage still converts", async
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-design", "command");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  await expect(page.getByLabel("Convert to")).toHaveValue("Asia/Tokyo");
+  await expect(page.getByLabel("Convert to")).toHaveValue("Tokyo");
   await expect(page.getByLabel("Message with a date or time")).toHaveValue("");
   await page.addInitScript(() => {
     Object.defineProperty(window, "localStorage", {
@@ -278,7 +280,7 @@ test("input errors recover, edits invalidate results, keyboard keeps multiline i
   await convert(page);
   await input.fill("not a time");
   await expect(page.locator(".result")).toHaveCount(0);
-  await expect(page.getByRole("alert")).toContainText("No timestamp");
+  await expect(page.getByRole("alert")).toContainText("No time");
   await input.fill("x".repeat(10001));
   await expect(page.getByRole("alert")).toContainText("10,000");
   await expect(input).toHaveValue("x".repeat(10001));

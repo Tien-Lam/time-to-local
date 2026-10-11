@@ -8,7 +8,13 @@ import {
 import { flushSync } from "react-dom";
 import type { Conversion, ConversionOptions, TimeResult } from "./engine/types";
 import { MAX_INPUT } from "./engine/limits";
-import { copyText, formatResult, rangeLabel } from "./engine/time";
+import { copyText } from "./engine/time";
+import {
+  copyRangeText,
+  resultGroups,
+  resultSummary,
+} from "./engine/presentation";
+import { ResultCard } from "./components/Results";
 import { resolveCity, validZone, zoneName } from "./engine/zones";
 import {
   DEFAULTS,
@@ -43,9 +49,9 @@ import { useRetainedOpen } from "./components/useRetainedOpen";
 import { useTouchFeedback } from "./components/useTouchFeedback";
 
 const examples = [
-  "April 9 at 9am PT / 12pm ET",
+  "April 9, 2026 3pm in Tokyo",
+  "April 9, 2026 9am–11am UTC",
   "Tomorrow at 3pm in Tokyo",
-  "July 15 at 3pm CST",
 ];
 const UPDATE_STORAGE_WARNING =
   "Copy your message somewhere safe, then clear it before updating. This browser cannot preserve it during a reload.";
@@ -113,6 +119,12 @@ export default function App({
     copyField = useRef<HTMLTextAreaElement>(null);
   const resultHeading = useRef<HTMLHeadingElement>(null);
   const [optionsOpen, setOptionsOpen] = useState(false);
+  const [displayOpen, setDisplayOpen] = useState(false);
+  const [supportOpen, setSupportOpen] = useState(false);
+  const [exampleIndex, setExampleIndex] = useState(0);
+  const [interpretationFocus, setInterpretationFocus] = useState<
+    "date-order" | "reference-date"
+  >();
   const [dateControlsRequested, setDateControlsRequested] = useState(false);
   useLayoutEffect(() => {
     if (!booting) return;
@@ -127,6 +139,7 @@ export default function App({
     if (optionsOpen) setDateControlsRequested(true);
   }, [optionsOpen]);
   const correctionFocus = useRef(false);
+  const interpretationIntent = useRef(0);
   const [appearanceOpen, setAppearanceOpen] = useState(false);
   const appearanceRetained = useRetainedOpen(appearanceOpen, 120);
   const [copyState, setCopyState] = useState<{
@@ -358,18 +371,51 @@ export default function App({
       media.removeEventListener("change", changed);
     };
   }, []);
-  useEffect(() => {
-    if (!newGroups.size) return;
-    const timer = setTimeout(() => setNewGroups(new Set()), 240);
-    return () => clearTimeout(timer);
-  }, [newGroups]);
-
   useLayoutEffect(() => {
     if (optionsOpen && correctionFocus.current) {
       correctionFocus.current = false;
       document.getElementById("source-zone")?.focus();
     }
   }, [optionsOpen]);
+
+  useLayoutEffect(() => {
+    if (!optionsOpen || !interpretationFocus) return;
+    // Wait for the lazily loaded date editor before moving focus.
+    const focus = () => {
+      if (interpretationIntent.current !== copyFocusIntent.current) {
+        setInterpretationFocus(undefined);
+        return true;
+      }
+      const field =
+        interpretationFocus === "reference-date"
+          ? document.querySelector<HTMLElement>(
+              '#reference-date [role="spinbutton"]',
+            )
+          : document.getElementById("date-order");
+      if (!field) return false;
+      field.focus();
+      field.scrollIntoView({ block: "nearest" });
+      setInterpretationFocus(undefined);
+      return true;
+    };
+    if (focus()) return;
+    // Collapsible mounts its content after expansion commits. Observe the
+    // persistent disclosure owner so a first-open request can await that mount.
+    const disclosure = document.querySelector(".options");
+    if (!disclosure) return;
+    const observer = new MutationObserver(focus);
+    observer.observe(disclosure, {
+      childList: true,
+      subtree: true,
+    });
+    return () => observer.disconnect();
+  }, [optionsOpen, interpretationFocus]);
+
+  function openInterpretation(field: "date-order" | "reference-date") {
+    interpretationIntent.current = copyFocusIntent.current;
+    setInterpretationFocus(field);
+    setOptionsOpen(true);
+  }
 
   function changeTheme(theme: "dark" | "light" | "system") {
     if (theme === prefs.theme) return;
@@ -512,7 +558,7 @@ export default function App({
               !event.data.conversion.warnings.length
             )
               setError(
-                "No timestamp found. Try a date and time, such as “April 9 at 3pm PT”.",
+                "No time found. Try a date and time, such as “April 9 at 3pm PT”.",
               );
           }
           finish();
@@ -598,19 +644,21 @@ export default function App({
       input.current?.focus();
     }
   }
-  async function copy(result: TimeResult) {
+  function copy(result: TimeResult) {
+    return copyValue(copyText(result, displayOptions), result.id);
+  }
+  async function copyValue(value: string, resultId: string) {
     if (!targetZone || !sourceZone) return;
     clearTimeout(copyReset.current);
     setCopyState(undefined);
     const copyId = ++copyRequest.current;
     const focusIntent = copyFocusIntent.current;
-    const value = copyText(result, displayOptions);
     diagnostic("copy.started", { requestId: copyId });
     try {
       await navigator.clipboard.writeText(value);
       if (copyId !== copyRequest.current) return;
       clearTimeout(copyReset.current);
-      setCopyState({ id: result.id, state: "success" });
+      setCopyState({ id: resultId, state: "success" });
       copyReset.current = setTimeout(() => {
         if (copyId === copyRequest.current) setCopyState(undefined);
       }, 1500);
@@ -619,7 +667,7 @@ export default function App({
     } catch {
       if (copyId !== copyRequest.current) return;
       clearTimeout(copyReset.current);
-      setCopyState({ id: result.id, state: "failure" });
+      setCopyState({ id: resultId, state: "failure" });
       setManualCopy(value);
       setNotice(
         "Select the text below and copy it using your keyboard or touch menu.",
@@ -666,9 +714,8 @@ export default function App({
     );
     pending.postMessage({ type: "ACTIVATE_UPDATE" });
   }
-  const groups = targetZone
-    ? [...new Set(conversion.results.map((r) => r.group))]
-    : [];
+  const groups = targetZone ? resultGroups(conversion.results) : [];
+  const summary = resultSummary(groups);
   const targetError =
     !targetZone && text.trim()
       ? "Choose a timezone from the list, or enter a city with one known timezone."
@@ -680,9 +727,13 @@ export default function App({
       ? "pending"
       : visibleError
         ? "error"
-        : conversion.results.length || conversion.warnings.length
-          ? "ready"
-          : "idle";
+        : conversion.warnings.length
+          ? "warning"
+          : groups.some((group) => group.ambiguous)
+            ? "ambiguous"
+            : conversion.results.length
+              ? "ready"
+              : "idle";
   const updateWarning =
     offline.update && notice === UPDATE_STORAGE_WARNING ? notice : "";
   const generalNotice = updateWarning ? "" : notice;
@@ -815,7 +866,7 @@ export default function App({
                 ref={input}
                 id="message"
                 value={text}
-                placeholder="e.g. Let's meet tomorrow at 3pm PT"
+                placeholder="e.g. April 9, 2026 3pm in Tokyo"
                 onChange={(e) => edit(e.target.value)}
                 onCompositionStart={() => {
                   composition.current = true;
@@ -830,19 +881,18 @@ export default function App({
                 spellCheck={false}
                 aria-describedby="input-help"
               />
+              <p className="live-help">Results update as you type.</p>
               <div className="input-tools">
                 <ActionButton
                   type="button"
-                  className="muted"
+                  className="example-button muted"
                   onPress={() => {
-                    const choices = examples.filter(
-                      (example) => example !== draft.current,
-                    );
-                    edit(choices[Math.floor(Math.random() * choices.length)]);
+                    edit(examples[exampleIndex % examples.length]);
+                    setExampleIndex(exampleIndex + 1);
                     input.current?.focus();
                   }}
                 >
-                  Random example
+                  {exampleIndex ? "Next example" : "Try example"}
                 </ActionButton>
                 <div>
                   <ActionButton
@@ -906,7 +956,9 @@ export default function App({
                   {initializing
                     ? "Preparing your timezone…"
                     : targetZone
-                      ? `${zoneName(targetZone)} · ${targetZone}`
+                      ? targetZone.includes("/")
+                        ? targetZone
+                        : zoneName(targetZone)
                       : "Choose a timezone or city from the list"}
                 </span>
               </div>
@@ -942,7 +994,13 @@ export default function App({
                   </ActionButton>
                 </div>
               )}
-              <Disclosure open={optionsOpen} onOpenChange={setOptionsOpen}>
+              <Disclosure
+                open={optionsOpen}
+                onOpenChange={(open) => {
+                  setOptionsOpen(open);
+                  if (!open) setInterpretationFocus(undefined);
+                }}
+              >
                 <label htmlFor="source-zone">Source timezone</label>
                 <ZoneChoice
                   id="source-zone"
@@ -981,10 +1039,10 @@ export default function App({
                   The date is anchored in the source timezone; use a full date
                   in the message to avoid a day shift in a distant timezone.
                 </span>
-                <label htmlFor="date-order">Date format</label>
+                <label htmlFor="date-order">Date order in messages</label>
                 <ChoiceSelect
                   id="date-order"
-                  label="Date format"
+                  label="Date order in messages"
                   describedBy="date-order-help"
                   value={prefs.dateOrder}
                   onChange={(dateOrder) => {
@@ -1002,61 +1060,6 @@ export default function App({
                 <span className="field-note" id="date-order-help">
                   How to read numeric dates in your message.
                 </span>
-                <label htmlFor="time-format">Time format</label>
-                <ChoiceSelect
-                  id="time-format"
-                  label="Time format"
-                  describedBy="time-format-help"
-                  value={prefs.hourCycle}
-                  onChange={(hourCycle) => {
-                    setPrefs({
-                      ...prefs,
-                      hourCycle: hourCycle as "auto" | "12" | "24",
-                    });
-                    invalidateDisplay();
-                  }}
-                  options={[
-                    { id: "auto", label: "Device format" },
-                    { id: "12", label: "12-hour (3:00 PM)" },
-                    { id: "24", label: "24-hour (15:00)" },
-                  ]}
-                />
-                <span className="field-note" id="time-format-help">
-                  How to display and copy converted times.
-                </span>
-                <label className="diagnostic-toggle">
-                  <input
-                    type="checkbox"
-                    checked={detailedLogs}
-                    onChange={(event) => {
-                      const enabled = event.target.checked;
-                      setDetailedLogsChecked(enabled);
-                      setDetailedLogs(enabled);
-                    }}
-                  />
-                  <span>Enable detailed logs</span>
-                </label>
-                <span className="field-note">
-                  Console only. Message text excluded.
-                </span>
-                <ActionButton
-                  type="button"
-                  className="text-button"
-                  onPress={() => {
-                    setDetailedLogs(false);
-                    setDetailedLogsChecked(false);
-                    resetPreferences();
-                    setPrefs({ ...DEFAULTS });
-                    setReferenceDate("");
-                    referenceValidity.current = true;
-                    setReferenceValid(true);
-                    setReferenceReset((version) => version + 1);
-                    invalidate();
-                    setNotice("Preferences reset.");
-                  }}
-                >
-                  Reset preferences
-                </ActionButton>
               </Disclosure>
             </section>
             <section
@@ -1088,9 +1091,9 @@ export default function App({
                         ? "Paused"
                         : liveState === "error"
                           ? "Check input"
-                          : conversion.results.length
-                            ? `${conversion.results.length} time${conversion.results.length === 1 ? "" : "s"} converted`
-                            : "Ready"}
+                          : liveState === "warning"
+                            ? "Check time"
+                            : summary}
                 </span>
               </div>
               <div role="status" className="sr-only">
@@ -1099,7 +1102,7 @@ export default function App({
                   : composing
                     ? "Finish typing to convert"
                     : targetZone && conversion.results.length
-                      ? `${conversion.results.length} converted results found`
+                      ? summary
                       : ""}
               </div>
               {visibleError && (
@@ -1130,131 +1133,52 @@ export default function App({
                     <p>Date, time and timezone appear here.</p>
                   </div>
                 )}
-              {groups.map((group, groupIndex) => {
-                const entries = conversion.results.filter(
-                  (r) => r.group === group,
-                );
-                return (
-                  <article
-                    className={`result-group${newGroups.has(group) ? " is-new-group" : ""}`}
-                    key={group}
-                    style={{
-                      animationDelay: `${Math.min(groupIndex, 2) * 30}ms`,
-                    }}
-                  >
-                    {entries.map((result, index) => {
-                      const d = formatResult(result, displayOptions);
-                      const range = rangeLabel(result);
-                      return (
-                        <div className="result" key={result.id}>
-                          <div
-                            className="result-top"
-                            data-precision={/\d:\d{2}:\d{2}/.test(d.time)}
-                          >
-                            <div className="result-output">
-                              {range && <p className="range-label">{range}</p>}
-                              {d.time && (
-                                <div className="hero-time">
-                                  {d.time
-                                    .split(/(\s+[ap]m)$/i)
-                                    .filter(Boolean)
-                                    .map((part, partIndex) => (
-                                      <span
-                                        className={
-                                          partIndex === 0
-                                            ? "time-number"
-                                            : "clock-suffix"
-                                        }
-                                        key={partIndex}
-                                      >
-                                        {part}
-                                      </span>
-                                    ))}
-                                </div>
-                              )}
-                              <p
-                                className={`result-date${result.dateOnly ? " hero-date" : ""}`}
-                              >
-                                {d.date}
-                              </p>
-                              <p className="result-zone">
-                                {d.zone}
-                                {d.dateShift !== 0 && (
-                                  <span className="day-shift">
-                                    {d.dateShift > 0 ? "+" : ""}
-                                    {d.dateShift} day
-                                    {Math.abs(d.dateShift) !== 1 ? "s" : ""}
-                                  </span>
-                                )}
-                              </p>
-                            </div>
-                            <ActionButton
-                              type="button"
-                              variant="primary"
-                              data-copy-state={
-                                copyState?.id === result.id
-                                  ? copyState.state
-                                  : "idle"
-                              }
-                              onPress={() => copy(result)}
-                              aria-label={`Copy ${range ? range + ": " : ""}${d.time ? d.time + " · " : ""}${d.date} · ${d.zone} · ${result.interpretation || result.sourceLabel}`}
-                            >
-                              {copyState?.id === result.id &&
-                              copyState.state === "success" ? (
-                                <>
-                                  <ControlIcon
-                                    name="check"
-                                    className="copy-check"
-                                    size="1em"
-                                  />{" "}
-                                  Copied
-                                </>
-                              ) : copyState?.id === result.id &&
-                                copyState.state === "failure" ? (
-                                "Retry"
-                              ) : (
-                                "Copy"
-                              )}
-                            </ActionButton>
-                          </div>
-                          <div className="result-context">
-                            {index === 0 && entries.length > 1 && (
-                              <span className="ambiguity" key={entries.length}>
-                                {entries.length} possible interpretations
-                              </span>
-                            )}
-                            <p>
-                              From{" "}
-                              <span className="source-label">
-                                {result.interpretation || result.sourceLabel}
-                              </span>
-                            </p>
-                          </div>
-                          {result.dateOnly && (
-                            <p className="assumption">
-                              A date without a time cannot be shifted between
-                              timezones.
-                            </p>
-                          )}
-                          {result.assumptions.map((a) => (
-                            <p className="assumption" key={a}>
-                              {a}
-                            </p>
-                          ))}
-                          {result.occurrences > 1 && (
-                            <p className="assumption">
-                              Mentioned {result.occurrences} times
-                            </p>
-                          )}
-                        </div>
-                      );
-                    })}
-                    <div className="result-source">
-                      <p>Original: “{entries[0].original}”</p>
-                    </div>
-                  </article>
-                );
-              })}
+              {groups.map((group, groupIndex) => (
+                <article
+                  className={`result-group${group.entries.some((entry) => newGroups.has(entry.group)) ? " is-new-group" : ""}`}
+                  key={group.id}
+                  style={{
+                    animationDelay: `${Math.min(groupIndex, 2) * 30}ms`,
+                  }}
+                  onAnimationEnd={(event) => {
+                    if (
+                      event.target !== event.currentTarget ||
+                      event.animationName !== "surface-fade" ||
+                      event.currentTarget
+                        .getAnimations()
+                        .some(
+                          (animation) =>
+                            animation instanceof CSSAnimation &&
+                            animation.animationName === "surface-fade" &&
+                            animation.playState !== "finished",
+                        )
+                    )
+                      return;
+                    // A queued event from an older animation must not consume
+                    // a replacement still running on this same DOM surface.
+                    const completed = new Set(
+                      group.entries.map((entry) => entry.group),
+                    );
+                    setNewGroups(
+                      (current) =>
+                        new Set(
+                          [...current].filter((id) => !completed.has(id)),
+                        ),
+                    );
+                  }}
+                >
+                  <ResultCard
+                    group={group}
+                    options={displayOptions}
+                    copyState={copyState}
+                    onCopy={copy}
+                    onCopyRange={(pair, id) =>
+                      copyValue(copyRangeText(pair, displayOptions), id)
+                    }
+                    onInterpret={openInterpretation}
+                  />
+                </article>
+              ))}
             </section>
           </div>
           <div role="status" className="notice">
@@ -1329,6 +1253,77 @@ export default function App({
               Keep Time to Local handy
             </ActionButton>
           </footer>
+          <section className="preferences" aria-label="Preferences and support">
+            <Disclosure
+              open={displayOpen}
+              onOpenChange={setDisplayOpen}
+              label="Display preferences"
+              id="display-options"
+            >
+              <label htmlFor="time-format">Time format</label>
+              <ChoiceSelect
+                id="time-format"
+                label="Time format"
+                describedBy="time-format-help"
+                value={prefs.hourCycle}
+                onChange={(hourCycle) => {
+                  setPrefs({
+                    ...prefs,
+                    hourCycle: hourCycle as "auto" | "12" | "24",
+                  });
+                  invalidateDisplay();
+                }}
+                options={[
+                  { id: "auto", label: "Device format" },
+                  { id: "12", label: "12-hour (3:00 PM)" },
+                  { id: "24", label: "24-hour (15:00)" },
+                ]}
+              />
+              <span className="field-note" id="time-format-help">
+                How to display and copy converted times.
+              </span>
+            </Disclosure>
+            <Disclosure
+              open={supportOpen}
+              onOpenChange={setSupportOpen}
+              label="Support diagnostics"
+              id="support-options"
+            >
+              <label className="diagnostic-toggle">
+                <input
+                  type="checkbox"
+                  checked={detailedLogs}
+                  onChange={(event) => {
+                    const enabled = event.target.checked;
+                    setDetailedLogsChecked(enabled);
+                    setDetailedLogs(enabled);
+                  }}
+                />
+                <span>Enable detailed logs</span>
+              </label>
+              <span className="field-note">
+                Console only. Message text excluded.
+              </span>
+            </Disclosure>
+            <ActionButton
+              type="button"
+              className="text-button reset-preferences"
+              onPress={() => {
+                setDetailedLogs(false);
+                setDetailedLogsChecked(false);
+                resetPreferences();
+                setPrefs({ ...DEFAULTS });
+                setReferenceDate("");
+                referenceValidity.current = true;
+                setReferenceValid(true);
+                setReferenceReset((version) => version + 1);
+                invalidate();
+                setNotice("Preferences reset.");
+              }}
+            >
+              Reset preferences
+            </ActionButton>
+          </section>
           <ConverterGuide />
           {installHelp && (
             <div className="install-help">

@@ -595,5 +595,16 @@
     "referenceDate": "2024-01-01",
     "instants": ["2024-04-09T15:00:00Z", "2024-04-09T08:00:00Z"],
     "assumption": "Reference date used: 2024-01-01"
+  },
+  {
+    "name": "overlapping ranges retain independent shared endpoints",
+    "text": "April 9, 2026 9am-11am UTC; April 9, 2026 10am-11am UTC",
+    "instants": [
+      "2026-04-09T09:00:00Z",
+      "2026-04-09T11:00:00Z",
+      "2026-04-09T10:00:00Z",
+      "2026-04-09T11:00:00Z"
+    ],
+    "endpoints": ["start", "end", "start", "end"]
   }
 ]

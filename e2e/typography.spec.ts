@@ -89,7 +89,7 @@ for (const rootSize of [24, 32])
         const field = page.getByLabel("Source timezone", { exact: true });
         await field.fill("Asia/Tokyo");
         await field.press("Tab");
-        await expect(field).toHaveValue("Asia/Tokyo");
+        await expect(field).toHaveValue("Tokyo");
         await page
           .getByRole("button", { name: "Choose reference date" })
           .click();

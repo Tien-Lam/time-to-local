@@ -27,7 +27,30 @@ function referenceDateParts(c: ParsedComponents) {
 export function usesReferenceDate(c: ParsedComponents): boolean {
   return Object.values(referenceDateParts(c)).some(Boolean);
 }
-function extend(parser: Chrono): Chrono {
+export function numericDateOrder(
+  c: ParsedComponents,
+  fallback: "mdy" | "dmy",
+): "mdy" | "dmy" {
+  return c.tags().has("parser/date-order/dmy")
+    ? "dmy"
+    : c.tags().has("parser/date-order/mdy")
+      ? "mdy"
+      : fallback;
+}
+function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
+  // Annotate each parser-owned date before date/time and range merging. Chrono
+  // swaps an impossible month; the saved preference is then not the used order.
+  parser.refiners.unshift({
+    refine: (_context, results) => {
+      for (const result of results) {
+        if (!result.start.tags().has("parser/SlashDateFormatParser")) continue;
+        const [first, second] = result.text.split(/[\/.-]/).map(Number);
+        const order = first > 12 ? "dmy" : second > 12 ? "mdy" : preference;
+        result.start.addTag(`parser/date-order/${order}`);
+      }
+      return results;
+    },
+  });
   // Chrono's range merger sorts endpoints by instant. Our contract preserves
   // textual clock/zone identity, and treats a lower end clock as overnight.
   // Locate the pinned English merger by its behavior, not a minified class name.
@@ -163,5 +186,5 @@ function extend(parser: Chrono): Chrono {
   });
   return parser;
 }
-export const monthFirst = extend(en.casual.clone()),
-  dayFirst = extend(en.GB.clone());
+export const monthFirst = extend(en.casual.clone(), "mdy"),
+  dayFirst = extend(en.GB.clone(), "dmy");
