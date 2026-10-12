@@ -2,6 +2,7 @@ import {
   dayFirst,
   monthFirst,
   numericDateOrder,
+  startsAfterUnrelatedDate,
   usesReferenceDate,
 } from "./parser";
 import type { ParsedComponents } from "chrono-node";
@@ -238,6 +239,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       continue;
     if (
       block !== contextParagraph ||
+      startsAfterUnrelatedDate(r.start) ||
       /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
     ) {
       contextDate = undefined;

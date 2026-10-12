@@ -606,5 +606,138 @@
       "2026-04-09T11:00:00Z"
     ],
     "endpoints": ["start", "end", "start", "end"]
+  },
+  {
+    "name": "boundary original following announcement",
+    "text": "Call at 8pm UTC.\n\nJanuary 19, 2027 is a separate announcement.",
+    "instants": ["2026-04-06T20:00:00Z"],
+    "sourceIndices": [5],
+    "originals": ["at 8pm UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "sourceZones": ["+00:00"]
+  },
+  {
+    "name": "boundary following paragraph without period",
+    "text": "Call at 8pm UTC\n\nJanuary 19, 2027 is a separate announcement.",
+    "instants": ["2026-04-06T20:00:00Z"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "boundary following sentence",
+    "text": "Call at 8pm UTC. January 19, 2027 is a separate announcement.",
+    "instants": ["2026-04-06T20:00:00Z"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "boundary preceding announcement paragraph",
+    "text": "The announcement is January 19, 2027.\n\n8pm UTC is our usual call time.",
+    "instants": ["2026-04-06T20:00:00Z"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "boundary preceding announcement sentence",
+    "text": "The announcement is January 19, 2027. 8pm UTC is our usual call time.",
+    "instants": ["2026-04-06T20:00:00Z"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "boundary preceding announcement sentence single newline",
+    "text": "The announcement is January 19, 2027.\n8pm UTC is our usual call time.",
+    "instants": ["2026-04-06T20:00:00Z"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "boundary explicit following date connector",
+    "text": "Call at 8pm UTC on January 19, 2027.",
+    "instants": ["2027-01-19T20:00:00Z"],
+    "assumptions": [[]]
+  },
+  {
+    "name": "boundary explicit preceding date connector",
+    "text": "January 19, 2027 at 8pm UTC.",
+    "instants": ["2027-01-19T20:00:00Z"],
+    "assumptions": [[]]
+  },
+  {
+    "name": "boundary standalone heading across blank line",
+    "text": "# January 19, 2027\n\n8pm UTC",
+    "instants": ["2027-01-19T20:00:00Z"],
+    "assumptions": [[]]
+  },
+  {
+    "name": "boundary legitimate heading list context",
+    "text": "January 19, 2027:\n* 8pm UTC\n* 9pm UTC",
+    "instants": ["2027-01-19T20:00:00Z", "2027-01-19T21:00:00Z"],
+    "assumptions": [
+      ["Date from message context: 2027-01-19"],
+      ["Date from message context: 2027-01-19"]
+    ]
+  },
+  {
+    "name": "boundary explicit connector across blank line",
+    "text": "January 19, 2027\n\nat 8pm UTC",
+    "instants": ["2027-01-19T20:00:00Z"],
+    "assumptions": [[]]
+  },
+  {
+    "name": "boundary multiline overnight range",
+    "text": "April 9, 2026 11pm UTC\n\nto 1am UTC",
+    "instants": ["2026-04-09T23:00:00Z", "2026-04-10T01:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "boundary unrelated date after UTF16 CRLF range",
+    "text": "📌 Call 8pm–9pm UTC.\r\n\r\nJanuary 19, 2027 is a separate announcement.",
+    "instants": ["2026-04-06T20:00:00Z", "2026-04-06T21:00:00Z"],
+    "sourceIndices": [8, 8],
+    "originals": ["8pm–9pm UTC", "8pm–9pm UTC"],
+    "endpoints": ["start", "end"],
+    "rangeIds": ["range-8", "range-8"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "boundary UTF16 CRLF precision and negative fixed offset",
+    "text": "📌 Call at 20:00:30 UTC-03:30.\r\n\r\nJanuary 19, 2027 is a separate announcement.",
+    "instants": ["2026-04-06T23:30:30Z"],
+    "sourceIndices": [8],
+    "originals": ["at 20:00:30 UTC-03:30"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "sourceZones": ["-03:30"]
+  },
+  {
+    "name": "boundary regional PT following announcement",
+    "text": "Call at 8pm PT.\n\nJanuary 19, 2027 is a separate announcement.",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "sourceZones": ["America/Los_Angeles"]
+  },
+  {
+    "name": "boundary ambiguous CST following announcement",
+    "text": "Call at 8pm CST.\n\nJanuary 19, 2027 is a separate announcement.",
+    "instants": ["2026-04-07T02:00:00Z", "2026-04-06T12:00:00Z"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "sourceZones": ["-06:00", "+08:00"]
   }
 ]

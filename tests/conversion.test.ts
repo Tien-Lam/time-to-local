@@ -40,7 +40,31 @@ describe("independently specified temporal fixtures", () => {
         ).toContain(f.assumption!);
       if ("occurrences" in f)
         expect(result.results[0].occurrences).toBe(f.occurrences!);
+      if (f.sourceIndices !== undefined)
+        expect(result.results.map((r) => r.sourceIndex)).toEqual(
+          f.sourceIndices,
+        );
+      if (f.originals !== undefined)
+        expect(result.results.map((r) => r.original)).toEqual(f.originals);
+      if (f.assumptions !== undefined)
+        expect(result.results.map((r) => r.assumptions)).toEqual(f.assumptions);
+      if (f.sourceZones !== undefined)
+        expect(result.results.map((r) => r.sourceZone)).toEqual(f.sourceZones);
+      if (f.rangeIds !== undefined)
+        expect(result.results.map((r) => r.rangeId)).toEqual(f.rangeIds);
     });
+});
+test("paragraph isolation retains mixed-message date-only suppression", () => {
+  expect(
+    convert("January 19, 2027", options).results.map((r) => r.dateOnly),
+  ).toEqual(["2027-01-19"]);
+  const results = convert(
+    "Call at 8pm UTC.\n\nJanuary 19, 2027 is a separate announcement.",
+    options,
+  ).results;
+  expect(results).toHaveLength(1);
+  expect(results[0].dateOnly).toBeUndefined();
+  expect(results[0].instant).toBe("2026-04-06T20:00:00Z");
 });
 test("formatting rolls into next day and copy includes full context", () => {
   const result = convert("April 9, 2026 3pm EST", options).results[0];

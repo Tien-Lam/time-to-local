@@ -18,7 +18,7 @@ flowchart LR
 
 `engine/parser.ts` clones the pinned English Chrono parsers for month/day and day/month conventions. Bounded extensions handle military hours, shorthand meridiem and between-ranges. `convert.ts` receives the reference instant, default source zone, target zone and numeric-date order explicitly.
 
-The reference day is resolved in the source zone. Date context may apply within a sentence/list and resets across unrelated text. Ranges retain endpoint order and overnight dates. Dates without times remain dates. Unix seconds use a bounded supported interval.
+The reference day is resolved in the source zone. Date context may apply within a sentence/list and resets across unrelated text. Date/time merging rejects a sentence-ending period or an unrelated bare paragraph break before either can hide the original boundary; explicit `at`/`on` connectors and existing standalone date headings retain their behavior. A rejected preceding date cannot subsequently become implicit context for the clock. Ranges retain endpoint order and overnight dates. Dates without times remain dates; in messages containing clocks, standalone dates serve as context rather than extra result rows. Unix seconds use a bounded supported interval.
 
 ## Timezone interpretation
 
