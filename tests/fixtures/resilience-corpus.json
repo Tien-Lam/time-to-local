@@ -5902,6 +5902,42 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "Independent review-derived ordinary inline-link quoted-title/angle/escaped destination metadata exclusion. Exact stated UTC clock, context, warning array, cardinality and source identity maintained in temporal.json; exposed development data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n01",
+      "input": "March 18, 2026\n- 09:25 UTC [Guide](https://example.invalid/a\\\n- 10:05 UTC)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n02",
+      "input": "March 18, 2026\r\n- 09:35 UTC [Guide](https://example.invalid/a\\\r\n- 10:35 UTC)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n03",
+      "input": "March 18, 2026\n- 08:25 UTC [Guide 🧭\\\n- 11:50 UTC](https://example.invalid/a)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n04",
+      "input": "March 18, 2026\n- 10:50 UTC [Guide 🧭](https://example.invalid/a\\)2026-05-24/EOD)\n- 12:15 UTC next",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

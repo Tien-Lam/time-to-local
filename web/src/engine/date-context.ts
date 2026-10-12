@@ -68,8 +68,11 @@ function metadataSpans(text: string): Span[] {
     for (; labelEnd < text.length; labelEnd++) {
       const char = text[labelEnd];
       if (char === "\r" || char === "\n") break;
-      if (char === "\\") labelEnd++;
-      else if (char === "[") brackets++;
+      if (char === "\\") {
+        const next = text[labelEnd + 1];
+        if (next === undefined || next === "\r" || next === "\n") break;
+        labelEnd++;
+      } else if (char === "[") brackets++;
       else if (char === "]" && --brackets === 0) break;
     }
     if (brackets || text[labelEnd + 1] !== "(") {
@@ -87,6 +90,8 @@ function metadataSpans(text: string): Span[] {
       const char = text[end];
       if (char === "\r" || char === "\n") break;
       if (char === "\\") {
+        const next = text[end + 1];
+        if (next === undefined || next === "\r" || next === "\n") break;
         end++;
         titleBoundary = false;
         continue;

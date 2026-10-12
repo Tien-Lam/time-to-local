@@ -3416,5 +3416,145 @@
     "rowOccurrences": [1],
     "interpretations": [null],
     "rangeIds": [null]
+  },
+  {
+    "name": "bounded escaped newline N01: backslash before LF destination cannot mask next sibling",
+    "text": "March 18, 2026\n- 09:25 UTC [Guide](https://example.invalid/a\\\n- 10:05 UTC)",
+    "now": "2026-02-20T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-18T09:25:00Z", "2026-03-18T10:05:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:25 UTC", "10:05 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 61
+      },
+      {
+        "start": 64,
+        "end": 74
+      }
+    ],
+    "sourceIndices": [17, 64],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-03-18"],
+      ["Date from message context: 2026-03-18"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded escaped newline N02: backslash before CRLF destination cannot mask next sibling",
+    "text": "March 18, 2026\r\n- 09:35 UTC [Guide](https://example.invalid/a\\\r\n- 10:35 UTC)",
+    "now": "2026-02-20T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-18T09:35:00Z", "2026-03-18T10:35:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:35 UTC", "10:35 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 63
+      },
+      {
+        "start": 66,
+        "end": 76
+      }
+    ],
+    "sourceIndices": [18, 66],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-03-18"],
+      ["Date from message context: 2026-03-18"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded escaped newline N03: surrogate label and escaped LF preserve visible next clock",
+    "text": "March 18, 2026\n- 08:25 UTC [Guide 🧭\\\n- 11:50 UTC](https://example.invalid/a)",
+    "now": "2026-02-20T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-18T08:25:00Z", "2026-03-18T11:50:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["08:25 UTC", "11:50 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 37
+      },
+      {
+        "start": 40,
+        "end": 77
+      }
+    ],
+    "sourceIndices": [17, 40],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-03-18"],
+      ["Date from message context: 2026-03-18"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded escaped newline N04: same-line escaped delimiter remains metadata without harming sibling",
+    "text": "March 18, 2026\n- 10:50 UTC [Guide 🧭](https://example.invalid/a\\)2026-05-24/EOD)\n- 12:15 UTC next",
+    "now": "2026-02-20T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-18T10:50:00Z", "2026-03-18T12:15:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["10:50 UTC", "12:15 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 80
+      },
+      {
+        "start": 83,
+        "end": 97
+      }
+    ],
+    "sourceIndices": [17, 83],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-03-18"],
+      ["Date from message context: 2026-03-18"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
   }
 ]
