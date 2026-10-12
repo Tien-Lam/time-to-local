@@ -20,6 +20,9 @@ describe("independently specified temporal fixtures", () => {
         ...f,
         dateOrder: ("dateOrder" in f ? f.dateOrder : options.dateOrder) as
           "mdy" | "dmy",
+        hourCycle: ("hourCycle" in f
+          ? f.hourCycle
+          : options.hourCycle) as ConversionOptions["hourCycle"],
       });
       expect(
         result.results.flatMap((r) => (r.instant ? [r.instant] : [])),
@@ -51,8 +54,78 @@ describe("independently specified temporal fixtures", () => {
       if (f.sourceZones !== undefined)
         expect(result.results.map((r) => r.sourceZone)).toEqual(f.sourceZones);
       if (f.rangeIds !== undefined)
-        expect(result.results.map((r) => r.rangeId)).toEqual(f.rangeIds);
+        expect(result.results.map((r) => r.rangeId ?? null)).toEqual(
+          f.rangeIds,
+        );
+      if (f.cardinality !== undefined)
+        expect(result.results).toHaveLength(f.cardinality);
+      if (f.sourceLabels !== undefined)
+        expect(result.results.map((r) => r.sourceLabel)).toEqual(
+          f.sourceLabels,
+        );
+      if (f.rowOccurrences !== undefined)
+        expect(result.results.map((r) => r.occurrences)).toEqual(
+          f.rowOccurrences,
+        );
+      if (f.interpretations !== undefined)
+        for (let i = 0; i < f.interpretations.length; i++) {
+          const interpretation = f.interpretations[i];
+          if (interpretation === null)
+            expect(result.results[i].interpretation).toBeUndefined();
+          else
+            expect(result.results[i].interpretation).toContain(interpretation);
+        }
+      if (f.sourceCores !== undefined && f.sourceBounds !== undefined)
+        for (let i = 0; i < f.sourceCores.length; i++) {
+          const row = result.results[i],
+            bounds = f.sourceBounds[i];
+          expect(row.original).toContain(f.sourceCores[i]);
+          expect(row.original).toBe(
+            f.text.slice(
+              row.sourceIndex,
+              row.sourceIndex + row.original.length,
+            ),
+          );
+          expect(row.sourceIndex).toBeGreaterThanOrEqual(bounds.start);
+          expect(row.sourceIndex + row.original.length).toBeLessThanOrEqual(
+            bounds.end,
+          );
+        }
     });
+});
+
+test("bounded context source choices and dates stay independent of the target", () => {
+  const text = "July 16, 2026\n- 09:25 EST fixed\n- 09:25 ET regional";
+  const baseline = convert(text, { ...options, targetZone: "UTC" });
+  expect(baseline.results.map((r) => r.instant)).toEqual([
+    "2026-07-16T14:25:00Z",
+    "2026-07-16T13:25:00Z",
+  ]);
+  for (const targetZone of ["Pacific/Honolulu", "Asia/Tokyo", "+05:45"])
+    expect(convert(text, { ...options, targetZone })).toEqual(baseline);
+});
+
+test("yearless owned range discloses source reference for both endpoints and does not carry overnight into a sibling", () => {
+  const results = convert(
+    "May 15\n- 11pm-1am UTC maintenance\n- 2am UTC reset",
+    options,
+  ).results;
+  expect(results.map((r) => r.instant)).toEqual([
+    "2026-05-15T23:00:00Z",
+    "2026-05-16T01:00:00Z",
+    "2026-05-15T02:00:00Z",
+  ]);
+  expect(results.map((r) => r.assumptions)).toEqual(
+    Array.from({ length: 3 }, () => [
+      "Date from message context: 2026-05-15",
+      "Year assumed: 2026",
+      "Reference date used: 2026-04-06",
+    ]),
+  );
+  expect(results[0].rangeId).toBeDefined();
+  expect(results[1].rangeId).toBe(results[0].rangeId);
+  expect(results[2].rangeId).toBeUndefined();
+  expect(results[0].group).not.toBe(results[2].group);
 });
 test("paragraph isolation retains mixed-message date-only suppression", () => {
   expect(

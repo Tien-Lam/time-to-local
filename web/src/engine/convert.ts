@@ -152,6 +152,13 @@ function choicesFor(
   ];
 }
 
+function boundedZoneSuffix(suffix: string): string {
+  const explicit = suffix.match(
+    /^\s+(?:(?:in|at)\s+)?((?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][\d:]+|(?:US[ \t]+)?(?:Pacific|Eastern|Central|Mountain)(?:[ \t]+Time)?|[A-Z]{2,5}\b)(?![A-Za-z0-9_+\-−:/])/i,
+  );
+  return explicit && explicitZones(explicit[1])?.length ? explicit[0] : suffix;
+}
+
 export function convert(text: string, options: ConversionOptions): Conversion {
   if (text.length > MAX_INPUT)
     throw new Error(
@@ -222,11 +229,57 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       return false;
     }
   });
+  // OFFSET_TOKEN also sees spaced clock separators in "UTC - 2am" or
+  // "UTC -- 2am". The latter retains independent points, never a new range.
+  // Protect only real clock-first structural items/Time values, with
+  // parser-confirmed clocks on both sides; malformed signed offsets still
+  // receive the established offset validation.
+  const clockSeparators = [...text.matchAll(OFFSET_TOKEN)].filter((match) => {
+    if (!/^(?:UTC|GMT)[ \t]+-{1,2}$/i.test(match[0])) return false;
+    const item = prepared.owners
+      .flatMap((owner) => owner.items)
+      .find(
+        ({ value }) =>
+          value.start <= match.index! &&
+          value.end >= match.index! + match[0].length,
+      );
+    if (!item) return false;
+    const prefix = text.slice(item.value.start, match.index).trim(),
+      tail = text
+        .slice(match.index! + match[0].length, item.value.end)
+        .trimStart();
+    const start = parser.parse(prefix, ref, { timezones: timezoneHints })[0],
+      end = parser.parse(tail, ref, { timezones: timezoneHints })[0];
+    return (
+      start?.index === 0 &&
+      start.start.isCertain("hour") &&
+      end?.index === 0 &&
+      end.start.isCertain("hour")
+    );
+  });
+  const maskOffsets = (value: string, sourceStart = 0) =>
+    value.replace(OFFSET_TOKEN, (token, index: number) =>
+      clockSeparators.some((match) => match.index === sourceStart + index)
+        ? token
+        : " ".repeat(token.length),
+    );
+  const zoneLookupText = (value: string, sourceStart: number) => {
+    // The token can straddle matchedText and suffix. Replace only separator
+    // signs at their original positions for zone lookup; native parsing and
+    // original source slices retain every separator unchanged.
+    for (const match of clockSeparators) {
+      const end = match.index! + match[0].length - sourceStart,
+        start = end - match[0].match(/-+$/)![0].length;
+      const from = Math.max(start, 0),
+        to = Math.min(end, value.length);
+      if (from < to)
+        value = value.slice(0, from) + " ".repeat(to - from) + value.slice(to);
+    }
+    return value;
+  };
   // Chrono can parse offset digits as another clock. Keep the established
   // offset mask after structural preparation, retaining original indices.
-  const parserText = prepared.parserText.replace(OFFSET_TOKEN, (token) =>
-    " ".repeat(token.length),
-  );
+  const parserText = maskOffsets(prepared.parserText);
   const parsed = parser
     .parse(parserText, ref, { timezones: timezoneHints })
     .filter(
@@ -236,7 +289,27 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             event.index < mask.end &&
             event.index + event.text.length > mask.start,
         ),
-    );
+    )
+    .map((event) => {
+      const leading = event.text.match(/^\s+/)?.[0].length || 0;
+      if (
+        !leading ||
+        !prepared.owners.some(
+          (owner) =>
+            owner.domain.start < event.index + event.text.length &&
+            owner.domain.end > event.index,
+        )
+      )
+        return event;
+      // Some native noon/midnight matches include leading whitespace. Keep
+      // the displayed original and its sourceIndex aligned within our domains.
+      const aligned: ParsedResult = Object.create(event);
+      Object.defineProperties(aligned, {
+        index: { value: event.index + leading },
+        text: { value: event.text.slice(leading) },
+      });
+      return aligned;
+    });
   const hasTime = parsed.some((r) => r.start.isCertain("hour"));
   if (!hasTime) {
     // Restore bounded parser-owned dates only for genuinely date-only input.
@@ -270,6 +343,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   const invalidOffsets = [...text.matchAll(OFFSET_TOKEN)].filter(
     (m) =>
       !explicitZones(m[0])?.length &&
+      !clockSeparators.some((match) => match.index === m.index) &&
       !prepared.masks.some(
         (mask) => m.index! < mask.end && m.index! + m[0].length > mask.start,
       ),
@@ -392,9 +466,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       r.index + r.text.length + 100,
       decision.kind === "owned" ? decision.event.end : text.length,
     );
-    const suffix = text
+    const rawSuffix = text
       .slice(r.index + r.text.length, suffixEnd)
       .split(/\n|[.;!?]|,(?!\s*\d)/)[0];
+    const suffix =
+      decision.kind === "legacy" ? rawSuffix : boundedZoneSuffix(rawSuffix);
     const zoneSuffix = suffix.split(
       /\b(?:to|with|because|please|but|then|and)\b/i,
     )[0];
@@ -422,10 +498,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       const zoneText =
         r.end && zones.length > 1
           ? zones[endpoint === "end" ? zones.length - 1 : 0][0]
-          : matchedText;
+          : zoneLookupText(matchedText, r.index);
       const choices = choicesFor(
         zoneText,
-        suffix,
+        zoneLookupText(suffix, r.index + r.text.length),
         c,
         options.sourceZone,
         warnings,
@@ -435,15 +511,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           instant: new Date(now),
           timezone: offsetMinutes(choice.zone, now),
         };
-        const local = parser.parse(
-          matchedText.replace(OFFSET_TOKEN, (token) =>
-            " ".repeat(token.length),
-          ),
-          zoneRef,
-          {
-            timezones: timezoneHints,
-          },
-        )[0];
+        const local = parser.parse(maskOffsets(matchedText, r.index), zoneRef, {
+          timezones: timezoneHints,
+        })[0];
         const components = local
           ? endpoint === "end" && local.end
             ? local.end

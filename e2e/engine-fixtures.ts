@@ -56,7 +56,7 @@ export async function verifyProductionFixtures(page: Page) {
     ).toEqual(("dates" in f ? f.dates : []) || []);
     if ("endpoints" in f)
       expect(
-        output.conversion.results.map((r: any) => r.endpoint),
+        output.conversion.results.map((r: any) => String(r.endpoint)),
         f.name,
       ).toEqual(f.endpoints);
     if ("sourceIndices" in f)
@@ -81,9 +81,48 @@ export async function verifyProductionFixtures(page: Page) {
       ).toEqual(f.sourceZones);
     if ("rangeIds" in f)
       expect(
-        output.conversion.results.map((r: any) => r.rangeId),
+        output.conversion.results.map((r: any) => r.rangeId ?? null),
         f.name,
       ).toEqual(f.rangeIds);
+    if ("cardinality" in f)
+      expect(output.conversion.results, f.name).toHaveLength(f.cardinality!);
+    if ("sourceLabels" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.sourceLabel),
+        f.name,
+      ).toEqual(f.sourceLabels);
+    if ("rowOccurrences" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.occurrences),
+        f.name,
+      ).toEqual(f.rowOccurrences);
+    if (f.interpretations !== undefined)
+      for (let n = 0; n < f.interpretations.length; n++) {
+        const interpretation = f.interpretations[n];
+        if (interpretation === null)
+          expect(
+            output.conversion.results[n].interpretation,
+            f.name,
+          ).toBeUndefined();
+        else
+          expect(output.conversion.results[n].interpretation, f.name).toContain(
+            interpretation,
+          );
+      }
+    if (f.sourceCores !== undefined && f.sourceBounds !== undefined)
+      for (let n = 0; n < f.sourceCores.length; n++) {
+        const row = output.conversion.results[n],
+          bounds = f.sourceBounds[n];
+        expect(row.original, f.name).toContain(f.sourceCores[n]);
+        expect(row.original, f.name).toBe(
+          f.text.slice(row.sourceIndex, row.sourceIndex + row.original.length),
+        );
+        expect(row.sourceIndex, f.name).toBeGreaterThanOrEqual(bounds.start);
+        expect(
+          row.sourceIndex + row.original.length,
+          f.name,
+        ).toBeLessThanOrEqual(bounds.end);
+      }
     if ("warning" in f)
       expect(output.conversion.warnings.join("\n"), f.name).toContain(
         f.warning!,

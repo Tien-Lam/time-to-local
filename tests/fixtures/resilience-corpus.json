@@ -5613,10 +5613,26 @@
       "intendedCoverage": "deterministic-baseline",
       "legacyExpectedCount": 4,
       "expected": [
-        { "hour": 9, "minute": 0, "timezone": "UTC" },
-        { "hour": 11, "minute": 0, "timezone": "UTC" },
-        { "hour": 10, "minute": 0, "timezone": "UTC" },
-        { "hour": 11, "minute": 0, "timezone": "UTC" }
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "UTC"
+        }
       ],
       "description": "Independent ranges must not lose a shared endpoint through deduplication"
     },
@@ -5634,6 +5650,69 @@
         }
       ],
       "description": "New web regression: an unrelated following announcement must not replace the call's reference date. Independent exact instant, source identity and disclosures are in temporal.json."
+    },
+    {
+      "id": "web-145-h01",
+      "input": "May 14, 2026\n- 09:10 UTC opening\n- 11:40 UTC closing",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored web regression: separate bullet items cannot become a range. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h08",
+      "input": "May 14, 2026\n- 11pm-1am UTC maintenance\n- 2am UTC handoff",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored web regression: supported overnight range does not roll sibling. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h13",
+      "input": "May 15\n- 06:10 UTC early\n- 16:40 UTC late",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored web regression: yearless month-first two-digit day under dmy. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h20",
+      "input": "May 14, 2026\n- 09:15 UTC first\n- 09:15 UTC repeat",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored web regression: duplicate point cardinality is occurrence count. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-r06",
+      "input": "Date: May 15\nTime: 12:25 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored web regression: record yearless context disclosures. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-n06",
+      "input": "Date: May 14, 2026\nTime: 08:40 UTC\nDate: May 16, 2026",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored web regression: late duplicate Date invalidates complete record. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h22",
+      "input": "November 1, 2026\n- 01:35 America/New_York fold\n- 03:15 America/New_York after",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored web regression: New York fold keeps earlier/later alternatives and independent sibling. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

@@ -756,5 +756,1668 @@
       ["Year assumed: 2026", "Reference date used: 2026-04-06"],
       ["Year assumed: 2026", "Reference date used: 2026-04-06"]
     ]
+  },
+  {
+    "name": "bounded context H01: separate bullet items cannot become a range",
+    "text": "May 14, 2026\n- 09:10 UTC opening\n- 11:40 UTC closing",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T09:10:00Z", "2026-05-14T11:40:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:10 UTC", "11:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 32
+      },
+      {
+        "start": 35,
+        "end": 52
+      }
+    ],
+    "sourceIndices": [15, 35],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H02: numbered ordinal markers are not clocks",
+    "text": "May 14, 2026:\n1. 08:25 UTC Arrival\n2. 10:05 UTC Review",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T08:25:00Z", "2026-05-14T10:05:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["08:25 UTC", "10:05 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 34
+      },
+      {
+        "start": 38,
+        "end": 54
+      }
+    ],
+    "sourceIndices": [17, 38],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H03: same-indent plus items",
+    "text": "## 14 May 2026\n+ 06:45 UTC Setup\n+ 18:20 UTC Close",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T06:45:00Z", "2026-05-14T18:20:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["06:45 UTC", "18:20 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 32
+      },
+      {
+        "start": 35,
+        "end": 50
+      }
+    ],
+    "sourceIndices": [17, 35],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H04: one optional blank before first item",
+    "text": "**May 14, 2026**\n\n* 07:15 UTC Start\n* 08:45 UTC Finish",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T07:15:00Z", "2026-05-14T08:45:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["07:15 UTC", "08:45 UTC"],
+    "sourceBounds": [
+      {
+        "start": 20,
+        "end": 35
+      },
+      {
+        "start": 38,
+        "end": 54
+      }
+    ],
+    "sourceIndices": [20, 38],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H05: CRLF UTF16 source identity with emoji suffix",
+    "text": "###### May 14, 2026\r\n- 06:05 UTC 🧭 briefing\r\n- 19:35 UTC close",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T06:05:00Z", "2026-05-14T19:35:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["06:05 UTC", "19:35 UTC"],
+    "sourceBounds": [
+      {
+        "start": 23,
+        "end": 44
+      },
+      {
+        "start": 48,
+        "end": 63
+      }
+    ],
+    "sourceIndices": [23, 48],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H06: literal same-indent indentation",
+    "text": "May 14, 2026\n  - 09:20 UTC first\n  - 10:30 UTC second",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T09:20:00Z", "2026-05-14T10:30:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:20 UTC", "10:30 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 32
+      },
+      {
+        "start": 37,
+        "end": 53
+      }
+    ],
+    "sourceIndices": [17, 37],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H07: override is local to its item",
+    "text": "May 14, 2026\n- 08:00 UTC first\n- 09:00 UTC on May 18, 2026 override\n- 10:00 UTC sibling",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-05-14T08:00:00Z",
+      "2026-05-18T09:00:00Z",
+      "2026-05-14T10:00:00Z"
+    ],
+    "cardinality": 3,
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "sourceCores": ["08:00 UTC", "09:00 UTC on May 18, 2026", "10:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 30
+      },
+      {
+        "start": 33,
+        "end": 67
+      },
+      {
+        "start": 70,
+        "end": 87
+      }
+    ],
+    "sourceIndices": [15, 33, 70],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      [],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "interpretations": [null, null, null],
+    "rangeIds": [null, null, null]
+  },
+  {
+    "name": "bounded context H08: supported overnight range does not roll sibling",
+    "text": "May 14, 2026\n- 11pm-1am UTC maintenance\n- 2am UTC handoff",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-05-14T23:00:00Z",
+      "2026-05-15T01:00:00Z",
+      "2026-05-14T02:00:00Z"
+    ],
+    "cardinality": 3,
+    "endpoints": ["start", "end", "undefined"],
+    "sourceCores": ["11pm-1am UTC", "11pm-1am UTC", "2am UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 39
+      },
+      {
+        "start": 15,
+        "end": 39
+      },
+      {
+        "start": 42,
+        "end": 57
+      }
+    ],
+    "sourceIndices": [15, 15, 42],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "interpretations": [null, null, null],
+    "rangeIds": ["range-15", "range-15", null]
+  },
+  {
+    "name": "bounded context H09: double hyphen clocks stay points on same civil day",
+    "text": "May 14, 2026\n- 23:10 UTC -- 01:20 UTC maintenance\n- 04:35 UTC reset",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-05-14T23:10:00Z",
+      "2026-05-14T01:20:00Z",
+      "2026-05-14T04:35:00Z"
+    ],
+    "cardinality": 3,
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "sourceCores": ["23:10 UTC", "01:20 UTC", "04:35 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 49
+      },
+      {
+        "start": 28,
+        "end": 49
+      },
+      {
+        "start": 52,
+        "end": 67
+      }
+    ],
+    "sourceIndices": [15, 28, 52],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "interpretations": [null, null, null],
+    "rangeIds": [null, null, null]
+  },
+  {
+    "name": "bounded context H10: ordinary link label preserves event core",
+    "text": "May 14, 2026\n- 07:40 UTC [Opening](https://example.invalid/open)\n- 08:55 UTC [Review](https://example.invalid/review)",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T07:40:00Z", "2026-05-14T08:55:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["07:40 UTC", "08:55 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 64
+      },
+      {
+        "start": 67,
+        "end": 117
+      }
+    ],
+    "sourceIndices": [15, 67],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H11: fractional source offset and millisecond precision",
+    "text": "May 14, 2026\n- 06:07:08.125 UTC+05:45 calibration\n- 06:07:09.500 UTC+05:45 check",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T00:22:08.125Z", "2026-05-14T00:22:09.5Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["06:07:08.125 UTC+05:45", "06:07:09.500 UTC+05:45"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 49
+      },
+      {
+        "start": 52,
+        "end": 80
+      }
+    ],
+    "sourceIndices": [15, 52],
+    "sourceZones": ["+05:45", "+05:45"],
+    "sourceLabels": ["UTC+05:45", "UTC+05:45"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H12: fixed EST remains distinct from regional ET",
+    "text": "July 16, 2026\n- 09:25 EST fixed\n- 09:25 ET regional",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-07-16T14:25:00Z", "2026-07-16T13:25:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:25 EST", "09:25 ET"],
+    "sourceBounds": [
+      {
+        "start": 16,
+        "end": 31
+      },
+      {
+        "start": 34,
+        "end": 51
+      }
+    ],
+    "sourceIndices": [16, 34],
+    "sourceZones": ["-05:00", "America/New_York"],
+    "sourceLabels": ["EST", "New York"],
+    "assumptions": [
+      ["Date from message context: 2026-07-16"],
+      ["Date from message context: 2026-07-16"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H13: yearless month-first two-digit day under dmy",
+    "text": "May 15\n- 06:10 UTC early\n- 16:40 UTC late",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "dmy",
+    "instants": ["2026-05-15T06:10:00Z", "2026-05-15T16:40:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["06:10 UTC", "16:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 9,
+        "end": 24
+      },
+      {
+        "start": 27,
+        "end": 41
+      }
+    ],
+    "sourceIndices": [9, 27],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-05-15",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Date from message context: 2026-05-15",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-06"
+      ]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H14: yearless day-first ordinal",
+    "text": "15th May\n- 07:05 UTC early\n- 17:30 UTC late",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-15T07:05:00Z", "2026-05-15T17:30:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["07:05 UTC", "17:30 UTC"],
+    "sourceBounds": [
+      {
+        "start": 11,
+        "end": 26
+      },
+      {
+        "start": 29,
+        "end": 43
+      }
+    ],
+    "sourceIndices": [11, 29],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-05-15",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Date from message context: 2026-05-15",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-06"
+      ]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H15: closest adjacent future year safe reference day",
+    "text": "June 20\n- 09:45 UTC start\n- 12:15 UTC end",
+    "now": "2025-12-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-06-20T09:45:00Z", "2026-06-20T12:15:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:45 UTC", "12:15 UTC"],
+    "sourceBounds": [
+      {
+        "start": 10,
+        "end": 25
+      },
+      {
+        "start": 28,
+        "end": 41
+      }
+    ],
+    "sourceIndices": [10, 28],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-06-20",
+        "Year assumed: 2026",
+        "Reference date used: 2025-12-28"
+      ],
+      [
+        "Date from message context: 2026-06-20",
+        "Year assumed: 2026",
+        "Reference date used: 2025-12-28"
+      ]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context H16: closest previous year safe reference day",
+    "text": "December 14\n- 09:45 UTC start",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2025-12-14T09:45:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:45 UTC"],
+    "sourceBounds": [
+      {
+        "start": 14,
+        "end": 29
+      }
+    ],
+    "sourceIndices": [14],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      [
+        "Date from message context: 2025-12-14",
+        "Year assumed: 2025",
+        "Reference date used: 2026-01-28"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context H17: source local reference disclosure across UTC midnight",
+    "text": "May 15\n- 09:15 JST start",
+    "now": "2026-04-06T23:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Pacific/Honolulu",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-15T00:15:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:15 JST"],
+    "sourceBounds": [
+      {
+        "start": 9,
+        "end": 24
+      }
+    ],
+    "sourceIndices": [9],
+    "sourceZones": ["+09:00"],
+    "sourceLabels": ["JST"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-05-15",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-07"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context H18: consistent weekday prefix",
+    "text": "Thursday, April 9, 2026\n- 10:25 UTC item",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-09T10:25:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["10:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 26,
+        "end": 40
+      }
+    ],
+    "sourceIndices": [26],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-04-09"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context H19: consistent weekday suffix",
+    "text": "April 9, 2026 (Thursday)\n- 10:35 UTC item",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-09T10:35:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["10:35 UTC"],
+    "sourceBounds": [
+      {
+        "start": 27,
+        "end": 41
+      }
+    ],
+    "sourceIndices": [27],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-04-09"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context H20: duplicate point cardinality is occurrence count",
+    "text": "May 14, 2026\n- 09:15 UTC first\n- 09:15 UTC repeat",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T09:15:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:15 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 30
+      }
+    ],
+    "sourceIndices": [15],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-05-14"]],
+    "rowOccurrences": [2],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context H21: new valid heading starts independent owner",
+    "text": "May 14, 2026\n- 09:05 UTC first\nMay 16, 2026\n- 09:05 UTC second",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T09:05:00Z", "2026-05-16T09:05:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:05 UTC", "09:05 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 30
+      },
+      {
+        "start": 46,
+        "end": 62
+      }
+    ],
+    "sourceIndices": [15, 46],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-16"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context R01: simple complete record",
+    "text": "Date: May 14, 2026\nTime: 08:40 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 34
+      }
+    ],
+    "sourceIndices": [25],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-05-14"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context R02: case insensitive required labels",
+    "text": "dAtE: 14 May 2026\ntImE: 17:20 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T17:20:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["17:20 UTC"],
+    "sourceBounds": [
+      {
+        "start": 24,
+        "end": 33
+      }
+    ],
+    "sourceIndices": [24],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-05-14"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context R03: optional fields interposed do not supply zones",
+    "text": "Title: Planning\nDate: May 14, 2026\nLocation: Tokyo\nActivity: Discussion\nTime: 08:40",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40"],
+    "sourceBounds": [
+      {
+        "start": 78,
+        "end": 83
+      }
+    ],
+    "sourceIndices": [78],
+    "sourceZones": ["UTC"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Source timezone assumed: UTC", "Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context R04: independent blank separated records",
+    "text": "Date: May 14, 2026\nTime: 08:40 UTC\n\nDate: May 16, 2026\nTime: 09:50 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T08:40:00Z", "2026-05-16T09:50:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["08:40 UTC", "09:50 UTC"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 34
+      },
+      {
+        "start": 61,
+        "end": 70
+      }
+    ],
+    "sourceIndices": [25, 61],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-16"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context R05: record range retains explicit year provenance",
+    "text": "Date: May 14, 2026\nTime: 11pm-1am UTC\nActivity: Maintenance",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T23:00:00Z", "2026-05-15T01:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["11pm-1am UTC", "11pm-1am UTC"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 37
+      },
+      {
+        "start": 25,
+        "end": 37
+      }
+    ],
+    "sourceIndices": [25, 25],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": ["range-25", "range-25"]
+  },
+  {
+    "name": "bounded context R06: record yearless context disclosures",
+    "text": "Date: May 15\nTime: 12:25 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "dmy",
+    "instants": ["2026-05-15T12:25:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["12:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 19,
+        "end": 28
+      }
+    ],
+    "sourceIndices": [19],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-05-15",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-06"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context R07: title after time is outside zone suffix",
+    "text": "Date: May 14, 2026\nTime: 08:40\nTitle: UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 30
+      }
+    ],
+    "sourceIndices": [25],
+    "sourceZones": ["UTC"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Source timezone assumed: UTC", "Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N01: blank inside list ends header",
+    "text": "May 14, 2026\n- 09:10 UTC first\n\n- 11:40 UTC separate",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T09:10:00Z", "2026-04-06T11:40:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:10 UTC", "11:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 30
+      },
+      {
+        "start": 34,
+        "end": 52
+      }
+    ],
+    "sourceIndices": [15, 34],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context N02: prose before first item denies inheritance",
+    "text": "May 14, 2026\nSchedule pending approval\n- 09:10 UTC first",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T09:10:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:10 UTC"],
+    "sourceBounds": [
+      {
+        "start": 41,
+        "end": 56
+      }
+    ],
+    "sourceIndices": [41],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N03: new nondate heading is boundary",
+    "text": "May 14, 2026\n- 09:10 UTC first\n## Logistics\n- 11:40 UTC separate",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T09:10:00Z", "2026-04-06T11:40:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:10 UTC", "11:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 30
+      },
+      {
+        "start": 46,
+        "end": 64
+      }
+    ],
+    "sourceIndices": [15, 46],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context N04: indentation change is boundary",
+    "text": "May 14, 2026\n- 09:10 UTC first\n  - 11:40 UTC nested\n- 12:30 UTC after nested",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-05-14T09:10:00Z",
+      "2026-04-06T11:40:00Z",
+      "2026-04-06T12:30:00Z"
+    ],
+    "cardinality": 3,
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "sourceCores": ["09:10 UTC", "11:40 UTC", "12:30 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 30
+      },
+      {
+        "start": 35,
+        "end": 51
+      },
+      {
+        "start": 54,
+        "end": 76
+      }
+    ],
+    "sourceIndices": [15, 35, 54],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "interpretations": [null, null, null],
+    "rangeIds": [null, null, null]
+  },
+  {
+    "name": "bounded context N05: mismatched weekday denies inheritance",
+    "text": "Friday, April 9, 2026\n- 10:25 UTC item",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T10:25:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["10:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 24,
+        "end": 38
+      }
+    ],
+    "sourceIndices": [24],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N06: late duplicate Date invalidates complete record",
+    "text": "Date: May 14, 2026\nTime: 08:40 UTC\nDate: May 16, 2026",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 34
+      }
+    ],
+    "sourceIndices": [25],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N07: late duplicate Time invalidates complete record",
+    "text": "Date: May 14, 2026\nTime: 08:40 UTC\nTime: 09:50 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z", "2026-04-06T09:50:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["08:40 UTC", "09:50 UTC"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 34
+      },
+      {
+        "start": 41,
+        "end": 50
+      }
+    ],
+    "sourceIndices": [25, 41],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context N08: time first record rejected",
+    "text": "Time: 08:40 UTC\nDate: May 14, 2026",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 6,
+        "end": 15
+      }
+    ],
+    "sourceIndices": [6],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N09: unknown record field rejected",
+    "text": "Date: May 14, 2026\nSpeaker: Ada\nTime: 08:40 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 38,
+        "end": 47
+      }
+    ],
+    "sourceIndices": [38],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N10: temporal optional field invalidates record",
+    "text": "Date: May 14, 2026\nLocation: May 16, 2026\nTime: 08:40 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 48,
+        "end": 57
+      }
+    ],
+    "sourceIndices": [48],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N11: nonclock first item ends owner",
+    "text": "May 14, 2026\n- Registration desk opens\n- 08:40 UTC briefing",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 41,
+        "end": 59
+      }
+    ],
+    "sourceIndices": [41],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context N12: quote forbids list context",
+    "text": "May 14, 2026\n> - 08:40 UTC quote\n- 09:50 UTC afterward",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z", "2026-04-06T09:50:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["08:40 UTC", "09:50 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 32
+      },
+      {
+        "start": 35,
+        "end": 54
+      }
+    ],
+    "sourceIndices": [17, 35],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context L01: date only document restored",
+    "text": "May 14, 2026",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [],
+    "dates": ["2026-05-14"],
+    "cardinality": 1
+  },
+  {
+    "name": "bounded context L02: ordinary legacy heading followed by prose",
+    "text": "May 14, 2026\nMeet at 08:40 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 30
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-05-14"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context L03: 143 following unrelated paragraph cannot backdate",
+    "text": "Call at 08:40 UTC\n\nArchive May 14, 2026",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 5,
+        "end": 17
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded context L04: 143 prior paragraph does not leak",
+    "text": "May 14, 2026 at 08:40 UTC\n\nSeparate call at 09:50 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T08:40:00Z", "2026-04-06T09:50:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["May 14, 2026 at 08:40 UTC", "09:50 UTC"],
+    "sourceBounds": [
+      {
+        "start": 0,
+        "end": 25
+      },
+      {
+        "start": 41,
+        "end": 53
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      [],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded context L05: 148 fully dated overnight has no false year assumption",
+    "text": "May 14, 2027 11pm-1am UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2027-05-14T23:00:00Z", "2027-05-15T01:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["May 14, 2027 11pm-1am UTC", "May 14, 2027 11pm-1am UTC"],
+    "sourceBounds": [
+      {
+        "start": 0,
+        "end": 25
+      },
+      {
+        "start": 0,
+        "end": 25
+      }
+    ],
+    "sourceIndices": [0, 0],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [[], []],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": ["range-0", "range-0"]
+  },
+  {
+    "name": "bounded context L06: 148 omitted year range keeps truthful reference",
+    "text": "May 14 11pm-1am UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-14T23:00:00Z", "2026-05-15T01:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["May 14 11pm-1am UTC", "May 14 11pm-1am UTC"],
+    "sourceBounds": [
+      {
+        "start": 0,
+        "end": 19
+      },
+      {
+        "start": 0,
+        "end": 19
+      }
+    ],
+    "sourceIndices": [0, 0],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Year assumed: 2026", "Reference date used: 2026-04-06"],
+      []
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": ["range-0", "range-0"],
+    "expectationNote": "Legacy accepted143 DTO parity only; end row's missing omitted-year disclosure is separately retained as a known pre-existing gap."
+  },
+  {
+    "name": "bounded context H22: New York fold keeps earlier/later alternatives and independent sibling",
+    "text": "November 1, 2026\n- 01:35 America/New_York fold\n- 03:15 America/New_York after",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-11-01T05:35:00Z",
+      "2026-11-01T06:35:00Z",
+      "2026-11-01T08:15:00Z"
+    ],
+    "cardinality": 3,
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "sourceCores": [
+      "01:35 America/New_York",
+      "01:35 America/New_York",
+      "03:15 America/New_York"
+    ],
+    "sourceBounds": [
+      {
+        "start": 19,
+        "end": 46
+      },
+      {
+        "start": 19,
+        "end": 46
+      },
+      {
+        "start": 49,
+        "end": 77
+      }
+    ],
+    "sourceIndices": [19, 19, 49],
+    "sourceZones": ["America/New_York", "America/New_York", "America/New_York"],
+    "sourceLabels": ["New York", "New York", "New York"],
+    "assumptions": [
+      ["Date from message context: 2026-11-01"],
+      ["Date from message context: 2026-11-01"],
+      ["Date from message context: 2026-11-01"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "interpretations": [
+      "First occurrence (clocks move back)",
+      "Second occurrence (clocks move back)",
+      null
+    ],
+    "rangeIds": [null, null, null]
+  },
+  {
+    "name": "bounded context H23: New York spring gap warns and no fabricated row; sibling survives",
+    "text": "March 8, 2026\n- 02:35 America/New_York skipped\n- 04:15 America/New_York valid",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T08:15:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["04:15 America/New_York"],
+    "sourceBounds": [
+      {
+        "start": 49,
+        "end": 77
+      }
+    ],
+    "sourceIndices": [49],
+    "sourceZones": ["America/New_York"],
+    "sourceLabels": ["New York"],
+    "assumptions": [["Date from message context: 2026-03-08"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null],
+    "warning": "2026-03-08 02:35:00 doesn't exist in New York"
+  },
+  {
+    "name": "bounded context H24: CST alternatives resolve independently",
+    "text": "May 14, 2026\n- 09:25 CST alternatives\n- 10:10 UTC sibling",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-05-14T15:25:00Z",
+      "2026-05-14T01:25:00Z",
+      "2026-05-14T10:10:00Z"
+    ],
+    "cardinality": 3,
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "sourceCores": ["09:25 CST", "09:25 CST", "10:10 UTC"],
+    "sourceBounds": [
+      {
+        "start": 15,
+        "end": 37
+      },
+      {
+        "start": 15,
+        "end": 37
+      },
+      {
+        "start": 40,
+        "end": 57
+      }
+    ],
+    "sourceIndices": [15, 15, 40],
+    "sourceZones": ["-06:00", "+08:00", "+00:00"],
+    "sourceLabels": [
+      "CST · US Central Standard",
+      "CST · China Standard",
+      "UTC"
+    ],
+    "assumptions": [
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"],
+      ["Date from message context: 2026-05-14"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "interpretations": ["US Central Standard", "China Standard", null],
+    "rangeIds": [null, null, null]
+  },
+  {
+    "name": "bounded context H25: reference override and target independence with omitted year",
+    "text": "May 15\n- 07:35 UTC start",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Asia/Tokyo",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "referenceDate": "2024-04-06",
+    "instants": ["2024-05-15T07:35:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["07:35 UTC"],
+    "sourceBounds": [
+      {
+        "start": 9,
+        "end": 24
+      }
+    ],
+    "sourceIndices": [9],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      [
+        "Date from message context: 2024-05-15",
+        "Year assumed: 2024",
+        "Reference date used: 2024-04-06"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
   }
 ]
