@@ -2,7 +2,9 @@ import {
   dayFirst,
   monthFirst,
   numericDateOrder,
+  startsAfterUnrelatedDate,
   usesReferenceDate,
+  usesReferenceYear,
 } from "./parser";
 import type { ParsedComponents } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
@@ -238,6 +240,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       continue;
     if (
       block !== contextParagraph ||
+      startsAfterUnrelatedDate(r.start) ||
       /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
     ) {
       contextDate = undefined;
@@ -357,8 +360,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           assumptions.push(`Date from message context: ${context}`);
         } else if (!explicitDate) {
           assumptions.push(`Date assumed: ${selectedDate}`);
-        } else if (!c.isCertain("year"))
+        } else if (!c.isCertain("year") && usesReferenceYear(components)) {
+          // An implied range year can inherit the other endpoint's explicit year.
+          // Keep relative-date disclosure policy while excluding that false claim.
           assumptions.push(`Year assumed: ${selectedDate.year}`);
+        }
         if (referenceUsed)
           assumptions.push(referenceAssumption(now, choice.zone));
         const dt = selectedDate.toPlainDateTime({

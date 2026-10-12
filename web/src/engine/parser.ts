@@ -1,6 +1,8 @@
 import { en } from "chrono-node";
 import type { Chrono } from "chrono-node";
 import type { ParsingResult } from "chrono-node";
+import type { ParsingContext } from "chrono-node";
+import type { Refiner } from "chrono-node";
 import type { ParsedComponents } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
 import { temporal as Temporal } from "./temporal";
@@ -9,6 +11,10 @@ const abbreviations = Object.keys({ ...FIXED, ...AMBIGUOUS, ...REGIONAL }).join(
   "|",
 );
 const dateParts = ["year", "month", "day"] as const;
+const unrelatedDateBoundary = "result/unrelated-date-boundary";
+export function startsAfterUnrelatedDate(c: ParsedComponents): boolean {
+  return c.tags().has(unrelatedDateBoundary);
+}
 function referenceDateParts(c: ParsedComponents) {
   const tags = c.tags();
   const relative = [...tags].some(
@@ -26,6 +32,9 @@ function referenceDateParts(c: ParsedComponents) {
 }
 export function usesReferenceDate(c: ParsedComponents): boolean {
   return Object.values(referenceDateParts(c)).some(Boolean);
+}
+export function usesReferenceYear(c: ParsedComponents): boolean {
+  return referenceDateParts(c).year;
 }
 export function numericDateOrder(
   c: ParsedComponents,
@@ -51,6 +60,66 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
       return results;
     },
   });
+  // Both pinned English date/time passes accept a period and arbitrary
+  // whitespace. Guard them before they destroy sentence/paragraph ownership.
+  // Explicit connectors and the separate range merger retain native behavior.
+  type DateTimeMerger = Refiner & {
+    patternBetween: () => RegExp;
+    shouldMergeResults: (
+      between: string,
+      from: ParsingResult,
+      to: ParsingResult,
+      context: ParsingContext,
+    ) => boolean;
+  };
+  const dateTime = parser.refiners.filter((refiner) => {
+    const candidate = refiner as unknown as Partial<DateTimeMerger>;
+    return (
+      candidate.patternBetween?.().test(" at ") &&
+      candidate.patternBetween().test(" on ") &&
+      candidate.patternBetween().test(".\n\n") &&
+      !candidate.patternBetween().test(" to ")
+    );
+  }) as unknown as DateTimeMerger[];
+  if (dateTime.length !== 2 || dateTime.some((r) => !r.shouldMergeResults))
+    throw new Error(
+      "Chrono date/time boundary adapter requires review after dependency upgrade",
+    );
+  for (const refiner of dateTime) {
+    // Chrono.clone() copies arrays but shares their refiner instances. Keep
+    // this adapter local to our parser rather than changing the English singleton.
+    const adapter = Object.create(refiner) as DateTimeMerger;
+    parser.refiners[parser.refiners.indexOf(refiner)] = adapter;
+    const shouldMerge = refiner.shouldMergeResults.bind(refiner);
+    adapter.shouldMergeResults = (between, from, to, context) => {
+      if (!shouldMerge(between, from, to, context)) return false;
+      const separator = between.trim();
+      const paragraphBreak = /\n\s*\n/.test(between);
+      // A standalone date heading may deliberately precede a blank separator.
+      // Keep its existing merge/span/disclosure; this adds no new context grammar.
+      const heading =
+        from.start.isOnlyDate() &&
+        /^\s*(?:#{1,6}\s+)?$/.test(
+          context.text.slice(
+            context.text.lastIndexOf("\n", from.index - 1) + 1,
+            from.index,
+          ),
+        );
+      // Chrono includes these explicit connectors inside the time match, so
+      // they may not appear in the separator passed to this refiner.
+      const timeConnector =
+        from.start.isOnlyDate() && /^(?:at|from)\s/i.test(to.text);
+      const unrelated =
+        separator === "." ||
+        (paragraphBreak && !separator && !heading && !timeConnector);
+      if (!unrelated) return true;
+      // The converter must also decline the preceding date as message context,
+      // including when a sentence is followed directly by a numeric clock.
+      // result/* tags survive the existing range adapter's component clones.
+      if (to.start.isOnlyTime()) to.start.addTag(unrelatedDateBoundary);
+      return false;
+    };
+  }
   // Chrono's range merger sorts endpoints by instant. Our contract preserves
   // textual clock/zone identity, and treats a lower end clock as overnight.
   // Locate the pinned English merger by its behavior, not a minified class name.

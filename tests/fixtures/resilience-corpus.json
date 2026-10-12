@@ -5619,6 +5619,21 @@
         { "hour": 11, "minute": 0, "timezone": "UTC" }
       ],
       "description": "Independent ranges must not lose a shared endpoint through deduplication"
+    },
+    {
+      "id": "web-143-unrelated-following-paragraph",
+      "input": "Call at 8pm UTC.\n\nJanuary 19, 2027 is a separate announcement.",
+      "category": "Date/time paragraph ownership",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 20,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "New web regression: an unrelated following announcement must not replace the call's reference date. Independent exact instant, source identity and disclosures are in temporal.json."
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

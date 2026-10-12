@@ -59,6 +59,31 @@ export async function verifyProductionFixtures(page: Page) {
         output.conversion.results.map((r: any) => r.endpoint),
         f.name,
       ).toEqual(f.endpoints);
+    if ("sourceIndices" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.sourceIndex),
+        f.name,
+      ).toEqual(f.sourceIndices);
+    if ("originals" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.original),
+        f.name,
+      ).toEqual(f.originals);
+    if ("assumptions" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.assumptions),
+        f.name,
+      ).toEqual(f.assumptions);
+    if ("sourceZones" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.sourceZone),
+        f.name,
+      ).toEqual(f.sourceZones);
+    if ("rangeIds" in f)
+      expect(
+        output.conversion.results.map((r: any) => r.rangeId),
+        f.name,
+      ).toEqual(f.rangeIds);
     if ("warning" in f)
       expect(output.conversion.warnings.join("\n"), f.name).toContain(
         f.warning!,
