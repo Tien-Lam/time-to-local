@@ -6262,6 +6262,60 @@
       "legacyExpectedCount": 2,
       "expected": [],
       "description": "Independently authored before engine outputs: asserted recognized in/at city envelopes exclude activity suffixes. Exact DEVELOPMENT expectations in temporal.json; inventory only."
+    },
+    {
+      "id": "web-155-precision-p01-hour-minute-second-zero-utf16",
+      "input": "🧭 programme\r\n\r\nNovember 18, 2026\r\n- 6am-7am UTC hour inventory\r\n- 6:00am-7:00am UTC minute inventory\r\n- 06:00:00-07:00:00 UTC second inventory\r\n- 06:00 UTC independent point",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 7,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p02-zero-fraction-digit-count-versus-seconds",
+      "input": "November 18, 2026\n- 10:40:00-11:50:00 UTC seconds\n- 10:40:00.0-11:50:00.0 UTC explicit single zero fraction\n- 10:40:00.000-11:50:00.000 UTC explicit triple zero fraction",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 6,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p03-independent-mixed-endpoint-precision",
+      "input": "November 18, 2026\n- 12:05-13:15:00 UTC endpoint inventory 1\n- 12:05:00-13:15 UTC endpoint inventory 2\n- 12:05:00-13:15:00 UTC endpoint inventory 3",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 6,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p04-identical-seconds-and-fractions-collapse",
+      "input": "November 18, 2026\n- 14:20:00-15:30:00 UTC first seconds\n- 14:20:00-15:30:00 UTC repeated seconds\n- 14:20:00.123-15:30:00.456 UTC first fraction\n- 14:20:00.123-15:30:00.456 UTC repeated fraction",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p05-qualified-offset-colons-are-not-seconds",
+      "input": "Date: November 18, 2026\nTime: 06:20 UTC+05:45 to 07:30 UTC+05:45\n\nDate: November 18, 2026\nTime: 06:20:00 UTC+05:45 to 07:30:00 UTC+05:45",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p06-multiword-zone-keeps-precision",
+      "input": "November 18, 2026\n- 08:15-09:25 Pacific Time: Morning workshop\n- 08:15:00-09:25:00 Pacific Time: afternoon workshop",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

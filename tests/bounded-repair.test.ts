@@ -201,6 +201,34 @@ describe("DEVELOPMENT #154 independently specified competing controls", () => {
 });
 
 describe("DEVELOPMENT host/source/target and complete DTO stability", () => {
+  test("independently authored precision fixtures retain complete DTOs across targets and repeat calls", () => {
+    for (const fixture of fixtures.filter((f) =>
+      f.name.startsWith("DEVELOPMENT #155 precision"),
+    )) {
+      const fOptions = {
+        ...options,
+        ...fixture,
+        dateOrder: "mdy" as const,
+        hourCycle: "24" as const,
+      };
+      const baseline = convert(fixture.text, {
+        ...fOptions,
+        targetZone: "UTC",
+      });
+      for (const targetZone of [
+        "UTC",
+        "Pacific/Honolulu",
+        "Asia/Tokyo",
+        "+05:45",
+      ])
+        for (let repeat = 0; repeat < 2; repeat++)
+          expect(
+            convert(fixture.text, { ...fOptions, targetZone }),
+            fixture.name,
+          ).toEqual(baseline);
+    }
+  });
+
   test("all independently frozen repair fixtures have target-independent full DTOs and repeated full DTO stability", () => {
     for (const fixture of fixtures.filter((f) =>
       f.name.startsWith("DEVELOPMENT #154/#155"),

@@ -48,7 +48,7 @@ Chromium-specific capability check. A preview-only conversion-module failure
 returns a readable error and verifies that a new edit retries with a fresh worker.
 Versioned update fixtures also reject mixed worker dependency releases.
 
-`tests/fixtures/resilience-corpus.json` contains 423 conversion inputs and original metadata, including unrelated-paragraph and bounded heading/list/record regressions. Its historical provenance points to immutable Git history; tests and CI have no dependency on native sources. Maintain new cases directly in JSON. Corpus resilience/count comparisons are an inventory, not an exact accuracy oracle.
+`tests/fixtures/resilience-corpus.json` contains 429 conversion inputs and original metadata, including unrelated-paragraph and bounded heading/list/record regressions. Its historical provenance points to immutable Git history; tests and CI have no dependency on native sources. Maintain new cases directly in JSON. Corpus resilience/count comparisons are an inventory, not an exact accuracy oracle.
 
 ```bash
 bun run corpus:audit

@@ -1,12 +1,22 @@
 import type { TimeResult } from "./types";
 
-type IndexedRow = { row: TimeResult; index: number };
+export type AuthoredClockPrecision =
+  "hour" | "minute" | "second" | `fraction/${1 | 2 | 3 | 4 | 5 | 6}`;
+type IndexedRow = {
+  row: TimeResult;
+  index: number;
+  precision?: AuthoredClockPrecision;
+};
 type AtomicRange = { rows: IndexedRow[]; occurrences: number };
 
 /** Compare resolved meaning, keeping mention identity and disclosures separate. */
-function peerSignature(row: TimeResult): string {
+function peerSignature(
+  row: TimeResult,
+  precision: AuthoredClockPrecision,
+): string {
   return JSON.stringify([
     row.endpoint,
+    precision,
     row.instant ?? null,
     row.dateOnly ?? null,
     row.sourceZone,
@@ -28,10 +38,13 @@ function completeRange(rows: IndexedRow[]): AtomicRange | undefined {
   const signatures = new Set<string>();
   const ids = new Set<string>();
   const groupEndpoints = new Map<string, string>();
+  const endpointPrecisions = new Map<string, AuthoredClockPrecision>();
   let start = false,
     end = false;
-  for (const { row } of ordered) {
+  for (const { row, precision } of ordered) {
     if (
+      !precision ||
+      !/^(?:hour|minute|second|fraction\/[1-6])$/.test(precision) ||
       (row.endpoint !== "start" && row.endpoint !== "end") ||
       !row.id ||
       ids.has(row.id) ||
@@ -61,7 +74,12 @@ function completeRange(rows: IndexedRow[]): AtomicRange | undefined {
     if (previous !== undefined && previous !== source) return;
     sources.set(row.endpoint, source);
 
-    const signature = peerSignature(row);
+    const previousPrecision = endpointPrecisions.get(row.endpoint);
+    if (previousPrecision !== undefined && previousPrecision !== precision)
+      return;
+    endpointPrecisions.set(row.endpoint, precision);
+
+    const signature = peerSignature(row, precision);
     if (signatures.has(signature)) return;
     signatures.add(signature);
   }
@@ -75,17 +93,21 @@ function completeRange(rows: IndexedRow[]): AtomicRange | undefined {
  * individual endpoints. Protected rows and their relative order stay unchanged;
  * retained range rows keep the earliest source's complete presentation metadata.
  * Neither the input array nor any input row is mutated.
+ * Private metadata uses exact row object identities. Missing/unknown precision
+ * or inconsistent endpoint alternatives protect the entire range inventory.
  */
 export function collapseRepeatedAtomicRanges(
   rows: readonly TimeResult[],
   eligibleRangeIds: ReadonlySet<string>,
+  authoredPrecision?: ReadonlyMap<TimeResult, AuthoredClockPrecision>,
 ): TimeResult[] {
   const byRange = new Map<string, IndexedRow[]>();
   rows.forEach((row, index) => {
     if (!row.rangeId || !eligibleRangeIds.has(row.rangeId)) return;
     const peers = byRange.get(row.rangeId);
-    if (peers) peers.push({ row, index });
-    else byRange.set(row.rangeId, [{ row, index }]);
+    const indexed = { row, index, precision: authoredPrecision?.get(row) };
+    if (peers) peers.push(indexed);
+    else byRange.set(row.rangeId, [indexed]);
   });
 
   const ranges: AtomicRange[] = [];
@@ -102,7 +124,7 @@ export function collapseRepeatedAtomicRanges(
   const duplicates = new Map<string, AtomicRange[]>();
   for (const range of ranges) {
     const signature = JSON.stringify(
-      range.rows.map(({ row }) => peerSignature(row)),
+      range.rows.map(({ row, precision }) => peerSignature(row, precision!)),
     );
     const matching = duplicates.get(signature);
     if (matching) matching.push(range);

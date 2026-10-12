@@ -1,5 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import { collapseRepeatedAtomicRanges } from "../web/src/engine/range-dedup";
+import {
+  collapseRepeatedAtomicRanges,
+  type AuthoredClockPrecision,
+} from "../web/src/engine/range-dedup";
 import type { TimeResult } from "../web/src/engine/types";
 
 // Independent DTO examples exercise the public atomic inventory contract.
@@ -42,8 +45,19 @@ function alternatives(
     ),
   );
 }
+// The invented examples below explicitly author minute clocks. Descriptors are
+// provided independently; normalized instants cannot establish authored precision.
+function precision(
+  rows: readonly TimeResult[],
+  start: AuthoredClockPrecision = "minute",
+  end: AuthoredClockPrecision = start,
+): Map<TimeResult, AuthoredClockPrecision> {
+  return new Map(
+    rows.map((row) => [row, row.endpoint === "end" ? end : start]),
+  );
+}
 function collapse(rows: readonly TimeResult[], ids = ["first", "second"]) {
-  return collapseRepeatedAtomicRanges(rows, new Set(ids));
+  return collapseRepeatedAtomicRanges(rows, new Set(ids), precision(rows));
 }
 function point(overrides: Partial<TimeResult> = {}): TimeResult {
   const {
@@ -147,7 +161,19 @@ describe("DEVELOPMENT #155 whole-range atomic inventory", () => {
           r.endpoint === endpoint ? ({ ...r, ...change } as TimeResult) : r,
         ),
       ];
-      expect(collapse(rows)).toEqual(rows);
+      const descriptors = precision(rows);
+      // These two independently invented alternatives author nonzero clock
+      // fields; their precision is stated here, never inferred from instants.
+      if (name === "second precision") descriptors.set(rows[3], "second");
+      if (name === "fractional precision")
+        descriptors.set(rows[2], "fraction/3");
+      expect(
+        collapseRepeatedAtomicRanges(
+          rows,
+          new Set(["first", "second"]),
+          descriptors,
+        ),
+      ).toEqual(rows);
     });
 
   test("date-only endpoints compare civil day as well as endpoint role", () => {
@@ -283,4 +309,148 @@ describe("DEVELOPMENT #155 whole-range atomic inventory", () => {
       const rows = [...first, ...second];
       expect(collapse(rows)).toEqual(rows);
     });
+});
+
+describe("DEVELOPMENT #155 private authored clock precision", () => {
+  const eligible = new Set(["first", "second"]);
+  const precisions: AuthoredClockPrecision[] = [
+    "hour",
+    "minute",
+    "second",
+    "fraction/1",
+    "fraction/2",
+    "fraction/3",
+    "fraction/4",
+    "fraction/5",
+    "fraction/6",
+  ];
+  // Zero instants are intentional: every precision resolves to identical UTC
+  // values, so the descriptor is the only independent precision evidence.
+  const zeroPair = (id: string) =>
+    pair(id).map((row) => ({
+      ...row,
+      instant:
+        row.endpoint === "start"
+          ? "2026-08-19T08:00:00Z"
+          : "2026-08-19T09:00:00Z",
+    }));
+
+  test("no map or cloned row keys cannot authorize a collapse", () => {
+    const rows = [...zeroPair("first"), ...zeroPair("second")];
+    expect(collapseRepeatedAtomicRanges(rows, eligible)).toEqual(rows);
+    expect(collapseRepeatedAtomicRanges(rows, eligible, new Map())).toEqual(
+      rows,
+    );
+    const clonedKeys = precision(structuredClone(rows));
+    expect(collapseRepeatedAtomicRanges(rows, eligible, clonedKeys)).toEqual(
+      rows,
+    );
+  });
+
+  test("one missing or invalid descriptor protects the entire affected range", () => {
+    const rows = [...zeroPair("first"), ...zeroPair("second")];
+    for (const missing of rows) {
+      const descriptors = precision(rows);
+      descriptors.delete(missing);
+      expect(collapseRepeatedAtomicRanges(rows, eligible, descriptors)).toEqual(
+        rows,
+      );
+    }
+    for (const invalid of [
+      "fraction/0",
+      "fraction/7",
+      "fraction/03",
+      "Minute",
+      "",
+      undefined,
+      3,
+    ]) {
+      const descriptors = precision(rows);
+      descriptors.set(rows[3], invalid as AuthoredClockPrecision);
+      expect(collapseRepeatedAtomicRanges(rows, eligible, descriptors)).toEqual(
+        rows,
+      );
+    }
+  });
+
+  test("every distinct authored precision preserves whole zero-valued ranges", () => {
+    for (let left = 0; left < precisions.length; left++)
+      for (let right = left + 1; right < precisions.length; right++) {
+        const first = zeroPair("first"),
+          second = zeroPair("second");
+        const rows = [...first, ...second];
+        const descriptors = new Map([
+          ...precision(first, precisions[left]),
+          ...precision(second, precisions[right]),
+        ]);
+        expect(
+          collapseRepeatedAtomicRanges(rows, eligible, descriptors),
+        ).toEqual(rows);
+      }
+  });
+
+  test("identical authored precisions still collapse complete zero-valued ranges", () => {
+    for (const authored of precisions) {
+      const first = zeroPair("first"),
+        second = zeroPair("second");
+      const rows = [...first, ...second];
+      expect(
+        collapseRepeatedAtomicRanges(rows, eligible, precision(rows, authored)),
+      ).toEqual(first.map((row) => ({ ...row, occurrences: 2 })));
+    }
+  });
+
+  test("start and end precision compare independently and matching mixtures collapse", () => {
+    const first = zeroPair("first"),
+      second = zeroPair("second");
+    const rows = [...first, ...second];
+    const firstMap = precision(first, "minute", "second");
+    for (const [start, end] of [
+      ["second", "minute"],
+      ["minute", "minute"],
+      ["second", "second"],
+    ] as const) {
+      const descriptors = new Map([
+        ...firstMap,
+        ...precision(second, start, end),
+      ]);
+      expect(collapseRepeatedAtomicRanges(rows, eligible, descriptors)).toEqual(
+        rows,
+      );
+    }
+    const matching = new Map([
+      ...firstMap,
+      ...precision(second, "minute", "second"),
+    ]);
+    expect(collapseRepeatedAtomicRanges(rows, eligible, matching)).toEqual(
+      first.map((row) => ({ ...row, occurrences: 2 })),
+    );
+  });
+
+  test("missing or conflicting same-endpoint alternative descriptors protect all peers", () => {
+    const inventory = (id: string) =>
+      alternatives(id, [
+        { interpretation: "A" },
+        { interpretation: "B", sourceZone: "+01:00" },
+      ]);
+    const first = inventory("first"),
+      second = inventory("second");
+    const rows = [...first, ...second];
+    for (const endpoint of ["start", "end"] as const) {
+      const target = second.filter((row) => row.endpoint === endpoint)[1];
+      const missing = precision(rows);
+      missing.delete(target);
+      expect(collapseRepeatedAtomicRanges(rows, eligible, missing)).toEqual(
+        rows,
+      );
+      const conflicting = precision(rows);
+      conflicting.set(target, "second");
+      expect(collapseRepeatedAtomicRanges(rows, eligible, conflicting)).toEqual(
+        rows,
+      );
+    }
+    expect(
+      collapseRepeatedAtomicRanges(rows, eligible, precision(rows)),
+    ).toEqual(first.map((row) => ({ ...row, occurrences: 2 })));
+  });
 });

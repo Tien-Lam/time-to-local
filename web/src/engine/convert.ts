@@ -5,6 +5,8 @@ import {
   startsAfterUnrelatedDate,
   usesReferenceDate,
   usesReferenceYear,
+  authoredClockPrecision,
+  authoredClockIdentity,
 } from "./parser";
 import type { ParsedComponents, ParsedResult } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
@@ -34,6 +36,7 @@ import {
 } from "./date-context";
 import type { ContextOwner, TemporalEvidence } from "./date-context";
 import { collapseRepeatedAtomicRanges } from "./range-dedup";
+import type { AuthoredClockPrecision } from "./range-dedup";
 export { MAX_INPUT } from "./limits";
 type ResolvedOwner = {
   date: TemporalTypes.PlainDate;
@@ -536,6 +539,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   >();
   const warnings: string[] = [],
     results: TimeResult[] = [],
+    authoredPrecision = new Map<TimeResult, AuthoredClockPrecision>(),
     incompleteRangeIds = new Set<string>();
   const invalidOffsets = [
     ...prepared.semanticText.matchAll(OFFSET_TOKEN),
@@ -908,7 +912,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         }
         for (let n = 0; n < resolved.instants.length; n++) {
           const instant = resolved.instants[n];
-          results.push({
+          const row: TimeResult = {
             id: `${r.index}-${endpoint || "time"}-${choice.zone}-${n}`,
             group: `${r.index}-${endpoint || "time"}`,
             original,
@@ -951,7 +955,20 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                 : choice.interpretation,
             assumptions,
             occurrences: 1,
-          });
+          };
+          results.push(row);
+          const precision = authoredClockPrecision(c);
+          const identity = authoredClockIdentity(c);
+          if (
+            precision &&
+            identity &&
+            (!r.end ||
+              (authoredClockIdentity(r.start) &&
+                authoredClockIdentity(r.end) &&
+                authoredClockIdentity(r.start) !==
+                  authoredClockIdentity(r.end)))
+          )
+            authoredPrecision.set(row, precision);
         }
       }
     }
@@ -1000,7 +1017,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     )
       eligibleRangeIds.add(rangeId);
   }
-  const collapsed = collapseRepeatedAtomicRanges(results, eligibleRangeIds);
+  const collapsed = collapseRepeatedAtomicRanges(
+    results,
+    eligibleRangeIds,
+    authoredPrecision,
+  );
   const merged = new Map<string, TimeResult>();
   for (const r of collapsed.sort((a, b) => a.sourceIndex - b.sourceIndex)) {
     const source = r.sourceZone === "+00:00" ? "UTC" : r.sourceZone;

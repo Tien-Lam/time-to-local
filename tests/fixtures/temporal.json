@@ -4884,5 +4884,428 @@
     ],
     "rowOccurrences": [1, 1],
     "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #155 precision P01-hour-minute-second-zero-utf16",
+    "text": "🧭 programme\r\n\r\nNovember 18, 2026\r\n- 6am-7am UTC hour inventory\r\n- 6:00am-7:00am UTC minute inventory\r\n- 06:00:00-07:00:00 UTC second inventory\r\n- 06:00 UTC independent point",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-11-18T06:00:00Z",
+      "2026-11-18T07:00:00Z",
+      "2026-11-18T06:00:00Z",
+      "2026-11-18T07:00:00Z",
+      "2026-11-18T06:00:00Z",
+      "2026-11-18T07:00:00Z",
+      "2026-11-18T06:00:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 7,
+    "endpoints": ["start", "end", "start", "end", "start", "end", "undefined"],
+    "originals": [
+      "6am-7am UTC",
+      "6am-7am UTC",
+      "6:00am-7:00am UTC",
+      "6:00am-7:00am UTC",
+      "06:00:00-07:00:00 UTC",
+      "06:00:00-07:00:00 UTC",
+      "06:00 UTC"
+    ],
+    "sourceIndices": [37, 37, 67, 67, 105, 105, 147],
+    "sourceCores": [
+      "6am-7am UTC",
+      "6am-7am UTC",
+      "6:00am-7:00am UTC",
+      "6:00am-7:00am UTC",
+      "06:00:00-07:00:00 UTC",
+      "06:00:00-07:00:00 UTC",
+      "06:00 UTC"
+    ],
+    "sourceBounds": [
+      {
+        "start": 37,
+        "end": 48
+      },
+      {
+        "start": 37,
+        "end": 48
+      },
+      {
+        "start": 67,
+        "end": 84
+      },
+      {
+        "start": 67,
+        "end": 84
+      },
+      {
+        "start": 105,
+        "end": 126
+      },
+      {
+        "start": 105,
+        "end": 126
+      },
+      {
+        "start": 147,
+        "end": 156
+      }
+    ],
+    "sourceZones": [
+      "+00:00",
+      "+00:00",
+      "+00:00",
+      "+00:00",
+      "+00:00",
+      "+00:00",
+      "+00:00"
+    ],
+    "assumptions": [
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1, 1, 1, 1],
+    "rangeGroups": ["r1", "r1", "r2", "r2", "r3", "r3", null]
+  },
+  {
+    "name": "DEVELOPMENT #155 precision P02-zero-fraction-digit-count-versus-seconds",
+    "text": "November 18, 2026\n- 10:40:00-11:50:00 UTC seconds\n- 10:40:00.0-11:50:00.0 UTC explicit single zero fraction\n- 10:40:00.000-11:50:00.000 UTC explicit triple zero fraction",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-11-18T10:40:00Z",
+      "2026-11-18T11:50:00Z",
+      "2026-11-18T10:40:00Z",
+      "2026-11-18T11:50:00Z",
+      "2026-11-18T10:40:00Z",
+      "2026-11-18T11:50:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 6,
+    "endpoints": ["start", "end", "start", "end", "start", "end"],
+    "originals": [
+      "10:40:00-11:50:00 UTC",
+      "10:40:00-11:50:00 UTC",
+      "10:40:00.0-11:50:00.0 UTC",
+      "10:40:00.0-11:50:00.0 UTC",
+      "10:40:00.000-11:50:00.000 UTC",
+      "10:40:00.000-11:50:00.000 UTC"
+    ],
+    "sourceIndices": [20, 20, 52, 52, 110, 110],
+    "sourceCores": [
+      "10:40:00-11:50:00 UTC",
+      "10:40:00-11:50:00 UTC",
+      "10:40:00.0-11:50:00.0 UTC",
+      "10:40:00.0-11:50:00.0 UTC",
+      "10:40:00.000-11:50:00.000 UTC",
+      "10:40:00.000-11:50:00.000 UTC"
+    ],
+    "sourceBounds": [
+      {
+        "start": 20,
+        "end": 41
+      },
+      {
+        "start": 20,
+        "end": 41
+      },
+      {
+        "start": 52,
+        "end": 77
+      },
+      {
+        "start": 52,
+        "end": 77
+      },
+      {
+        "start": 110,
+        "end": 139
+      },
+      {
+        "start": 110,
+        "end": 139
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1, 1, 1],
+    "rangeGroups": ["r1", "r1", "r2", "r2", "r3", "r3"]
+  },
+  {
+    "name": "DEVELOPMENT #155 precision P03-independent-mixed-endpoint-precision",
+    "text": "November 18, 2026\n- 12:05-13:15:00 UTC endpoint inventory 1\n- 12:05:00-13:15 UTC endpoint inventory 2\n- 12:05:00-13:15:00 UTC endpoint inventory 3",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-11-18T12:05:00Z",
+      "2026-11-18T13:15:00Z",
+      "2026-11-18T12:05:00Z",
+      "2026-11-18T13:15:00Z",
+      "2026-11-18T12:05:00Z",
+      "2026-11-18T13:15:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 6,
+    "endpoints": ["start", "end", "start", "end", "start", "end"],
+    "originals": [
+      "12:05-13:15:00 UTC",
+      "12:05-13:15:00 UTC",
+      "12:05:00-13:15 UTC",
+      "12:05:00-13:15 UTC",
+      "12:05:00-13:15:00 UTC",
+      "12:05:00-13:15:00 UTC"
+    ],
+    "sourceIndices": [20, 20, 62, 62, 104, 104],
+    "sourceCores": [
+      "12:05-13:15:00 UTC",
+      "12:05-13:15:00 UTC",
+      "12:05:00-13:15 UTC",
+      "12:05:00-13:15 UTC",
+      "12:05:00-13:15:00 UTC",
+      "12:05:00-13:15:00 UTC"
+    ],
+    "sourceBounds": [
+      {
+        "start": 20,
+        "end": 38
+      },
+      {
+        "start": 20,
+        "end": 38
+      },
+      {
+        "start": 62,
+        "end": 80
+      },
+      {
+        "start": 62,
+        "end": 80
+      },
+      {
+        "start": 104,
+        "end": 125
+      },
+      {
+        "start": 104,
+        "end": 125
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1, 1, 1],
+    "rangeGroups": ["r1", "r1", "r2", "r2", "r3", "r3"]
+  },
+  {
+    "name": "DEVELOPMENT #155 precision P04-identical-seconds-and-fractions-collapse",
+    "text": "November 18, 2026\n- 14:20:00-15:30:00 UTC first seconds\n- 14:20:00-15:30:00 UTC repeated seconds\n- 14:20:00.123-15:30:00.456 UTC first fraction\n- 14:20:00.123-15:30:00.456 UTC repeated fraction",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-11-18T14:20:00Z",
+      "2026-11-18T15:30:00Z",
+      "2026-11-18T14:20:00.123Z",
+      "2026-11-18T15:30:00.456Z"
+    ],
+    "warnings": [],
+    "cardinality": 4,
+    "endpoints": ["start", "end", "start", "end"],
+    "originals": [
+      "14:20:00-15:30:00 UTC",
+      "14:20:00-15:30:00 UTC",
+      "14:20:00.123-15:30:00.456 UTC",
+      "14:20:00.123-15:30:00.456 UTC"
+    ],
+    "sourceIndices": [20, 20, 99, 99],
+    "sourceCores": [
+      "14:20:00-15:30:00 UTC",
+      "14:20:00-15:30:00 UTC",
+      "14:20:00.123-15:30:00.456 UTC",
+      "14:20:00.123-15:30:00.456 UTC"
+    ],
+    "sourceBounds": [
+      {
+        "start": 20,
+        "end": 41
+      },
+      {
+        "start": 20,
+        "end": 41
+      },
+      {
+        "start": 99,
+        "end": 128
+      },
+      {
+        "start": 99,
+        "end": 128
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"]
+    ],
+    "rowOccurrences": [2, 2, 2, 2],
+    "rangeGroups": ["r1", "r1", "r2", "r2"]
+  },
+  {
+    "name": "DEVELOPMENT #155 precision P05-qualified-offset-colons-are-not-seconds",
+    "text": "Date: November 18, 2026\nTime: 06:20 UTC+05:45 to 07:30 UTC+05:45\n\nDate: November 18, 2026\nTime: 06:20:00 UTC+05:45 to 07:30:00 UTC+05:45",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-11-18T00:35:00Z",
+      "2026-11-18T01:45:00Z",
+      "2026-11-18T00:35:00Z",
+      "2026-11-18T01:45:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 4,
+    "endpoints": ["start", "end", "start", "end"],
+    "originals": [
+      "06:20 UTC+05:45 to 07:30 UTC+05:45",
+      "06:20 UTC+05:45 to 07:30 UTC+05:45",
+      "06:20:00 UTC+05:45 to 07:30:00 UTC+05:45",
+      "06:20:00 UTC+05:45 to 07:30:00 UTC+05:45"
+    ],
+    "sourceIndices": [30, 30, 96, 96],
+    "sourceCores": [
+      "06:20 UTC+05:45 to 07:30 UTC+05:45",
+      "06:20 UTC+05:45 to 07:30 UTC+05:45",
+      "06:20:00 UTC+05:45 to 07:30:00 UTC+05:45",
+      "06:20:00 UTC+05:45 to 07:30:00 UTC+05:45"
+    ],
+    "sourceBounds": [
+      {
+        "start": 30,
+        "end": 64
+      },
+      {
+        "start": 30,
+        "end": 64
+      },
+      {
+        "start": 96,
+        "end": 136
+      },
+      {
+        "start": 96,
+        "end": 136
+      }
+    ],
+    "sourceZones": ["+05:45", "+05:45", "+05:45", "+05:45"],
+    "assumptions": [
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1],
+    "rangeGroups": ["r1", "r1", "r2", "r2"]
+  },
+  {
+    "name": "DEVELOPMENT #155 precision P06-multiword-zone-keeps-precision",
+    "text": "November 18, 2026\n- 08:15-09:25 Pacific Time: Morning workshop\n- 08:15:00-09:25:00 Pacific Time: afternoon workshop",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-11-18T16:15:00Z",
+      "2026-11-18T17:25:00Z",
+      "2026-11-18T16:15:00Z",
+      "2026-11-18T17:25:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 4,
+    "endpoints": ["start", "end", "start", "end"],
+    "originals": [
+      "08:15-09:25 Pacific Time",
+      "08:15-09:25 Pacific Time",
+      "08:15:00-09:25:00 Pacific Time",
+      "08:15:00-09:25:00 Pacific Time"
+    ],
+    "sourceIndices": [20, 20, 65, 65],
+    "sourceCores": [
+      "08:15-09:25 Pacific Time",
+      "08:15-09:25 Pacific Time",
+      "08:15:00-09:25:00 Pacific Time",
+      "08:15:00-09:25:00 Pacific Time"
+    ],
+    "sourceBounds": [
+      {
+        "start": 20,
+        "end": 44
+      },
+      {
+        "start": 20,
+        "end": 44
+      },
+      {
+        "start": 65,
+        "end": 95
+      },
+      {
+        "start": 65,
+        "end": 95
+      }
+    ],
+    "sourceZones": [
+      "America/Los_Angeles",
+      "America/Los_Angeles",
+      "America/Los_Angeles",
+      "America/Los_Angeles"
+    ],
+    "assumptions": [
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"],
+      ["Date from message context: 2026-11-18"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1],
+    "rangeGroups": ["r1", "r1", "r2", "r2"]
   }
 ]
