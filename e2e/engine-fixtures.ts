@@ -43,6 +43,10 @@ export async function verifyProductionFixtures(page: Page) {
       output = outputs[i];
     expect(output.error, f.name).toBeUndefined();
     expect(
+      new Set(output.conversion.results.map((r: any) => r.id)).size,
+      f.name,
+    ).toBe(output.conversion.results.length);
+    expect(
       output.conversion.results.flatMap((r: any) =>
         r.instant ? [r.instant] : [],
       ),
@@ -116,10 +120,17 @@ export async function verifyProductionFixtures(page: Page) {
           if (
             f.rangeGroups[n] !== null &&
             f.rangeGroups[n] === f.rangeGroups[j]
-          )
-            expect(output.conversion.results[n].group, f.name).toBe(
-              output.conversion.results[j].group,
-            );
+          ) {
+            // Endpoint alternatives share a group; rangeId joins distinct roles.
+            if (f.endpoints?.[n] === f.endpoints?.[j])
+              expect(output.conversion.results[n].group, f.name).toBe(
+                output.conversion.results[j].group,
+              );
+            else
+              expect(output.conversion.results[n].group, f.name).not.toBe(
+                output.conversion.results[j].group,
+              );
+          }
         }
     if ("cardinality" in f)
       expect(output.conversion.results, f.name).toHaveLength(f.cardinality!);
