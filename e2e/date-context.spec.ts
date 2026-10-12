@@ -162,3 +162,88 @@ test("a cached offline reopen accepts new heading and record input with exact da
     "Date from message context: 2026-05-16",
   );
 });
+
+test("DEVELOPMENT harmless month titles and vague activities preserve source and copied context", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "clipboard", {
+      value: {
+        writeText: async (value: string) => {
+          (window as any).__repairCopied = value;
+        },
+      },
+    });
+  });
+  await page.goto("/");
+  await fill(
+    page,
+    "August 19, 2026\n- 08:15 UTC: Morning briefing\n- 09:25 UTC evening lab",
+  );
+  await expect(page.locator(".hero-time")).toHaveText(["08:15", "09:25"]);
+  await expect(page.locator(".result-date")).toHaveText([
+    "Wed, 19 Aug 2026",
+    "Wed, 19 Aug 2026",
+  ]);
+  await expect(page.locator(".range-label")).toHaveCount(0);
+  await page.locator(".result .copy-button").first().click();
+  const copied = await page.evaluate(
+    () => (window as any).__repairCopied as string,
+  );
+  expect(copied).toContain("08:15 UTC");
+  expect(copied).toContain("Date from message context: 2026-08-19");
+  expect(copied).not.toContain("Morning briefing");
+  await fill(
+    page,
+    "Date: August 19, 2026\nTitle: September planning\nTime: noon UTC",
+  );
+  await expect(page.locator(".hero-time")).toHaveText("12:00");
+  await expect(page.locator(".result-date")).toHaveText("Wed, 19 Aug 2026");
+  await expect(page.locator(".assumption")).toHaveText(
+    "Date from message context: 2026-08-19",
+  );
+  await fill(page, "> August 19, 2026 at midnight UTC");
+  await expect(page.locator(".hero-time")).toHaveText("00:00");
+  await expect(page.locator(".result-date")).toHaveText("Wed, 19 Aug 2026");
+  await expect(page.locator(".assumption")).toHaveCount(0);
+});
+
+test("DEVELOPMENT repeated ranges preserve two endpoints and an independent shared point after offline reopen", async ({
+  page,
+  context,
+  origin,
+}) => {
+  await page.goto("/");
+  const text =
+    "August 19, 2026\n- 08:15-09:25 UTC first\n- 08:15 UTC independent\n- 08:15-09:25 UTC repeat";
+  await fill(page, text);
+  await expect(page.locator(".hero-time")).toHaveText([
+    "08:15",
+    "09:25",
+    "08:15",
+  ]);
+  await expect(page.locator(".range-label")).toHaveText(["From", "To"]);
+  await expect(
+    page.locator(".assumption").filter({ hasText: "Mentioned 2 times" }),
+  ).toHaveCount(2);
+  await page.close();
+  await disconnect(context, origin);
+  const reopened = await context.newPage();
+  await reopened.goto("/");
+  await ready(reopened);
+  await fill(reopened, text);
+  await expect(reopened.locator(".hero-time")).toHaveText([
+    "08:15",
+    "09:25",
+    "08:15",
+  ]);
+  await expect(reopened.locator(".result-date")).toHaveText([
+    "Wed, 19 Aug 2026",
+    "Wed, 19 Aug 2026",
+    "Wed, 19 Aug 2026",
+  ]);
+  await expect(reopened.locator(".range-label")).toHaveText(["From", "To"]);
+  await expect(
+    reopened.locator(".assumption").filter({ hasText: "Mentioned 2 times" }),
+  ).toHaveCount(2);
+});

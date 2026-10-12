@@ -3556,5 +3556,1333 @@
     "rowOccurrences": [1, 1],
     "interpretations": [null, null],
     "rangeIds": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Z01-winter-multiword",
+    "text": "January 19, 2027\n- 08:15 Pacific Time Morning briefing\n- 09:25 Eastern Time afternoon workshop",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2027-01-19T16:15:00Z", "2027-01-19T14:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 Pacific Time", "09:25 Eastern Time"],
+    "sourceIndices": [19, 57],
+    "sourceCores": ["08:15 Pacific Time", "09:25 Eastern Time"],
+    "sourceBounds": [
+      {
+        "start": 19,
+        "end": 37
+      },
+      {
+        "start": 57,
+        "end": 75
+      }
+    ],
+    "sourceZones": ["America/Los_Angeles", "America/New_York"],
+    "assumptions": [
+      ["Date from message context: 2027-01-19"],
+      ["Date from message context: 2027-01-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Z02-summer-multiword",
+    "text": "August 19, 2026\n- 08:15 Pacific Time Morning briefing\n- 09:25 Eastern Time afternoon workshop",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T15:15:00Z", "2026-08-19T13:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 Pacific Time", "09:25 Eastern Time"],
+    "sourceIndices": [18, 56],
+    "sourceCores": ["08:15 Pacific Time", "09:25 Eastern Time"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 36
+      },
+      {
+        "start": 56,
+        "end": 74
+      }
+    ],
+    "sourceZones": ["America/Los_Angeles", "America/New_York"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Z03-iana-fractional",
+    "text": "August 19, 2026\n- 08:15 America/Los_Angeles: Morning briefing\n- 09:25 UTC+05:45 evening workshop",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T15:15:00Z", "2026-08-19T03:40:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 America/Los_Angeles", "09:25 UTC+05:45"],
+    "sourceIndices": [18, 64],
+    "sourceCores": ["08:15 America/Los_Angeles", "09:25 UTC+05:45"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 43
+      },
+      {
+        "start": 64,
+        "end": 79
+      }
+    ],
+    "sourceZones": ["America/Los_Angeles", "+05:45"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Z04-fixed-regional",
+    "text": "August 19, 2026\n- 08:15 PST Morning briefing\n- 08:15 PT afternoon workshop",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T16:15:00Z", "2026-08-19T15:15:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 PST", "08:15 PT"],
+    "sourceIndices": [18, 47],
+    "sourceCores": ["08:15 PST", "08:15 PT"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 47,
+        "end": 55
+      }
+    ],
+    "sourceZones": ["-08:00", "America/Los_Angeles"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 A01-vague-siblings",
+    "text": "August 19, 2026\n- 08:15 UTC Morning briefing\n- 09:25 UTC afternoon lab\n- 10:35 UTC evening showcase\n- 11:45 UTC night shift",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-08-19T08:15:00Z",
+      "2026-08-19T09:25:00Z",
+      "2026-08-19T10:35:00Z",
+      "2026-08-19T11:45:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 4,
+    "endpoints": ["undefined", "undefined", "undefined", "undefined"],
+    "originals": ["08:15 UTC", "09:25 UTC", "10:35 UTC", "11:45 UTC"],
+    "sourceIndices": [18, 47, 73, 102],
+    "sourceCores": ["08:15 UTC", "09:25 UTC", "10:35 UTC", "11:45 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 47,
+        "end": 56
+      },
+      {
+        "start": 73,
+        "end": 82
+      },
+      {
+        "start": 102,
+        "end": 111
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1],
+    "rangeGroups": [null, null, null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 A02-colon-activity",
+    "text": "August 19, 2026\n- 08:15 UTC: Morning briefing\n- 09:25 UTC: evening lab",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T08:15:00Z", "2026-08-19T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 UTC", "09:25 UTC"],
+    "sourceIndices": [18, 48],
+    "sourceCores": ["08:15 UTC", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 48,
+        "end": 57
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 A03-nonclock-first",
+    "text": "August 19, 2026\n- Morning briefing\n- 09:25 UTC workshop",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["09:25 UTC"],
+    "sourceIndices": [37],
+    "sourceCores": ["09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 37,
+        "end": 46
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 A04-native-exact-word-range",
+    "text": "August 19, 2026\n- 1am-midnight UTC\n- 02:15 UTC next",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-08-19T01:00:00Z",
+      "2026-08-20T00:00:00Z",
+      "2026-08-19T02:15:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 3,
+    "endpoints": ["start", "end", "undefined"],
+    "originals": ["1am-midnight UTC", "1am-midnight UTC", "02:15 UTC"],
+    "sourceIndices": [18, 18, 37],
+    "sourceCores": ["1am-midnight UTC", "1am-midnight UTC", "02:15 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 34
+      },
+      {
+        "start": 18,
+        "end": 34
+      },
+      {
+        "start": 37,
+        "end": 46
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "rangeGroups": ["r1", "r1", null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 O01-month-title-before",
+    "text": "Date: August 19, 2026\nTitle: September planning\nTime: 08:15 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T08:15:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["08:15 UTC"],
+    "sourceIndices": [54],
+    "sourceCores": ["08:15 UTC"],
+    "sourceBounds": [
+      {
+        "start": 54,
+        "end": 63
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [["Date from message context: 2026-08-19"]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 O02-month-title-after",
+    "text": "dAtE: August 19, 2026\ntImE: 09:25 UTC\ntItLe: October planning",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["09:25 UTC"],
+    "sourceIndices": [28],
+    "sourceCores": ["09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 28,
+        "end": 37
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [["Date from message context: 2026-08-19"]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 O03-month-fields",
+    "text": "Date: August 19, 2026\nActivity: March preparations\nLocation: May hall\nTime: 10:35 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T10:35:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["10:35 UTC"],
+    "sourceIndices": [76],
+    "sourceCores": ["10:35 UTC"],
+    "sourceBounds": [
+      {
+        "start": 76,
+        "end": 85
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [["Date from message context: 2026-08-19"]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 O04-month-link-label",
+    "text": "Date: August 19, 2026\nTitle: [September planning](https://example.invalid/June-20-2029/15:00 \"Tomorrow at noon\")\nTime: 11:45 UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T11:45:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["11:45 UTC"],
+    "sourceIndices": [119],
+    "sourceCores": ["11:45 UTC"],
+    "sourceBounds": [
+      {
+        "start": 119,
+        "end": 128
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [["Date from message context: 2026-08-19"]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 P01-stated-noon",
+    "text": "August 19, 2026 at noon UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T12:00:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["August 19, 2026 at noon UTC"],
+    "sourceIndices": [0],
+    "sourceCores": ["August 19, 2026 at noon UTC"],
+    "sourceBounds": [
+      {
+        "start": 0,
+        "end": 27
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [[]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 P02-stated-midnight",
+    "text": "August 19, 2026 at midnight UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T00:00:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["August 19, 2026 at midnight UTC"],
+    "sourceIndices": [0],
+    "sourceCores": ["August 19, 2026 at midnight UTC"],
+    "sourceBounds": [
+      {
+        "start": 0,
+        "end": 31
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [[]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 P03-owned-casual-clocks",
+    "text": "August 19, 2026\n- noon UTC\n- midnight UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T12:00:00Z", "2026-08-19T00:00:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["noon UTC", "midnight UTC"],
+    "sourceIndices": [18, 29],
+    "sourceCores": ["noon UTC", "midnight UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 26
+      },
+      {
+        "start": 29,
+        "end": 41
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 P04-yearless-owner",
+    "text": "August 19\n- noon UTC\n- midnight UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T12:00:00Z", "2026-08-19T00:00:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["noon UTC", "midnight UTC"],
+    "sourceIndices": [12, 23],
+    "sourceCores": ["noon UTC", "midnight UTC"],
+    "sourceBounds": [
+      {
+        "start": 12,
+        "end": 20
+      },
+      {
+        "start": 23,
+        "end": 35
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-08-19",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Date from message context: 2026-08-19",
+        "Year assumed: 2026",
+        "Reference date used: 2026-04-06"
+      ]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 P05-relative-noon",
+    "text": "Tomorrow at noon UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T12:00:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["Tomorrow at noon UTC"],
+    "sourceIndices": [0],
+    "sourceCores": ["Tomorrow at noon UTC"],
+    "sourceBounds": [
+      {
+        "start": 0,
+        "end": 20
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [["Reference date used: 2026-04-06"]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 P06-stated-overnight",
+    "text": "August 19, 2026 11pm-midnight UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T23:00:00Z", "2026-08-20T00:00:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "originals": [
+      "August 19, 2026 11pm-midnight UTC",
+      "August 19, 2026 11pm-midnight UTC"
+    ],
+    "sourceIndices": [0, 0],
+    "sourceCores": [
+      "August 19, 2026 11pm-midnight UTC",
+      "August 19, 2026 11pm-midnight UTC"
+    ],
+    "sourceBounds": [
+      {
+        "start": 0,
+        "end": 33
+      },
+      {
+        "start": 0,
+        "end": 33
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [[], []],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": ["r1", "r1"]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Q01-quoted-seed",
+    "text": "> August 19, 2026\n> - 08:15 UTC quoted\n09:25 UTC outside",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:15:00Z", "2026-04-06T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 UTC", "09:25 UTC"],
+    "sourceIndices": [22, 39],
+    "sourceCores": ["08:15 UTC", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 22,
+        "end": 31
+      },
+      {
+        "start": 39,
+        "end": 48
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Q02-nested-crlf-separator",
+    "text": ">> August 19, 2026\r\n>>\r\n>> - 08:15 UTC quoted\r\n\r\nSeptember 21, 2026\r\n- 09:25 UTC outside",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T08:15:00Z", "2026-09-21T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 UTC", "09:25 UTC"],
+    "sourceIndices": [29, 71],
+    "sourceCores": ["08:15 UTC", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 29,
+        "end": 38
+      },
+      {
+        "start": 71,
+        "end": 80
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date from message context: 2026-09-21"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Q03-own-explicit",
+    "text": "> August 19, 2026 at noon UTC",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T12:00:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["August 19, 2026 at noon UTC"],
+    "sourceIndices": [2],
+    "sourceCores": ["August 19, 2026 at noon UTC"],
+    "sourceBounds": [
+      {
+        "start": 2,
+        "end": 29
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "assumptions": [[]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Q04-entry-exit",
+    "text": "August 19, 2026\n- 07:05 UTC before\n> September 21, 2026\n> - 08:15 UTC quoted\n09:25 UTC outside",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-08-19T07:05:00Z",
+      "2026-04-06T08:15:00Z",
+      "2026-04-06T09:25:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 3,
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "originals": ["07:05 UTC", "08:15 UTC", "09:25 UTC"],
+    "sourceIndices": [18, 60, 77],
+    "sourceCores": ["07:05 UTC", "08:15 UTC", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 60,
+        "end": 69
+      },
+      {
+        "start": 77,
+        "end": 86
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "rangeGroups": [null, null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Q05-quoted-date-only",
+    "text": "> August 19, 2026",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "originals": ["August 19, 2026"],
+    "sourceIndices": [2],
+    "sourceCores": ["August 19, 2026"],
+    "sourceBounds": [
+      {
+        "start": 2,
+        "end": 17
+      }
+    ],
+    "assumptions": [[]],
+    "rowOccurrences": [1],
+    "rangeGroups": [null],
+    "dates": ["2026-08-19"]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 R01-native-duplicate",
+    "text": "August 19, 2026\n- 08:15-09:25 UTC first\n- 08:15-09:25 UTC second",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T08:15:00Z", "2026-08-19T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "originals": ["08:15-09:25 UTC", "08:15-09:25 UTC"],
+    "sourceIndices": [18, 18],
+    "sourceCores": ["08:15-09:25 UTC", "08:15-09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 18,
+        "end": 33
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [2, 2],
+    "rangeGroups": ["r1", "r1"]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 R02-qualified-record-duplicate",
+    "text": "Date: August 19, 2026\nTime: 08:15 UTC to 09:25 JST\n\nDate: August 19, 2026\nTime: 08:15 UTC to 09:25 JST",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T08:15:00Z", "2026-08-19T00:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "originals": ["08:15 UTC to 09:25 JST", "08:15 UTC to 09:25 JST"],
+    "sourceIndices": [28, 28],
+    "sourceCores": ["08:15 UTC to 09:25 JST", "08:15 UTC to 09:25 JST"],
+    "sourceBounds": [
+      {
+        "start": 28,
+        "end": 50
+      },
+      {
+        "start": 28,
+        "end": 50
+      }
+    ],
+    "sourceZones": ["+00:00", "+09:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [2, 2],
+    "rangeGroups": ["r1", "r1"]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 R03-intervening-point",
+    "text": "August 19, 2026\n- 08:15-09:25 UTC first\n- 08:15 UTC independent\n- 08:15-09:25 UTC repeat",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-08-19T08:15:00Z",
+      "2026-08-19T09:25:00Z",
+      "2026-08-19T08:15:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 3,
+    "endpoints": ["start", "end", "undefined"],
+    "originals": ["08:15-09:25 UTC", "08:15-09:25 UTC", "08:15 UTC"],
+    "sourceIndices": [18, 18, 42],
+    "sourceCores": ["08:15-09:25 UTC", "08:15-09:25 UTC", "08:15 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 42,
+        "end": 51
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [2, 2, 1],
+    "rangeGroups": ["r1", "r1", null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 R04-shared-endpoints",
+    "text": "August 19, 2026\n- 08:15-09:25 UTC first\n- 08:15-10:35 UTC later\n- 07:05-09:25 UTC earlier",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-08-19T08:15:00Z",
+      "2026-08-19T09:25:00Z",
+      "2026-08-19T08:15:00Z",
+      "2026-08-19T10:35:00Z",
+      "2026-08-19T07:05:00Z",
+      "2026-08-19T09:25:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 6,
+    "endpoints": ["start", "end", "start", "end", "start", "end"],
+    "originals": [
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC",
+      "08:15-10:35 UTC",
+      "08:15-10:35 UTC",
+      "07:05-09:25 UTC",
+      "07:05-09:25 UTC"
+    ],
+    "sourceIndices": [18, 18, 42, 42, 66, 66],
+    "sourceCores": [
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC",
+      "08:15-10:35 UTC",
+      "08:15-10:35 UTC",
+      "07:05-09:25 UTC",
+      "07:05-09:25 UTC"
+    ],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 42,
+        "end": 57
+      },
+      {
+        "start": 42,
+        "end": 57
+      },
+      {
+        "start": 66,
+        "end": 81
+      },
+      {
+        "start": 66,
+        "end": 81
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1, 1, 1],
+    "rangeGroups": ["r1", "r1", "r2", "r2", "r3", "r3"]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 R05-distinct-owner-days",
+    "text": "August 19, 2026\n- 08:15-09:25 UTC first\n\nAugust 20, 2026\n- 08:15-09:25 UTC later",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-08-19T08:15:00Z",
+      "2026-08-19T09:25:00Z",
+      "2026-08-20T08:15:00Z",
+      "2026-08-20T09:25:00Z"
+    ],
+    "warnings": [],
+    "cardinality": 4,
+    "endpoints": ["start", "end", "start", "end"],
+    "originals": [
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC"
+    ],
+    "sourceIndices": [18, 18, 59, 59],
+    "sourceCores": [
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC",
+      "08:15-09:25 UTC"
+    ],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 59,
+        "end": 74
+      },
+      {
+        "start": 59,
+        "end": 74
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-20"],
+      ["Date from message context: 2026-08-20"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1],
+    "rangeGroups": ["r1", "r1", "r2", "r2"]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 B01-utf16-crlf-metadata",
+    "text": "🧭 notes\r\n\r\nAugust 19, 2026\r\n- 08:15 Pacific Time: Morning [Guide 🧭](https://example.invalid/a\\)2029-05-20 \"Tomorrow) noon\")\r\n- 09:25 UTC evening lab",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T15:15:00Z", "2026-08-19T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 Pacific Time", "09:25 UTC"],
+    "sourceIndices": [31, 129],
+    "sourceCores": ["08:15 Pacific Time", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 31,
+        "end": 49
+      },
+      {
+        "start": 129,
+        "end": 138
+      }
+    ],
+    "sourceZones": ["America/Los_Angeles", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 B02-ordinal-substring-owner",
+    "text": "August 19, 2026\n- 18:15 UTC first\n- 8:15 UTC Morning briefing\n- 8:15 UTC afternoon repeat",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T18:15:00Z", "2026-08-19T08:15:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["18:15 UTC", "8:15 UTC"],
+    "sourceIndices": [18, 36],
+    "sourceCores": ["18:15 UTC", "8:15 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 36,
+        "end": 44
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 2],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 B03-real-newline-link",
+    "text": "August 19, 2026\r\n- 08:15 UTC [Guide](https://example.invalid/a\\\r\n- 09:25 UTC evening lab)",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T08:15:00Z", "2026-08-19T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 UTC", "09:25 UTC"],
+    "sourceIndices": [19, 67],
+    "sourceCores": ["08:15 UTC", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 19,
+        "end": 28
+      },
+      {
+        "start": 67,
+        "end": 76
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 B04-metadata-blank-reset",
+    "text": "August 19, 2026\n- 08:15 UTC [Guide](<https://example.invalid/June-20-2029/noon>)\n\n- 09:25 UTC evening lab",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-19T08:15:00Z", "2026-04-06T09:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 UTC", "09:25 UTC"],
+    "sourceIndices": [18, 84],
+    "sourceCores": ["08:15 UTC", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 84,
+        "end": 93
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Z05-ambiguous-activity",
+    "text": "August 19, 2026\n- 08:15 CST Morning briefing\n- 09:25 UTC afternoon lab",
+    "instants": [
+      "2026-08-19T14:15:00Z",
+      "2026-08-19T00:15:00Z",
+      "2026-08-19T09:25:00Z"
+    ],
+    "originals": ["08:15 CST", "08:15 CST", "09:25 UTC"],
+    "sourceZones": ["-06:00", "+08:00", "+00:00"],
+    "sourceLabels": [
+      "CST · US Central Standard",
+      "CST · China Standard",
+      "UTC"
+    ],
+    "interpretations": ["US Central Standard", "China Standard", null],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rangeGroups": [null, null, null],
+    "rowOccurrences": [1, 1, 1],
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "warnings": [],
+    "cardinality": 3,
+    "sourceIndices": [18, 18, 47],
+    "sourceCores": ["08:15 CST", "08:15 CST", "09:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 18,
+        "end": 27
+      },
+      {
+        "start": 47,
+        "end": 56
+      }
+    ]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Z06-multiword-range",
+    "text": "August 19, 2026\n- 08:15-09:25 Pacific Time Morning workshop",
+    "instants": ["2026-08-19T15:15:00Z", "2026-08-19T16:25:00Z"],
+    "originals": ["08:15-09:25 Pacific Time", "08:15-09:25 Pacific Time"],
+    "sourceZones": ["America/Los_Angeles", "America/Los_Angeles"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rangeGroups": ["r1", "r1"],
+    "rowOccurrences": [1, 1],
+    "endpoints": ["start", "end"],
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "warnings": [],
+    "cardinality": 2,
+    "sourceIndices": [18, 18],
+    "sourceCores": ["08:15-09:25 Pacific Time", "08:15-09:25 Pacific Time"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 42
+      },
+      {
+        "start": 18,
+        "end": 42
+      }
+    ]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 R06-ambiguous-range-duplicate",
+    "text": "August 19, 2026\n- 08:15-09:25 CST first\n- 08:15-09:25 CST repeat",
+    "instants": [
+      "2026-08-19T14:15:00Z",
+      "2026-08-19T00:15:00Z",
+      "2026-08-19T15:25:00Z",
+      "2026-08-19T01:25:00Z"
+    ],
+    "originals": [
+      "08:15-09:25 CST",
+      "08:15-09:25 CST",
+      "08:15-09:25 CST",
+      "08:15-09:25 CST"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "-06:00", "+08:00"],
+    "sourceLabels": [
+      "CST · US Central Standard",
+      "CST · China Standard",
+      "CST · US Central Standard",
+      "CST · China Standard"
+    ],
+    "interpretations": [
+      "US Central Standard",
+      "China Standard",
+      "US Central Standard",
+      "China Standard"
+    ],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rangeGroups": ["r1", "r1", "r1", "r1"],
+    "rowOccurrences": [2, 2, 2, 2],
+    "endpoints": ["start", "start", "end", "end"],
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "warnings": [],
+    "cardinality": 4,
+    "sourceIndices": [18, 18, 18, 18],
+    "sourceCores": [
+      "08:15-09:25 CST",
+      "08:15-09:25 CST",
+      "08:15-09:25 CST",
+      "08:15-09:25 CST"
+    ],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 18,
+        "end": 33
+      },
+      {
+        "start": 18,
+        "end": 33
+      }
+    ]
+  },
+  {
+    "name": "DEVELOPMENT #154/#155 Z07-city-envelope",
+    "text": "August 19, 2026\n- 08:15 in Tokyo Morning briefing\n- 09:25 at London afternoon workshop",
+    "now": "2026-04-06T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-08-18T23:15:00Z", "2026-08-19T08:25:00Z"],
+    "warnings": [],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "originals": ["08:15 in Tokyo", "09:25 at London"],
+    "sourceIndices": [18, 52],
+    "sourceCores": ["08:15 in Tokyo", "09:25 at London"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 32
+      },
+      {
+        "start": 52,
+        "end": 67
+      }
+    ],
+    "sourceZones": ["Asia/Tokyo", "Europe/London"],
+    "sourceLabels": ["Tokyo", "London"],
+    "assumptions": [
+      ["Date from message context: 2026-08-19"],
+      ["Date from message context: 2026-08-19"]
+    ],
+    "rowOccurrences": [1, 1],
+    "rangeGroups": [null, null]
   }
 ]

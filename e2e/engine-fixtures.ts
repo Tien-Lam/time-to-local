@@ -102,6 +102,25 @@ export async function verifyProductionFixtures(page: Page) {
               );
         }
       }
+    if (f.rangeGroups !== undefined)
+      for (let n = 0; n < f.rangeGroups.length; n++)
+        for (let j = 0; j < n; j++) {
+          if (
+            f.rangeGroups[n] !== null &&
+            f.rangeGroups[j] !== null &&
+            f.rangeGroups[n] !== f.rangeGroups[j]
+          )
+            expect(output.conversion.results[n].rangeId, f.name).not.toBe(
+              output.conversion.results[j].rangeId,
+            );
+          if (
+            f.rangeGroups[n] !== null &&
+            f.rangeGroups[n] === f.rangeGroups[j]
+          )
+            expect(output.conversion.results[n].group, f.name).toBe(
+              output.conversion.results[j].group,
+            );
+        }
     if ("cardinality" in f)
       expect(output.conversion.results, f.name).toHaveLength(f.cardinality!);
     if ("sourceLabels" in f)

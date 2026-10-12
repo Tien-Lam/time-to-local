@@ -17,7 +17,17 @@ export type ContextDecision =
   | { kind: "owned"; owner: ContextOwner; event: Span }
   | { kind: "blocked" }
   | { kind: "legacy" };
-export type ContextEvent = Span & { clock: boolean; range?: boolean };
+export type ContextEvent = Span & {
+  clock: boolean;
+  range?: boolean;
+  assertion?: boolean;
+};
+export type TemporalEvidence = Span & {
+  explicitClock: boolean;
+  calendarAssertion: boolean;
+  relativeAssertion: boolean;
+  vaguePeriod: boolean;
+};
 export interface ContextPlan {
   decisionFor(event: Span): ContextDecision;
   maySeedLegacyContext(event: Span): boolean;
@@ -28,11 +38,18 @@ export interface PreparedMessage {
   parserText: string;
   semanticText: string;
   masks: Span[];
+  quoteSpans: Span[];
+  fenceSpans: Span[];
   owners: ContextOwner[];
   savedDates: Array<{ span: Span; text: string }>;
   planFor(events: ContextEvent[]): ContextPlan;
 }
-type Line = Span & { content: string; contentEnd: number; fenced: boolean };
+type Line = Span & {
+  content: string;
+  contentEnd: number;
+  fenced: boolean;
+  quotePrefix: number;
+};
 const months =
   "(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\.?";
 const weekday =
@@ -179,7 +196,8 @@ function linesOf(text: string): Line[] {
       )
         fence = undefined;
     }
-    lines.push({ start, end, contentEnd, content, fenced });
+    const quotePrefix = content.match(/^[ \t]*(?:>[ \t]*)+/)?.[0].length || 0;
+    lines.push({ start, end, contentEnd, content, fenced, quotePrefix });
     start = end;
   }
   return lines;
@@ -226,12 +244,33 @@ export function prepareMessage(
     value: string,
     kind: "date" | "standalone-date" | "temporal" | "clock",
   ) => boolean,
+  evidence: (value: string) => TemporalEvidence[],
+  adjacentZoneLength: (suffix: string) => number,
 ): PreparedMessage {
   const lines = linesOf(text),
     owners: ContextOwner[] = [],
     masks: Span[] = [],
     savedDates: Array<{ span: Span; text: string }> = [];
-  const covered = new Set<number>();
+  const covered = new Set<number>(),
+    quoted = lines.filter((line) => line.quotePrefix),
+    fenced = lines.filter((line) => line.fenced),
+    contextBoundaries = lines.flatMap((line, index) =>
+      !!line.quotePrefix !== !!lines[index - 1]?.quotePrefix ||
+      line.fenced !== !!lines[index - 1]?.fenced
+        ? [line.start]
+        : [],
+    );
+  // Standalone quoted/fenced dates cannot enter native cross-line merging,
+  // even within the same block. Preserve ordinary date-only input.
+  for (const line of lines.filter((line) => line.quotePrefix || line.fenced)) {
+    const raw = line.content.slice(line.quotePrefix);
+    const token = dateToken(line, raw, line.quotePrefix);
+    const value = token?.text || raw;
+    if (!inspect(value, "standalone-date")) continue;
+    const span = { start: line.start + line.quotePrefix, end: line.contentEnd };
+    masks.push(span);
+    savedDates.push({ span, text: raw });
+  }
 
   // Validate a complete blank-delimited record, including fields after Time.
   for (let first = 0; first < lines.length;) {
@@ -277,6 +316,7 @@ export function prepareMessage(
           if (
             !field ||
             field.line.fenced ||
+            field.line.quotePrefix ||
             !["date", "time", "title", "activity", "location"].includes(
               field.label,
             ) ||
@@ -300,6 +340,20 @@ export function prepareMessage(
           : [],
         eligible,
       });
+      if (eligible)
+        for (const field of fields) {
+          if (!field || ["date", "time"].includes(field.label)) continue;
+          for (const fragment of evidence(maskMetadata(field.text)))
+            if (
+              !fragment.explicitClock &&
+              !fragment.calendarAssertion &&
+              !fragment.relativeAssertion
+            )
+              masks.push({
+                start: field.value.start + fragment.start,
+                end: field.value.start + fragment.end,
+              });
+        }
       for (let index = first; index < last; index++) covered.add(index);
       // A declined record must not let a standalone Date field directly
       // merge into a later unlabeled clock before whole-block validation.
@@ -319,6 +373,7 @@ export function prepareMessage(
     const header = lines[first];
     if (
       covered.has(first) ||
+      header.quotePrefix ||
       marker.test(header.content) ||
       !dateCandidate.test(header.content) ||
       inspect(header.content, "clock")
@@ -331,6 +386,7 @@ export function prepareMessage(
     while (last < lines.length && !covered.has(last)) {
       const line = lines[last];
       if (
+        line.quotePrefix ||
         /^\s*#{1,6}\s/.test(line.content) ||
         (!marker.test(line.content) && dateCandidate.test(line.content))
       )
@@ -358,7 +414,7 @@ export function prepareMessage(
         if (items.length || ++initialBlank > 1) uninterrupted = false;
       } else if (!match) uninterrupted = false;
       else {
-        if (line.fenced) uninterrupted = false;
+        if (line.fenced || line.quotePrefix) uninterrupted = false;
         indent ??= match[1];
         if (match[1] !== indent) uninterrupted = false;
         masks.push({
@@ -410,18 +466,82 @@ export function prepareMessage(
   );
   masks.push(...metadataMasks);
 
+  // A certain leading clock retains native modifiers ("in the morning", "at
+  // night"). Only later parser-confirmed vague periods become opaque activity.
+  // A structural reset stops date ownership, not clock-first activity meaning.
+  const vaguePeriods = new Map<string, boolean>();
+  for (const owner of owners) {
+    if (!owner.eligible) continue;
+    for (const item of owner.items) {
+      const value = maskMetadata(text.slice(item.value.start, item.value.end));
+      let leadingClock: boolean | undefined;
+      for (const match of value.matchAll(
+        /\b(?:morning|afternoon|evening|night)\b/gi,
+      )) {
+        const before = value.slice(0, match.index!);
+        const word = match[0].toLowerCase();
+        if (
+          (word === "night" && /\b(?:at|last)[ \t]+$/i.test(before)) ||
+          (/^(?:morning|afternoon)$/.test(word) &&
+            /\bin[ \t]+the[ \t]+$/i.test(before))
+        )
+          continue;
+        if (leadingClock === undefined) {
+          const prefix = evidence(before);
+          leadingClock = !!prefix[0]?.explicitClock && prefix[0].start === 0;
+        }
+        if (!vaguePeriods.has(word))
+          vaguePeriods.set(
+            word,
+            evidence(match[0]).some(
+              (event) =>
+                event.vaguePeriod &&
+                !event.explicitClock &&
+                !event.relativeAssertion &&
+                !event.calendarAssertion,
+            ),
+          );
+        if (!leadingClock || !vaguePeriods.get(word)) continue;
+        masks.push({
+          start: item.value.start + match.index!,
+          end: item.value.start + match.index! + match[0].length,
+        });
+      }
+    }
+  }
+
   return {
     parserText: opaqueText(text, masks),
     semanticText: opaqueText(text, metadataMasks),
     masks,
+    quoteSpans: quoted,
+    fenceSpans: fenced,
     owners,
     savedDates,
     planFor(events) {
       const owned: Array<{ owner: ContextOwner; event: Span }> = [];
+      const ambiguousExactTimeTitle = (value: string): boolean => {
+        for (const match of value.matchAll(
+          /[-–][ \t]*(?:noon|midday|midnight)\b(?=[ \t]+\S)/gi,
+        )) {
+          const suffix = value.slice(match.index! + match[0].length),
+            zoneLength = adjacentZoneLength(suffix);
+          // A validated source zone after an exact endpoint is part of the
+          // genuine range. Remaining words still make title intent unsafe.
+          if (
+            !zoneLength ||
+            !/^[ \t]*[.,;!?]*[ \t]*$/.test(suffix.slice(zoneLength))
+          )
+            return true;
+        }
+        return false;
+      };
       for (const owner of owners) {
         let valid = owner.eligible;
         for (const item of owner.items) {
-          const detected = events.filter((event) => overlap(item.value, event));
+          const detected = events.filter(
+            (event) => event.assertion !== false && overlap(item.value, event),
+          );
           const first = detected[0];
           // The genuine first event must begin at the item value. Explicit
           // dates within that clock/range are allowed; independent dates stop it.
@@ -430,24 +550,44 @@ export function prepareMessage(
             !!first &&
             first.clock &&
             first.start === item.value.start &&
+            !ambiguousExactTimeTitle(
+              maskMetadata(text.slice(item.value.start, item.value.end)),
+            ) &&
+            !/:[ \t]*(?:noon|midday|midnight)\b/i.test(
+              maskMetadata(text.slice(item.value.start, item.value.end)),
+            ) &&
             detected.every(
               (event) => event.clock && contains(item.value, event),
             );
-          if (owner.kind === "record")
-            valid &&=
-              detected.length === 1 ||
-              (detected.length === 2 &&
-                detected.every((event) => !event.range) &&
-                qualifiedRangeBetween(
-                  text.slice(detected[0].end, detected[1].start),
-                ));
+          // Additional independent temporal assertions decline carry. A
+          // qualified range remains a range; explicit double-hyphen clock
+          // sequences retain their independent-point behavior in lists.
+          valid &&=
+            detected.length === 1 ||
+            (detected.length === 2 &&
+              detected.every((event) => !event.range) &&
+              qualifiedRangeBetween(
+                text.slice(detected[0].end, detected[1].start),
+              )) ||
+            (owner.kind === "heading-list" &&
+              detected.length > 1 &&
+              detected.every(
+                (event, index) =>
+                  !event.range &&
+                  (!index ||
+                    /^[ \t]+--[ \t]+$/.test(
+                      text.slice(detected[index - 1].end, event.start),
+                    )),
+              ));
           if (valid) owned.push({ owner, event: item.value });
         }
       }
       const decisionFor = (event: Span): ContextDecision => {
         const entry = owned.find((entry) => contains(entry.event, event));
         if (entry) return { kind: "owned", ...entry };
-        return owners.some((owner) => overlap(owner.domain, event))
+        return owners.some((owner) => overlap(owner.domain, event)) ||
+          quoted.some((line) => overlap(line, event)) ||
+          fenced.some((line) => overlap(line, event))
           ? { kind: "blocked" }
           : { kind: "legacy" };
       };
@@ -463,9 +603,14 @@ export function prepareMessage(
           );
         },
         resetsLegacyContextBetween(leftEnd, rightStart) {
-          return owners.some(
-            (owner) =>
-              owner.domain.start <= rightStart && owner.domain.end >= leftEnd,
+          return (
+            contextBoundaries.some(
+              (boundary) => boundary >= leftEnd && boundary <= rightStart,
+            ) ||
+            owners.some(
+              (owner) =>
+                owner.domain.start <= rightStart && owner.domain.end >= leftEnd,
+            )
           );
         },
       };

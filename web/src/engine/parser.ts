@@ -17,10 +17,14 @@ export function startsAfterUnrelatedDate(c: ParsedComponents): boolean {
 }
 function referenceDateParts(c: ParsedComponents) {
   const tags = c.tags();
-  const relative = [...tags].some(
-    (tag) =>
-      tag.startsWith("casualReference/") || tag === "result/relativeDate",
-  );
+  // Casual clock labels supply hours, not calendar provenance. A merged
+  // stated date plus noon/midnight therefore keeps its certain date parts.
+  const relative =
+    tags.has("result/relativeDate") ||
+    tags.has("parser/ENCasualDateParser") ||
+    [...tags].some((tag) =>
+      /^casualReference\/(?:now|today|tomorrow|yesterday|tonight)$/.test(tag),
+    );
   return Object.fromEntries(
     dateParts.map((part) => [
       part,

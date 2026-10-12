@@ -32,7 +32,8 @@ import {
   prepareMessage,
   qualifiedRangeBetween,
 } from "./date-context";
-import type { ContextOwner } from "./date-context";
+import type { ContextOwner, TemporalEvidence } from "./date-context";
+import { collapseRepeatedAtomicRanges } from "./range-dedup";
 export { MAX_INPUT } from "./limits";
 type ResolvedOwner = {
   date: TemporalTypes.PlainDate;
@@ -97,6 +98,71 @@ function paragraph(text: string, index: number): number {
   return (text.slice(0, index).match(/\n\s*\n/g) || []).length;
 }
 
+function adjacentZoneToken(suffix: string): RegExpMatchArray | null {
+  return suffix.match(
+    /^[ \t]+(?:(?:in|at)[ \t]+)?((?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−]\d{1,2}(?::?\d{2})?|(?:US[ \t]+)?(?:Pacific|Eastern|Central|Mountain)(?:[ \t]+Time)?|[A-Z]{2,5}\b)/i,
+  );
+}
+function zoneTokenBoundary(suffix: string, token: RegExpMatchArray): boolean {
+  return !/^[A-Za-z0-9_+\-−/]|^:\S/.test(suffix.slice(token[0].length));
+}
+
+/** Literal adjacent token, validated independently of subsequent activity. */
+function adjacentZoneSpan(
+  suffix: string,
+): { text: string; choices: ZoneChoice[] } | undefined {
+  const explicit = adjacentZoneToken(suffix);
+  if (!explicit) return;
+  // Validate after greedy lexical extraction, so optional Time/offset parts
+  // cannot backtrack into a shorter recognized alias at an invalid boundary.
+  if (!zoneTokenBoundary(suffix, explicit)) return;
+  const choices = explicitZones(explicit[1]);
+  if (choices?.length) return { text: explicit[0], choices };
+}
+
+/** Only a complete offset followed by a spaced activity colon may end here. */
+function offsetValidationToken(token: string, following: string): string {
+  const core = token.slice(0, -1);
+  return token.endsWith(":") &&
+    /^[ \t]+\S/.test(following) &&
+    explicitZones(core)?.length
+    ? core
+    : token;
+}
+
+/** Exact offline city prefix only; trailing activity never becomes a query. */
+function adjacentCitySpan(
+  suffix: string,
+  activityStart?: number,
+): string | undefined {
+  const match = suffix.match(
+    /^[ \t]+(?:in|at)[ \t]+([\p{L}][\p{L} .'-]{1,40})/iu,
+  );
+  if (!match) return;
+  const words = [...match[1].matchAll(/\S+/g)];
+  for (let count = Math.min(words.length, 4); count > 0; count--) {
+    const last = words[count - 1],
+      end = last.index! + last[0].length,
+      resolved = resolveCity(match[1].slice(0, end));
+    if (!resolved.corrected && resolved.zones.length)
+      return match[0].slice(0, match[0].length - match[1].length + end);
+  }
+  // A parser-confirmed activity boundary makes the preceding complete city
+  // query independent. Retain the existing unique-typo rule only for that
+  // whole query; never try corrected arbitrary prefixes of trailing prose.
+  if (activityStart !== undefined) {
+    const complete = suffix.slice(0, activityStart).trimEnd();
+    const query = complete.match(/^[ \t]+(?:in|at)[ \t]+(.+)$/i)?.[1];
+    if (
+      query &&
+      query.length <= 40 &&
+      query.split(/[ \t]+/).length <= 4 &&
+      resolveCity(query).zones.length
+    )
+      return complete;
+  }
+}
+
 function choicesFor(
   text: string,
   suffix: string,
@@ -111,7 +177,15 @@ function choicesFor(
   )[0];
   const combined = text + adjacent;
   const numeric = combined.match(OFFSET_TOKEN);
-  if (numeric && !explicitZones(numeric[0])?.length) {
+  if (
+    numeric &&
+    !explicitZones(
+      offsetValidationToken(
+        numeric[0],
+        combined.slice(numeric.index! + numeric[0].length),
+      ),
+    )?.length
+  ) {
     warnings.push(
       `Invalid timezone offset ${numeric[0]}. Correct it and try again.`,
     );
@@ -126,12 +200,14 @@ function choicesFor(
   }
   const explicit = explicitZones(text);
   if (explicit) return explicit;
-  const suffixZone = adjacent.match(
-    /^\s*(?:(?:in|at)\s+)?((?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)\s*[+\-−][\d:]+|(?:US\s+)?(?:Pacific|Eastern|Central|Mountain)(?:\s+Time)?|[A-Z]{2,5}\b)/i,
-  );
-  if (suffixZone) {
-    const choices = explicitZones(suffixZone[1]);
-    if (choices) return choices;
+  const suffixZone = adjacentZoneSpan(adjacent);
+  if (suffixZone) return suffixZone.choices;
+  const token = adjacentZoneToken(adjacent);
+  if (token && !zoneTokenBoundary(adjacent, token)) {
+    warnings.push(
+      `Invalid timezone ${adjacent.trim()}. Correct it and try again.`,
+    );
+    return [];
   }
   const city = adjacent.match(/^\s+(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/iu);
   if (city) {
@@ -192,11 +268,16 @@ function choicesFor(
   ];
 }
 
-function boundedZoneSuffix(suffix: string): string {
-  const explicit = suffix.match(
-    /^\s+(?:(?:in|at)\s+)?((?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][\d:]+|(?:US[ \t]+)?(?:Pacific|Eastern|Central|Mountain)(?:[ \t]+Time)?|[A-Z]{2,5}\b)(?![A-Za-z0-9_+\-−:/])/i,
+function boundedZoneSuffix(
+  suffix: string,
+  includeCity = false,
+  activityStart?: number,
+): string {
+  return (
+    adjacentZoneSpan(suffix)?.text ||
+    (includeCity && adjacentCitySpan(suffix, activityStart)) ||
+    suffix
   );
-  return explicit && explicitZones(explicit[1])?.length ? explicit[0] : suffix;
 }
 
 export function convert(text: string, options: ConversionOptions): Conversion {
@@ -218,52 +299,107 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     instant: new Date(now),
     timezone: offsetMinutes(options.sourceZone, now),
   };
-  // Each preparation/plan belongs to this call, before native extraction can
-  // consume a sibling list marker or merge a structural date into a clock.
-  const prepared = prepareMessage(text, (value, kind) => {
-    // Link destinations are labels' metadata, not temporal assertions. Never
-    // inspect a URL for dates; visible link text retains its ordinary meaning.
-    const bounded = kind === "temporal" ? maskMetadata(value) : value;
-    const detected = (kind === "date" ? monthFirst : parser).parse(
-      bounded,
-      ref,
-      {
-        timezones: timezoneHints,
-      },
-    );
-    if (kind === "clock")
-      return detected.some((event) => event.start.isCertain("hour"));
-    if (kind === "temporal") return detected.length > 0;
-    if (kind === "standalone-date") {
-      // Partial/uncertain envelopes never become owners. Still protect a
-      // native standalone calendar detection from merging into another field,
-      // and restore its original detection when the message has no clocks.
+  const qualify = (
+    event: ParsedResult,
+  ): Omit<TemporalEvidence, "start" | "end"> => {
+    const components = [event.start, ...(event.end ? [event.end] : [])];
+    const explicitClock = components.some((c) => c.isCertain("hour"));
+    const relativeAssertion = components.some((c) => {
+      const tags = c.tags();
       return (
-        detected.some((event) => event.start.isCertain("day")) &&
-        detected.every(
-          (event) =>
-            !event.start.isCertain("hour") && !event.end?.isCertain("hour"),
+        tags.has("result/relativeDate") ||
+        tags.has("parser/ENCasualDateParser") ||
+        /^\s*(?:this|last|past|next|after\s+this)\s+(?:week|month|year)s?\b/i.test(
+          event.text,
         )
       );
-    }
-    const date = detected[0];
-    if (
-      detected.length !== 1 ||
-      !date ||
-      date.index !== 0 ||
-      date.text.length !== bounded.length ||
-      date.end ||
-      !date.start.isCertain("day") ||
-      date.start.isCertain("hour")
-    )
-      return false;
-    try {
-      componentDate(date.start);
-      return true;
-    } catch {
-      return false;
-    }
-  });
+    });
+    return {
+      explicitClock,
+      relativeAssertion,
+      calendarAssertion: components.some(
+        (c) =>
+          (c.isCertain("day") && c.isCertain("month")) ||
+          (c.isCertain("month") && c.isCertain("year")) ||
+          c.isCertain("weekday"),
+      ),
+      vaguePeriod:
+        !explicitClock &&
+        components.some((c) =>
+          [...c.tags()].some((tag) =>
+            /^casualReference\/(?:morning|afternoon|evening)$/.test(tag),
+          ),
+        ),
+    };
+  };
+  const evidence = (value: string): TemporalEvidence[] =>
+    parser.parse(value, ref, { timezones: timezoneHints }).map((event) => {
+      const leading = event.text.match(/^\s+/)?.[0].length || 0;
+      return {
+        start: event.index + leading,
+        end: event.index + event.text.length,
+        ...qualify(event),
+      };
+    });
+  // Each preparation/plan belongs to this call, before native extraction can
+  // consume a sibling list marker or merge a structural date into a clock.
+  const prepared = prepareMessage(
+    text,
+    (value, kind) => {
+      // Link destinations are labels' metadata, not temporal assertions. Never
+      // inspect a URL for dates; visible link text retains its ordinary meaning.
+      const bounded = kind === "temporal" ? maskMetadata(value) : value;
+      const detected = (kind === "date" ? monthFirst : parser).parse(
+        bounded,
+        ref,
+        {
+          timezones: timezoneHints,
+        },
+      );
+      if (kind === "clock")
+        return detected.some((event) => event.start.isCertain("hour"));
+      if (kind === "temporal")
+        return detected.some((event) => {
+          const semantic = qualify(event);
+          return (
+            semantic.explicitClock ||
+            semantic.calendarAssertion ||
+            semantic.relativeAssertion
+          );
+        });
+      if (kind === "standalone-date") {
+        // Partial/uncertain envelopes never become owners. Still protect a
+        // native standalone calendar detection from merging into another field,
+        // and restore its original detection when the message has no clocks.
+        return (
+          detected.some((event) => event.start.isCertain("day")) &&
+          detected.every(
+            (event) =>
+              !event.start.isCertain("hour") && !event.end?.isCertain("hour"),
+          )
+        );
+      }
+      const date = detected[0];
+      if (
+        detected.length !== 1 ||
+        !date ||
+        date.index !== 0 ||
+        date.text.length !== bounded.length ||
+        date.end ||
+        !date.start.isCertain("day") ||
+        date.start.isCertain("hour")
+      )
+        return false;
+      try {
+        componentDate(date.start);
+        return true;
+      } catch {
+        return false;
+      }
+    },
+    evidence,
+    (suffix) => adjacentZoneSpan(suffix)?.text.length || 0,
+  );
   // OFFSET_TOKEN also sees spaced clock separators in "UTC - 2am" or
   // "UTC -- 2am". The latter retains independent points, never a new range.
   // Protect only real clock-first structural items/Time values, with
@@ -337,10 +473,14 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       const leading = event.text.match(/^\s+/)?.[0].length || 0;
       if (
         !leading ||
-        !prepared.owners.some(
-          (owner) =>
-            owner.domain.start < event.index + event.text.length &&
-            owner.domain.end > event.index,
+        ![
+          ...prepared.owners.map((owner) => owner.domain),
+          ...prepared.quoteSpans,
+          ...prepared.fenceSpans,
+        ].some(
+          (span) =>
+            span.start < event.index + event.text.length &&
+            span.end > event.index,
         )
       )
         return event;
@@ -380,6 +520,14 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       end: event.index + event.text.length,
       clock: event.start.isCertain("hour"),
       range: !!event.end,
+      assertion: (() => {
+        const semantic = qualify(event);
+        return (
+          semantic.explicitClock ||
+          semantic.calendarAssertion ||
+          semantic.relativeAssertion
+        );
+      })(),
     })),
   );
   const resolvedOwners = new Map<
@@ -387,12 +535,18 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     Map<string, ResolvedOwner | undefined>
   >();
   const warnings: string[] = [],
-    results: TimeResult[] = [];
+    results: TimeResult[] = [],
+    incompleteRangeIds = new Set<string>();
   const invalidOffsets = [
     ...prepared.semanticText.matchAll(OFFSET_TOKEN),
   ].filter(
     (m) =>
-      !explicitZones(m[0])?.length &&
+      !explicitZones(
+        offsetValidationToken(
+          m[0],
+          prepared.semanticText.slice(m.index! + m[0].length),
+        ),
+      )?.length &&
       !clockSeparators.some((match) => match.index === m.index) &&
       !prepared.masks.some(
         (mask) => m.index! < mask.end && m.index! + m[0].length > mask.start,
@@ -476,6 +630,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const date = componentDate(r.start),
       explicitDate =
         r.start.isCertain("day") ||
+        (decision.kind !== "legacy" &&
+          r.start.isCertain("hour") &&
+          (r.start.isCertain("weekday") ||
+            r.end?.isCertain("weekday") ||
+            qualify(r).relativeAssertion)) ||
         (decision.kind !== "legacy" && !!r.end?.isCertain("day"));
     if (explicitDate && plan.maySeedLegacyContext(eventSpan)) {
       contextDate = date;
@@ -518,40 +677,75 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       r.index + r.text.length + 100,
       decision.kind === "owned" ? decision.event.end : text.length,
     );
+    // Native clock parsing can consume a dangling city connector before the
+    // activity barrier. Return it to the adjacent-city envelope without
+    // changing parsed clock components or the authored start position.
+    const connector =
+      decision.kind === "owned"
+        ? matchedText.match(/[ \t]+(?:in|at)$/i)?.[0] || ""
+        : "";
+    const suffixStart = r.index + r.text.length - connector.length;
+    const sourceCore = connector
+      ? matchedText.slice(0, -connector.length)
+      : matchedText;
     const rawSuffix = text
-      .slice(r.index + r.text.length, suffixEnd)
+      .slice(suffixStart, suffixEnd)
       .split(/\n|[.;!?]|,(?!\s*\d)/)[0];
+    const activityStart = prepared.masks.find(
+      (mask) =>
+        mask.start >= suffixStart &&
+        mask.start < suffixStart + rawSuffix.length &&
+        /^(?:morning|afternoon|evening|night)$/i.test(
+          text.slice(mask.start, mask.end),
+        ),
+    )?.start;
+    const activityOffset =
+      activityStart === undefined ? undefined : activityStart - suffixStart;
     const displaySuffix =
-      decision.kind === "legacy" ? rawSuffix : boundedZoneSuffix(rawSuffix);
-    const semanticSuffix = zoneLookupText(rawSuffix, r.index + r.text.length);
+      decision.kind === "legacy"
+        ? rawSuffix
+        : boundedZoneSuffix(
+            rawSuffix,
+            decision.kind === "owned",
+            activityOffset,
+          );
+    const semanticSuffix = zoneLookupText(rawSuffix, suffixStart);
     const suffix =
       decision.kind === "legacy"
         ? semanticSuffix
-        : boundedZoneSuffix(semanticSuffix);
+        : boundedZoneSuffix(
+            semanticSuffix,
+            decision.kind === "owned",
+            activityOffset,
+          );
     const zoneSuffix = suffix.split(
       /\b(?:to|with|because|please|but|then|and)\b/i,
     )[0];
     const displayZoneSuffix = displaySuffix.split(
       /\b(?:to|with|because|please|but|then|and)\b/i,
     )[0];
-    const leadingZone = displayZoneSuffix
-      .trim()
-      .match(/^(?:UTC|GMT)\s*[+\-−][\d:]+|^[A-Z]{2,5}\b/i);
-    const original = (
-      matchedText +
-      (/^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z0-9_+-]*\/))/.test(
-        displayZoneSuffix,
-      ) ||
-      (leadingZone && explicitZones(leadingZone[0])?.length)
-        ? displayZoneSuffix
-        : "")
-    ).trim();
+    const assertedZone = adjacentZoneSpan(displayZoneSuffix);
+    const sourceSuffix =
+      assertedZone?.text ||
+      (decision.kind === "legacy"
+        ? /^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z0-9_+-]*\/))/.test(
+            displayZoneSuffix,
+          )
+          ? displayZoneSuffix
+          : ""
+        : adjacentCitySpan(displayZoneSuffix, activityOffset) || "");
+    const original = (sourceCore + sourceSuffix).trim();
     const endpoints: [ParsedComponents, "start" | "end" | undefined][] = [
       [r.start, r.end ? "start" : undefined],
       ...(r.end ? [[r.end, "end"] as [ParsedComponents, "end"]] : []),
     ];
+    const candidateRangeId = r.end
+      ? `range-${r.index}`
+      : priorResults.length
+        ? `range-${prior.index}`
+        : undefined;
     const zones = [
-      ...zoneLookupText(matchedText + zoneSuffix, r.index).matchAll(
+      ...zoneLookupText(sourceCore + zoneSuffix, r.index).matchAll(
         /\b(?:UTC|GMT)\s*[+\-−][\d:]+|\b(?:[A-Z]{2,5})\b/gi,
       ),
     ].filter((m) => !!explicitZones(m[0]));
@@ -560,14 +754,16 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       const zoneText =
         r.end && zones.length > 1
           ? zones[endpoint === "end" ? zones.length - 1 : 0][0]
-          : zoneLookupText(matchedText, r.index);
+          : zoneLookupText(sourceCore, r.index);
       const choices = choicesFor(
         zoneText,
-        zoneLookupText(suffix, r.index + r.text.length),
+        zoneLookupText(suffix, suffixStart),
         c,
         options.sourceZone,
         warnings,
       );
+      if (candidateRangeId && !choices.length)
+        incompleteRangeIds.add(candidateRangeId);
       for (const choice of choices) {
         const zoneRef = {
           instant: new Date(now),
@@ -575,7 +771,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         };
         const local = parser.parse(
           maskOffsets(
-            prepared.semanticText.slice(r.index, r.index + r.text.length),
+            prepared.parserText.slice(r.index, r.index + r.text.length),
             r.index,
           ),
           zoneRef,
@@ -704,6 +900,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           assumptions.push(referenceAssumption(now, choice.zone));
         const resolved = civilInstants(civil, choice.zone);
         if (resolved.nonexistent) {
+          if (candidateRangeId) incompleteRangeIds.add(candidateRangeId);
           warnings.push(
             `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or timezone in your message${choice.assumption?.startsWith("Source timezone assumed:") ? ", or change Source timezone in Message interpretation" : ""}.`,
           );
@@ -777,8 +974,35 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       occurrences: 1,
     });
   }
+  const rangeGroups = new Map<string, TimeResult[]>();
+  for (const row of results) {
+    if (!row.rangeId) continue;
+    const peers = rangeGroups.get(row.rangeId) || [];
+    peers.push(row);
+    rangeGroups.set(row.rangeId, peers);
+  }
+  const eligibleRangeIds = new Set<string>();
+  for (const [rangeId, peers] of rangeGroups) {
+    const first = plan.decisionFor({
+      start: peers[0].sourceIndex,
+      end: peers[0].sourceIndex + peers[0].original.length,
+    });
+    if (
+      first.kind === "owned" &&
+      !incompleteRangeIds.has(rangeId) &&
+      peers.every((row) => {
+        const decision = plan.decisionFor({
+          start: row.sourceIndex,
+          end: row.sourceIndex + row.original.length,
+        });
+        return decision.kind === "owned" && decision.event === first.event;
+      })
+    )
+      eligibleRangeIds.add(rangeId);
+  }
+  const collapsed = collapseRepeatedAtomicRanges(results, eligibleRangeIds);
   const merged = new Map<string, TimeResult>();
-  for (const r of results.sort((a, b) => a.sourceIndex - b.sourceIndex)) {
+  for (const r of collapsed.sort((a, b) => a.sourceIndex - b.sourceIndex)) {
     const source = r.sourceZone === "+00:00" ? "UTC" : r.sourceZone;
     const key = `${r.instant || r.dateOnly}|${source}|${r.endpoint || ""}|${r.rangeId || ""}`;
     const previous = merged.get(key);

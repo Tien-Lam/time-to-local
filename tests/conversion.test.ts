@@ -24,6 +24,9 @@ describe("independently specified temporal fixtures", () => {
           ? f.hourCycle
           : options.hourCycle) as ConversionOptions["hourCycle"],
       });
+      expect(new Set(result.results.map((r) => r.id)).size).toBe(
+        result.results.length,
+      );
       expect(
         result.results.flatMap((r) => (r.instant ? [r.instant] : [])),
       ).toEqual(f.instants);
@@ -76,6 +79,30 @@ describe("independently specified temporal fixtures", () => {
                 );
           }
         }
+      if (f.rangeGroups !== undefined)
+        for (let i = 0; i < f.rangeGroups.length; i++)
+          for (let j = 0; j < i; j++) {
+            if (
+              f.rangeGroups[i] !== null &&
+              f.rangeGroups[j] !== null &&
+              f.rangeGroups[i] !== f.rangeGroups[j]
+            )
+              expect(result.results[i].rangeId).not.toBe(
+                result.results[j].rangeId,
+              );
+            if (
+              f.rangeGroups[i] !== null &&
+              f.rangeGroups[i] === f.rangeGroups[j]
+            ) {
+              // An endpoint's alternatives share a group; rangeId joins roles.
+              if (f.endpoints?.[i] === f.endpoints?.[j])
+                expect(result.results[i].group).toBe(result.results[j].group);
+              else
+                expect(result.results[i].group).not.toBe(
+                  result.results[j].group,
+                );
+            }
+          }
       if (f.cardinality !== undefined)
         expect(result.results).toHaveLength(f.cardinality);
       if (f.sourceLabels !== undefined)

@@ -166,7 +166,7 @@ To investigate a warning, compare `ui.zone-focus`/`ui.zone-open` timestamps with
 
 ## Verification and evidence
 
-`tests/fixtures/temporal.json` has independently specified instant/date expectations. Unit checks use the real parser; browser checks run the same fixtures in the built worker. `tests/fixtures/resilience-corpus.json` preserves 353 historical inputs and metadata as standalone web data, with immutable Git provenance. Maintain it directly; resilience/count comparisons are an inventory, not an accuracy oracle.
+`tests/fixtures/temporal.json` has independently specified instant/date expectations. Unit checks use the real parser; browser checks run the same fixtures in the built worker. `tests/fixtures/resilience-corpus.json` contains 423 inputs and metadata as standalone web data, retaining historical cases with immutable Git provenance and directly maintained regressions. Resilience/count comparisons are an inventory, not an accuracy oracle.
 
 ```bash
 bun run corpus:audit
