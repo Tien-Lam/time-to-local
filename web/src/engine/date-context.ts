@@ -1,0 +1,344 @@
+/** Original UTF-16 offsets; preparation never changes the document's length. */
+export type Span = { start: number; end: number };
+export type DateToken = {
+  span: Span;
+  text: string;
+  weekday?: number;
+};
+type Item = { value: Span; indent: string; uninterrupted: boolean };
+export type ContextOwner = {
+  kind: "heading-list" | "record";
+  date: DateToken;
+  domain: Span;
+  items: Item[];
+  eligible: boolean;
+};
+export type ContextDecision =
+  | { kind: "owned"; owner: ContextOwner; event: Span }
+  | { kind: "blocked" }
+  | { kind: "legacy" };
+export type ContextEvent = Span & { clock: boolean };
+export interface ContextPlan {
+  decisionFor(event: Span): ContextDecision;
+  maySeedLegacyContext(event: Span): boolean;
+  crossesEventBoundary(left: Span, right: Span): boolean;
+  resetsLegacyContextBetween(leftEnd: number, rightStart: number): boolean;
+}
+export interface PreparedMessage {
+  parserText: string;
+  masks: Span[];
+  owners: ContextOwner[];
+  savedDates: Array<{ span: Span; text: string }>;
+  planFor(events: ContextEvent[]): ContextPlan;
+}
+type Line = Span & { content: string; contentEnd: number; fenced: boolean };
+const months =
+  "(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\.?";
+const weekday =
+  "(?:Mon(?:day)?|Tue(?:s(?:day)?)?|Wed(?:nesday)?|Thu(?:rs(?:day)?)?|Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?)\\.?";
+const day = "\\d{1,2}(?:st|nd|rd|th)?";
+const completeDate = new RegExp(
+  `^(?:(${weekday})[, \\t]+)?((?:${months}[ \\t]+${day}|${day}[ \\t]+${months})(?:,?[ \\t]+\\d{4})?)(?:[ \\t]+\\((${weekday})\\))?$`,
+  "i",
+);
+const dateCandidate = new RegExp(
+  `\\b(?:${months}[ \\t]+${day}|${day}[ \\t]+${months})\\b`,
+  "i",
+);
+const marker = /^([ \t]*)([-*+]|\d+[.)])([ \t]+)(.*)$/;
+const overlap = (a: Span, b: Span) => a.start < b.end && a.end > b.start;
+const contains = (a: Span, b: Span) => a.start <= b.start && a.end >= b.end;
+
+function linesOf(text: string): Line[] {
+  const lines: Line[] = [];
+  let start = 0,
+    fence = "";
+  while (start < text.length) {
+    const newline = text.indexOf("\n", start);
+    const end = newline < 0 ? text.length : newline + 1;
+    const contentEnd =
+      newline < 0 ? end : text[newline - 1] === "\r" ? newline - 1 : newline;
+    const content = text.slice(start, contentEnd);
+    const delimiter = content.match(/^\s*(`{3,}|~{3,})/);
+    const fenced = !!fence || !!delimiter;
+    if (delimiter) {
+      if (!fence) fence = delimiter[1][0];
+      else if (delimiter[1][0] === fence) fence = "";
+    }
+    lines.push({ start, end, contentEnd, content, fenced });
+    start = end;
+  }
+  return lines;
+}
+
+/** Shape alone cannot establish an owner; validate uses the production parser. */
+function dateToken(
+  line: Line,
+  raw: string,
+  offset: number,
+): DateToken | undefined {
+  let value = raw.trim().replace(/:$/, "").trim();
+  value = value.replace(/^#{1,6}[ \t]+/, "");
+  if (value.startsWith("**") && value.endsWith("**"))
+    value = value.slice(2, -2).trim().replace(/:$/, "").trim();
+  const match = value.match(completeDate);
+  if (!match || (match[1] && match[3])) return;
+  const name = match[1] || match[3];
+  const position = raw.indexOf(match[2]);
+  return {
+    span: {
+      start: line.start + offset + position,
+      end: line.start + offset + position + match[2].length,
+    },
+    text: match[2],
+    ...(name
+      ? {
+          weekday:
+            ["mon", "tue", "wed", "thu", "fri", "sat", "sun"].indexOf(
+              name.slice(0, 3).toLowerCase(),
+            ) + 1,
+        }
+      : {}),
+  };
+}
+
+/**
+ * Build opaque structural barriers before Chrono's parsers/refiners run. The
+ * callback only examines bounded original values, using the existing parser.
+ */
+export function prepareMessage(
+  text: string,
+  inspect: (
+    value: string,
+    kind: "date" | "standalone-date" | "temporal" | "clock",
+  ) => boolean,
+): PreparedMessage {
+  const lines = linesOf(text),
+    owners: ContextOwner[] = [],
+    masks: Span[] = [],
+    savedDates: Array<{ span: Span; text: string }> = [];
+  const covered = new Set<number>();
+
+  // Validate a complete blank-delimited record, including fields after Time.
+  for (let first = 0; first < lines.length;) {
+    if (!lines[first].content.trim()) {
+      first++;
+      continue;
+    }
+    let last = first + 1;
+    while (last < lines.length && lines[last].content.trim()) last++;
+    const block = lines.slice(first, last);
+    const fields = block.map((line) => {
+      const match = line.content.match(/^([ \t]*)([A-Za-z]+):[ \t]*(.*)$/);
+      return match
+        ? {
+            line,
+            label: match[2].toLowerCase(),
+            text: match[3],
+            value: {
+              start: line.contentEnd - match[3].length,
+              end: line.contentEnd,
+            },
+          }
+        : undefined;
+    });
+    if (
+      fields.some((field) => field && ["date", "time"].includes(field.label))
+    ) {
+      const dates = fields.filter((field) => field?.label === "date"),
+        times = fields.filter((field) => field?.label === "time");
+      const date = dates[0],
+        time = times[0];
+      const token = date
+        ? dateToken(date.line, date.text, date.value.start - date.line.start)
+        : undefined;
+      const seen = new Set<string>();
+      const eligible =
+        !!token &&
+        !!time &&
+        dates.length === 1 &&
+        times.length === 1 &&
+        date!.value.start < time.value.start &&
+        fields.every((field) => {
+          if (
+            !field ||
+            field.line.fenced ||
+            !["date", "time", "title", "activity", "location"].includes(
+              field.label,
+            ) ||
+            seen.has(field.label)
+          )
+            return false;
+          seen.add(field.label);
+          return (
+            ["date", "time"].includes(field.label) ||
+            !inspect(field.text, "temporal")
+          );
+        }) &&
+        inspect(token.text, "date");
+      const domain = { start: block[0].start, end: block.at(-1)!.end };
+      owners.push({
+        kind: "record",
+        date: token || { span: domain, text: "" },
+        domain,
+        items: time
+          ? [{ value: time.value, indent: "", uninterrupted: true }]
+          : [],
+        eligible,
+      });
+      for (let index = first; index < last; index++) covered.add(index);
+      // A declined record must not let a standalone Date field directly
+      // merge into a later unlabeled clock before whole-block validation.
+      // Preserve its ordinary date-only detection via the saved original.
+      for (const field of dates) {
+        if (!field) continue;
+        if (inspect(field.text, "standalone-date")) {
+          masks.push(field.value);
+          savedDates.push({ span: field.value, text: field.text });
+        }
+      }
+    }
+    first = last;
+  }
+
+  for (let first = 0; first < lines.length; first++) {
+    const header = lines[first];
+    if (
+      covered.has(first) ||
+      marker.test(header.content) ||
+      !dateCandidate.test(header.content) ||
+      inspect(header.content, "clock")
+    )
+      continue;
+    // A date followed by prose alone retains the established legacy behavior.
+    let last = first + 1,
+      blanks = 0,
+      foundList = false;
+    while (last < lines.length && !covered.has(last)) {
+      const line = lines[last];
+      if (
+        /^\s*#{1,6}\s/.test(line.content) ||
+        (!marker.test(line.content) && dateCandidate.test(line.content))
+      )
+        break;
+      if (!line.content.trim()) {
+        if (++blanks > 1 && !foundList) break;
+      } else {
+        if (marker.test(line.content)) foundList = true;
+        else if (foundList) break;
+        blanks = 0;
+      }
+      last++;
+    }
+    if (!foundList) continue;
+    const token = dateToken(header, header.content, 0),
+      domain = { start: header.start, end: lines[last - 1].end },
+      items: Item[] = [];
+    let uninterrupted = true,
+      indent: string | undefined,
+      initialBlank = 0;
+    for (let index = first + 1; index < last; index++) {
+      const line = lines[index],
+        match = line.content.match(marker);
+      if (!line.content.trim()) {
+        if (items.length || ++initialBlank > 1) uninterrupted = false;
+      } else if (!match) uninterrupted = false;
+      else {
+        if (line.fenced) uninterrupted = false;
+        indent ??= match[1];
+        if (match[1] !== indent) uninterrupted = false;
+        masks.push({
+          start: line.start + match[1].length,
+          end: line.start + match[1].length + match[2].length,
+        });
+        items.push({
+          value: {
+            start: line.contentEnd - match[4].length,
+            end: line.contentEnd,
+          },
+          indent: match[1],
+          uninterrupted,
+        });
+      }
+    }
+    const eligible =
+      !!token &&
+      !header.fenced &&
+      !/^\s*>/.test(header.content) &&
+      inspect(token.text, "date");
+    owners.push({
+      kind: "heading-list",
+      date: token || { span: domain, text: "" },
+      domain,
+      items,
+      eligible,
+    });
+    const headerSpan = {
+      start: header.start + (header.content.match(/^[ \t]*/)?.[0].length || 0),
+      end: header.contentEnd,
+    };
+    masks.push(headerSpan);
+    savedDates.push({
+      span: headerSpan,
+      text: text.slice(headerSpan.start, headerSpan.end),
+    });
+    first = last - 1;
+  }
+  const units = text.split("");
+  for (const mask of masks)
+    for (let index = mask.start; index < mask.end; index++) units[index] = "|";
+
+  return {
+    parserText: units.join(""),
+    masks,
+    owners,
+    savedDates,
+    planFor(events) {
+      const owned: Array<{ owner: ContextOwner; event: Span }> = [];
+      for (const owner of owners) {
+        let valid = owner.eligible;
+        for (const item of owner.items) {
+          const detected = events.filter((event) => overlap(item.value, event));
+          const first = detected[0];
+          // The genuine first event must begin at the item value. Explicit
+          // dates within that clock/range are allowed; independent dates stop it.
+          valid &&=
+            item.uninterrupted &&
+            !!first &&
+            first.clock &&
+            first.start === item.value.start &&
+            detected.every(
+              (event) => event.clock && contains(item.value, event),
+            );
+          if (owner.kind === "record") valid &&= detected.length === 1;
+          if (valid) owned.push({ owner, event: item.value });
+        }
+      }
+      const decisionFor = (event: Span): ContextDecision => {
+        const entry = owned.find((entry) => contains(entry.event, event));
+        if (entry) return { kind: "owned", ...entry };
+        return owners.some((owner) => overlap(owner.domain, event))
+          ? { kind: "blocked" }
+          : { kind: "legacy" };
+      };
+      return {
+        decisionFor,
+        maySeedLegacyContext: (event) => decisionFor(event).kind === "legacy",
+        crossesEventBoundary(left, right) {
+          const a = decisionFor(left),
+            b = decisionFor(right);
+          return (
+            (a.kind !== "legacy" || b.kind !== "legacy") &&
+            !(a.kind === "owned" && b.kind === "owned" && a.event === b.event)
+          );
+        },
+        resetsLegacyContextBetween(leftEnd, rightStart) {
+          return owners.some(
+            (owner) =>
+              owner.domain.start <= rightStart && owner.domain.end >= leftEnd,
+          );
+        },
+      };
+    },
+  };
+}

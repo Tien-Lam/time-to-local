@@ -6,7 +6,7 @@ import {
   usesReferenceDate,
   usesReferenceYear,
 } from "./parser";
-import type { ParsedComponents } from "chrono-node";
+import type { ParsedComponents, ParsedResult } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
 import { temporal as Temporal } from "./temporal";
 import {
@@ -27,6 +27,8 @@ import { civilInstants } from "./time";
 import type { Conversion, ConversionOptions, TimeResult } from "./types";
 
 import { MAX_INPUT } from "./limits";
+import { prepareMessage } from "./date-context";
+import type { ContextOwner } from "./date-context";
 export { MAX_INPUT } from "./limits";
 const timezoneHints = {
   ...FIXED,
@@ -169,17 +171,108 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     instant: new Date(now),
     timezone: offsetMinutes(options.sourceZone, now),
   };
-  // Chrono can parse the digits in UTC+03:00 as a second clock time, especially
-  // in ranges. Mask only those tokens without moving source indices; resolve
-  // their full original spelling below using deterministic zone semantics.
-  const parserText = text.replace(OFFSET_TOKEN, (token) =>
+  // Each preparation/plan belongs to this call, before native extraction can
+  // consume a sibling list marker or merge a structural date into a clock.
+  const prepared = prepareMessage(text, (value, kind) => {
+    // Link destinations are labels' metadata, not temporal assertions. Never
+    // inspect a URL for dates; visible link text retains its ordinary meaning.
+    const bounded =
+      kind === "temporal"
+        ? value
+            .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+            .replace(/https?:\/\/\S+/gi, "")
+        : value;
+    const detected = (kind === "date" ? monthFirst : parser).parse(
+      bounded,
+      ref,
+      {
+        timezones: timezoneHints,
+      },
+    );
+    if (kind === "clock")
+      return detected.some((event) => event.start.isCertain("hour"));
+    if (kind === "temporal") return detected.length > 0;
+    if (kind === "standalone-date") {
+      // Partial/uncertain envelopes never become owners. Still protect a
+      // native standalone calendar detection from merging into another field,
+      // and restore its original detection when the message has no clocks.
+      return (
+        detected.some((event) => event.start.isCertain("day")) &&
+        detected.every(
+          (event) =>
+            !event.start.isCertain("hour") && !event.end?.isCertain("hour"),
+        )
+      );
+    }
+    const date = detected[0];
+    if (
+      detected.length !== 1 ||
+      !date ||
+      date.index !== 0 ||
+      date.text.length !== bounded.length ||
+      date.end ||
+      !date.start.isCertain("day") ||
+      date.start.isCertain("hour")
+    )
+      return false;
+    try {
+      componentDate(date.start);
+      return true;
+    } catch {
+      return false;
+    }
+  });
+  // Chrono can parse offset digits as another clock. Keep the established
+  // offset mask after structural preparation, retaining original indices.
+  const parserText = prepared.parserText.replace(OFFSET_TOKEN, (token) =>
     " ".repeat(token.length),
   );
-  const parsed = parser.parse(parserText, ref, { timezones: timezoneHints });
+  const parsed = parser
+    .parse(parserText, ref, { timezones: timezoneHints })
+    .filter(
+      (event) =>
+        !prepared.masks.some(
+          (mask) =>
+            event.index < mask.end &&
+            event.index + event.text.length > mask.start,
+        ),
+    );
+  const hasTime = parsed.some((r) => r.start.isCertain("hour"));
+  if (!hasTime) {
+    // Restore bounded parser-owned dates only for genuinely date-only input.
+    // Opaque dates must never return to the mixed-message merge/context pass.
+    for (const token of prepared.savedDates) {
+      for (const date of parser.parse(token.text, ref, {
+        timezones: timezoneHints,
+      })) {
+        const restored: typeof date = Object.create(date);
+        Object.defineProperty(restored, "index", {
+          value: date.index + token.span.start,
+        });
+        parsed.push(restored);
+      }
+    }
+    parsed.sort((a, b) => a.index - b.index);
+  }
+  const plan = prepared.planFor(
+    parsed.map((event) => ({
+      start: event.index,
+      end: event.index + event.text.length,
+      clock: event.start.isCertain("hour"),
+    })),
+  );
+  const resolvedOwners = new Map<
+    ContextOwner,
+    Map<string, ParsedResult | undefined>
+  >();
   const warnings: string[] = [],
     results: TimeResult[] = [];
   const invalidOffsets = [...text.matchAll(OFFSET_TOKEN)].filter(
-    (m) => !explicitZones(m[0])?.length,
+    (m) =>
+      !explicitZones(m[0])?.length &&
+      !prepared.masks.some(
+        (mask) => m.index! < mask.end && m.index! + m[0].length > mask.start,
+      ),
   );
   invalidOffsets.forEach((m) =>
     warnings.push(`Invalid timezone offset ${m[0]}. Correct it and try again.`),
@@ -204,15 +297,19 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     contextOrder = options.dateOrder || "mdy",
     contextParagraph = -1,
     previousEnd = 0;
-  const hasTime = parsed.some((r) => r.start.isCertain("hour"));
-
   for (let i = 0; i < parsed.length; i++) {
     const r = parsed[i],
       block = paragraph(text, r.index);
     const matchedText = text.slice(r.index, r.index + r.text.length);
+    const eventSpan = { start: r.index, end: r.index + r.text.length },
+      decision = plan.decisionFor(eventSpan);
     const prior = parsed[i - 1];
     const qualifiedRange =
       prior &&
+      !plan.crossesEventBoundary(
+        { start: prior.index, end: prior.index + prior.text.length },
+        eventSpan,
+      ) &&
       /^\s+(?:(?:(?:in|at)\s+)?[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
         text.slice(prior.index + prior.text.length, r.index),
       );
@@ -240,6 +337,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       continue;
     if (
       block !== contextParagraph ||
+      plan.resetsLegacyContextBetween(previousEnd, r.index) ||
       startsAfterUnrelatedDate(r.start) ||
       /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
     ) {
@@ -250,8 +348,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     }
     previousEnd = r.index + r.text.length;
     const date = componentDate(r.start),
-      explicitDate = r.start.isCertain("day");
-    if (explicitDate) {
+      explicitDate =
+        r.start.isCertain("day") ||
+        (decision.kind !== "legacy" && !!r.end?.isCertain("day"));
+    if (explicitDate && plan.maySeedLegacyContext(eventSpan)) {
       contextDate = date;
       contextText = r.text;
       contextNumeric = hasNumericDate(r.start);
@@ -290,6 +390,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const suffixEnd = Math.min(
       parsed[i + 1]?.index ?? text.length,
       r.index + r.text.length + 100,
+      decision.kind === "owned" ? decision.event.end : text.length,
     );
     const suffix = text
       .slice(r.index + r.text.length, suffixEnd)
@@ -334,9 +435,15 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           instant: new Date(now),
           timezone: offsetMinutes(choice.zone, now),
         };
-        const local = parser.parse(r.text, zoneRef, {
-          timezones: timezoneHints,
-        })[0];
+        const local = parser.parse(
+          matchedText.replace(OFFSET_TOKEN, (token) =>
+            " ".repeat(token.length),
+          ),
+          zoneRef,
+          {
+            timezones: timezoneHints,
+          },
+        )[0];
         const components = local
           ? endpoint === "end" && local.end
             ? local.end
@@ -345,7 +452,44 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         let selectedDate = componentDate(components),
           assumptions = choice.assumption ? [choice.assumption] : [],
           referenceUsed = usesReferenceDate(components);
-        if (!explicitDate && contextDate) {
+        let ownedDate: ParsedResult | undefined;
+        if (!explicitDate && decision.kind === "owned") {
+          let choices = resolvedOwners.get(decision.owner);
+          if (!choices) {
+            choices = new Map();
+            resolvedOwners.set(decision.owner, choices);
+          }
+          if (!choices.has(choice.zone)) {
+            const resolved = monthFirst.parse(
+              decision.owner.date.text,
+              zoneRef,
+              {
+                timezones: timezoneHints,
+              },
+            )[0];
+            choices.set(
+              choice.zone,
+              resolved &&
+                (!decision.owner.date.weekday ||
+                  componentDate(resolved.start).dayOfWeek ===
+                    decision.owner.date.weekday)
+                ? resolved
+                : undefined,
+            );
+          }
+          ownedDate = choices.get(choice.zone);
+        }
+        if (!explicitDate && ownedDate) {
+          const context = componentDate(ownedDate.start);
+          selectedDate = context.add({
+            days: componentDate(local?.start || r.start).until(selectedDate)
+              .days,
+          });
+          referenceUsed = usesReferenceDate(ownedDate.start);
+          assumptions.push(`Date from message context: ${context}`);
+          if (!ownedDate.start.isCertain("year"))
+            assumptions.push(`Year assumed: ${selectedDate.year}`);
+        } else if (!explicitDate && decision.kind === "legacy" && contextDate) {
           const header = parser.parse(contextText, zoneRef, {
             timezones: timezoneHints,
           })[0];
