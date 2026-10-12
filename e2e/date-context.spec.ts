@@ -99,6 +99,38 @@ test("a late duplicate invalidates the record instead of preserving a partial da
   await expect(page.locator(".range-label")).toHaveCount(0);
 });
 
+test("a qualified Time range and linked list labels preserve the stated date", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const record = "Date: March 8, 2026\nTime: 09:00 in London to 10:30 in Paris";
+  await fill(page, record);
+  await expect(page.locator(".hero-time")).toHaveText(["09:00", "09:30"]);
+  await expect(page.locator(".result-date")).toHaveText([
+    "Sun, 8 Mar 2026",
+    "Sun, 8 Mar 2026",
+  ]);
+  await expect(page.locator(".source-label")).toHaveText(["London", "Paris"]);
+  await expect(page.locator(".range-label")).toHaveCount(2);
+  await expect(page.locator(".assumption")).toHaveText([
+    "Date from message context: 2026-03-08",
+    "Date from message context: 2026-03-08",
+  ]);
+  const linked =
+    "March 8, 2026\n- 09:00 UTC [Agenda 🧭](https://example.invalid/March-9-2026)\n- 10:00 UTC https://example.invalid/15:00";
+  await fill(page, linked);
+  await expect(page.locator(".hero-time")).toHaveText(["09:00", "10:00"]);
+  await expect(page.locator(".result-date")).toHaveText([
+    "Sun, 8 Mar 2026",
+    "Sun, 8 Mar 2026",
+  ]);
+  await expect(page.locator(".range-label")).toHaveCount(0);
+  await expect(page.locator(".assumption")).toHaveText([
+    "Date from message context: 2026-03-08",
+    "Date from message context: 2026-03-08",
+  ]);
+});
+
 test("a cached offline reopen accepts new heading and record input with exact dates", async ({
   page,
   context,

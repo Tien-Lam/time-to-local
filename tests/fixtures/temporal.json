@@ -2419,5 +2419,684 @@
     "rowOccurrences": [1],
     "interpretations": [null],
     "rangeIds": [null]
+  },
+  {
+    "name": "bounded review Q01: one qualified Time range owns March8",
+    "text": "Date: March 8, 2026\nTime: 09:00 in London to 10:30 in Paris",
+    "now": "2026-01-15T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z", "2026-03-08T09:30:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["09:00", "10:30"],
+    "sourceBounds": [
+      {
+        "start": 26,
+        "end": 59
+      },
+      {
+        "start": 26,
+        "end": 59
+      }
+    ],
+    "sourceZones": ["Europe/London", "Europe/Paris"],
+    "sourceLabels": ["London", "Paris"],
+    "assumptions": [
+      ["Date from message context: 2026-03-08"],
+      ["Date from message context: 2026-03-08"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "sourceIndexChoices": [[26], [26, 45]],
+    "rangeGroups": [0, 0]
+  },
+  {
+    "name": "bounded review Q02: one qualified Time range owns March8",
+    "text": "Date: March 8, 2026\nTime: 09:00 Europe/London to 10:30 Europe/Paris",
+    "now": "2026-01-15T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z", "2026-03-08T09:30:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["09:00", "10:30"],
+    "sourceBounds": [
+      {
+        "start": 26,
+        "end": 67
+      },
+      {
+        "start": 26,
+        "end": 67
+      }
+    ],
+    "sourceZones": ["Europe/London", "Europe/Paris"],
+    "sourceLabels": ["London", "Paris"],
+    "assumptions": [
+      ["Date from message context: 2026-03-08"],
+      ["Date from message context: 2026-03-08"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "sourceIndexChoices": [[26], [26, 49]],
+    "rangeGroups": [0, 0]
+  },
+  {
+    "name": "bounded review Q03: qualified overnight preserves Date owner",
+    "text": "Date: March 8, 2026\nTime: 11pm in London to 1am in Paris",
+    "now": "2026-01-15T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T23:00:00Z", "2026-03-09T00:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["11pm", "1am"],
+    "sourceBounds": [
+      {
+        "start": 26,
+        "end": 56
+      },
+      {
+        "start": 26,
+        "end": 56
+      }
+    ],
+    "sourceZones": ["Europe/London", "Europe/Paris"],
+    "sourceLabels": ["London", "Paris"],
+    "assumptions": [
+      ["Date from message context: 2026-03-08"],
+      ["Date from message context: 2026-03-08"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "sourceIndexChoices": [[26], [26, 44]],
+    "rangeGroups": [0, 0]
+  },
+  {
+    "name": "bounded review Q04: unrelated Time clocks reject whole record",
+    "text": "Date: March 8, 2026\nTime: 09:00 UTC opening and 15:00 UTC reminder",
+    "now": "2026-01-15T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-01-15T09:00:00Z", "2026-01-15T15:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:00 UTC", "15:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 26,
+        "end": 66
+      },
+      {
+        "start": 48,
+        "end": 66
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-01-15", "Reference date used: 2026-01-15"],
+      ["Date assumed: 2026-01-15", "Reference date used: 2026-01-15"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "sourceIndices": [26, 48],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded review U01: date URL destination is invisible to owner",
+    "text": "March 8, 2026\n- 09:00 UTC [Agenda 🧭](https://example.invalid/March-9-2026)\n- 10:00 UTC next",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z", "2026-03-08T10:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:00 UTC", "10:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 16,
+        "end": 75
+      },
+      {
+        "start": 78,
+        "end": 92
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-03-08"],
+      ["Date from message context: 2026-03-08"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "sourceIndices": [16, 78],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded review U02: clock URL destination produces no extra clock",
+    "text": "Date: March 8, 2026\nActivity: [Agenda](https://example.invalid/15:00)\nTime: 09:00 UTC",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 76,
+        "end": 85
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-08"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "sourceIndices": [76],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review U03: visible temporal optional label rejects record",
+    "text": "Date: March 8, 2026\nActivity: [March 9, 2026](https://example.invalid/agenda)\nTime: 09:00 UTC",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-01-28T09:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 84,
+        "end": 93
+      }
+    ],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-01-28", "Reference date used: 2026-01-28"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "sourceIndices": [84],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review Y01: each endpoint discloses its actual assumed year",
+    "text": "Date: December 31\nTime: 11pm in London to 1am in Paris",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2025-12-31T23:00:00Z", "2026-01-01T00:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["11pm", "1am"],
+    "sourceBounds": [
+      {
+        "start": 24,
+        "end": 54
+      },
+      {
+        "start": 24,
+        "end": 54
+      }
+    ],
+    "sourceZones": ["Europe/London", "Europe/Paris"],
+    "sourceLabels": ["London", "Paris"],
+    "assumptions": [
+      [
+        "Date from message context: 2025-12-31",
+        "Year assumed: 2025",
+        "Reference date used: 2026-01-28"
+      ],
+      [
+        "Date from message context: 2025-12-31",
+        "Year assumed: 2026",
+        "Reference date used: 2026-01-28"
+      ]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "sourceIndexChoices": [[24], [24, 42]],
+    "rangeGroups": [0, 0]
+  },
+  {
+    "name": "bounded review Y02: stated owner year forbids year assumptions",
+    "text": "Date: December 31, 2025\nTime: 11pm in London to 1am in Paris",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2025-12-31T23:00:00Z", "2026-01-01T00:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["start", "end"],
+    "sourceCores": ["11pm", "1am"],
+    "sourceBounds": [
+      {
+        "start": 30,
+        "end": 60
+      },
+      {
+        "start": 30,
+        "end": 60
+      }
+    ],
+    "sourceZones": ["Europe/London", "Europe/Paris"],
+    "sourceLabels": ["London", "Paris"],
+    "assumptions": [
+      ["Date from message context: 2025-12-31"],
+      ["Date from message context: 2025-12-31"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "sourceIndexChoices": [[30], [30, 48]],
+    "rangeGroups": [0, 0]
+  },
+  {
+    "name": "bounded review S01: omitted owner year follows explicit source reference",
+    "text": "June 28\n- 9am UTC-10:00",
+    "now": "2025-12-28T08:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2025-06-28T19:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["9am UTC-10:00"],
+    "sourceBounds": [
+      {
+        "start": 10,
+        "end": 23
+      }
+    ],
+    "sourceZones": ["-10:00"],
+    "sourceLabels": ["UTC-10:00"],
+    "assumptions": [
+      [
+        "Date from message context: 2025-06-28",
+        "Year assumed: 2025",
+        "Reference date used: 2025-12-27"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "sourceIndices": [10],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review S02: omitted owner year follows explicit source reference",
+    "text": "June 28\n- 9am UTC+14:00",
+    "now": "2025-12-28T08:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-06-27T19:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["9am UTC+14:00"],
+    "sourceBounds": [
+      {
+        "start": 10,
+        "end": 23
+      }
+    ],
+    "sourceZones": ["+14:00"],
+    "sourceLabels": ["UTC+14:00"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-06-28",
+        "Year assumed: 2026",
+        "Reference date used: 2025-12-28"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "sourceIndices": [10],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review S03: Sunday rejects source choice whose nearest June28 is Saturday",
+    "text": "Sunday, June 28\n- 9am UTC-10:00",
+    "now": "2025-12-28T08:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2025-12-27T19:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["9am UTC-10:00"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 31
+      }
+    ],
+    "sourceZones": ["-10:00"],
+    "sourceLabels": ["UTC-10:00"],
+    "assumptions": [
+      ["Date assumed: 2025-12-27", "Reference date used: 2025-12-27"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "sourceIndices": [18],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review S04: Sunday accepts source choice whose nearest June28 is Sunday",
+    "text": "Sunday, June 28\n- 9am UTC+14:00",
+    "now": "2025-12-28T08:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-06-27T19:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["9am UTC+14:00"],
+    "sourceBounds": [
+      {
+        "start": 18,
+        "end": 31
+      }
+    ],
+    "sourceZones": ["+14:00"],
+    "sourceLabels": ["UTC+14:00"],
+    "assumptions": [
+      [
+        "Date from message context: 2026-06-28",
+        "Year assumed: 2026",
+        "Reference date used: 2025-12-28"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "sourceIndices": [18],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review S05: CST alternatives choose source-local omitted year separately",
+    "text": "Date: June 28\nTime: 9am CST",
+    "now": "2025-12-28T04:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2025-06-28T15:00:00Z", "2026-06-28T01:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["9am CST", "9am CST"],
+    "sourceBounds": [
+      {
+        "start": 20,
+        "end": 27
+      },
+      {
+        "start": 20,
+        "end": 27
+      }
+    ],
+    "sourceZones": ["-06:00", "+08:00"],
+    "sourceLabels": ["CST · US Central Standard", "CST · China Standard"],
+    "assumptions": [
+      [
+        "Date from message context: 2025-06-28",
+        "Year assumed: 2025",
+        "Reference date used: 2025-12-27"
+      ],
+      [
+        "Date from message context: 2026-06-28",
+        "Year assumed: 2026",
+        "Reference date used: 2025-12-28"
+      ]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": ["US Central Standard", "China Standard"],
+    "sourceIndices": [20, 20],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded review F01: short and trailing-text delimiters do not close four-backtick fence",
+    "text": "````text\nMarch 8, 2026\n- 09:00 UTC inside\n```\nMarch 9, 2026\n- 10:00 UTC still inside\n```` trailing\nMarch 10, 2026\n- 11:00 UTC still inside",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-01-28T09:00:00Z",
+      "2026-01-28T10:00:00Z",
+      "2026-01-28T11:00:00Z"
+    ],
+    "cardinality": 3,
+    "endpoints": ["undefined", "undefined", "undefined"],
+    "sourceCores": ["09:00 UTC", "10:00 UTC", "11:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 41
+      },
+      {
+        "start": 62,
+        "end": 84
+      },
+      {
+        "start": 116,
+        "end": 138
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC", "UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-01-28", "Reference date used: 2026-01-28"],
+      ["Date assumed: 2026-01-28", "Reference date used: 2026-01-28"],
+      ["Date assumed: 2026-01-28", "Reference date used: 2026-01-28"]
+    ],
+    "rowOccurrences": [1, 1, 1],
+    "interpretations": [null, null, null],
+    "sourceIndices": [25, 62, 116],
+    "rangeIds": [null, null, null]
+  },
+  {
+    "name": "bounded review F02: long whitespace-only fence close resumes new outside owner",
+    "text": "````text\nMarch 8, 2026\n- 09:00 UTC inside\n```\nMarch 9, 2026\n- 10:00 UTC still inside\n```` trailing\nMarch 10, 2026\n- 11:00 UTC still inside\n`````  \nMarch 11, 2026\n- 12:00 UTC outside",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-01-28T09:00:00Z",
+      "2026-01-28T10:00:00Z",
+      "2026-01-28T11:00:00Z",
+      "2026-03-11T12:00:00Z"
+    ],
+    "cardinality": 4,
+    "endpoints": ["undefined", "undefined", "undefined", "undefined"],
+    "sourceCores": ["09:00 UTC", "10:00 UTC", "11:00 UTC", "12:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 25,
+        "end": 41
+      },
+      {
+        "start": 62,
+        "end": 84
+      },
+      {
+        "start": 116,
+        "end": 138
+      },
+      {
+        "start": 164,
+        "end": 181
+      }
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC", "UTC", "UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-01-28", "Reference date used: 2026-01-28"],
+      ["Date assumed: 2026-01-28", "Reference date used: 2026-01-28"],
+      ["Date assumed: 2026-01-28", "Reference date used: 2026-01-28"],
+      ["Date from message context: 2026-03-11"]
+    ],
+    "rowOccurrences": [1, 1, 1, 1],
+    "interpretations": [null, null, null, null],
+    "sourceIndices": [25, 62, 116, 164],
+    "rangeIds": [null, null, null, null]
+  },
+  {
+    "name": "bounded review U04: raw date URL leaves list context bounded",
+    "text": "March 8, 2026\n- 09:00 UTC https://example.invalid/March-9-2026\n- 10:00 UTC next",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z", "2026-03-08T10:00:00Z"],
+    "cardinality": 2,
+    "endpoints": ["undefined", "undefined"],
+    "sourceCores": ["09:00 UTC", "10:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 16,
+        "end": 62
+      },
+      {
+        "start": 65,
+        "end": 79
+      }
+    ],
+    "sourceIndices": [16, 65],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceLabels": ["UTC", "UTC"],
+    "assumptions": [
+      ["Date from message context: 2026-03-08"],
+      ["Date from message context: 2026-03-08"]
+    ],
+    "rowOccurrences": [1, 1],
+    "interpretations": [null, null],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "bounded review U05: raw clock URL is not an extra list clock",
+    "text": "March 8, 2026\n- 09:00 UTC https://example.invalid/15:00",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 16,
+        "end": 55
+      }
+    ],
+    "sourceIndices": [16],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-08"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review U06: raw temporal URL metadata does not invalidate record",
+    "text": "Date: March 8, 2026\nLocation: https://example.invalid/15:00/March-9-2026\nTime: 09:00 UTC",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 79,
+        "end": 88
+      }
+    ],
+    "sourceIndices": [79],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-08"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded review U07: raw epoch URL is metadata, not a Unix result",
+    "text": "March 8, 2026\n- 09:00 UTC https://example.invalid/1775736000",
+    "now": "2026-01-28T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-08T09:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:00 UTC"],
+    "sourceBounds": [
+      {
+        "start": 16,
+        "end": 60
+      }
+    ],
+    "sourceIndices": [16],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-08"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
   }
 ]

@@ -17,7 +17,7 @@ export type ContextDecision =
   | { kind: "owned"; owner: ContextOwner; event: Span }
   | { kind: "blocked" }
   | { kind: "legacy" };
-export type ContextEvent = Span & { clock: boolean };
+export type ContextEvent = Span & { clock: boolean; range?: boolean };
 export interface ContextPlan {
   decisionFor(event: Span): ContextDecision;
   maySeedLegacyContext(event: Span): boolean;
@@ -49,10 +49,17 @@ const marker = /^([ \t]*)([-*+]|\d+[.)])([ \t]+)(.*)$/;
 const overlap = (a: Span, b: Span) => a.start < b.end && a.end > b.start;
 const contains = (a: Span, b: Span) => a.start <= b.start && a.end >= b.end;
 
+/** The converter's existing connector for two separately detected zone clocks. */
+export function qualifiedRangeBetween(text: string): boolean {
+  return /^\s+(?:(?:(?:in|at)\s+)?[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
+    text,
+  );
+}
+
 function linesOf(text: string): Line[] {
   const lines: Line[] = [];
-  let start = 0,
-    fence = "";
+  let start = 0;
+  let fence: { char: string; length: number } | undefined;
   while (start < text.length) {
     const newline = text.indexOf("\n", start);
     const end = newline < 0 ? text.length : newline + 1;
@@ -62,8 +69,14 @@ function linesOf(text: string): Line[] {
     const delimiter = content.match(/^\s*(`{3,}|~{3,})/);
     const fenced = !!fence || !!delimiter;
     if (delimiter) {
-      if (!fence) fence = delimiter[1][0];
-      else if (delimiter[1][0] === fence) fence = "";
+      if (!fence)
+        fence = { char: delimiter[1][0], length: delimiter[1].length };
+      else if (
+        delimiter[1][0] === fence.char &&
+        delimiter[1].length >= fence.length &&
+        !content.slice(delimiter[0].length).trim()
+      )
+        fence = undefined;
     }
     lines.push({ start, end, contentEnd, content, fenced });
     start = end;
@@ -284,6 +297,30 @@ export function prepareMessage(
     });
     first = last - 1;
   }
+  // Destination metadata never contributes temporal assertions in the indexed
+  // structural domains. Keep visible labels and every original UTF-16 offset.
+  for (const owner of owners) {
+    const domainText = text.slice(owner.domain.start, owner.domain.end);
+    const links: Span[] = [];
+    for (const match of domainText.matchAll(
+      /\[([^\]\r\n]*)\]\(([^)\r\n]*)\)/g,
+    )) {
+      const start = owner.domain.start + match.index! + match[1].length + 3;
+      masks.push({ start, end: start + match[2].length });
+      links.push({
+        start: owner.domain.start + match.index!,
+        end: owner.domain.start + match.index! + match[0].length,
+      });
+    }
+    for (const match of domainText.matchAll(/https?:\/\/\S+/gi)) {
+      const start = owner.domain.start + match.index!;
+      // Ordinary visible Markdown labels remain assertions. Their destinations
+      // already have their own mask, excluding link punctuation and labels.
+      if (links.some((link) => link.start <= start && start < link.end))
+        continue;
+      masks.push({ start, end: start + match[0].length });
+    }
+  }
   const units = text.split("");
   for (const mask of masks)
     for (let index = mask.start; index < mask.end; index++) units[index] = "|";
@@ -310,7 +347,14 @@ export function prepareMessage(
             detected.every(
               (event) => event.clock && contains(item.value, event),
             );
-          if (owner.kind === "record") valid &&= detected.length === 1;
+          if (owner.kind === "record")
+            valid &&=
+              detected.length === 1 ||
+              (detected.length === 2 &&
+                detected.every((event) => !event.range) &&
+                qualifiedRangeBetween(
+                  text.slice(detected[0].end, detected[1].start),
+                ));
           if (valid) owned.push({ owner, event: item.value });
         }
       }

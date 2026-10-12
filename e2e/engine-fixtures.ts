@@ -64,6 +64,11 @@ export async function verifyProductionFixtures(page: Page) {
         output.conversion.results.map((r: any) => r.sourceIndex),
         f.name,
       ).toEqual(f.sourceIndices);
+    if (f.sourceIndexChoices !== undefined)
+      for (let n = 0; n < f.sourceIndexChoices.length; n++)
+        expect(f.sourceIndexChoices[n], f.name).toContain(
+          output.conversion.results[n].sourceIndex,
+        );
     if ("originals" in f)
       expect(
         output.conversion.results.map((r: any) => r.original),
@@ -84,6 +89,19 @@ export async function verifyProductionFixtures(page: Page) {
         output.conversion.results.map((r: any) => r.rangeId ?? null),
         f.name,
       ).toEqual(f.rangeIds);
+    if (f.rangeGroups !== undefined)
+      for (let n = 0; n < f.rangeGroups.length; n++) {
+        if (f.rangeGroups[n] === null)
+          expect(output.conversion.results[n].rangeId, f.name).toBeUndefined();
+        else {
+          expect(output.conversion.results[n].rangeId, f.name).toBeTruthy();
+          for (let j = 0; j < n; j++)
+            if (f.rangeGroups[n] === f.rangeGroups[j])
+              expect(output.conversion.results[n].rangeId, f.name).toBe(
+                output.conversion.results[j].rangeId,
+              );
+        }
+      }
     if ("cardinality" in f)
       expect(output.conversion.results, f.name).toHaveLength(f.cardinality!);
     if ("sourceLabels" in f)

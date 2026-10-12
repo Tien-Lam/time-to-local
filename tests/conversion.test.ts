@@ -47,6 +47,11 @@ describe("independently specified temporal fixtures", () => {
         expect(result.results.map((r) => r.sourceIndex)).toEqual(
           f.sourceIndices,
         );
+      if (f.sourceIndexChoices !== undefined)
+        for (let i = 0; i < f.sourceIndexChoices.length; i++)
+          expect(f.sourceIndexChoices[i]).toContain(
+            result.results[i].sourceIndex,
+          );
       if (f.originals !== undefined)
         expect(result.results.map((r) => r.original)).toEqual(f.originals);
       if (f.assumptions !== undefined)
@@ -57,6 +62,19 @@ describe("independently specified temporal fixtures", () => {
         expect(result.results.map((r) => r.rangeId ?? null)).toEqual(
           f.rangeIds,
         );
+      if (f.rangeGroups !== undefined)
+        for (let i = 0; i < f.rangeGroups.length; i++) {
+          if (f.rangeGroups[i] === null)
+            expect(result.results[i].rangeId).toBeUndefined();
+          else {
+            expect(result.results[i].rangeId).toBeTruthy();
+            for (let j = 0; j < i; j++)
+              if (f.rangeGroups[i] === f.rangeGroups[j])
+                expect(result.results[i].rangeId).toBe(
+                  result.results[j].rangeId,
+                );
+          }
+        }
       if (f.cardinality !== undefined)
         expect(result.results).toHaveLength(f.cardinality);
       if (f.sourceLabels !== undefined)

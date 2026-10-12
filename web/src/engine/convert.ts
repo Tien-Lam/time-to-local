@@ -27,9 +27,14 @@ import { civilInstants } from "./time";
 import type { Conversion, ConversionOptions, TimeResult } from "./types";
 
 import { MAX_INPUT } from "./limits";
-import { prepareMessage } from "./date-context";
+import { prepareMessage, qualifiedRangeBetween } from "./date-context";
 import type { ContextOwner } from "./date-context";
 export { MAX_INPUT } from "./limits";
+type ResolvedOwner = {
+  date: TemporalTypes.PlainDate;
+  referenceUsed: boolean;
+  yearAssumed: boolean;
+};
 const timezoneHints = {
   ...FIXED,
   ...Object.fromEntries(
@@ -52,6 +57,37 @@ function referenceAssumption(now: string, zone: string): string {
     .toZonedDateTimeISO(zone)
     .toPlainDate();
   return `Reference date used: ${date}`;
+}
+
+/** Pinned Chrono closest-year comparison, on the source civil UTC surrogate. */
+function ownerYear(
+  now: string,
+  zone: string,
+  month: number,
+  day: number,
+): number {
+  const local = Temporal.Instant.from(now).toZonedDateTimeISO(zone);
+  const reference = new Date(0);
+  reference.setUTCFullYear(local.year, local.month - 1, local.day);
+  reference.setUTCHours(
+    local.hour,
+    local.minute,
+    local.second,
+    local.millisecond,
+  );
+  const date = new Date(reference);
+  // Keep the sequential setters, including their existing rollover behavior.
+  date.setUTCMonth(month - 1);
+  date.setUTCDate(day);
+  const next = new Date(date),
+    previous = new Date(date);
+  next.setUTCFullYear(date.getUTCFullYear() + 1);
+  previous.setUTCFullYear(date.getUTCFullYear() - 1);
+  const distance = (candidate: Date) =>
+    Math.abs(candidate.getTime() - reference.getTime());
+  if (distance(next) < distance(date)) return next.getUTCFullYear();
+  if (distance(previous) < distance(date)) return previous.getUTCFullYear();
+  return date.getUTCFullYear();
 }
 function paragraph(text: string, index: number): number {
   return (text.slice(0, index).match(/\n\s*\n/g) || []).length;
@@ -332,11 +368,12 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       start: event.index,
       end: event.index + event.text.length,
       clock: event.start.isCertain("hour"),
+      range: !!event.end,
     })),
   );
   const resolvedOwners = new Map<
     ContextOwner,
-    Map<string, ParsedResult | undefined>
+    Map<string, ResolvedOwner | undefined>
   >();
   const warnings: string[] = [],
     results: TimeResult[] = [];
@@ -384,7 +421,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         { start: prior.index, end: prior.index + prior.text.length },
         eventSpan,
       ) &&
-      /^\s+(?:(?:(?:in|at)\s+)?[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
+      qualifiedRangeBetween(
         text.slice(prior.index + prior.text.length, r.index),
       );
     const priorResults = qualifiedRange
@@ -522,7 +559,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         let selectedDate = componentDate(components),
           assumptions = choice.assumption ? [choice.assumption] : [],
           referenceUsed = usesReferenceDate(components);
-        let ownedDate: ParsedResult | undefined;
+        let ownedDate: ResolvedOwner | undefined;
+        let assumeOwnerYear = false;
         if (!explicitDate && decision.kind === "owned") {
           let choices = resolvedOwners.get(decision.owner);
           if (!choices) {
@@ -537,28 +575,53 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                 timezones: timezoneHints,
               },
             )[0];
+            let ownerDate: TemporalTypes.PlainDate | undefined;
+            if (resolved) {
+              const c = resolved.start;
+              try {
+                ownerDate = Temporal.PlainDate.from(
+                  {
+                    year: c.isCertain("year")
+                      ? c.get("year")!
+                      : ownerYear(
+                          now,
+                          choice.zone,
+                          c.get("month")!,
+                          c.get("day")!,
+                        ),
+                    month: c.get("month")!,
+                    day: c.get("day")!,
+                  },
+                  { overflow: "reject" },
+                );
+              } catch {
+                // The finally selected source year must also have a valid date.
+              }
+            }
             choices.set(
               choice.zone,
-              resolved &&
+              ownerDate &&
                 (!decision.owner.date.weekday ||
-                  componentDate(resolved.start).dayOfWeek ===
-                    decision.owner.date.weekday)
-                ? resolved
+                  ownerDate.dayOfWeek === decision.owner.date.weekday)
+                ? {
+                    date: ownerDate,
+                    referenceUsed: usesReferenceDate(resolved!.start),
+                    yearAssumed: !resolved!.start.isCertain("year"),
+                  }
                 : undefined,
             );
           }
           ownedDate = choices.get(choice.zone);
         }
         if (!explicitDate && ownedDate) {
-          const context = componentDate(ownedDate.start);
+          const context = ownedDate.date;
           selectedDate = context.add({
             days: componentDate(local?.start || r.start).until(selectedDate)
               .days,
           });
-          referenceUsed = usesReferenceDate(ownedDate.start);
+          referenceUsed = ownedDate.referenceUsed;
           assumptions.push(`Date from message context: ${context}`);
-          if (!ownedDate.start.isCertain("year"))
-            assumptions.push(`Year assumed: ${selectedDate.year}`);
+          assumeOwnerYear = ownedDate.yearAssumed;
         } else if (!explicitDate && decision.kind === "legacy" && contextDate) {
           const header = parser.parse(contextText, zoneRef, {
             timezones: timezoneHints,
@@ -579,8 +642,6 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           // Keep relative-date disclosure policy while excluding that false claim.
           assumptions.push(`Year assumed: ${selectedDate.year}`);
         }
-        if (referenceUsed)
-          assumptions.push(referenceAssumption(now, choice.zone));
         const dt = selectedDate.toPlainDateTime({
           hour: components.get("hour") || 0,
           minute: components.get("minute") || 0,
@@ -606,6 +667,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             result.endpoint = "start";
             result.rangeId = `range-${prior.index}`;
           });
+        if (assumeOwnerYear) assumptions.push(`Year assumed: ${civil.year}`);
+        if (referenceUsed)
+          assumptions.push(referenceAssumption(now, choice.zone));
         const resolved = civilInstants(civil, choice.zone);
         if (resolved.nonexistent) {
           warnings.push(
@@ -663,7 +727,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       }
     }
   }
-  for (const match of text.matchAll(/\b(1[4-9]\d{8}|[2-9]\d{9})\b/g)) {
+  for (const match of prepared.parserText.matchAll(
+    /\b(1[4-9]\d{8}|[2-9]\d{9})\b/g,
+  )) {
     const instant = Temporal.Instant.fromEpochMilliseconds(+match[0] * 1000);
     const year = instant.toZonedDateTimeISO("UTC").year;
     if (year < 2015 || year > 2035) continue;

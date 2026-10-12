@@ -5713,6 +5713,96 @@
       "legacyExpectedCount": 3,
       "expected": [],
       "description": "Independently authored web regression: New York fold keeps earlier/later alternatives and independent sibling. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-review-q01",
+      "input": "Date: March 8, 2026\nTime: 09:00 in London to 10:30 in Paris",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: one qualified Time range owns March8. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-q04",
+      "input": "Date: March 8, 2026\nTime: 09:00 UTC opening and 15:00 UTC reminder",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: unrelated Time clocks reject whole record. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-u01",
+      "input": "March 8, 2026\n- 09:00 UTC [Agenda 🧭](https://example.invalid/March-9-2026)\n- 10:00 UTC next",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: date URL destination is invisible to owner. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-u02",
+      "input": "Date: March 8, 2026\nActivity: [Agenda](https://example.invalid/15:00)\nTime: 09:00 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development regression: clock URL destination produces no extra clock. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-y01",
+      "input": "Date: December 31\nTime: 11pm in London to 1am in Paris",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: each endpoint discloses its actual assumed year. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-s01",
+      "input": "June 28\n- 9am UTC-10:00",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development regression: omitted owner year follows explicit source reference. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-s05",
+      "input": "Date: June 28\nTime: 9am CST",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: CST alternatives choose source-local omitted year separately. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-f01",
+      "input": "````text\nMarch 8, 2026\n- 09:00 UTC inside\n```\nMarch 9, 2026\n- 10:00 UTC still inside\n```` trailing\nMarch 10, 2026\n- 11:00 UTC still inside",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independent review-derived development regression: short and trailing-text delimiters do not close four-backtick fence. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-u06",
+      "input": "Date: March 8, 2026\nLocation: https://example.invalid/15:00/March-9-2026\nTime: 09:00 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived raw URL metadata case; exact expected DTO semantics are maintained directly in temporal.json. Corpus count is inventory only."
+    },
+    {
+      "id": "web-145-review-u07",
+      "input": "March 8, 2026\n- 09:00 UTC https://example.invalid/1775736000",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived epoch URL metadata regression: exactly the stated contextual clock and no phantom Unix row; expected DTO semantics in temporal.json. Inventory only."
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
