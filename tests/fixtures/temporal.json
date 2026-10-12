@@ -739,5 +739,22 @@
       ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
     ],
     "sourceZones": ["-06:00", "+08:00"]
+  },
+  {
+    "name": "range inherited explicit year has no false assumption",
+    "text": "Maintenance June 26, 2027 from 10pm UTC\nto 2am UTC.",
+    "instants": ["2027-06-26T22:00:00Z", "2027-06-27T02:00:00Z"],
+    "endpoints": ["start", "end"],
+    "assumptions": [[], []]
+  },
+  {
+    "name": "range omitted year retains source reference disclosure",
+    "text": "June 26 at 10pm UTC to 2am UTC",
+    "instants": ["2026-06-26T22:00:00Z", "2026-06-27T02:00:00Z"],
+    "endpoints": ["start", "end"],
+    "assumptions": [
+      ["Year assumed: 2026", "Reference date used: 2026-04-06"],
+      ["Year assumed: 2026", "Reference date used: 2026-04-06"]
+    ]
   }
 ]

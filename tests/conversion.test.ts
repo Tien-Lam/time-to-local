@@ -196,3 +196,80 @@ test("range reference annotations follow inherited date provenance instead of en
     ).toEqual(referenceEndpoints);
   }
 });
+test("range year disclosures follow inherited explicit years across overnight and year boundaries", () => {
+  const cases = [
+    {
+      text: "Maintenance June 26, 2027 from 10pm UTC\nto 2am UTC.",
+      instants: ["2027-06-26T22:00:00Z", "2027-06-27T02:00:00Z"],
+    },
+    {
+      text: "June 26, 2027 10pm UTC to June 27, 2027 2am UTC",
+      instants: ["2027-06-26T22:00:00Z", "2027-06-27T02:00:00Z"],
+    },
+    {
+      text: "10pm UTC to June 27, 2027 2am UTC",
+      instants: ["2027-06-26T22:00:00Z", "2027-06-27T02:00:00Z"],
+    },
+    {
+      text: "December 31, 2027 11pm UTC to January 1 at 1am UTC",
+      instants: ["2027-12-31T23:00:00Z", "2028-01-01T01:00:00Z"],
+    },
+    {
+      text: "December 31 at 11pm UTC to January 1, 2028 at 1am UTC",
+      instants: ["2027-12-31T23:00:00Z", "2028-01-01T01:00:00Z"],
+    },
+    {
+      text: "June 26, 2027 at 10pm ET to 2am ET",
+      instants: ["2027-06-27T02:00:00Z", "2027-06-27T06:00:00Z"],
+    },
+  ];
+  for (const referenceDate of ["2024-01-01", "2030-12-31"])
+    for (const { text, instants } of cases) {
+      const results = convert(text, { ...options, referenceDate }).results;
+      expect(results.map((r) => r.instant)).toEqual(instants);
+      expect(results.map((r) => r.endpoint)).toEqual(["start", "end"]);
+      expect(results[0].rangeId).toBeTruthy();
+      expect(results[1].rangeId).toBe(results[0].rangeId);
+      expect(
+        results.flatMap((r) =>
+          r.assumptions.filter(
+            (a) =>
+              a.startsWith("Year assumed:") ||
+              a.startsWith("Reference date used:"),
+          ),
+        ),
+      ).toEqual([]);
+    }
+});
+test("omitted and relative range years retain their reference disclosures", () => {
+  for (const { text, instants, assumptions } of [
+    {
+      text: "June 26 at 10pm UTC to 2am UTC",
+      instants: ["2024-06-26T22:00:00Z", "2024-06-27T02:00:00Z"],
+      assumptions: [
+        ["Year assumed: 2024", "Reference date used: 2024-01-01"],
+        ["Year assumed: 2024", "Reference date used: 2024-01-01"],
+      ],
+    },
+    {
+      text: "Tomorrow at 10pm UTC to 2am UTC",
+      instants: ["2024-01-02T22:00:00Z", "2024-01-03T02:00:00Z"],
+      assumptions: [
+        ["Reference date used: 2024-01-01"],
+        ["Year assumed: 2024", "Reference date used: 2024-01-01"],
+      ],
+    },
+    {
+      text: "June 26, 2027 at 10pm UTC to tomorrow at 2am UTC",
+      instants: ["2027-06-26T22:00:00Z", "2024-01-02T02:00:00Z"],
+      assumptions: [[], ["Reference date used: 2024-01-01"]],
+    },
+  ]) {
+    const results = convert(text, {
+      ...options,
+      referenceDate: "2024-01-01",
+    }).results;
+    expect(results.map((r) => r.instant)).toEqual(instants);
+    expect(results.map((r) => r.assumptions)).toEqual(assumptions);
+  }
+});

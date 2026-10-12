@@ -33,6 +33,9 @@ function referenceDateParts(c: ParsedComponents) {
 export function usesReferenceDate(c: ParsedComponents): boolean {
   return Object.values(referenceDateParts(c)).some(Boolean);
 }
+export function usesReferenceYear(c: ParsedComponents): boolean {
+  return referenceDateParts(c).year;
+}
 export function numericDateOrder(
   c: ParsedComponents,
   fallback: "mdy" | "dmy",
