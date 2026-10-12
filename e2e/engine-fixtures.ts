@@ -141,7 +141,9 @@ export async function verifyProductionFixtures(page: Page) {
           f.name,
         ).toBeLessThanOrEqual(bounds.end);
       }
-    if ("warning" in f)
+    if (f.warnings !== undefined)
+      expect(output.conversion.warnings, f.name).toEqual(f.warnings);
+    else if ("warning" in f)
       expect(output.conversion.warnings.join("\n"), f.name).toContain(
         f.warning!,
       );

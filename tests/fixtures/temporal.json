@@ -3098,5 +3098,323 @@
     "rowOccurrences": [1],
     "interpretations": [null],
     "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V01: balanced nested date destination retains bounded heading",
+    "text": "March 12, 2026\n- 11:20 UTC [Outline 🧭](https://example.invalid/(intro)/2026-05-20)",
+    "now": "2026-02-21T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-12T11:20:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["11:20 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 83
+      }
+    ],
+    "sourceIndices": [17],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-12"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V02: balanced nested epoch destination emits no phantom Unix result",
+    "text": "March 12, 2026\n- 14:35 UTC [Resources](https://example.invalid/(materials)/1775736000)",
+    "now": "2026-02-21T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-12T14:35:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["14:35 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 86
+      }
+    ],
+    "sourceIndices": [17],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-12"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V03: relative destination supplies no timezone and preserves source reference",
+    "text": "May 12\n- 09:45 [Outline](/June/22/2026)",
+    "now": "2026-02-21T22:00:00Z",
+    "sourceZone": "+05:45",
+    "targetZone": "UTC",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-05-12T04:00:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["09:45"],
+    "sourceBounds": [
+      {
+        "start": 9,
+        "end": 39
+      }
+    ],
+    "sourceIndices": [9],
+    "sourceZones": ["+05:45"],
+    "sourceLabels": ["UTC+05:45"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC+05:45",
+        "Date from message context: 2026-05-12",
+        "Year assumed: 2026",
+        "Reference date used: 2026-02-22"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V04: localhost temporal URL supplies no IANA timezone",
+    "text": "March 12, 2026\n- 10:15 https://localhost/June/22/2026",
+    "now": "2026-02-21T12:00:00Z",
+    "sourceZone": "America/New_York",
+    "targetZone": "Asia/Tokyo",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-12T14:15:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["10:15"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 53
+      }
+    ],
+    "sourceIndices": [17],
+    "sourceZones": ["America/New_York"],
+    "sourceLabels": ["New York"],
+    "assumptions": [
+      [
+        "Source timezone assumed: New York",
+        "Date from message context: 2026-03-12"
+      ]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V05: nested optional Activity link metadata does not invalidate record",
+    "text": "Date: March 12, 2026\nActivity: [Outline](https://example.invalid/(intro)/2026-05-20)\nTime: 06:25 UTC",
+    "now": "2026-02-21T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-12T06:25:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["06:25 UTC"],
+    "sourceBounds": [
+      {
+        "start": 91,
+        "end": 100
+      }
+    ],
+    "sourceIndices": [91],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-12"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V06: visible temporal label still rejects competing optional field",
+    "text": "Date: March 12, 2026\nActivity: [June 22, 2026](https://example.invalid/(intro)/agenda)\nTime: 07:40 UTC",
+    "now": "2026-02-21T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-02-21T07:40:00Z"],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["07:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 93,
+        "end": 102
+      }
+    ],
+    "sourceIndices": [93],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [
+      ["Date assumed: 2026-02-21", "Reference date used: 2026-02-21"]
+    ],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V07: EOD and COB inside destination emit no vague-term warning",
+    "text": "March 12, 2026\n- 13:10 UTC [Outline](https://example.invalid/EOD/COB)",
+    "now": "2026-02-21T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-12T13:10:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["13:10 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 69
+      }
+    ],
+    "sourceIndices": [17],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-12"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL follow-up V08: visible EOD and COB label preserves the exact warning and clock",
+    "text": "March 12, 2026\n- 15:40 UTC [EOD and COB follow-up](https://example.invalid/agenda)",
+    "now": "2026-02-21T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-12T15:40:00Z"],
+    "warnings": [
+      "EOD/COB does not specify a clock time. Replace it with the intended time."
+    ],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["15:40 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 82
+      }
+    ],
+    "sourceIndices": [17],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-12"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL title addendum T01: quoted inline title parentheses and date/EOD remain metadata",
+    "text": "March 15, 2026\n- 08:55 UTC [Notes](https://example.invalid/path \"Intro) May 24, 2026 EOD\")",
+    "now": "2026-02-20T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-15T08:55:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["08:55 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 90
+      }
+    ],
+    "sourceIndices": [17],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-15"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL title addendum T02: angle destination unmatched closing parenthesis stays excluded",
+    "text": "March 15, 2026\n- 11:05 UTC [Materials](<https://example.invalid/material)2026-05-24/EOD>)",
+    "now": "2026-02-20T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-15T11:05:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["11:05 UTC"],
+    "sourceBounds": [
+      {
+        "start": 17,
+        "end": 89
+      }
+    ],
+    "sourceIndices": [17],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-15"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
+  },
+  {
+    "name": "bounded URL title addendum T03: escaped destination closing parenthesis preserves record owner",
+    "text": "Date: March 15, 2026\nActivity: [Materials](https://example.invalid/intro\\)May-24-2026/EOD)\nTime: 14:20 UTC",
+    "now": "2026-02-20T12:00:00Z",
+    "sourceZone": "UTC",
+    "targetZone": "Australia/Sydney",
+    "locale": "en-AU",
+    "hourCycle": "24",
+    "dateOrder": "mdy",
+    "instants": ["2026-03-15T14:20:00Z"],
+    "warnings": [],
+    "cardinality": 1,
+    "endpoints": ["undefined"],
+    "sourceCores": ["14:20 UTC"],
+    "sourceBounds": [
+      {
+        "start": 97,
+        "end": 106
+      }
+    ],
+    "sourceIndices": [97],
+    "sourceZones": ["+00:00"],
+    "sourceLabels": ["UTC"],
+    "assumptions": [["Date from message context: 2026-03-15"]],
+    "rowOccurrences": [1],
+    "interpretations": [null],
+    "rangeIds": [null]
   }
 ]

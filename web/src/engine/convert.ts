@@ -27,7 +27,11 @@ import { civilInstants } from "./time";
 import type { Conversion, ConversionOptions, TimeResult } from "./types";
 
 import { MAX_INPUT } from "./limits";
-import { prepareMessage, qualifiedRangeBetween } from "./date-context";
+import {
+  maskMetadata,
+  prepareMessage,
+  qualifiedRangeBetween,
+} from "./date-context";
 import type { ContextOwner } from "./date-context";
 export { MAX_INPUT } from "./limits";
 type ResolvedOwner = {
@@ -219,12 +223,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   const prepared = prepareMessage(text, (value, kind) => {
     // Link destinations are labels' metadata, not temporal assertions. Never
     // inspect a URL for dates; visible link text retains its ordinary meaning.
-    const bounded =
-      kind === "temporal"
-        ? value
-            .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
-            .replace(/https?:\/\/\S+/gi, "")
-        : value;
+    const bounded = kind === "temporal" ? maskMetadata(value) : value;
     const detected = (kind === "date" ? monthFirst : parser).parse(
       bounded,
       ref,
@@ -270,7 +269,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   // Protect only real clock-first structural items/Time values, with
   // parser-confirmed clocks on both sides; malformed signed offsets still
   // receive the established offset validation.
-  const clockSeparators = [...text.matchAll(OFFSET_TOKEN)].filter((match) => {
+  const clockSeparators = [
+    ...prepared.semanticText.matchAll(OFFSET_TOKEN),
+  ].filter((match) => {
     if (!/^(?:UTC|GMT)[ \t]+-{1,2}$/i.test(match[0])) return false;
     const item = prepared.owners
       .flatMap((owner) => owner.items)
@@ -280,8 +281,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           value.end >= match.index! + match[0].length,
       );
     if (!item) return false;
-    const prefix = text.slice(item.value.start, match.index).trim(),
-      tail = text
+    const prefix = prepared.semanticText
+        .slice(item.value.start, match.index)
+        .trim(),
+      tail = prepared.semanticText
         .slice(match.index! + match[0].length, item.value.end)
         .trimStart();
     const start = parser.parse(prefix, ref, { timezones: timezoneHints })[0],
@@ -300,6 +303,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         : " ".repeat(token.length),
     );
   const zoneLookupText = (value: string, sourceStart: number) => {
+    value = prepared.semanticText.slice(
+      sourceStart,
+      sourceStart + value.length,
+    );
     // The token can straddle matchedText and suffix. Replace only separator
     // signs at their original positions for zone lookup; native parsing and
     // original source slices retain every separator unchanged.
@@ -351,9 +358,13 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     // Restore bounded parser-owned dates only for genuinely date-only input.
     // Opaque dates must never return to the mixed-message merge/context pass.
     for (const token of prepared.savedDates) {
-      for (const date of parser.parse(token.text, ref, {
-        timezones: timezoneHints,
-      })) {
+      for (const date of parser.parse(
+        prepared.semanticText.slice(token.span.start, token.span.end),
+        ref,
+        {
+          timezones: timezoneHints,
+        },
+      )) {
         const restored: typeof date = Object.create(date);
         Object.defineProperty(restored, "index", {
           value: date.index + token.span.start,
@@ -377,7 +388,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   >();
   const warnings: string[] = [],
     results: TimeResult[] = [];
-  const invalidOffsets = [...text.matchAll(OFFSET_TOKEN)].filter(
+  const invalidOffsets = [
+    ...prepared.semanticText.matchAll(OFFSET_TOKEN),
+  ].filter(
     (m) =>
       !explicitZones(m[0])?.length &&
       !clockSeparators.some((match) => match.index === m.index) &&
@@ -389,7 +402,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     warnings.push(`Invalid timezone offset ${m[0]}. Correct it and try again.`),
   );
   const vague = [
-    ...text.matchAll(
+    ...prepared.semanticText.matchAll(
       /\b(?:(?:half|quarter)\s+(?:past|to)\s+(?:noon|midnight|\d{1,2}(?:\s*[ap]m)?)|\d{1,2}ish)\b/gi,
     ),
   ];
@@ -398,7 +411,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       `“${m[0]}” needs a clear clock time. Replace it with a time such as 3:30pm.`,
     ),
   );
-  if (/\b(?:EOD|COB)\b/i.test(text))
+  if (/\b(?:EOD|COB)\b/i.test(prepared.semanticText))
     warnings.push(
       "EOD/COB does not specify a clock time. Replace it with the intended time.",
     );
@@ -422,7 +435,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         eventSpan,
       ) &&
       qualifiedRangeBetween(
-        text.slice(prior.index + prior.text.length, r.index),
+        prepared.semanticText.slice(prior.index + prior.text.length, r.index),
       );
     const priorResults = qualifiedRange
       ? results.filter(
@@ -434,7 +447,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         (m) =>
           r.index <= m.index! + m[0].length &&
           (r.index + r.text.length >= m.index! ||
-            !text.slice(r.index + r.text.length, m.index).trim()),
+            !prepared.semanticText
+              .slice(r.index + r.text.length, m.index)
+              .trim()),
       )
     )
       continue;
@@ -450,7 +465,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       block !== contextParagraph ||
       plan.resetsLegacyContextBetween(previousEnd, r.index) ||
       startsAfterUnrelatedDate(r.start) ||
-      /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
+      /[.!?]\s+[A-Z]/.test(prepared.semanticText.slice(previousEnd, r.index))
     ) {
       contextDate = undefined;
       contextText = "";
@@ -506,19 +521,29 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const rawSuffix = text
       .slice(r.index + r.text.length, suffixEnd)
       .split(/\n|[.;!?]|,(?!\s*\d)/)[0];
-    const suffix =
+    const displaySuffix =
       decision.kind === "legacy" ? rawSuffix : boundedZoneSuffix(rawSuffix);
+    const semanticSuffix = zoneLookupText(rawSuffix, r.index + r.text.length);
+    const suffix =
+      decision.kind === "legacy"
+        ? semanticSuffix
+        : boundedZoneSuffix(semanticSuffix);
     const zoneSuffix = suffix.split(
       /\b(?:to|with|because|please|but|then|and)\b/i,
     )[0];
-    const leadingZone = zoneSuffix
+    const displayZoneSuffix = displaySuffix.split(
+      /\b(?:to|with|because|please|but|then|and)\b/i,
+    )[0];
+    const leadingZone = displayZoneSuffix
       .trim()
       .match(/^(?:UTC|GMT)\s*[+\-−][\d:]+|^[A-Z]{2,5}\b/i);
     const original = (
       matchedText +
-      (/^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z0-9_+-]*\/))/.test(zoneSuffix) ||
+      (/^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z0-9_+-]*\/))/.test(
+        displayZoneSuffix,
+      ) ||
       (leadingZone && explicitZones(leadingZone[0])?.length)
-        ? zoneSuffix
+        ? displayZoneSuffix
         : "")
     ).trim();
     const endpoints: [ParsedComponents, "start" | "end" | undefined][] = [
@@ -526,7 +551,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       ...(r.end ? [[r.end, "end"] as [ParsedComponents, "end"]] : []),
     ];
     const zones = [
-      ...(matchedText + zoneSuffix).matchAll(
+      ...zoneLookupText(matchedText + zoneSuffix, r.index).matchAll(
         /\b(?:UTC|GMT)\s*[+\-−][\d:]+|\b(?:[A-Z]{2,5})\b/gi,
       ),
     ].filter((m) => !!explicitZones(m[0]));
@@ -548,9 +573,16 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           instant: new Date(now),
           timezone: offsetMinutes(choice.zone, now),
         };
-        const local = parser.parse(maskOffsets(matchedText, r.index), zoneRef, {
-          timezones: timezoneHints,
-        })[0];
+        const local = parser.parse(
+          maskOffsets(
+            prepared.semanticText.slice(r.index, r.index + r.text.length),
+            r.index,
+          ),
+          zoneRef,
+          {
+            timezones: timezoneHints,
+          },
+        )[0];
         const components = local
           ? endpoint === "end" && local.end
             ? local.end

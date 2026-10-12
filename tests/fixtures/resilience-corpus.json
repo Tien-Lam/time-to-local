@@ -5803,6 +5803,105 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "Independent review-derived epoch URL metadata regression: exactly the stated contextual clock and no phantom Unix row; expected DTO semantics in temporal.json. Inventory only."
+    },
+    {
+      "id": "web-145-url-followup-v01",
+      "input": "March 12, 2026\n- 11:20 UTC [Outline 🧭](https://example.invalid/(intro)/2026-05-20)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v02",
+      "input": "March 12, 2026\n- 14:35 UTC [Resources](https://example.invalid/(materials)/1775736000)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v03",
+      "input": "May 12\n- 09:45 [Outline](/June/22/2026)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v04",
+      "input": "March 12, 2026\n- 10:15 https://localhost/June/22/2026",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v05",
+      "input": "Date: March 12, 2026\nActivity: [Outline](https://example.invalid/(intro)/2026-05-20)\nTime: 06:25 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v06",
+      "input": "Date: March 12, 2026\nActivity: [June 22, 2026](https://example.invalid/(intro)/agenda)\nTime: 07:40 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v07",
+      "input": "March 12, 2026\n- 13:10 UTC [Outline](https://example.invalid/EOD/COB)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived warning metadata control: URL-only EOD/COB is ignored and visible label keeps established warning. Exact clock/context/source/warnings maintained directly in temporal.json; pre-existing bounded gap, inventory only."
+    },
+    {
+      "id": "web-145-url-followup-v08",
+      "input": "March 12, 2026\n- 15:40 UTC [EOD and COB follow-up](https://example.invalid/agenda)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived warning metadata control: URL-only EOD/COB is ignored and visible label keeps established warning. Exact clock/context/source/warnings maintained directly in temporal.json; pre-existing bounded gap, inventory only."
+    },
+    {
+      "id": "web-145-url-title-t01",
+      "input": "March 15, 2026\n- 08:55 UTC [Notes](https://example.invalid/path \"Intro) May 24, 2026 EOD\")",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived ordinary inline-link quoted-title/angle/escaped destination metadata exclusion. Exact stated UTC clock, context, warning array, cardinality and source identity maintained in temporal.json; exposed development data, inventory only."
+    },
+    {
+      "id": "web-145-url-title-t02",
+      "input": "March 15, 2026\n- 11:05 UTC [Materials](<https://example.invalid/material)2026-05-24/EOD>)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived ordinary inline-link quoted-title/angle/escaped destination metadata exclusion. Exact stated UTC clock, context, warning array, cardinality and source identity maintained in temporal.json; exposed development data, inventory only."
+    },
+    {
+      "id": "web-145-url-title-t03",
+      "input": "Date: March 15, 2026\nActivity: [Materials](https://example.invalid/intro\\)May-24-2026/EOD)\nTime: 14:20 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived ordinary inline-link quoted-title/angle/escaped destination metadata exclusion. Exact stated UTC clock, context, warning array, cardinality and source identity maintained in temporal.json; exposed development data, inventory only."
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

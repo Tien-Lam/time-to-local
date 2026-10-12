@@ -26,6 +26,7 @@ export interface ContextPlan {
 }
 export interface PreparedMessage {
   parserText: string;
+  semanticText: string;
   masks: Span[];
   owners: ContextOwner[];
   savedDates: Array<{ span: Span; text: string }>;
@@ -48,6 +49,101 @@ const dateCandidate = new RegExp(
 const marker = /^([ \t]*)([-*+]|\d+[.)])([ \t]+)(.*)$/;
 const overlap = (a: Span, b: Span) => a.start < b.end && a.end > b.start;
 const contains = (a: Span, b: Span) => a.start <= b.start && a.end >= b.end;
+
+/** Same-line links with balanced destinations, angle URIs and quoted titles. */
+function metadataSpans(text: string): Span[] {
+  const masks: Span[] = [],
+    links: Span[] = [];
+  for (let index = 0; index < text.length;) {
+    if (text[index] === "\\") {
+      index += 2;
+      continue;
+    }
+    if (text[index] !== "[") {
+      index++;
+      continue;
+    }
+    let labelEnd = index + 1,
+      brackets = 1;
+    for (; labelEnd < text.length; labelEnd++) {
+      const char = text[labelEnd];
+      if (char === "\r" || char === "\n") break;
+      if (char === "\\") labelEnd++;
+      else if (char === "[") brackets++;
+      else if (char === "]" && --brackets === 0) break;
+    }
+    if (brackets || text[labelEnd + 1] !== "(") {
+      index = labelEnd + 1;
+      continue;
+    }
+    let end = labelEnd + 2,
+      parentheses = 1,
+      first = end;
+    while (text[first] === " " || text[first] === "\t") first++;
+    let angle = false,
+      titleBoundary = false,
+      quote: string | undefined;
+    for (; end < text.length; end++) {
+      const char = text[end];
+      if (char === "\r" || char === "\n") break;
+      if (char === "\\") {
+        end++;
+        titleBoundary = false;
+        continue;
+      }
+      if (quote) {
+        if (char === quote) quote = undefined;
+        continue;
+      }
+      if (angle) {
+        if (char === ">") angle = false;
+        continue;
+      }
+      if (char === "<" && end === first) {
+        angle = true;
+        continue;
+      }
+      // A URL apostrophe is not a title delimiter. Titles start after real,
+      // unescaped destination whitespace and may contain unmatched parentheses.
+      if ((char === '"' || char === "'") && titleBoundary) {
+        quote = char;
+        titleBoundary = false;
+        continue;
+      }
+      titleBoundary = char === " " || char === "\t";
+      if (char === "(") parentheses++;
+      else if (char === ")" && --parentheses === 0) break;
+    }
+    if (!parentheses) {
+      masks.push({ start: labelEnd + 2, end });
+      links.push({ start: index, end: end + 1 });
+    }
+    index = end + 1;
+  }
+  let linkIndex = 0;
+  for (const match of text.matchAll(/https?:\/\/\S+/gi)) {
+    const start = match.index!;
+    // Visible link labels remain assertions; destinations are already masked.
+    while (linkIndex < links.length && links[linkIndex].end <= start)
+      linkIndex++;
+    const link = links[linkIndex];
+    if (link && link.start <= start && start < link.end) continue;
+    masks.push({ start, end: start + match[0].length });
+  }
+  return masks;
+}
+
+function opaqueText(text: string, masks: Span[]): string {
+  const units = text.split("");
+  for (const mask of masks)
+    for (let index = mask.start; index < mask.end; index++) units[index] = "|";
+  return units.join("");
+}
+
+/** Share exactly the same metadata semantics with optional-field inspection. */
+export function maskMetadata(text: string): string {
+  return opaqueText(text, metadataSpans(text));
+}
 
 /** The converter's existing connector for two separately detected zone clocks. */
 export function qualifiedRangeBetween(text: string): boolean {
@@ -299,34 +395,19 @@ export function prepareMessage(
   }
   // Destination metadata never contributes temporal assertions in the indexed
   // structural domains. Keep visible labels and every original UTF-16 offset.
-  for (const owner of owners) {
-    const domainText = text.slice(owner.domain.start, owner.domain.end);
-    const links: Span[] = [];
-    for (const match of domainText.matchAll(
-      /\[([^\]\r\n]*)\]\(([^)\r\n]*)\)/g,
-    )) {
-      const start = owner.domain.start + match.index! + match[1].length + 3;
-      masks.push({ start, end: start + match[2].length });
-      links.push({
-        start: owner.domain.start + match.index!,
-        end: owner.domain.start + match.index! + match[0].length,
-      });
-    }
-    for (const match of domainText.matchAll(/https?:\/\/\S+/gi)) {
-      const start = owner.domain.start + match.index!;
-      // Ordinary visible Markdown labels remain assertions. Their destinations
-      // already have their own mask, excluding link punctuation and labels.
-      if (links.some((link) => link.start <= start && start < link.end))
-        continue;
-      masks.push({ start, end: start + match[0].length });
-    }
-  }
-  const units = text.split("");
-  for (const mask of masks)
-    for (let index = mask.start; index < mask.end; index++) units[index] = "|";
+  const metadataMasks = owners.flatMap((owner) =>
+    metadataSpans(text.slice(owner.domain.start, owner.domain.end)).map(
+      (mask) => ({
+        start: mask.start + owner.domain.start,
+        end: mask.end + owner.domain.start,
+      }),
+    ),
+  );
+  masks.push(...metadataMasks);
 
   return {
-    parserText: units.join(""),
+    parserText: opaqueText(text, masks),
+    semanticText: opaqueText(text, metadataMasks),
     masks,
     owners,
     savedDates,

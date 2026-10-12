@@ -34,7 +34,8 @@ describe("independently specified temporal fixtures", () => {
         expect(result.results.map((r) => String(r.endpoint))).toEqual(
           f.endpoints,
         );
-      if ("warning" in f)
+      if (f.warnings !== undefined) expect(result.warnings).toEqual(f.warnings);
+      else if ("warning" in f)
         expect(result.warnings.join("\n")).toContain(f.warning!);
       else expect(result.warnings).toEqual([]);
       if ("assumption" in f)
