@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 854,
+  "total": 896,
   "crashes": 0,
   "legacyCountDifferences": 31,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -2486,6 +2486,369 @@
       "missingLocalTimes": [],
       "warnings": [
         "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-502",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-503",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-504",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-505",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-506",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-509",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-510",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-511",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-512",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-513",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-516",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-517",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-518",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-519",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-520",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-521",
+      "input": "America/New_York 3pm US/Eastern America/Foo to UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-522",
+      "input": "America/New_York 3pm US/Eastern America/Foo - UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-523",
+      "input": "America/New_York April 8 US/Eastern America/Foo to UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-524",
+      "input": "America/New_York April 8 US/Eastern America/Foo - UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-525",
+      "input": "America/New_York 3pm America/Foo US/Eastern to UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-526",
+      "input": "America/New_York 3pm America/Foo US/Eastern - UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-527",
+      "input": "America/New_York April 8 America/Foo US/Eastern to UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-528",
+      "input": "America/New_York April 8 America/Foo US/Eastern - UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-529",
+      "input": "America/New_York 3pm America/Foo Mars/Olympus to UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-530",
+      "input": "America/New_York 3pm America/Foo Mars/Olympus - UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-531",
+      "input": "America/New_York April 8 America/Foo Mars/Olympus to UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-532",
+      "input": "America/New_York April 8 America/Foo Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-533",
+      "input": "America/New_York 3pm America/New_York Mars/Olympus to UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-534",
+      "input": "America/New_York 3pm America/New_York Mars/Olympus - UTC 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-535",
+      "input": "America/New_York April 8 America/New_York Mars/Olympus to UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-536",
+      "input": "America/New_York April 8 America/New_York Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-537",
+      "input": "America/New_York April 8 America/New_York Mars/Olympus",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-538",
+      "input": "America/New_York April 8 US/Eastern Mars/Olympus",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
       ],
       "dates": []
     }

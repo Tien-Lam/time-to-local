@@ -276,10 +276,23 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       ),
     );
     const qualifier = adjacent.match(IANA_TOKEN);
+    const qualifierSpan = qualifier
+      ? adjacent
+          .slice(qualifier.index)
+          .match(
+            new RegExp(`^${IANA_TOKEN.source}(?:[ \\t]+${IANA_TOKEN.source})*`),
+          )
+      : undefined;
+    const afterQualifiers = qualifierSpan
+      ? adjacent.slice(qualifier!.index! + qualifierSpan[0].length)
+      : "";
     if (
       !qualifier ||
-      !/^(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*/i.test(
-        adjacent.slice(qualifier.index! + qualifier[0].length),
+      !qualifierSpan ||
+      !(
+        /^(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*/i.test(
+          afterQualifiers,
+        ) || /^[ \t]*(?:$|[,;.!?\n])/.test(afterQualifiers)
       )
     )
       continue;
@@ -290,6 +303,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
     if (
       dates.length !== 1 ||
+      dates[0].end ||
       !dates[0].start.isCertain("day") ||
       dates[0].start.isCertain("hour") ||
       dates[0].start.isCertain("minute") ||
@@ -302,8 +316,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const index = prefix.end + qualifier.index!;
     parserText =
       parserText.slice(0, index) +
-      " ".repeat(qualifier[0].length) +
-      parserText.slice(index + qualifier[0].length);
+      " ".repeat(qualifierSpan[0].length) +
+      parserText.slice(index + qualifierSpan[0].length);
   }
   const parsed = parser.parse(parserText, ref, { timezones: timezoneHints });
   const warnings: string[] = [],
@@ -350,7 +364,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const qualifiedRange =
       prior &&
       !prior.end &&
-      (/^\s+(?:(?:in|at)\s+)?(?:[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][A-Za-z0-9+\-−:]+)(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*$/iu.test(
+      (/^\s+[\p{L}\d_ /.'+−:-]+?(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*$/iu.test(
         priorSuffix,
       ) ||
         /^(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*$/i.test(priorSuffix));
@@ -451,7 +465,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       dateOnly &&
       prefix &&
       (!choicesFor(
-        prefix?.text ?? matchedText,
+        matchedText,
         qualifierSuffix,
         r.start,
         options.sourceZone,
@@ -510,10 +524,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     if (!r.start.isCertain("hour") && !r.start.isCertain("minute")) {
       if (!hasTime)
         results.push({
-          id: `date-${r.index}`,
-          group: `date-${r.index}`,
-          original: r.text,
-          sourceIndex: r.index,
+          id: `date-${sourceIndex}`,
+          group: `date-${sourceIndex}`,
+          original: prefix ? matchedText.trim() : r.text,
+          sourceIndex,
           dateOnly: date.toString(),
           ...(hasNumericDate(r.start)
             ? {

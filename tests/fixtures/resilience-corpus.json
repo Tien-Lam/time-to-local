@@ -10425,6 +10425,384 @@
       "legacyExpectedCount": 2,
       "expected": [],
       "description": "valid IANA prefix accepts matching adjacent US/Eastern"
+    },
+    {
+      "id": "web-zone-first-500",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "ASCII hyphen dated end keeps regional prefix despite UTC fallback"
+    },
+    {
+      "id": "web-zone-first-501",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "ASCII hyphen dated end keeps regional prefix despite Asia/Tokyo fallback"
+    },
+    {
+      "id": "web-zone-first-502",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "ASCII hyphen independently dated end Mars/Olympus rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-503",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "ASCII hyphen independently dated end XYZ rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-504",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "ASCII hyphen independently dated end UTC+25:00 rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-505",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "ASCII hyphen independently dated end in Atlantis rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-506",
+      "input": "America/New_York 3pm - America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "ASCII hyphen independently dated end in Tokyo rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-507",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "word connector dated end keeps regional prefix despite UTC fallback"
+    },
+    {
+      "id": "web-zone-first-508",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "word connector dated end keeps regional prefix despite Asia/Tokyo fallback"
+    },
+    {
+      "id": "web-zone-first-509",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector independently dated end Mars/Olympus rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-510",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector independently dated end XYZ rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-511",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector independently dated end UTC+25:00 rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-512",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector independently dated end in Atlantis rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-513",
+      "input": "America/New_York 3pm to America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector independently dated end in Tokyo rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-514",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "en dash dated end keeps regional prefix despite UTC fallback"
+    },
+    {
+      "id": "web-zone-first-515",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "en dash dated end keeps regional prefix despite Asia/Tokyo fallback"
+    },
+    {
+      "id": "web-zone-first-516",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "en dash independently dated end Mars/Olympus rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-517",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "en dash independently dated end XYZ rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-518",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "en dash independently dated end UTC+25:00 rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-519",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "en dash independently dated end in Atlantis rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-520",
+      "input": "America/New_York 3pm – America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "en dash independently dated end in Tokyo rejects owned pair"
+    },
+    {
+      "id": "web-zone-first-521",
+      "input": "America/New_York 3pm US/Eastern America/Foo to UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA US/Eastern America/Foo word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-522",
+      "input": "America/New_York 3pm US/Eastern America/Foo - UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA US/Eastern America/Foo ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-523",
+      "input": "America/New_York April 8 US/Eastern America/Foo to UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA US/Eastern America/Foo word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-524",
+      "input": "America/New_York April 8 US/Eastern America/Foo - UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA US/Eastern America/Foo ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-525",
+      "input": "America/New_York 3pm America/Foo US/Eastern to UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA America/Foo US/Eastern word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-526",
+      "input": "America/New_York 3pm America/Foo US/Eastern - UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA America/Foo US/Eastern ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-527",
+      "input": "America/New_York April 8 America/Foo US/Eastern to UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA America/Foo US/Eastern word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-528",
+      "input": "America/New_York April 8 America/Foo US/Eastern - UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA America/Foo US/Eastern ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-529",
+      "input": "America/New_York 3pm America/Foo Mars/Olympus to UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA America/Foo Mars/Olympus word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-530",
+      "input": "America/New_York 3pm America/Foo Mars/Olympus - UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA America/Foo Mars/Olympus ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-531",
+      "input": "America/New_York April 8 America/Foo Mars/Olympus to UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA America/Foo Mars/Olympus word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-532",
+      "input": "America/New_York April 8 America/Foo Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA America/Foo Mars/Olympus ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-533",
+      "input": "America/New_York 3pm America/New_York Mars/Olympus to UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA America/New_York Mars/Olympus word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-534",
+      "input": "America/New_York 3pm America/New_York Mars/Olympus - UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timed multiple IANA America/New_York Mars/Olympus ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-535",
+      "input": "America/New_York April 8 America/New_York Mars/Olympus to UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA America/New_York Mars/Olympus word connector reject and recover"
+    },
+    {
+      "id": "web-zone-first-536",
+      "input": "America/New_York April 8 America/New_York Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only multiple IANA America/New_York Mars/Olympus ASCII hyphen reject and recover"
+    },
+    {
+      "id": "web-zone-first-537",
+      "input": "America/New_York April 8 America/New_York Mars/Olympus",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "standalone complete date validates all IANA qualifiers America/New_York Mars/Olympus"
+    },
+    {
+      "id": "web-zone-first-538",
+      "input": "America/New_York April 8 US/Eastern Mars/Olympus",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "standalone complete date validates all IANA qualifiers US/Eastern Mars/Olympus"
+    },
+    {
+      "id": "web-zone-first-539",
+      "input": "America/New_York April 8",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid standalone prefix date retains original identity unqualified"
+    },
+    {
+      "id": "web-zone-first-540",
+      "input": "America/New_York April 8 America/New_York",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid standalone prefix date retains original identity America/New_York"
+    },
+    {
+      "id": "web-zone-first-541",
+      "input": "America/New_York April 8 America/New_York US/Eastern",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid standalone prefix date retains original identity America/New_York US/Eastern"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

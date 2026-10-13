@@ -4962,5 +4962,422 @@
     "text": "America/New_York April 8 3pm US/Eastern; UTC April 12 5pm",
     "instants": ["2026-04-08T19:00:00Z", "2026-04-12T17:00:00Z"],
     "sourceZones": ["America/New_York", "+00:00"]
+  },
+  {
+    "name": "ASCII hyphen dated end keeps regional prefix despite UTC fallback",
+    "text": "America/New_York 3pm - America/New_York April 10 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T20:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZone": "UTC",
+    "sourceZones": ["America/New_York", "America/New_York", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "originals": [
+      "America/New_York 3pm - America/New_York April 10 4pm",
+      "America/New_York 3pm - America/New_York April 10 4pm",
+      "UTC April 12 5pm"
+    ]
+  },
+  {
+    "name": "ASCII hyphen dated end keeps regional prefix despite Asia/Tokyo fallback",
+    "text": "America/New_York 3pm - America/New_York April 10 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T20:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZone": "Asia/Tokyo",
+    "sourceZones": ["America/New_York", "America/New_York", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "originals": [
+      "America/New_York 3pm - America/New_York April 10 4pm",
+      "America/New_York 3pm - America/New_York April 10 4pm",
+      "UTC April 12 5pm"
+    ]
+  },
+  {
+    "name": "ASCII hyphen independently dated end Mars/Olympus rejects owned pair",
+    "text": "America/New_York 3pm - America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "ASCII hyphen independently dated end XYZ rejects owned pair",
+    "text": "America/New_York 3pm - America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "ASCII hyphen independently dated end UTC+25:00 rejects owned pair",
+    "text": "America/New_York 3pm - America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Invalid timezone offset UTC+25:00"
+  },
+  {
+    "name": "ASCII hyphen independently dated end in Atlantis rejects owned pair",
+    "text": "America/New_York 3pm - America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "ASCII hyphen independently dated end in Tokyo rejects owned pair",
+    "text": "America/New_York 3pm - America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "word connector dated end keeps regional prefix despite UTC fallback",
+    "text": "America/New_York 3pm to America/New_York April 10 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T20:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZone": "UTC",
+    "sourceZones": ["America/New_York", "America/New_York", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "originals": [
+      "America/New_York 3pm to America/New_York April 10 4pm",
+      "America/New_York 3pm to America/New_York April 10 4pm",
+      "UTC April 12 5pm"
+    ]
+  },
+  {
+    "name": "word connector dated end keeps regional prefix despite Asia/Tokyo fallback",
+    "text": "America/New_York 3pm to America/New_York April 10 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T20:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZone": "Asia/Tokyo",
+    "sourceZones": ["America/New_York", "America/New_York", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "originals": [
+      "America/New_York 3pm to America/New_York April 10 4pm",
+      "America/New_York 3pm to America/New_York April 10 4pm",
+      "UTC April 12 5pm"
+    ]
+  },
+  {
+    "name": "word connector independently dated end Mars/Olympus rejects owned pair",
+    "text": "America/New_York 3pm to America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "word connector independently dated end XYZ rejects owned pair",
+    "text": "America/New_York 3pm to America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "word connector independently dated end UTC+25:00 rejects owned pair",
+    "text": "America/New_York 3pm to America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Invalid timezone offset UTC+25:00"
+  },
+  {
+    "name": "word connector independently dated end in Atlantis rejects owned pair",
+    "text": "America/New_York 3pm to America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "word connector independently dated end in Tokyo rejects owned pair",
+    "text": "America/New_York 3pm to America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "en dash dated end keeps regional prefix despite UTC fallback",
+    "text": "America/New_York 3pm – America/New_York April 10 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T20:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZone": "UTC",
+    "sourceZones": ["America/New_York", "America/New_York", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "originals": [
+      "America/New_York 3pm – America/New_York April 10 4pm",
+      "America/New_York 3pm – America/New_York April 10 4pm",
+      "UTC April 12 5pm"
+    ]
+  },
+  {
+    "name": "en dash dated end keeps regional prefix despite Asia/Tokyo fallback",
+    "text": "America/New_York 3pm – America/New_York April 10 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T20:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZone": "Asia/Tokyo",
+    "sourceZones": ["America/New_York", "America/New_York", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "originals": [
+      "America/New_York 3pm – America/New_York April 10 4pm",
+      "America/New_York 3pm – America/New_York April 10 4pm",
+      "UTC April 12 5pm"
+    ]
+  },
+  {
+    "name": "en dash independently dated end Mars/Olympus rejects owned pair",
+    "text": "America/New_York 3pm – America/New_York April 10 4pm Mars/Olympus; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "en dash independently dated end XYZ rejects owned pair",
+    "text": "America/New_York 3pm – America/New_York April 10 4pm XYZ; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "en dash independently dated end UTC+25:00 rejects owned pair",
+    "text": "America/New_York 3pm – America/New_York April 10 4pm UTC+25:00; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Invalid timezone offset UTC+25:00"
+  },
+  {
+    "name": "en dash independently dated end in Atlantis rejects owned pair",
+    "text": "America/New_York 3pm – America/New_York April 10 4pm in Atlantis; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "en dash independently dated end in Tokyo rejects owned pair",
+    "text": "America/New_York 3pm – America/New_York April 10 4pm in Tokyo; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timed multiple IANA US/Eastern America/Foo word connector reject and recover",
+    "text": "America/New_York 3pm US/Eastern America/Foo to UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "timed multiple IANA US/Eastern America/Foo ASCII hyphen reject and recover",
+    "text": "America/New_York 3pm US/Eastern America/Foo - UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "date-only multiple IANA US/Eastern America/Foo word connector reject and recover",
+    "text": "America/New_York April 8 US/Eastern America/Foo to UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "date-only multiple IANA US/Eastern America/Foo ASCII hyphen reject and recover",
+    "text": "America/New_York April 8 US/Eastern America/Foo - UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "timed multiple IANA America/Foo US/Eastern word connector reject and recover",
+    "text": "America/New_York 3pm America/Foo US/Eastern to UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "timed multiple IANA America/Foo US/Eastern ASCII hyphen reject and recover",
+    "text": "America/New_York 3pm America/Foo US/Eastern - UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "date-only multiple IANA America/Foo US/Eastern word connector reject and recover",
+    "text": "America/New_York April 8 America/Foo US/Eastern to UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "date-only multiple IANA America/Foo US/Eastern ASCII hyphen reject and recover",
+    "text": "America/New_York April 8 America/Foo US/Eastern - UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "timed multiple IANA America/Foo Mars/Olympus word connector reject and recover",
+    "text": "America/New_York 3pm America/Foo Mars/Olympus to UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "timed multiple IANA America/Foo Mars/Olympus ASCII hyphen reject and recover",
+    "text": "America/New_York 3pm America/Foo Mars/Olympus - UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "date-only multiple IANA America/Foo Mars/Olympus word connector reject and recover",
+    "text": "America/New_York April 8 America/Foo Mars/Olympus to UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "date-only multiple IANA America/Foo Mars/Olympus ASCII hyphen reject and recover",
+    "text": "America/New_York April 8 America/Foo Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "timed multiple IANA America/New_York Mars/Olympus word connector reject and recover",
+    "text": "America/New_York 3pm America/New_York Mars/Olympus to UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "timed multiple IANA America/New_York Mars/Olympus ASCII hyphen reject and recover",
+    "text": "America/New_York 3pm America/New_York Mars/Olympus - UTC 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "date-only multiple IANA America/New_York Mars/Olympus word connector reject and recover",
+    "text": "America/New_York April 8 America/New_York Mars/Olympus to UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "date-only multiple IANA America/New_York Mars/Olympus ASCII hyphen reject and recover",
+    "text": "America/New_York April 8 America/New_York Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC April 12 5pm"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "standalone complete date validates all IANA qualifiers America/New_York Mars/Olympus",
+    "text": "America/New_York April 8 America/New_York Mars/Olympus",
+    "instants": [],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "standalone complete date validates all IANA qualifiers US/Eastern Mars/Olympus",
+    "text": "America/New_York April 8 US/Eastern Mars/Olympus",
+    "instants": [],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "valid standalone prefix date retains original identity unqualified",
+    "text": "America/New_York April 8",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceIndices": [0],
+    "originals": ["America/New_York April 8"]
+  },
+  {
+    "name": "valid standalone prefix date retains original identity America/New_York",
+    "text": "America/New_York April 8 America/New_York",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceIndices": [0],
+    "originals": ["America/New_York April 8 America/New_York"]
+  },
+  {
+    "name": "valid standalone prefix date retains original identity America/New_York US/Eastern",
+    "text": "America/New_York April 8 America/New_York US/Eastern",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceIndices": [0],
+    "originals": ["America/New_York April 8 America/New_York US/Eastern"]
   }
 ]

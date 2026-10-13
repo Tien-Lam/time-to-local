@@ -90,6 +90,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     const adapter = Object.create(refiner) as DateTimeMerger;
     parser.refiners[parser.refiners.indexOf(refiner)] = adapter;
     const shouldMerge = refiner.shouldMergeResults.bind(refiner);
+    const forwardDates = new WeakMap<ParsingContext, Set<ParsingResult>>();
     adapter.shouldMergeResults = (between, from, to, context) => {
       if (!shouldMerge(between, from, to, context)) return false;
       const separator = between.trim();
@@ -98,7 +99,8 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
         ((from.start.isOnlyDate() &&
           to.start.tags().has("chronoshift/rescued-range-end")) ||
           (from.start.tags().has("chronoshift/date-range-boundary") &&
-            to.start.isOnlyDate()))
+            to.start.isOnlyDate()) ||
+          (from.start.isOnlyTime() && forwardDates.get(context)?.has(to)))
       )
         return false;
       const paragraphBreak = /\n\s*\n/.test(between);
@@ -125,6 +127,32 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
       // result/* tags survive the existing range adapter's component clones.
       if (to.start.isOnlyTime()) to.start.addTag(unrelatedDateBoundary);
       return false;
+    };
+    adapter.refine = (context, results) => {
+      const owned = new Set<ParsingResult>();
+      forwardDates.set(context, owned);
+      for (let index = 0; index < results.length - 1; index++) {
+        const date = results[index],
+          clock = results[index + 1];
+        if (
+          date.start.isOnlyDate() &&
+          clock.start.isOnlyTime() &&
+          adapter.shouldMergeResults(
+            context.text.slice(date.index + date.text.length, clock.index),
+            date,
+            clock,
+            context,
+          )
+        )
+          owned.add(date);
+      }
+      // Resolve a written date with its own following clock before a preceding
+      // clock can consume that date across a range separator.
+      try {
+        return refiner.refine.call(adapter, context, results);
+      } finally {
+        forwardDates.delete(context);
+      }
     };
   }
   // Chrono's range merger sorts endpoints by instant. Our contract preserves
