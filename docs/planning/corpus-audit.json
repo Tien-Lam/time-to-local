@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 429,
+  "total": 448,
   "crashes": 0,
   "legacyCountDifferences": 27,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -637,6 +637,171 @@
       "missingLocalTimes": [],
       "warnings": [
         "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-075",
+      "input": "PT 3pm in London to ET 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-076",
+      "input": "PT 3pm in Atlantis to ET 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-077",
+      "input": "XYZ: 3pm in Seattle to ET 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-078",
+      "input": "Mars/Olympus 3pm in Seattle to ET 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-079",
+      "input": "PT 3pm in Seattle to ET 4pm JST",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-080",
+      "input": "PT 3pm in Seattle to 4pm UTC+25:00",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-081",
+      "input": "UTC+25:00 3pm in Seattle to ET 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-082",
+      "input": "PT March 8, 2026 2:30am in Seattle to ET 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "2026-03-08 02:30:00 doesn't exist in Los Angeles because the clocks move forward. Edit the time or timezone in your message."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-083",
+      "input": "PT 3pm in London to ET 4pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-084",
+      "input": "PT 3pm at London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-085",
+      "input": "PT 3pm at Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-086",
+      "input": "PDT noon at London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-087",
+      "input": "PT now at London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-090",
+      "input": "PT 3pm at Seattle to ET 4pm at London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-092",
+      "input": "3pm XYZ meeting",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
       ],
       "dates": []
     }

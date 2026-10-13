@@ -1415,5 +1415,123 @@
     "text": "PT 3pm in Los Angeles to ET 4pm in Atlantis",
     "instants": [],
     "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first qualified conflicting start suppresses end",
+    "text": "PT 3pm in London to ET 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first qualified unknown start city suppresses end",
+    "text": "PT 3pm in Atlantis to ET 4pm",
+    "instants": [],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first qualified unknown start prefix suppresses end",
+    "text": "XYZ: 3pm in Seattle to ET 4pm",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "timezone-first qualified unknown start IANA suppresses end",
+    "text": "Mars/Olympus 3pm in Seattle to ET 4pm",
+    "instants": [],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "timezone-first qualified conflicting end removes prior start",
+    "text": "PT 3pm in Seattle to ET 4pm JST",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first qualified invalid end offset removes prior start",
+    "text": "PT 3pm in Seattle to 4pm UTC+25:00",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "timezone-first qualified invalid start offset suppresses end",
+    "text": "UTC+25:00 3pm in Seattle to ET 4pm",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "timezone-first qualified DST gap start suppresses end",
+    "text": "PT March 8, 2026 2:30am in Seattle to ET 4pm",
+    "instants": [],
+    "warning": "doesn't exist"
+  },
+  {
+    "name": "timezone-first qualified invalid range preserves later clause",
+    "text": "PT 3pm in London to ET 4pm; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "timezone-first consumed at city conflict rejected",
+    "text": "PT 3pm at London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first consumed at unknown city rejected",
+    "text": "PT 3pm at Atlantis",
+    "instants": [],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first consumed at noon city conflict rejected",
+    "text": "PDT noon at London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first consumed at now city conflict rejected",
+    "text": "PT now at London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first consumed at matching city retains original",
+    "text": "PT 3pm at Seattle",
+    "instants": ["2026-04-06T22:00:00Z"],
+    "sourceZones": ["America/Los_Angeles"],
+    "originals": ["PT 3pm at Seattle"],
+    "sourceIndices": [0]
+  },
+  {
+    "name": "timezone-first consumed at matching fixed city accepted",
+    "text": "PDT 3pm at Seattle",
+    "instants": ["2026-04-06T22:00:00Z"],
+    "sourceZones": ["-07:00"]
+  },
+  {
+    "name": "timezone-first consumed at range conflict removes both",
+    "text": "PT 3pm at Seattle to ET 4pm at London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first consumed at range cities retain ownership",
+    "text": "PT 3pm at Seattle to ET 4pm at New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["America/Los_Angeles", "America/New_York"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unknown suffix before prose still cannot assume source",
+    "text": "3pm XYZ meeting",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "uppercase regional AT remains explicit",
+    "text": "AT 3pm",
+    "instants": ["2026-04-06T18:00:00Z"],
+    "sourceZones": ["America/Halifax"]
   }
 ]

@@ -6600,6 +6600,177 @@
       "legacyExpectedCount": 0,
       "expected": [],
       "description": "timezone-first qualified unknown endpoint rejects prior start"
+    },
+    {
+      "id": "web-zone-first-075",
+      "input": "PT 3pm in London to ET 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified conflicting start suppresses end"
+    },
+    {
+      "id": "web-zone-first-076",
+      "input": "PT 3pm in Atlantis to ET 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified unknown start city suppresses end"
+    },
+    {
+      "id": "web-zone-first-077",
+      "input": "XYZ: 3pm in Seattle to ET 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified unknown start prefix suppresses end"
+    },
+    {
+      "id": "web-zone-first-078",
+      "input": "Mars/Olympus 3pm in Seattle to ET 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified unknown start IANA suppresses end"
+    },
+    {
+      "id": "web-zone-first-079",
+      "input": "PT 3pm in Seattle to ET 4pm JST",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified conflicting end removes prior start"
+    },
+    {
+      "id": "web-zone-first-080",
+      "input": "PT 3pm in Seattle to 4pm UTC+25:00",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified invalid end offset removes prior start"
+    },
+    {
+      "id": "web-zone-first-081",
+      "input": "UTC+25:00 3pm in Seattle to ET 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified invalid start offset suppresses end"
+    },
+    {
+      "id": "web-zone-first-082",
+      "input": "PT March 8, 2026 2:30am in Seattle to ET 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified DST gap start suppresses end"
+    },
+    {
+      "id": "web-zone-first-083",
+      "input": "PT 3pm in London to ET 4pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first qualified invalid range preserves later clause"
+    },
+    {
+      "id": "web-zone-first-084",
+      "input": "PT 3pm at London",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first consumed at city conflict rejected"
+    },
+    {
+      "id": "web-zone-first-085",
+      "input": "PT 3pm at Atlantis",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first consumed at unknown city rejected"
+    },
+    {
+      "id": "web-zone-first-086",
+      "input": "PDT noon at London",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first consumed at noon city conflict rejected"
+    },
+    {
+      "id": "web-zone-first-087",
+      "input": "PT now at London",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first consumed at now city conflict rejected"
+    },
+    {
+      "id": "web-zone-first-088",
+      "input": "PT 3pm at Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first consumed at matching city retains original"
+    },
+    {
+      "id": "web-zone-first-089",
+      "input": "PDT 3pm at Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first consumed at matching fixed city accepted"
+    },
+    {
+      "id": "web-zone-first-090",
+      "input": "PT 3pm at Seattle to ET 4pm at London",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first consumed at range conflict removes both"
+    },
+    {
+      "id": "web-zone-first-091",
+      "input": "PT 3pm at Seattle to ET 4pm at New York",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first consumed at range cities retain ownership"
+    },
+    {
+      "id": "web-zone-first-092",
+      "input": "3pm XYZ meeting",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown suffix before prose still cannot assume source"
+    },
+    {
+      "id": "web-zone-first-093",
+      "input": "AT 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "uppercase regional AT remains explicit"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

@@ -148,10 +148,11 @@ function choicesFor(
     return [];
   }
   const explicit = explicitZones(text);
-  const unknownAbbr = adjacent.match(/^\s+([A-Z]{2,5})\s*$/);
+  const unknownAbbr = adjacent.match(/^\s+([A-Z]{2,5})\b/);
   if (
     explicit &&
     unknownAbbr &&
+    adjacent.trim() === unknownAbbr[1] &&
     !["AM", "PM", "IN", "AT"].includes(unknownAbbr[1]) &&
     !explicitZones(unknownAbbr[1])
   ) {
@@ -270,6 +271,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     contextParagraph = -1,
     previousEnd = 0;
   const hasTime = parsed.some((r) => r.start.isCertain("hour"));
+  const rejected = new Set<number>();
 
   for (let i = 0; i < parsed.length; i++) {
     const r = parsed[i],
@@ -290,6 +292,28 @@ export function convert(text: string, options: ConversionOptions): Conversion {
               (prefixAt(prior.index)?.index ?? prior.index) && result.instant,
         )
       : [];
+    const resultStart = results.length;
+    // Qualified ranges can arrive as separate parses. Keep their rejection
+    // state even when the first endpoint never produced a usable result.
+    const reject = () => {
+      rejected.add(r.index);
+      const ranges = new Set(
+        priorResults.flatMap((result) =>
+          result.rangeId ? [result.rangeId] : [],
+        ),
+      );
+      for (let index = results.length - 1; index >= 0; index--)
+        if (
+          index >= resultStart ||
+          priorResults.includes(results[index]) ||
+          (results[index].rangeId && ranges.has(results[index].rangeId!))
+        )
+          results.splice(index, 1);
+    };
+    if (qualifiedRange && rejected.has(prior.index)) {
+      reject();
+      continue;
+    }
     if (
       invalidOffsets.some(
         (m) =>
@@ -297,16 +321,20 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           (r.index + r.text.length >= m.index! ||
             !text.slice(r.index + r.text.length, m.index).trim()),
       )
-    )
+    ) {
+      reject();
       continue;
+    }
     if (
       vague.some(
         (m) =>
           r.index < m.index! + m[0].length &&
           r.index + r.text.length > m.index!,
       )
-    )
+    ) {
+      reject();
       continue;
+    }
     if (
       block !== contextParagraph ||
       startsAfterUnrelatedDate(r.start) ||
@@ -363,6 +391,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const suffix = text
       .slice(r.index + r.text.length, suffixEnd)
       .split(/\n|[.;!?]|,(?!\s*\d)/)[0];
+    // Chrono treats lowercase "at" as the regional AT abbreviation and may
+    // include it in the clock span. Reattach only that lowercase connector to
+    // its original suffix; uppercase AT retains its explicit zone semantics.
+    const consumedAt = /\bat\s*$/.test(r.text) && /^\s+[\p{L}]/u.test(suffix);
+    const qualifierSuffix = consumedAt ? ` at${suffix}` : suffix;
     const zoneSuffix = suffix.split(
       /\b(?:to|with|because|please|but|then|and)\b/i,
     )[0];
@@ -371,7 +404,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       .match(/^(?:UTC|GMT)\s*[+\-−][\d:]+|^[A-Z]{2,5}\b/i);
     const original = (
       matchedText +
-      (/^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z0-9_+-]*\/))/.test(zoneSuffix) ||
+      (consumedAt ||
+      /^\s+(?:(?:in|at)\s+|(?:[A-Z][A-Za-z0-9_+-]*\/))/.test(zoneSuffix) ||
       (leadingZone && explicitZones(leadingZone[0])?.length)
         ? zoneSuffix
         : "")
@@ -425,10 +459,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         warnings.push(
           "Conflicting timezones around one time. Keep one source timezone per time and try again.",
         );
+        reject();
         continue;
       }
     }
-    const resultStart = results.length;
     let invalidEndpoint = false;
     for (const [c, endpoint] of endpoints) {
       // If both endpoints carry a different abbreviation, resolve each independently.
@@ -451,7 +485,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             : zoneText),
         endpoint === "start" && r.end && (prefix || rangePrefixes.length)
           ? ""
-          : suffix,
+          : qualifierSuffix,
         c,
         options.sourceZone,
         warnings,
@@ -474,7 +508,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       const qualifier =
         prefix || rangePrefixes.length
           ? cityChoices(
-              adjacentQualifier(endpoint === "start" && r.end ? "" : suffix),
+              adjacentQualifier(
+                endpoint === "start" && r.end ? "" : qualifierSuffix,
+              ),
               warnings,
             )
           : undefined;
@@ -667,11 +703,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       }
     }
     if (invalidEndpoint) {
-      results.splice(resultStart);
-      for (const result of priorResults) {
-        const index = results.indexOf(result);
-        if (index >= 0) results.splice(index, 1);
-      }
+      reject();
     }
   }
   for (const match of text.matchAll(/\b(1[4-9]\d{8}|[2-9]\d{9})\b/g)) {
