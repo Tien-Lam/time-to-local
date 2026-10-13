@@ -3363,5 +3363,605 @@
     "now": "2026-04-09T12:00:00Z",
     "instants": ["2026-04-10T06:00:00Z"],
     "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "complete trailing April 10 binds to end after April 8 3pm",
+    "text": "PDT April 8 3pm to JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm to JST 4pm on April 10",
+      "PDT April 8 3pm to JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds to end after April 8 3pm",
+    "text": "PDT April 8 3pm to JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm to JST 4pm on 10 April",
+      "PDT April 8 3pm to JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "complete trailing April 10 binds to end after 8 April 3pm",
+    "text": "PDT 8 April 3pm to JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm to JST 4pm on April 10",
+      "PDT 8 April 3pm to JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds to end after 8 April 3pm",
+    "text": "PDT 8 April 3pm to JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm to JST 4pm on 10 April",
+      "PDT 8 April 3pm to JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "invalid date-only prefix XYZ: rejects to owned end",
+    "text": "XYZ: April 8 to JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "invalid date-only prefix Mars/Olympus rejects to owned end",
+    "text": "Mars/Olympus April 8 to JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "invalid date-only prefix UTC+99 rejects to owned end",
+    "text": "UTC+99 April 8 to JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Invalid timezone offset UTC+99"
+  },
+  {
+    "name": "unknown date-only qualifier time rejects to owned end",
+    "text": "PDT April 8 XYZ time to JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown date-only qualifier in Seattle rejects to owned end",
+    "text": "PDT April 8 XYZ in Seattle to JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown qualifier after trailing end date rejects to range",
+    "text": "PDT April 8 3pm to JST 4pm on April 10 FOO time; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone FOO"
+  },
+  {
+    "name": "complete trailing April 10 binds until end after April 8 3pm",
+    "text": "PDT April 8 3pm until JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm until JST 4pm on April 10",
+      "PDT April 8 3pm until JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds until end after April 8 3pm",
+    "text": "PDT April 8 3pm until JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm until JST 4pm on 10 April",
+      "PDT April 8 3pm until JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "complete trailing April 10 binds until end after 8 April 3pm",
+    "text": "PDT 8 April 3pm until JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm until JST 4pm on April 10",
+      "PDT 8 April 3pm until JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds until end after 8 April 3pm",
+    "text": "PDT 8 April 3pm until JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm until JST 4pm on 10 April",
+      "PDT 8 April 3pm until JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "invalid date-only prefix XYZ: rejects until owned end",
+    "text": "XYZ: April 8 until JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "invalid date-only prefix Mars/Olympus rejects until owned end",
+    "text": "Mars/Olympus April 8 until JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "invalid date-only prefix UTC+99 rejects until owned end",
+    "text": "UTC+99 April 8 until JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Invalid timezone offset UTC+99"
+  },
+  {
+    "name": "unknown date-only qualifier time rejects until owned end",
+    "text": "PDT April 8 XYZ time until JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown date-only qualifier in Seattle rejects until owned end",
+    "text": "PDT April 8 XYZ in Seattle until JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown qualifier after trailing end date rejects until range",
+    "text": "PDT April 8 3pm until JST 4pm on April 10 FOO time; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone FOO"
+  },
+  {
+    "name": "complete trailing April 10 binds till end after April 8 3pm",
+    "text": "PDT April 8 3pm till JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm till JST 4pm on April 10",
+      "PDT April 8 3pm till JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds till end after April 8 3pm",
+    "text": "PDT April 8 3pm till JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm till JST 4pm on 10 April",
+      "PDT April 8 3pm till JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "complete trailing April 10 binds till end after 8 April 3pm",
+    "text": "PDT 8 April 3pm till JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm till JST 4pm on April 10",
+      "PDT 8 April 3pm till JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds till end after 8 April 3pm",
+    "text": "PDT 8 April 3pm till JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm till JST 4pm on 10 April",
+      "PDT 8 April 3pm till JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "invalid date-only prefix XYZ: rejects till owned end",
+    "text": "XYZ: April 8 till JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "invalid date-only prefix Mars/Olympus rejects till owned end",
+    "text": "Mars/Olympus April 8 till JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "invalid date-only prefix UTC+99 rejects till owned end",
+    "text": "UTC+99 April 8 till JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Invalid timezone offset UTC+99"
+  },
+  {
+    "name": "unknown date-only qualifier time rejects till owned end",
+    "text": "PDT April 8 XYZ time till JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown date-only qualifier in Seattle rejects till owned end",
+    "text": "PDT April 8 XYZ in Seattle till JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown qualifier after trailing end date rejects till range",
+    "text": "PDT April 8 3pm till JST 4pm on April 10 FOO time; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone FOO"
+  },
+  {
+    "name": "complete trailing April 10 binds through end after April 8 3pm",
+    "text": "PDT April 8 3pm through JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm through JST 4pm on April 10",
+      "PDT April 8 3pm through JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds through end after April 8 3pm",
+    "text": "PDT April 8 3pm through JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm through JST 4pm on 10 April",
+      "PDT April 8 3pm through JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "complete trailing April 10 binds through end after 8 April 3pm",
+    "text": "PDT 8 April 3pm through JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm through JST 4pm on April 10",
+      "PDT 8 April 3pm through JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds through end after 8 April 3pm",
+    "text": "PDT 8 April 3pm through JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm through JST 4pm on 10 April",
+      "PDT 8 April 3pm through JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "invalid date-only prefix XYZ: rejects through owned end",
+    "text": "XYZ: April 8 through JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "invalid date-only prefix Mars/Olympus rejects through owned end",
+    "text": "Mars/Olympus April 8 through JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "invalid date-only prefix UTC+99 rejects through owned end",
+    "text": "UTC+99 April 8 through JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Invalid timezone offset UTC+99"
+  },
+  {
+    "name": "unknown date-only qualifier time rejects through owned end",
+    "text": "PDT April 8 XYZ time through JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown date-only qualifier in Seattle rejects through owned end",
+    "text": "PDT April 8 XYZ in Seattle through JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown qualifier after trailing end date rejects through range",
+    "text": "PDT April 8 3pm through JST 4pm on April 10 FOO time; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone FOO"
+  },
+  {
+    "name": "complete trailing April 10 binds - end after April 8 3pm",
+    "text": "PDT April 8 3pm - JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm - JST 4pm on April 10",
+      "PDT April 8 3pm - JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds - end after April 8 3pm",
+    "text": "PDT April 8 3pm - JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm - JST 4pm on 10 April",
+      "PDT April 8 3pm - JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "complete trailing April 10 binds - end after 8 April 3pm",
+    "text": "PDT 8 April 3pm - JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm - JST 4pm on April 10",
+      "PDT 8 April 3pm - JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds - end after 8 April 3pm",
+    "text": "PDT 8 April 3pm - JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm - JST 4pm on 10 April",
+      "PDT 8 April 3pm - JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "invalid date-only prefix XYZ: rejects - owned end",
+    "text": "XYZ: April 8 - JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "invalid date-only prefix Mars/Olympus rejects - owned end",
+    "text": "Mars/Olympus April 8 - JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "invalid date-only prefix UTC+99 rejects - owned end",
+    "text": "UTC+99 April 8 - JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Invalid timezone offset UTC+99"
+  },
+  {
+    "name": "unknown date-only qualifier time rejects - owned end",
+    "text": "PDT April 8 XYZ time - JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown date-only qualifier in Seattle rejects - owned end",
+    "text": "PDT April 8 XYZ in Seattle - JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown qualifier after trailing end date rejects - range",
+    "text": "PDT April 8 3pm - JST 4pm on April 10 FOO time; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone FOO"
+  },
+  {
+    "name": "complete trailing April 10 binds – end after April 8 3pm",
+    "text": "PDT April 8 3pm – JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm – JST 4pm on April 10",
+      "PDT April 8 3pm – JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds – end after April 8 3pm",
+    "text": "PDT April 8 3pm – JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 3pm – JST 4pm on 10 April",
+      "PDT April 8 3pm – JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "complete trailing April 10 binds – end after 8 April 3pm",
+    "text": "PDT 8 April 3pm – JST 4pm on April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm – JST 4pm on April 10",
+      "PDT 8 April 3pm – JST 4pm on April 10"
+    ]
+  },
+  {
+    "name": "complete trailing 10 April binds – end after 8 April 3pm",
+    "text": "PDT 8 April 3pm – JST 4pm on 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT 8 April 3pm – JST 4pm on 10 April",
+      "PDT 8 April 3pm – JST 4pm on 10 April"
+    ]
+  },
+  {
+    "name": "invalid date-only prefix XYZ: rejects – owned end",
+    "text": "XYZ: April 8 – JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "invalid date-only prefix Mars/Olympus rejects – owned end",
+    "text": "Mars/Olympus April 8 – JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "invalid date-only prefix UTC+99 rejects – owned end",
+    "text": "UTC+99 April 8 – JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Invalid timezone offset UTC+99"
+  },
+  {
+    "name": "unknown date-only qualifier time rejects – owned end",
+    "text": "PDT April 8 XYZ time – JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown date-only qualifier in Seattle rejects – owned end",
+    "text": "PDT April 8 XYZ in Seattle – JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown qualifier after trailing end date rejects – range",
+    "text": "PDT April 8 3pm – JST 4pm on April 10 FOO time; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone FOO"
+  },
+  {
+    "name": "written ISO Z validates unknown time before range",
+    "text": "2026-04-09T15:00Z XYZ time to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO Z validates unknown time zone before range",
+    "text": "2026-04-09T15:00Z XYZ time zone to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO Z validates unknown in Seattle before range",
+    "text": "2026-04-09T15:00Z XYZ in Seattle to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO Z validates unknown at Seattle before range",
+    "text": "2026-04-09T15:00Z XYZ at Seattle to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO +02:00 validates unknown time before range",
+    "text": "2026-04-09T15:00+02:00 XYZ time to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO +02:00 validates unknown time zone before range",
+    "text": "2026-04-09T15:00+02:00 XYZ time zone to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO +02:00 validates unknown in Seattle before range",
+    "text": "2026-04-09T15:00+02:00 XYZ in Seattle to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO +02:00 validates unknown at Seattle before range",
+    "text": "2026-04-09T15:00+02:00 XYZ at Seattle to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO -02:00 validates unknown time before range",
+    "text": "2026-04-09T15:00-02:00 XYZ time to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO -02:00 validates unknown time zone before range",
+    "text": "2026-04-09T15:00-02:00 XYZ time zone to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO -02:00 validates unknown in Seattle before range",
+    "text": "2026-04-09T15:00-02:00 XYZ in Seattle to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "written ISO -02:00 validates unknown at Seattle before range",
+    "text": "2026-04-09T15:00-02:00 XYZ at Seattle to JST 4pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "explicit-year trailing end date retains full endpoint excerpts",
+    "text": "PDT April 8 2026 3pm to JST 4pm on April 10 2026",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": [
+      "PDT April 8 2026 3pm to JST 4pm on April 10 2026",
+      "PDT April 8 2026 3pm to JST 4pm on April 10 2026"
+    ]
+  },
+  {
+    "name": "day-first explicit-year trailing date remains attached",
+    "text": "PDT 8 April 2026 3pm until JST 4pm on 10 April 2026",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unknown city on date-only range start rejects owned end",
+    "text": "PDT April 8 in Atlantis to JST April 10 3pm; UTC April 11 noon",
+    "instants": ["2026-04-11T12:00:00Z"],
+    "warning": "Couldn't identify the city"
   }
 ]

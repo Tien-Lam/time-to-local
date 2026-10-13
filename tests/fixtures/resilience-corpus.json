@@ -8580,6 +8580,681 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "date-only start preserves explicitly timed April 10 2026 3pm after –"
+    },
+    {
+      "id": "web-zone-first-295",
+      "input": "PDT April 8 3pm to JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds to end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-296",
+      "input": "PDT April 8 3pm to JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds to end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-297",
+      "input": "PDT 8 April 3pm to JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds to end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-298",
+      "input": "PDT 8 April 3pm to JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds to end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-299",
+      "input": "XYZ: April 8 to JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix XYZ: rejects to owned end"
+    },
+    {
+      "id": "web-zone-first-300",
+      "input": "Mars/Olympus April 8 to JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix Mars/Olympus rejects to owned end"
+    },
+    {
+      "id": "web-zone-first-301",
+      "input": "UTC+99 April 8 to JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix UTC+99 rejects to owned end"
+    },
+    {
+      "id": "web-zone-first-302",
+      "input": "PDT April 8 XYZ time to JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier time rejects to owned end"
+    },
+    {
+      "id": "web-zone-first-303",
+      "input": "PDT April 8 XYZ in Seattle to JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier in Seattle rejects to owned end"
+    },
+    {
+      "id": "web-zone-first-304",
+      "input": "PDT April 8 3pm to JST 4pm on April 10 FOO time; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown qualifier after trailing end date rejects to range"
+    },
+    {
+      "id": "web-zone-first-305",
+      "input": "PDT April 8 3pm until JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds until end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-306",
+      "input": "PDT April 8 3pm until JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds until end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-307",
+      "input": "PDT 8 April 3pm until JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds until end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-308",
+      "input": "PDT 8 April 3pm until JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds until end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-309",
+      "input": "XYZ: April 8 until JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix XYZ: rejects until owned end"
+    },
+    {
+      "id": "web-zone-first-310",
+      "input": "Mars/Olympus April 8 until JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix Mars/Olympus rejects until owned end"
+    },
+    {
+      "id": "web-zone-first-311",
+      "input": "UTC+99 April 8 until JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix UTC+99 rejects until owned end"
+    },
+    {
+      "id": "web-zone-first-312",
+      "input": "PDT April 8 XYZ time until JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier time rejects until owned end"
+    },
+    {
+      "id": "web-zone-first-313",
+      "input": "PDT April 8 XYZ in Seattle until JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier in Seattle rejects until owned end"
+    },
+    {
+      "id": "web-zone-first-314",
+      "input": "PDT April 8 3pm until JST 4pm on April 10 FOO time; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown qualifier after trailing end date rejects until range"
+    },
+    {
+      "id": "web-zone-first-315",
+      "input": "PDT April 8 3pm till JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds till end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-316",
+      "input": "PDT April 8 3pm till JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds till end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-317",
+      "input": "PDT 8 April 3pm till JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds till end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-318",
+      "input": "PDT 8 April 3pm till JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds till end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-319",
+      "input": "XYZ: April 8 till JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix XYZ: rejects till owned end"
+    },
+    {
+      "id": "web-zone-first-320",
+      "input": "Mars/Olympus April 8 till JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix Mars/Olympus rejects till owned end"
+    },
+    {
+      "id": "web-zone-first-321",
+      "input": "UTC+99 April 8 till JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix UTC+99 rejects till owned end"
+    },
+    {
+      "id": "web-zone-first-322",
+      "input": "PDT April 8 XYZ time till JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier time rejects till owned end"
+    },
+    {
+      "id": "web-zone-first-323",
+      "input": "PDT April 8 XYZ in Seattle till JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier in Seattle rejects till owned end"
+    },
+    {
+      "id": "web-zone-first-324",
+      "input": "PDT April 8 3pm till JST 4pm on April 10 FOO time; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown qualifier after trailing end date rejects till range"
+    },
+    {
+      "id": "web-zone-first-325",
+      "input": "PDT April 8 3pm through JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds through end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-326",
+      "input": "PDT April 8 3pm through JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds through end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-327",
+      "input": "PDT 8 April 3pm through JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds through end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-328",
+      "input": "PDT 8 April 3pm through JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds through end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-329",
+      "input": "XYZ: April 8 through JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix XYZ: rejects through owned end"
+    },
+    {
+      "id": "web-zone-first-330",
+      "input": "Mars/Olympus April 8 through JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix Mars/Olympus rejects through owned end"
+    },
+    {
+      "id": "web-zone-first-331",
+      "input": "UTC+99 April 8 through JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix UTC+99 rejects through owned end"
+    },
+    {
+      "id": "web-zone-first-332",
+      "input": "PDT April 8 XYZ time through JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier time rejects through owned end"
+    },
+    {
+      "id": "web-zone-first-333",
+      "input": "PDT April 8 XYZ in Seattle through JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier in Seattle rejects through owned end"
+    },
+    {
+      "id": "web-zone-first-334",
+      "input": "PDT April 8 3pm through JST 4pm on April 10 FOO time; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown qualifier after trailing end date rejects through range"
+    },
+    {
+      "id": "web-zone-first-335",
+      "input": "PDT April 8 3pm - JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds - end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-336",
+      "input": "PDT April 8 3pm - JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds - end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-337",
+      "input": "PDT 8 April 3pm - JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds - end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-338",
+      "input": "PDT 8 April 3pm - JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds - end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-339",
+      "input": "XYZ: April 8 - JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix XYZ: rejects - owned end"
+    },
+    {
+      "id": "web-zone-first-340",
+      "input": "Mars/Olympus April 8 - JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix Mars/Olympus rejects - owned end"
+    },
+    {
+      "id": "web-zone-first-341",
+      "input": "UTC+99 April 8 - JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix UTC+99 rejects - owned end"
+    },
+    {
+      "id": "web-zone-first-342",
+      "input": "PDT April 8 XYZ time - JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier time rejects - owned end"
+    },
+    {
+      "id": "web-zone-first-343",
+      "input": "PDT April 8 XYZ in Seattle - JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier in Seattle rejects - owned end"
+    },
+    {
+      "id": "web-zone-first-344",
+      "input": "PDT April 8 3pm - JST 4pm on April 10 FOO time; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown qualifier after trailing end date rejects - range"
+    },
+    {
+      "id": "web-zone-first-345",
+      "input": "PDT April 8 3pm – JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds – end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-346",
+      "input": "PDT April 8 3pm – JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds – end after April 8 3pm"
+    },
+    {
+      "id": "web-zone-first-347",
+      "input": "PDT 8 April 3pm – JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing April 10 binds – end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-348",
+      "input": "PDT 8 April 3pm – JST 4pm on 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "complete trailing 10 April binds – end after 8 April 3pm"
+    },
+    {
+      "id": "web-zone-first-349",
+      "input": "XYZ: April 8 – JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix XYZ: rejects – owned end"
+    },
+    {
+      "id": "web-zone-first-350",
+      "input": "Mars/Olympus April 8 – JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix Mars/Olympus rejects – owned end"
+    },
+    {
+      "id": "web-zone-first-351",
+      "input": "UTC+99 April 8 – JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "invalid date-only prefix UTC+99 rejects – owned end"
+    },
+    {
+      "id": "web-zone-first-352",
+      "input": "PDT April 8 XYZ time – JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier time rejects – owned end"
+    },
+    {
+      "id": "web-zone-first-353",
+      "input": "PDT April 8 XYZ in Seattle – JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown date-only qualifier in Seattle rejects – owned end"
+    },
+    {
+      "id": "web-zone-first-354",
+      "input": "PDT April 8 3pm – JST 4pm on April 10 FOO time; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown qualifier after trailing end date rejects – range"
+    },
+    {
+      "id": "web-zone-first-355",
+      "input": "2026-04-09T15:00Z XYZ time to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO Z validates unknown time before range"
+    },
+    {
+      "id": "web-zone-first-356",
+      "input": "2026-04-09T15:00Z XYZ time zone to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO Z validates unknown time zone before range"
+    },
+    {
+      "id": "web-zone-first-357",
+      "input": "2026-04-09T15:00Z XYZ in Seattle to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO Z validates unknown in Seattle before range"
+    },
+    {
+      "id": "web-zone-first-358",
+      "input": "2026-04-09T15:00Z XYZ at Seattle to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO Z validates unknown at Seattle before range"
+    },
+    {
+      "id": "web-zone-first-359",
+      "input": "2026-04-09T15:00+02:00 XYZ time to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO +02:00 validates unknown time before range"
+    },
+    {
+      "id": "web-zone-first-360",
+      "input": "2026-04-09T15:00+02:00 XYZ time zone to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO +02:00 validates unknown time zone before range"
+    },
+    {
+      "id": "web-zone-first-361",
+      "input": "2026-04-09T15:00+02:00 XYZ in Seattle to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO +02:00 validates unknown in Seattle before range"
+    },
+    {
+      "id": "web-zone-first-362",
+      "input": "2026-04-09T15:00+02:00 XYZ at Seattle to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO +02:00 validates unknown at Seattle before range"
+    },
+    {
+      "id": "web-zone-first-363",
+      "input": "2026-04-09T15:00-02:00 XYZ time to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO -02:00 validates unknown time before range"
+    },
+    {
+      "id": "web-zone-first-364",
+      "input": "2026-04-09T15:00-02:00 XYZ time zone to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO -02:00 validates unknown time zone before range"
+    },
+    {
+      "id": "web-zone-first-365",
+      "input": "2026-04-09T15:00-02:00 XYZ in Seattle to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO -02:00 validates unknown in Seattle before range"
+    },
+    {
+      "id": "web-zone-first-366",
+      "input": "2026-04-09T15:00-02:00 XYZ at Seattle to JST 4pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "written ISO -02:00 validates unknown at Seattle before range"
+    },
+    {
+      "id": "web-zone-first-367",
+      "input": "PDT April 8 2026 3pm to JST 4pm on April 10 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "explicit-year trailing end date retains full endpoint excerpts"
+    },
+    {
+      "id": "web-zone-first-368",
+      "input": "PDT 8 April 2026 3pm until JST 4pm on 10 April 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "day-first explicit-year trailing date remains attached"
+    },
+    {
+      "id": "web-zone-first-369",
+      "input": "PDT April 8 in Atlantis to JST April 10 3pm; UTC April 11 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown city on date-only range start rejects owned end"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

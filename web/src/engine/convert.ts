@@ -170,7 +170,7 @@ function choicesFor(
   const explicit = explicitZones(text);
   const unknownAbbr = adjacent.match(/^\s+([A-Z]{2,5})\b/);
   if (
-    explicit &&
+    (explicit || writtenIsoOffset(c) !== undefined) &&
     unknownAbbr &&
     (adjacent.trim() === unknownAbbr[1] ||
       /^\s+(?:time(?:\s*zone)?\b|zone\b|(?:in|at)\s+)/i.test(
@@ -303,11 +303,15 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const sourceIndex = prefix?.index ?? r.index;
     const matchedText = text.slice(sourceIndex, r.index + r.text.length);
     const prior = parsed[i - 1];
+    const priorSuffix = prior
+      ? text.slice(prior.index + prior.text.length, sourceIndex)
+      : "";
     const qualifiedRange =
       prior &&
-      /^\s+(?:(?:in|at)\s+)?(?:[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][A-Za-z0-9+\-−:]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
-        text.slice(prior.index + prior.text.length, sourceIndex),
-      );
+      (/^\s+(?:(?:in|at)\s+)?(?:[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][A-Za-z0-9+\-−:]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
+        priorSuffix,
+      ) ||
+        /^\s+(?:to|until|through|till|[-–])\s*$/i.test(priorSuffix));
     const priorResults = qualifiedRange
       ? results.filter(
           (result) =>
@@ -334,6 +338,17 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           results.splice(index, 1);
     };
     if (qualifiedRange && rejected.has(prior.index)) {
+      reject();
+      continue;
+    }
+    if (
+      prefix &&
+      /^[A-Z]{2,5}$/.test(prefix.text) &&
+      !explicitZones(prefix.text)
+    ) {
+      warnings.push(
+        `Unknown timezone ${prefix.text}. Correct or remove it, then choose a source timezone.`,
+      );
       reject();
       continue;
     }
@@ -368,9 +383,42 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       contextNumeric = false;
       contextParagraph = block;
     }
+    const suffixEnd = Math.min(
+      parsed[i + 1]
+        ? (prefixAt(parsed[i + 1].index)?.index ?? parsed[i + 1].index)
+        : text.length,
+      r.index + r.text.length + 100,
+    );
+    const suffix = text
+      .slice(r.index + r.text.length, suffixEnd)
+      .split(/\n|[.;!?]|,(?!\s*\d)/)[0]
+      .replace(/\s+(?:to|until|through|till|[-–])\s*$/i, "");
+    // Chrono treats case-insensitive "at" as the regional AT abbreviation and
+    // may include it in the clock span. Reattach the connector to its original
+    // suffix unless it is exactly uppercase AT, which retains zone semantics.
+    const consumedAt =
+      /\bat\s*$/i.test(r.text) &&
+      !/\bAT\s*$/.test(r.text) &&
+      /^\s+[\p{L}]/u.test(suffix);
+    const qualifierSuffix = consumedAt ? ` at${suffix}` : suffix;
     previousEnd = r.index + r.text.length;
     const date = componentDate(r.start),
       explicitDate = r.start.isCertain("day");
+    const dateOnly = !r.start.isCertain("hour") && !r.start.isCertain("minute");
+    if (
+      dateOnly &&
+      (!choicesFor(
+        prefix?.text ?? matchedText,
+        qualifierSuffix,
+        r.start,
+        options.sourceZone,
+        warnings,
+      ).length ||
+        cityChoices(adjacentQualifier(qualifierSuffix), warnings)?.length === 0)
+    ) {
+      reject();
+      continue;
+    }
     if (explicitDate) {
       contextDate = date;
       contextText = r.text;
@@ -407,24 +455,6 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         });
       continue;
     }
-    const suffixEnd = Math.min(
-      parsed[i + 1]
-        ? (prefixAt(parsed[i + 1].index)?.index ?? parsed[i + 1].index)
-        : text.length,
-      r.index + r.text.length + 100,
-    );
-    const suffix = text
-      .slice(r.index + r.text.length, suffixEnd)
-      .split(/\n|[.;!?]|,(?!\s*\d)/)[0]
-      .replace(/\s+(?:to|until|through|till|[-–])\s*$/i, "");
-    // Chrono treats case-insensitive "at" as the regional AT abbreviation and
-    // may include it in the clock span. Reattach the connector to its original
-    // suffix unless it is exactly uppercase AT, which retains zone semantics.
-    const consumedAt =
-      /\bat\s*$/i.test(r.text) &&
-      !/\bAT\s*$/.test(r.text) &&
-      /^\s+[\p{L}]/u.test(suffix);
-    const qualifierSuffix = consumedAt ? ` at${suffix}` : suffix;
     const zoneSuffix = adjacentQualifier(suffix);
     const leadingZone = zoneSuffix
       .trim()
