@@ -265,11 +265,18 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       " ".repeat(prefix.end - prefix.index) +
       parserText.slice(prefix.end);
   for (const prefix of prefixes) {
-    const adjacent = text.slice(prefix.end, prefix.end + 100);
+    const adjacent = text.slice(
+      prefix.end,
+      Math.min(
+        prefix.end + 100,
+        prefixes.find((next) => next.index > prefix.index)?.index ??
+          text.length,
+      ),
+    );
     const qualifier = adjacent.match(IANA_TOKEN);
     if (
       !qualifier ||
-      !/^\s+(?:to|until|through|till|[-–])\s*/i.test(
+      !/^(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*/i.test(
         adjacent.slice(qualifier.index! + qualifier[0].length),
       )
     )

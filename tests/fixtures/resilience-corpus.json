@@ -9849,6 +9849,258 @@
       "legacyExpectedCount": 3,
       "expected": [],
       "description": "trailing date range retains its independently timed endpoint"
+    },
+    {
+      "id": "web-zone-first-436",
+      "input": "PDT 3pm-UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "compact hyphen undated clock retains complete day-first end UTC "
+    },
+    {
+      "id": "web-zone-first-437",
+      "input": "PDT 3pm-10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "compact hyphen undated clock retains complete day-first end inherited source"
+    },
+    {
+      "id": "web-zone-first-438",
+      "input": "PDT April 8 America/New_York-UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact hyphen complete date retains hidden America/New_York owner rejection"
+    },
+    {
+      "id": "web-zone-first-439",
+      "input": "PDT April 8 Mars/Olympus-UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact hyphen complete date retains hidden Mars/Olympus owner rejection"
+    },
+    {
+      "id": "web-zone-first-440",
+      "input": "PDT April 8-UTC 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact hyphen rescued date-only range clock follows its own on date UTC "
+    },
+    {
+      "id": "web-zone-first-441",
+      "input": "PDT April 8-JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact hyphen rescued date-only range clock follows its own on date JST "
+    },
+    {
+      "id": "web-zone-first-442",
+      "input": "PDT April 8-4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact hyphen rescued date-only range clock follows its own on date selected source"
+    },
+    {
+      "id": "web-zone-first-443",
+      "input": "PDT 3pm–UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "compact en dash undated clock retains complete day-first end UTC "
+    },
+    {
+      "id": "web-zone-first-444",
+      "input": "PDT 3pm–10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "compact en dash undated clock retains complete day-first end inherited source"
+    },
+    {
+      "id": "web-zone-first-445",
+      "input": "PDT April 8 America/New_York–UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact en dash complete date retains hidden America/New_York owner rejection"
+    },
+    {
+      "id": "web-zone-first-446",
+      "input": "PDT April 8 Mars/Olympus–UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact en dash complete date retains hidden Mars/Olympus owner rejection"
+    },
+    {
+      "id": "web-zone-first-447",
+      "input": "PDT April 8–UTC 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact en dash rescued date-only range clock follows its own on date UTC "
+    },
+    {
+      "id": "web-zone-first-448",
+      "input": "PDT April 8–JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact en dash rescued date-only range clock follows its own on date JST "
+    },
+    {
+      "id": "web-zone-first-449",
+      "input": "PDT April 8–4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "compact en dash rescued date-only range clock follows its own on date selected source"
+    },
+    {
+      "id": "web-zone-first-450",
+      "input": "PDT 3pm - UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "spaced hyphen undated clock retains complete day-first end UTC "
+    },
+    {
+      "id": "web-zone-first-451",
+      "input": "PDT 3pm - 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "spaced hyphen undated clock retains complete day-first end inherited source"
+    },
+    {
+      "id": "web-zone-first-452",
+      "input": "PDT April 8 America/New_York - UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "spaced hyphen complete date retains hidden America/New_York owner rejection"
+    },
+    {
+      "id": "web-zone-first-453",
+      "input": "PDT April 8 Mars/Olympus - UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "spaced hyphen complete date retains hidden Mars/Olympus owner rejection"
+    },
+    {
+      "id": "web-zone-first-454",
+      "input": "PDT April 8 - UTC 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "spaced hyphen rescued date-only range clock follows its own on date UTC "
+    },
+    {
+      "id": "web-zone-first-455",
+      "input": "PDT April 8 - JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "spaced hyphen rescued date-only range clock follows its own on date JST "
+    },
+    {
+      "id": "web-zone-first-456",
+      "input": "PDT April 8 - 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "spaced hyphen rescued date-only range clock follows its own on date selected source"
+    },
+    {
+      "id": "web-zone-first-457",
+      "input": "PDT 3pm to UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "word connector undated clock retains complete day-first end UTC "
+    },
+    {
+      "id": "web-zone-first-458",
+      "input": "PDT 3pm to 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "word connector undated clock retains complete day-first end inherited source"
+    },
+    {
+      "id": "web-zone-first-459",
+      "input": "PDT April 8 America/New_York to UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector complete date retains hidden America/New_York owner rejection"
+    },
+    {
+      "id": "web-zone-first-460",
+      "input": "PDT April 8 Mars/Olympus to UTC 10 April 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector complete date retains hidden Mars/Olympus owner rejection"
+    },
+    {
+      "id": "web-zone-first-461",
+      "input": "PDT April 8 to UTC 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector rescued date-only range clock follows its own on date UTC "
+    },
+    {
+      "id": "web-zone-first-462",
+      "input": "PDT April 8 to JST 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector rescued date-only range clock follows its own on date JST "
+    },
+    {
+      "id": "web-zone-first-463",
+      "input": "PDT April 8 to 4pm on April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "word connector rescued date-only range clock follows its own on date selected source"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

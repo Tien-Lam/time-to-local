@@ -93,6 +93,14 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     adapter.shouldMergeResults = (between, from, to, context) => {
       if (!shouldMerge(between, from, to, context)) return false;
       const separator = between.trim();
+      if (
+        /^[-–]$/.test(separator) &&
+        ((from.start.isOnlyDate() &&
+          to.start.tags().has("chronoshift/rescued-range-end")) ||
+          (from.start.tags().has("chronoshift/date-range-boundary") &&
+            to.start.isOnlyDate()))
+      )
+        return false;
       const paragraphBreak = /\n\s*\n/.test(between);
       // A standalone date heading may deliberately precede a blank separator.
       // Keep its existing merge/span/disclosure; this adds no new context grammar.
@@ -266,6 +274,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
               const tags = [...result.end.tags()];
               result.start = result.end.clone();
               result.start.addTags(tags);
+              result.start.addTag("chronoshift/rescued-range-end");
               result.end = undefined;
               result.index = endIndex;
               result.text = context.text.slice(endIndex, resultEnd);
@@ -382,7 +391,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
         if (!result.end?.isCertain("hour") || result.start.isCertain("hour"))
           return [result];
         const separator = result.text.match(
-          /\b(?:to|until|through|till|and)\b\s*|[-–~]\s+/i,
+          /\b(?:to|until|through|till|and)\b\s*|[-–~]\s*/i,
         );
         if (!separator) return [result];
         // A native date range can attach a clock only to its final date.

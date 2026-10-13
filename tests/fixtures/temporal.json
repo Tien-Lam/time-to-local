@@ -4466,5 +4466,257 @@
       "PDT April 8 3pm-4pm on April 10",
       "UTC April 12 5pm"
     ]
+  },
+  {
+    "name": "compact hyphen undated clock retains complete day-first end UTC ",
+    "text": "PDT 3pm-UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact hyphen undated clock retains complete day-first end inherited source",
+    "text": "PDT 3pm-10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T23:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-07:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact hyphen complete date retains hidden America/New_York owner rejection",
+    "text": "PDT April 8 America/New_York-UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Conflicting timezones",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact hyphen complete date retains hidden Mars/Olympus owner rejection",
+    "text": "PDT April 8 Mars/Olympus-UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact hyphen rescued date-only range clock follows its own on date UTC ",
+    "text": "PDT April 8-UTC 4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "compact hyphen rescued date-only range clock follows its own on date JST ",
+    "text": "PDT April 8-JST 4pm on April 10",
+    "instants": ["2026-04-10T07:00:00Z"],
+    "sourceZones": ["+09:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "compact hyphen rescued date-only range clock follows its own on date selected source",
+    "text": "PDT April 8-4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "compact en dash undated clock retains complete day-first end UTC ",
+    "text": "PDT 3pm–UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact en dash undated clock retains complete day-first end inherited source",
+    "text": "PDT 3pm–10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T23:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-07:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact en dash complete date retains hidden America/New_York owner rejection",
+    "text": "PDT April 8 America/New_York–UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Conflicting timezones",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact en dash complete date retains hidden Mars/Olympus owner rejection",
+    "text": "PDT April 8 Mars/Olympus–UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "compact en dash rescued date-only range clock follows its own on date UTC ",
+    "text": "PDT April 8–UTC 4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "compact en dash rescued date-only range clock follows its own on date JST ",
+    "text": "PDT April 8–JST 4pm on April 10",
+    "instants": ["2026-04-10T07:00:00Z"],
+    "sourceZones": ["+09:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "compact en dash rescued date-only range clock follows its own on date selected source",
+    "text": "PDT April 8–4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "spaced hyphen undated clock retains complete day-first end UTC ",
+    "text": "PDT 3pm - UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "spaced hyphen undated clock retains complete day-first end inherited source",
+    "text": "PDT 3pm - 10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T23:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-07:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "spaced hyphen complete date retains hidden America/New_York owner rejection",
+    "text": "PDT April 8 America/New_York - UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Conflicting timezones",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "spaced hyphen complete date retains hidden Mars/Olympus owner rejection",
+    "text": "PDT April 8 Mars/Olympus - UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "spaced hyphen rescued date-only range clock follows its own on date UTC ",
+    "text": "PDT April 8 - UTC 4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "spaced hyphen rescued date-only range clock follows its own on date JST ",
+    "text": "PDT April 8 - JST 4pm on April 10",
+    "instants": ["2026-04-10T07:00:00Z"],
+    "sourceZones": ["+09:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "spaced hyphen rescued date-only range clock follows its own on date selected source",
+    "text": "PDT April 8 - 4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "word connector undated clock retains complete day-first end UTC ",
+    "text": "PDT 3pm to UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "word connector undated clock retains complete day-first end inherited source",
+    "text": "PDT 3pm to 10 April 4pm; UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T23:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-07:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "word connector complete date retains hidden America/New_York owner rejection",
+    "text": "PDT April 8 America/New_York to UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Conflicting timezones",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "word connector complete date retains hidden Mars/Olympus owner rejection",
+    "text": "PDT April 8 Mars/Olympus to UTC 10 April 4pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus",
+    "sourceZone": "Australia/Sydney"
+  },
+  {
+    "name": "word connector rescued date-only range clock follows its own on date UTC ",
+    "text": "PDT April 8 to UTC 4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "word connector rescued date-only range clock follows its own on date JST ",
+    "text": "PDT April 8 to JST 4pm on April 10",
+    "instants": ["2026-04-10T07:00:00Z"],
+    "sourceZones": ["+09:00"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "word connector rescued date-only range clock follows its own on date selected source",
+    "text": "PDT April 8 to 4pm on April 10",
+    "instants": ["2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC"],
+    "endpoints": ["undefined"]
   }
 ]
