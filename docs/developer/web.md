@@ -182,3 +182,9 @@ worker. Installation and repair verify that shell against the same release's
 SHA-256 before caching it as `index.html`. They do not fetch mutable HTML:
 network content filters can inject scripts or change CSP, and the host may already
 serve a newer document. All other runtime assets still require exact integrity.
+
+Regional alias comparisons use the public-domain IANA TZDB 2026c backward links
+in `engine/zone-aliases.ts`, pinned to their source commit and blob. This local
+identifier map adds no runtime download and does not replace the browser's
+historical or DST offset rules. Conversion retains each written zone ID and
+checks that linked names also agree on the actual source clock.

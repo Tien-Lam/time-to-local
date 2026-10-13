@@ -18,6 +18,33 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
+test("reference summaries name date-heading zones while clock sources stay independent", async ({
+  page,
+}) => {
+  await page.clock.setFixedTime(new Date("2026-04-06T22:00:00Z"));
+  await page.goto("/");
+  const input = page.getByLabel("Message with a date or time");
+  await input.fill("JST today; UTC noon");
+  await expect(page.locator(".hero-time")).toHaveText("12:00");
+  await expect(page.locator(".source-label")).toHaveText("UTC");
+  await expect(page.locator(".reference-summary")).toContainText(
+    "Reference: Tue, 7 Apr 2026 in JST",
+  );
+  await input.fill("JST tomorrow noon to UTC midnight");
+  await expect(page.locator(".hero-time")).toHaveText(["03:00", "00:00"]);
+  await expect(page.locator(".source-label")).toHaveText(["JST", "UTC"]);
+  await expect(page.locator(".reference-summary")).toHaveText([
+    /Reference: Tue, 7 Apr 2026 in JST/,
+    /Reference: Tue, 7 Apr 2026 in JST/,
+  ]);
+  await input.fill("CST today; UTC noon");
+  await expect(page.locator(".reference-summary")).toHaveText([
+    /Reference: Mon, 6 Apr 2026 in CST · US Central Standard/,
+    /Reference: Tue, 7 Apr 2026 in CST · China Standard/,
+  ]);
+  await expect(page.locator(".source-label")).toHaveText(["UTC", "UTC"]);
+});
+
 test("ambiguity precedes every result and copy action at desktop and narrow widths", async ({
   page,
 }) => {

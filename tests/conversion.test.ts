@@ -50,8 +50,14 @@ describe("independently specified temporal fixtures", () => {
         expect(result.results.map((r) => r.assumptions)).toEqual(f.assumptions);
       if (f.sourceZones !== undefined)
         expect(result.results.map((r) => r.sourceZone)).toEqual(f.sourceZones);
+      if (f.interpretations !== undefined)
+        expect(result.results.map((r) => r.interpretation)).toEqual(
+          f.interpretations.map((value: string | null) => value ?? undefined),
+        );
       if (f.rangeIds !== undefined)
-        expect(result.results.map((r) => r.rangeId)).toEqual(f.rangeIds);
+        expect(result.results.map((r) => r.rangeId)).toEqual(
+          f.rangeIds.map((id: string | null) => id ?? undefined),
+        );
     });
 });
 test("paragraph isolation retains mixed-message date-only suppression", () => {

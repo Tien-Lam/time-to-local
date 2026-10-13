@@ -56,7 +56,7 @@ export async function verifyProductionFixtures(page: Page) {
     ).toEqual(("dates" in f ? f.dates : []) || []);
     if ("endpoints" in f)
       expect(
-        output.conversion.results.map((r: any) => r.endpoint),
+        output.conversion.results.map((r: any) => String(r.endpoint)),
         f.name,
       ).toEqual(f.endpoints);
     if ("sourceIndices" in f)
@@ -79,11 +79,27 @@ export async function verifyProductionFixtures(page: Page) {
         output.conversion.results.map((r: any) => r.sourceZone),
         f.name,
       ).toEqual(f.sourceZones);
-    if ("rangeIds" in f)
+    if (f.rangeIds !== undefined)
       expect(
         output.conversion.results.map((r: any) => r.rangeId),
         f.name,
-      ).toEqual(f.rangeIds);
+      ).toEqual(f.rangeIds.map((id: string | null) => id ?? undefined));
+    if (f.interpretations !== undefined)
+      expect(
+        output.conversion.results.map((r: any) => r.interpretation),
+        f.name,
+      ).toEqual(
+        f.interpretations.map((value: string | null) => value ?? undefined),
+      );
+    if ("assumption" in f)
+      expect(
+        output.conversion.results.flatMap((r: any) => r.assumptions).join("\n"),
+        f.name,
+      ).toContain(f.assumption!);
+    if ("occurrences" in f)
+      expect(output.conversion.results[0].occurrences, f.name).toBe(
+        f.occurrences!,
+      );
     if ("warning" in f)
       expect(output.conversion.warnings.join("\n"), f.name).toContain(
         f.warning!,

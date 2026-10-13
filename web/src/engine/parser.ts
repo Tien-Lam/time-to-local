@@ -1,7 +1,6 @@
-import { en } from "chrono-node";
+import { en, ParsingContext } from "chrono-node";
 import type { Chrono } from "chrono-node";
 import type { ParsingResult } from "chrono-node";
-import type { ParsingContext } from "chrono-node";
 import type { Refiner } from "chrono-node";
 import type { ParsedComponents } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
@@ -91,9 +90,19 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     const adapter = Object.create(refiner) as DateTimeMerger;
     parser.refiners[parser.refiners.indexOf(refiner)] = adapter;
     const shouldMerge = refiner.shouldMergeResults.bind(refiner);
+    const forwardDates = new WeakMap<ParsingContext, Set<ParsingResult>>();
     adapter.shouldMergeResults = (between, from, to, context) => {
       if (!shouldMerge(between, from, to, context)) return false;
       const separator = between.trim();
+      if (
+        /^[-–]$/.test(separator) &&
+        ((from.start.isOnlyDate() &&
+          to.start.tags().has("chronoshift/rescued-range-end")) ||
+          (from.start.tags().has("chronoshift/date-range-boundary") &&
+            to.start.isOnlyDate()) ||
+          (from.start.isOnlyTime() && forwardDates.get(context)?.has(to)))
+      )
+        return false;
       const paragraphBreak = /\n\s*\n/.test(between);
       // A standalone date heading may deliberately precede a blank separator.
       // Keep its existing merge/span/disclosure; this adds no new context grammar.
@@ -118,6 +127,32 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
       // result/* tags survive the existing range adapter's component clones.
       if (to.start.isOnlyTime()) to.start.addTag(unrelatedDateBoundary);
       return false;
+    };
+    adapter.refine = (context, results) => {
+      const owned = new Set<ParsingResult>();
+      forwardDates.set(context, owned);
+      for (let index = 0; index < results.length - 1; index++) {
+        const date = results[index],
+          clock = results[index + 1];
+        if (
+          date.start.isOnlyDate() &&
+          clock.start.isOnlyTime() &&
+          adapter.shouldMergeResults(
+            context.text.slice(date.index + date.text.length, clock.index),
+            date,
+            clock,
+            context,
+          )
+        )
+          owned.add(date);
+      }
+      // Resolve a written date with its own following clock before a preceding
+      // clock can consume that date across a range separator.
+      try {
+        return refiner.refine.call(adapter, context, results);
+      } finally {
+        forwardDates.delete(context);
+      }
     };
   }
   // Chrono's range merger sorts endpoints by instant. Our contract preserves
@@ -149,10 +184,18 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     // Chrono's clone drops tags. Preserve relative-date provenance before
     // recording which date components the range inherits from either side.
     result.start.addTags(
-      [...from.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+      [...from.start.tags()].filter(
+        (tag) =>
+          !tag.startsWith("chronoshift/") ||
+          tag.startsWith("chronoshift/iso-offset:"),
+      ),
     );
     result.end.addTags(
-      [...to.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+      [...to.start.tags()].filter(
+        (tag) =>
+          !tag.startsWith("chronoshift/") ||
+          tag.startsWith("chronoshift/iso-offset:"),
+      ),
     );
     let startReference = referenceDateParts(from.start);
     let endReference = referenceDateParts(to.start);
@@ -214,11 +257,128 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
       for (const part of dateParts)
         if (reference[part]) components.addTag(`chronoshift/reference-${part}`);
     }
+    result.end.addTag(`chronoshift/endpoint-index:${to.index}`);
     result.text = from.text + between + to.text;
     return result;
   };
   // Bounded extensions cover audited shorthand without treating room numbers
   // or prices as times. Native Chrono refiners still merge dates and zones.
+  // Like an undated 00:00 clock, midnight uses the source reference date.
+  // Explicit today/tomorrow/date context and overnight ranges still bind via
+  // the normal date/range refiners; do not silently choose the coming midnight.
+  parser.refiners.unshift({
+    refine: (context, results) => {
+      const reference = context.createParsingComponents({});
+      for (const result of results) {
+        for (const components of [result.start, result.end])
+          if (
+            components?.tags().has("parser/ISOFormatParser") &&
+            components.isCertain("timezoneOffset")
+          )
+            components.addTag(
+              `chronoshift/iso-offset:${components.get("timezoneOffset")}`,
+            );
+        if (result.end) {
+          const separator = result.text.match(
+            /\b(?:to|until|through|till|and)\b\s*|[-–~〜?]\s*/i,
+          );
+          if (separator) {
+            const endIndex =
+              result.index + separator.index! + separator[0].length;
+            const completeStart = results.some(
+              (date) =>
+                date !== result &&
+                date.start.isCertain("day") &&
+                (!date.start.isCertain("hour") ||
+                  date.start.tags().has("parser/ISOFormatParser")) &&
+                date.index < result.index &&
+                date.index + date.text.length > result.index &&
+                date.index + date.text.length <= endIndex,
+            );
+            // Preserve a complete date or ISO timestamp overlapping a partial
+            // start clock. Otherwise overlap removal can discard its end clock.
+            if (result.start.isCertain("hour") && completeStart) {
+              const resultEnd = result.index + result.text.length;
+              const tags = [...result.end.tags()];
+              result.start = result.end.clone();
+              result.start.addTags(tags);
+              result.start.addTag("chronoshift/rescued-range-end");
+              result.end = undefined;
+              result.index = endIndex;
+              result.text = context.text.slice(endIndex, resultEnd);
+              for (const part of dateParts)
+                if (!result.start.isCertain(part))
+                  result.start.imply(part, reference.get(part)!);
+              continue;
+            }
+            // A masked prefix can expose a written date's leading day to the
+            // clock-range parser ("3pm to 10 April"). Keep the independent
+            // date parser's span before overlap removal; later date/time and
+            // range refiners can then merge the complete endpoints.
+            if (
+              results.some(
+                (date) =>
+                  date !== result &&
+                  date.index === endIndex &&
+                  date.start.isCertain("day") &&
+                  date.text.length >
+                    result.index + result.text.length - endIndex,
+              )
+            ) {
+              result.text = result.text.slice(0, separator.index).trimEnd();
+              result.end = undefined;
+              result.start.addTag("chronoshift/date-range-boundary");
+            } else if (result.start.isCertain("hour"))
+              result.end.addTag(`chronoshift/endpoint-index:${endIndex}`);
+          }
+        }
+        for (const components of [result.start, result.end])
+          if (
+            components?.tags().has("casualReference/midnight") &&
+            !components.isCertain("day")
+          )
+            for (const part of dateParts)
+              components.imply(part, reference.get(part)!);
+      }
+      return results;
+    },
+  });
+  const offsetRefiners = parser.refiners.filter((refiner) => {
+    const context = new ParsingContext("3pm-10", {
+      instant: new Date("2026-04-06T12:00:00Z"),
+      timezone: 0,
+    });
+    const result = context.createParsingResult(0, "3pm", {
+      hour: 15,
+      minute: 0,
+    });
+    const refined = refiner.refine(context, [result]);
+    return (
+      refined.length === 1 &&
+      refined[0].text === "3pm-10" &&
+      refined[0].start.isCertain("timezoneOffset") &&
+      refined[0].start.get("timezoneOffset") === -600
+    );
+  });
+  if (offsetRefiners.length !== 1)
+    throw new Error(
+      "Chrono offset boundary adapter requires dependency review",
+    );
+  const offsetRefiner = offsetRefiners[0];
+  parser.refiners[parser.refiners.indexOf(offsetRefiner)] = {
+    refine: (context, results) => {
+      // A complete written date owns the digits after this separator. Native
+      // offset extraction must not reinterpret its compact '-10' as -10:00.
+      offsetRefiner.refine(
+        context,
+        results.filter(
+          (result) =>
+            !result.start.tags().has("chronoshift/date-range-boundary"),
+        ),
+      );
+      return results;
+    },
+  };
   parser.parsers.unshift({
     pattern: () =>
       new RegExp(
@@ -251,6 +411,104 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
         { hour: (+m[1] % 12) + pm, minute: +(m[2] || 0), meridiem: pm ? 1 : 0 },
         { hour: (+m[3] % 12) + pm, minute: +(m[4] || 0), meridiem: pm ? 1 : 0 },
       );
+    },
+  });
+  parser.refiners.push({
+    refine: (context, results) =>
+      results.flatMap((result) => {
+        if (!result.end?.isCertain("hour") || result.start.isCertain("hour"))
+          return [result];
+        // Numeric start dates contain their own separators. Search only after
+        // that complete date so the end retains its written clock and span.
+        const startDateLength =
+          result.text.match(
+            /^\d{4}[-/.]\d{1,2}[-/.]\d{1,2}\b|^\d{1,2}[-/.]\d{1,2}(?:[-/.]\d{2,4})?\b/,
+          )?.[0].length ?? 0;
+        const separator = result.text
+          .slice(startDateLength)
+          .match(/\b(?:to|until|through|till|and)\b\s*|[-–~]\s*/i);
+        if (!separator) return [result];
+        const separatorIndex = startDateLength + separator.index!;
+        // A native date range can attach a clock only to its final date.
+        // Keep that explicitly parsed time without inventing a start clock.
+        const end = result.clone();
+        end.start = result.end.clone();
+        end.start.addTags([...result.end.tags()]);
+        end.end = undefined;
+        end.index = result.index + separatorIndex + separator[0].length;
+        end.text = context.text.slice(
+          end.index,
+          result.index + result.text.length,
+        );
+        result.text = result.text.slice(0, separatorIndex).trimEnd();
+        result.end = undefined;
+        return [result, end];
+      }),
+  });
+  parser.refiners.push({
+    refine: (context, results) => {
+      const consumed = new Set<number>();
+      return results.flatMap((result, index) => {
+        if (consumed.has(index)) return [];
+        const date = results[index + 1];
+        const endpointTag = [...(result.end?.tags() ?? [])].find((tag) =>
+          tag.startsWith("chronoshift/endpoint-index:"),
+        );
+        const connector = date
+          ? context.text.slice(result.index + result.text.length, date.index)
+          : "";
+        if (
+          !result.end ||
+          !result.start.isCertain("hour") ||
+          !result.end.isCertain("hour") ||
+          !date?.start.isOnlyDate() ||
+          date.end ||
+          !endpointTag ||
+          !(
+            /^[ \t]+on[ \t]+$/i.test(connector) ||
+            (/^[ \t]+$/.test(connector) && /^on[ \t]+/i.test(date.text))
+          )
+        )
+          return [result];
+        // Resolve date/time ownership first. A date with its own clock is no
+        // longer date-only here, and compact hyphens retain range ownership
+        // through native offset extraction.
+        const endIndex = +endpointTag.split(":")[1];
+        const start = result.clone();
+        start.start.addTags([...result.start.tags()]);
+        start.end = undefined;
+        start.text = result.text
+          .slice(0, endIndex - result.index)
+          .replace(/(?:to|until|through|till|and|[-–~])\s*$/i, "")
+          .trimEnd();
+        const end = result.clone();
+        end.start = result.end.clone();
+        end.start.addTags(
+          [...result.end.tags()].filter(
+            (tag) =>
+              !tag.startsWith("chronoshift/") ||
+              tag.startsWith("chronoshift/iso-offset:"),
+          ),
+        );
+        end.start.addTags([...date.start.tags()]);
+        for (const part of dateParts) {
+          end.start.delete([part]);
+          if (date.start.isCertain(part))
+            end.start.assign(part, date.start.get(part)!);
+          else end.start.imply(part, date.start.get(part)!);
+        }
+        end.end = undefined;
+        end.index = endIndex;
+        end.text = context.text.slice(endIndex, date.index + date.text.length);
+        consumed.add(index + 1);
+        return [
+          range.mergeResults(
+            context.text.slice(start.index + start.text.length, endIndex),
+            start,
+            end,
+          ),
+        ];
+      });
     },
   });
   return parser;
