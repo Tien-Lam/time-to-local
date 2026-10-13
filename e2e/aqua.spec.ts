@@ -8,6 +8,9 @@ import {
   enterReferenceDate,
 } from "./choices";
 
+// Bound each action separately from the longer screenshot/accessibility journeys.
+test.use({ actionTimeout: 10_000 });
+
 async function descriptionContrast(item: Locator) {
   return item.evaluate((element) => {
     const surface = getComputedStyle(element);
@@ -201,6 +204,8 @@ for (const theme of ["light", "dark"] as const) {
   test(`Aqua ${theme} retains precision, reference date and usable menus across design changes`, async ({
     page,
   }) => {
+    // Multiple viewport and rendering checks need their own overall budget.
+    test.setTimeout(60_000);
     await page.goto("/");
     await expect(page.locator('main[data-app-ready="true"]')).toBeVisible();
     await enterZone(page, "UTC");
@@ -405,6 +410,8 @@ for (const theme of ["light", "dark"] as const) {
   test(`Aqua ${theme} narrow results and menus have no accessibility violations`, async ({
     page,
   }, info) => {
+    // Multiple viewport and rendering checks need their own overall budget.
+    test.setTimeout(60_000);
     await page.goto("/");
     await page.getByLabel("Appearance", { exact: true }).click();
     await choose(page, "Design", "aqua");
