@@ -263,7 +263,7 @@
   border-radius: 999px 999px 45% 45% / 999px 999px 100% 100%;
   background: linear-gradient(#ffffffe6, #ffffff00);
 }
-:root[data-design="aqua"] .copy-button::before {
+:root[data-design="aqua"] button.copy-button::before {
   /* Keep the bright reflection above the white glyphs. */
   height: 30%;
 }
