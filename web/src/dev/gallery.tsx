@@ -11,6 +11,7 @@ import { ChoiceSelect, ZoneChoice } from "../components/Choices";
 import { DateChoice } from "../components/DateChoice";
 import { Disclosure } from "../components/Disclosure";
 import { useTouchFeedback } from "../components/useTouchFeedback";
+import { AquaCatalog } from "./AquaCatalog";
 import "../style.css";
 import "./gallery.css";
 
@@ -18,6 +19,8 @@ const query = new URLSearchParams(location.search);
 const theme = query.get("theme") === "light" ? "light" : "dark";
 const fault = query.get("fault");
 document.documentElement.dataset.theme = theme;
+document.documentElement.dataset.design =
+  query.get("design") === "aqua" ? "aqua" : "command";
 
 function Icon() {
   return (
@@ -168,6 +171,7 @@ function Gallery() {
           </p>
         </Disclosure>
       </section>
+      {query.get("design") === "aqua" && <AquaCatalog />}
       <p>
         Workspace compositions use the actual app at{" "}
         <a href="/__gallery/?view=workspace">the workspace gallery</a>: empty

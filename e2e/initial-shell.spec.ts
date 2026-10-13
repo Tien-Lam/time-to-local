@@ -174,6 +174,7 @@ test("the static shell permits its fixed hidden styles and rejects other attribu
       await hidden.getAttribute("style"),
       await hidden.getAttribute("style"),
       await hidden.getAttribute("style"),
+      await hidden.getAttribute("style"),
     ]);
     await expect(page.locator(".result-shortcut")).toHaveCSS(
       "visibility",

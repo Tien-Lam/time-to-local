@@ -1,3 +1,5 @@
+@import "./aqua.css";
+
 @font-face {
   font-family: Geist;
   src: url("./assets/geist-latin-variable.woff2") format("woff2");

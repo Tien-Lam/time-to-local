@@ -1,0 +1,643 @@
+/* Early Mac OS X Aqua: pearl pinstripes, inset wells and blue gel controls.
+   All decoration is local CSS. The existing workspace owns layout and motion. */
+:root[data-design="aqua"][data-theme] {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+  --page: #102d50;
+  --surface: #263e56;
+  --well: #152b40;
+  --ink: #f2f7fc;
+  --muted: #bfd0e1;
+  --border: #5a758f;
+  --control-border: #7997b3;
+  --soft: #354f69;
+  --accent: #a5dcff;
+  --focus: #a5dcff;
+  --primary: #1264b5;
+  --primary-ink: #fff;
+  --shadow: #000b2480;
+  --aqua-field-radius: 3px;
+  --aqua-popup-radius: 8px;
+  --aqua-gem-radius: 6px;
+  --aqua-capsule-radius: 999px;
+  --aqua-invalid: #ff9b9b;
+  --control-radius: var(--aqua-field-radius);
+  --aqua-pinstripe: repeating-linear-gradient(
+    180deg,
+    #ffffff0a 0 1px,
+    #0000000a 1px 2px,
+    #ffffff05 2px 3px,
+    #00000012 3px 4px
+  );
+  --aqua-panel: #263e56f5;
+  --aqua-menu: #233c55f5;
+  --aqua-title: linear-gradient(#607d97, #405970 48%, #30475e 51%, #49657e);
+  --aqua-pearl: linear-gradient(#6b8399, #425c73 48%, #2a435b 51%, #3b5771);
+  --aqua-gel: linear-gradient(
+    #c7e8ff,
+    #7ec2fa 17%,
+    #236cb3 30%,
+    #0754a7 49%,
+    #0b5caa 70%,
+    #45a2e6 87%,
+    #b4e7ff
+  );
+  --aqua-gel-pressed: linear-gradient(
+    #559ade,
+    #0f5eae 46%,
+    #063e83 49%,
+    #0b5da9 78%,
+    #53a4e5
+  );
+  --aqua-gel-border: #063e7c;
+  --aqua-glint: #ffffff91;
+  --aqua-edge: #ffffff45;
+  --aqua-inset: #00081765;
+  --aqua-selection: linear-gradient(#226cac, #0960b4);
+  --aqua-selection-ink: #fff;
+  --aqua-selection-muted: #e9f4ff;
+  --aqua-chrome-ink: #f2f7fc;
+  --aqua-wallpaper:
+    radial-gradient(ellipse at 15% 0%, #61b1e582, transparent 52%),
+    radial-gradient(ellipse at 95% 45%, #007bcc68, transparent 50%),
+    linear-gradient(155deg, #16375b, #0b2140 75%, #17476b);
+  background: var(--aqua-wallpaper);
+}
+:root[data-design="aqua"][data-theme="light"] {
+  --page: #b8d9ee;
+  --surface: #edf3f7;
+  --well: #fff;
+  --ink: #182c40;
+  --muted: #475b6e;
+  --border: #a1b4c4;
+  --control-border: #8097ab;
+  --soft: #d9e7f3;
+  --accent: #07539f;
+  --focus: #075cb6;
+  --primary: #1264b5;
+  --aqua-invalid: #a3333b;
+  --shadow: #153a6040;
+  --aqua-pinstripe: repeating-linear-gradient(
+    180deg,
+    #ffffffb0 0 1px,
+    #9ba9b21a 1px 2px,
+    #ffffff60 2px 3px,
+    #889ba326 3px 4px
+  );
+  --aqua-panel: #f4f7fafa;
+  --aqua-menu: #f7fbfff5;
+  --aqua-title: linear-gradient(#fff, #e8eef3 48%, #d3dde6 51%, #f5f8fa);
+  --aqua-pearl: linear-gradient(#fff, #f5f8fb 46%, #d6e1eb 49%, #edf4fa);
+  --aqua-glint: #fff;
+  --aqua-edge: #ffffffdb;
+  --aqua-inset: #263e5633;
+  --aqua-chrome-ink: #182c40;
+  --aqua-wallpaper:
+    radial-gradient(ellipse at 10% 0%, #ffffffb0, transparent 50%),
+    radial-gradient(ellipse at 100% 55%, #62b0dc85, transparent 55%),
+    linear-gradient(155deg, #c6e4f4, #8cb9d8 75%, #c8e5f3);
+}
+
+:root[data-design="aqua"] body {
+  background: var(--aqua-wallpaper);
+}
+:root[data-design="aqua"] .topbar {
+  position: relative;
+  background: var(--aqua-pinstripe), var(--aqua-title);
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  box-shadow:
+    inset 0 -1px 0 var(--aqua-edge),
+    0 4px 14px var(--shadow);
+}
+:root[data-design="aqua"] .brand {
+  letter-spacing: -0.015em;
+  text-shadow: 0 1px 1px var(--aqua-inset);
+}
+/* A small glass droplet with clock hands, without additional DOM or hit targets. */
+:root[data-design="aqua"] .brand-clock {
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  border: 1px solid var(--aqua-gel-border);
+  background:
+    radial-gradient(ellipse at 35% 18%, #ffffffed, #ffffff00 45%),
+    var(--aqua-gel);
+  box-shadow:
+    inset 0 -2px 4px #0041838a,
+    0 1px 2px var(--aqua-inset);
+}
+:root[data-design="aqua"] .input-panel,
+:root[data-design="aqua"] .result-panel {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--aqua-pinstripe), var(--aqua-panel);
+  box-shadow:
+    inset 0 1px 0 var(--aqua-edge),
+    0 10px 28px var(--shadow);
+}
+/* Window title chrome is an inset decoration; panel/anchor geometry is unchanged. */
+:root[data-design="aqua"] .panel-heading {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 var(--aqua-edge);
+}
+:root[data-design="aqua"] h2,
+:root[data-design="aqua"] .result-heading h2 {
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] #message,
+:root[data-design="aqua"] textarea,
+:root[data-design="aqua"] .ui-input,
+:root[data-design="aqua"] .choice-control input,
+:root[data-design="aqua"] .date-choice-control {
+  border: 1px solid var(--control-border);
+  border-radius: var(--control-radius);
+  background: var(--well);
+  box-shadow:
+    inset 0 1px 2px var(--aqua-inset),
+    0 1px 0 var(--aqua-edge);
+}
+:root[data-design="aqua"] input[type="search"] {
+  border-radius: var(--aqua-capsule-radius);
+}
+:root[data-design="aqua"] .ui-input[aria-invalid="true"] {
+  border-color: var(--aqua-invalid);
+  box-shadow: inset 0 0 0 1px var(--aqua-invalid);
+}
+:root[data-design="aqua"] .ui-input:disabled {
+  color: var(--muted);
+  background: var(--soft);
+}
+/* A native checkbox keeps its label, keyboard and checked-state semantics. */
+:root[data-design="aqua"] .ui-checkbox {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--control-border);
+  border-radius: var(--aqua-field-radius);
+  color: var(--ink);
+  background: var(--aqua-pearl);
+  box-shadow:
+    inset 0 1px 1px var(--aqua-glint),
+    0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] .ui-checkbox::before {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+}
+:root[data-design="aqua"] .ui-checkbox:checked {
+  border-color: var(--aqua-gel-border);
+  color: var(--primary-ink);
+  background: var(--aqua-gel);
+}
+:root[data-design="aqua"] .ui-checkbox:checked::before {
+  opacity: 1;
+}
+:root[data-design="aqua"] .ui-checkbox:active:not(:disabled) {
+  background: var(--aqua-gel-pressed);
+  color: var(--primary-ink);
+}
+:root[data-design="aqua"] .ui-checkbox:disabled {
+  opacity: 0.5;
+}
+:root[data-design="aqua"]
+  :is(
+    button.choice-trigger,
+    .appearance summary,
+    .action-outline,
+    .example-button,
+    .calendar-clear-choice
+  ) {
+  color: var(--aqua-chrome-ink);
+  border: 1px solid var(--control-border);
+  background: var(--aqua-pearl);
+  box-shadow:
+    inset 0 1px 1px var(--aqua-glint),
+    inset 0 -1px 1px var(--aqua-inset),
+    0 1px 2px var(--aqua-inset);
+}
+:root[data-design="aqua"] .appearance summary,
+:root[data-design="aqua"] .action-outline,
+:root[data-design="aqua"] .example-button,
+:root[data-design="aqua"] .calendar-clear-choice {
+  border-radius: var(--aqua-capsule-radius);
+}
+:root[data-design="aqua"] button.choice-trigger {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--aqua-popup-radius);
+}
+:root[data-design="aqua"] .choice-control input {
+  border-radius: var(--aqua-popup-radius);
+}
+/* The inset gem is decoration inside the existing 44px arrow target. */
+:root[data-design="aqua"] button.choice-trigger::before,
+:root[data-design="aqua"] .choice-toggle::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset-block: 6px;
+  inset-inline-end: 5px;
+  width: 28px;
+  border: 1px solid var(--aqua-gel-border);
+  border-radius: var(--aqua-gem-radius);
+  background:
+    radial-gradient(ellipse at 50% 0, #ffffffc2, transparent 48%),
+    var(--aqua-gel);
+  box-shadow:
+    inset 0 1px 0 #ffffffb0,
+    inset 0 -1px 1px #ffffff85,
+    0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] button.choice-trigger svg {
+  color: #fff;
+}
+:root[data-design="aqua"] .choice-toggle {
+  isolation: isolate;
+  color: #fff;
+  --pressed-ink: #fff;
+  border-radius: calc(var(--control-radius) - 1px);
+  background: transparent;
+}
+:root[data-design="aqua"] .choice-toggle::before {
+  inset-inline: 7px;
+  width: auto;
+}
+:root[data-design="aqua"] .copy-button {
+  border: 1px solid var(--aqua-gel-border);
+  border-radius: 999px;
+  color: var(--primary-ink);
+  background: var(--aqua-gel);
+  box-shadow:
+    inset 0 1px 1px #ffffffc2,
+    inset 0 -1px 1px #ffffffb0,
+    inset 0 -4px 5px #ffffff26,
+    inset 0 -2px 3px #0048877a,
+    0 2px 3px var(--aqua-inset);
+  text-shadow: 0 -1px 1px #003b77;
+}
+/* A curved reflection has its own shape instead of spanning the whole pill.
+   Isolate its negative layer above the button fill and below the label. */
+:root[data-design="aqua"]
+  :is(
+    .copy-button,
+    .appearance summary,
+    .action-outline,
+    .example-button,
+    .calendar-clear-choice,
+    .calendar-navigation
+  ) {
+  position: relative;
+  isolation: isolate;
+}
+:root[data-design="aqua"]
+  :is(
+    .copy-button,
+    .appearance summary,
+    .action-outline,
+    .example-button,
+    .calendar-clear-choice,
+    .calendar-navigation
+  )::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: 1px;
+  inset-inline: 7%;
+  height: 38%;
+  border-radius: 999px 999px 45% 45% / 999px 999px 100% 100%;
+  background: linear-gradient(#ffffffe6, #ffffff00);
+}
+:root[data-design="aqua"] button.copy-button::before {
+  /* Keep the bright reflection above the white glyphs. */
+  height: 30%;
+}
+:root[data-design="aqua"] .text-button:not(.copy-button, .action-outline) {
+  color: var(--accent);
+  border-radius: 999px;
+}
+:root[data-design="aqua"] .choice-popover,
+:root[data-design="aqua"] .appearance-fields {
+  background: var(--aqua-pinstripe), var(--aqua-menu);
+  border-color: var(--control-border);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 1px 0 var(--aqua-edge),
+    0 8px 22px var(--shadow),
+    0 1px 3px var(--aqua-inset);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+:root[data-design="aqua"] .appearance-fields label:not(:first-child) {
+  margin-top: 16px;
+}
+:root[data-design="aqua"] .choice-item {
+  border-radius: 4px;
+  --pressed-background: var(--aqua-selection);
+  --pressed-ink: var(--aqua-selection-ink);
+  --pressed-ring: var(--aqua-selection-ink);
+}
+:root[data-design="aqua"] .choice-item:is([data-focused], [data-selected]) {
+  background: var(--aqua-selection);
+  color: var(--aqua-selection-ink);
+}
+:root[data-design="aqua"] .choice-item[data-focus-visible],
+:root[data-design="aqua"] .calendar-day[data-selected][data-focus-visible] {
+  outline-color: var(--aqua-selection-ink);
+}
+:root[data-design="aqua"]
+  .choice-item:is(
+    [data-focused],
+    [data-selected],
+    :active,
+    [data-pressed],
+    [data-touch-pressed]
+  )
+  [slot="description"] {
+  color: var(--aqua-selection-muted);
+}
+:root[data-design="aqua"] .date-choice-segment[data-focused],
+:root[data-design="aqua"] .calendar-day[data-selected] {
+  background: var(--aqua-selection);
+  color: var(--aqua-selection-ink);
+}
+:root[data-design="aqua"] .calendar-day[data-selected] {
+  border-color: var(--aqua-gel-border);
+  box-shadow: inset 0 1px 0 #ffffff70;
+  --pressed-ink: #fff;
+  --pressed-ring: #fff;
+}
+:root[data-design="aqua"] .calendar-navigation {
+  border: 1px solid var(--control-border);
+  border-radius: 50%;
+  background: var(--aqua-pearl);
+  color: var(--ink);
+  box-shadow:
+    inset 0 1px 0 var(--aqua-glint),
+    0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] .large-clock {
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  border: 1px solid var(--control-border);
+  background: var(--aqua-pearl);
+  box-shadow:
+    inset 0 2px 3px var(--aqua-glint),
+    inset 0 -2px 3px var(--aqua-inset),
+    0 2px 3px var(--aqua-inset);
+}
+:root[data-design="aqua"] .hero-time {
+  color: var(--accent);
+  text-shadow: 0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] .live-indicator::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--control-border);
+  background: var(--aqua-pearl);
+  box-shadow: 0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] .live-indicator[data-state="ready"]::before {
+  border-color: #287346;
+  background: radial-gradient(
+    circle at 35% 25%,
+    #ffffff,
+    #73dd8d 35%,
+    #16843b 80%
+  );
+}
+:root[data-design="aqua"] .live-indicator[data-state="pending"]::before,
+:root[data-design="aqua"] .live-indicator[data-state="paused"]::before,
+:root[data-design="aqua"] .live-indicator[data-state="warning"]::before,
+:root[data-design="aqua"] .live-indicator[data-state="ambiguous"]::before {
+  border-color: #926315;
+  background: radial-gradient(
+    circle at 35% 25%,
+    #fff,
+    #ffd968 35%,
+    #c68a1a 80%
+  );
+}
+:root[data-design="aqua"] .live-indicator[data-state="error"]::before {
+  border-color: #a3333b;
+  background: radial-gradient(
+    circle at 35% 25%,
+    #fff,
+    #ff9b9b 35%,
+    #c83948 80%
+  );
+}
+:root[data-design="aqua"] .day-shift {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--aqua-pearl);
+}
+:root[data-design="aqua"]
+  :is(.import-choice, .update-banner, .install-help, .about-page) {
+  background: var(--aqua-pinstripe), var(--aqua-panel);
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 var(--aqua-edge),
+    0 4px 14px var(--shadow);
+  border-radius: 8px;
+}
+:root[data-design="aqua"] .about-page {
+  margin-top: 24px;
+}
+@media (hover: hover) {
+  :root[data-design="aqua"]
+    :is(
+      .choice-trigger,
+      .choice-toggle,
+      .appearance summary,
+      .action-outline,
+      .example-button,
+      .calendar-navigation,
+      .calendar-clear-choice
+    ):hover {
+    border-color: var(--accent);
+    box-shadow:
+      inset 0 1px 1px var(--aqua-glint),
+      0 0 0 1px var(--control-border);
+  }
+  :root[data-design="aqua"] .copy-button:hover {
+    box-shadow:
+      inset 0 1px 2px #fff,
+      inset 0 -1px 1px #ffffffb0,
+      inset 0 -4px 5px #ffffff26,
+      inset 0 -2px 3px #0048877a,
+      0 0 0 2px var(--control-border);
+  }
+  :root[data-design="aqua"] .choice-item[data-hovered] {
+    background: var(--aqua-selection);
+    color: var(--aqua-selection-ink);
+  }
+  :root[data-design="aqua"] .choice-item[data-hovered] [slot="description"] {
+    color: var(--aqua-selection-muted);
+  }
+}
+/* Press changes only paint. Keep anchors, focus outlines and hit targets fixed. */
+:root[data-design="aqua"]
+  :is(button, summary, .choice-item, .calendar-day):not(
+    :disabled,
+    [data-disabled]
+  ):is(:active, [data-pressed], [data-touch-pressed]) {
+  background: var(--pressed-background, var(--soft));
+  color: var(--pressed-ink, var(--ink));
+  box-shadow: inset 0 0 0 2px var(--pressed-ring, var(--accent));
+}
+:root[data-design="aqua"]
+  .copy-button:is(:active, [data-pressed], [data-touch-pressed]):not(
+    :disabled,
+    [data-disabled]
+  ) {
+  background: var(--aqua-gel-pressed);
+  color: var(--primary-ink);
+  box-shadow:
+    inset 0 0 0 2px #ffffffc2,
+    inset 0 2px 5px #00376a70;
+}
+:root[data-design="aqua"]
+  :is(button.choice-trigger, .choice-toggle):is(
+    :active,
+    [data-pressed],
+    [data-touch-pressed]
+  ):not(:disabled, [data-disabled])::before {
+  background: var(--aqua-gel-pressed);
+  box-shadow:
+    inset 0 1px 3px #00376a70,
+    inset 0 -1px 0 #ffffff70;
+}
+:root[data-design="aqua"]
+  :is(
+    .copy-button,
+    .appearance summary,
+    .action-outline,
+    .example-button,
+    .calendar-clear-choice,
+    .calendar-navigation
+  ):is(
+    :active,
+    [data-pressed],
+    [data-touch-pressed],
+    :disabled,
+    [data-disabled]
+  )::before {
+  opacity: 0.35;
+}
+@media (forced-colors: active) {
+  :root[data-design="aqua"] .choice-item[data-focus-visible],
+  :root[data-design="aqua"] .calendar-day[data-selected][data-focus-visible] {
+    outline-color: HighlightText;
+  }
+  :root[data-design="aqua"] .ui-checkbox {
+    appearance: auto;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+  :root[data-design="aqua"] .ui-checkbox::before {
+    content: none;
+  }
+  :root[data-design="aqua"],
+  :root[data-design="aqua"] body {
+    background: Canvas;
+  }
+  :root[data-design="aqua"]
+    :is(
+      .topbar,
+      .input-panel,
+      .result-panel,
+      .choice-popover,
+      .appearance-fields,
+      .about-page,
+      .import-choice,
+      .update-banner,
+      .install-help
+    ) {
+    background: Canvas;
+    box-shadow: none;
+    backdrop-filter: none;
+    border-color: CanvasText;
+  }
+  :root[data-design="aqua"]
+    :is(button, summary, .ui-input, textarea, .date-choice-control) {
+    background: ButtonFace;
+    color: ButtonText;
+    border-color: ButtonText;
+    box-shadow: none;
+    text-shadow: none;
+  }
+  :root[data-design="aqua"]
+    :is(
+      .copy-button,
+      .appearance summary,
+      .action-outline,
+      .example-button,
+      .calendar-clear-choice,
+      .calendar-navigation,
+      button.choice-trigger,
+      .choice-toggle
+    )::before {
+    content: none;
+  }
+  :root[data-design="aqua"] :is(button.choice-trigger, .choice-toggle) {
+    background: ButtonFace;
+    color: ButtonText;
+    box-shadow: none;
+  }
+  :root[data-design="aqua"] :is(button.choice-trigger, .choice-toggle) svg {
+    color: currentColor;
+  }
+  :root[data-design="aqua"]
+    :is(.choice-item, .calendar-day, .date-choice-segment):is(
+      [data-selected],
+      [data-focused],
+      [data-hovered]
+    ),
+  :root[data-design="aqua"]
+    :is(button, summary, .choice-item, .calendar-day):not(
+      :disabled,
+      [data-disabled]
+    ):is(:active, [data-pressed], [data-touch-pressed]) {
+    forced-color-adjust: none;
+    background: Highlight;
+    color: HighlightText;
+    box-shadow: none;
+  }
+  :root[data-design="aqua"]
+    .choice-item:is(
+      [data-selected],
+      [data-focused],
+      [data-hovered],
+      :active,
+      [data-pressed],
+      [data-touch-pressed]
+    )
+    [slot="description"] {
+    color: HighlightText;
+  }
+  :root[data-design="aqua"] :is(.hero-time, .brand, h2) {
+    text-shadow: none;
+  }
+}

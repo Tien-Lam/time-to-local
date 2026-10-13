@@ -40,6 +40,8 @@ import { ChoiceSelect, ZoneChoice } from "./components/Choices";
 import { DeferredDateChoice } from "./components/DeferredDateChoice";
 import { ActionButton } from "./components/ui/ActionButton";
 import { ControlIcon } from "./components/ui/ControlIcon";
+import { Checkbox } from "./components/ui/Checkbox";
+import { StatusIndicator } from "./components/ui/StatusIndicator";
 import { Disclosure } from "./components/Disclosure";
 import { About, GITHUB_URL } from "./components/About";
 import { ConverterGuide, ConverterIntro } from "./components/ConverterGuide";
@@ -288,10 +290,19 @@ export default function App({
       const immediate = !document.documentElement.dataset.themeChanging;
       if (immediate) document.documentElement.dataset.themeResolving = "true";
       document.documentElement.dataset.theme = theme;
-      document.documentElement.dataset.design = "command";
+      document.documentElement.dataset.design = prefs.design;
       document
         .querySelector('meta[name="theme-color"]')
-        ?.setAttribute("content", theme === "dark" ? "#0c120f" : "#f7f4ed");
+        ?.setAttribute(
+          "content",
+          prefs.design === "aqua"
+            ? theme === "dark"
+              ? "#102d50"
+              : "#b8d9ee"
+            : theme === "dark"
+              ? "#0c120f"
+              : "#f7f4ed",
+        );
       if (immediate) {
         // Resolve all palette styles while control feedback is suppressed.
         void document.documentElement.offsetHeight;
@@ -312,7 +323,7 @@ export default function App({
         cancelAnimationFrame(themeResolutionFrame.current);
       delete document.documentElement.dataset.themeResolving;
     };
-  }, [initializing, prefs.theme]);
+  }, [initializing, prefs.theme, prefs.design]);
 
   useEffect(() => {
     const dismiss = (event: PointerEvent) => {
@@ -802,6 +813,21 @@ export default function App({
               inert={!appearanceOpen}
               aria-hidden={!appearanceOpen}
             >
+              <label htmlFor="design">Design</label>
+              <ChoiceSelect
+                id="design"
+                label="Design"
+                value={prefs.design}
+                onChange={(design) => {
+                  clearTimeout(themeReset.current);
+                  delete document.documentElement.dataset.themeChanging;
+                  setPrefs({ ...prefs, design: design as "command" | "aqua" });
+                }}
+                options={[
+                  { id: "command", label: "Original" },
+                  { id: "aqua", label: "Aqua" },
+                ]}
+              />
               <label htmlFor="theme">Theme</label>
               <ChoiceSelect
                 id="theme"
@@ -1082,7 +1108,7 @@ export default function App({
                     ? `In ${zoneName(targetZone)}`
                     : "Converted time"}
                 </h2>
-                <span className="live-indicator" data-state={liveState}>
+                <StatusIndicator state={liveState}>
                   {initializing
                     ? "Preparing"
                     : liveState === "pending"
@@ -1094,7 +1120,7 @@ export default function App({
                           : liveState === "warning"
                             ? "Check time"
                             : summary}
-                </span>
+                </StatusIndicator>
               </div>
               <div role="status" className="sr-only">
                 {busy
@@ -1290,8 +1316,7 @@ export default function App({
               id="support-options"
             >
               <label className="diagnostic-toggle">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={detailedLogs}
                   onChange={(event) => {
                     const enabled = event.target.checked;
