@@ -10803,6 +10803,321 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "valid standalone prefix date retains original identity America/New_York US/Eastern"
+    },
+    {
+      "id": "web-zone-first-542",
+      "input": "JST today",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-543",
+      "input": "JST tomorrow",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-544",
+      "input": "JST yesterday",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-545",
+      "input": "CST today",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-546",
+      "input": "JST tomorrow; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-547",
+      "input": "CST today; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-548",
+      "input": "JST tomorrow 9am; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-549",
+      "input": "JST tomorrow\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-550",
+      "input": "JST tomorrow; UTC April 12 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-551",
+      "input": "America/New_York today",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-552",
+      "input": "UTC-12 today",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-553",
+      "input": "America/New_York 8 April US/Eastern XYZ time",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-554",
+      "input": "America/New_York 8 April US/Eastern in Atlantis",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-555",
+      "input": "America/New_York 8 April US/Eastern in Tokyo",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-556",
+      "input": "America/New_York 8 April US/Eastern",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-557",
+      "input": "America/New_York 3pm US/Eastern XYZ time to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-558",
+      "input": "America/New_York 8 April US/Eastern XYZ time to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-559",
+      "input": "America/New_York 3pm US/Eastern in Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-560",
+      "input": "America/New_York 8 April US/Eastern in Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-561",
+      "input": "America/New_York 3pm US/Eastern America/Foo to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-562",
+      "input": "America/New_York 8 April US/Eastern America/Foo to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-563",
+      "input": "America/New_York 3pm US/Eastern XYZ time - UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-564",
+      "input": "America/New_York 8 April US/Eastern XYZ time - UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-565",
+      "input": "America/New_York 3pm US/Eastern in Atlantis - UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-566",
+      "input": "America/New_York 8 April US/Eastern in Atlantis - UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-567",
+      "input": "America/New_York 3pm US/Eastern America/Foo - UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-568",
+      "input": "America/New_York 8 April US/Eastern America/Foo - UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-569",
+      "input": "America/New_York 3pm US/Eastern XYZ time – UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-570",
+      "input": "America/New_York 8 April US/Eastern XYZ time – UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-571",
+      "input": "America/New_York 3pm US/Eastern in Atlantis – UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-572",
+      "input": "America/New_York 8 April US/Eastern in Atlantis – UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-573",
+      "input": "America/New_York 3pm US/Eastern America/Foo – UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-574",
+      "input": "America/New_York 8 April US/Eastern America/Foo – UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Owned relative calendar dates and complete mixed qualifier rejection or recovery"
+    },
+    {
+      "id": "web-zone-first-575",
+      "input": "America/New_York today US/Eastern",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Regional alias date-only owner retains source reference date"
+    },
+    {
+      "id": "web-zone-first-576",
+      "input": "America/New_York today US/Eastern; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Regional alias date-only owner retains source reference date"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

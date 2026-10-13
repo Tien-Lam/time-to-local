@@ -6,7 +6,7 @@ import {
   usesReferenceDate,
   usesReferenceYear,
 } from "./parser";
-import type { ParsedComponents } from "chrono-node";
+import type { ParsedComponents, ParsingResult } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
 import { temporal as Temporal } from "./temporal";
 import {
@@ -109,11 +109,25 @@ function paragraph(text: string, index: number): number {
   return (text.slice(0, index).match(/\n\s*\n/g) || []).length;
 }
 
+function qualifierTail(text: string): string {
+  const token = new RegExp(
+    `^[ \t]+(?:in[ \t]+|at[ \t]+)?(${zoneToken})(?=$|[ \t])`,
+    "i",
+  );
+  let tail = text;
+  while (true) {
+    const match = tail.match(token);
+    if (!match || !explicitZones(match[1])?.length) return tail;
+    tail = tail.slice(match[0].length);
+  }
+}
+
 function cityChoices(
   adjacent: string,
   warnings: string[],
 ): ZoneChoice[] | undefined {
   // Explicit zone suffixes are validated separately, including invalid IANA IDs.
+  adjacent = qualifierTail(adjacent);
   if (explicitZones(adjacent) || IANA_TOKEN.test(adjacent)) return;
   const city = adjacent.match(/^\s+(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/iu);
   if (!city) return;
@@ -142,6 +156,23 @@ function adjacentQualifier(suffix: string): string {
   )[0];
 }
 
+function ownedQualifierTail(text: string, suffix: string): string {
+  const adjacent = adjacentQualifier(suffix);
+  const combined = text + adjacent;
+  const ownedTokens = [
+    ...combined.matchAll(new RegExp(`\\b(?:${zoneToken})\\b`, "gi")),
+  ].filter((token) => explicitZones(token[0])?.length);
+  const lastOwned = ownedTokens.at(-1);
+  const ownedTail = qualifierTail(
+    lastOwned
+      ? combined.slice(lastOwned.index! + lastOwned[0].length)
+      : adjacent,
+  );
+  return /^\s+(?:[A-Z]{2,5}\b|(?:in|at)\s+)/.test(ownedTail)
+    ? ownedTail
+    : qualifierTail(adjacent);
+}
+
 function choicesFor(
   text: string,
   suffix: string,
@@ -153,8 +184,10 @@ function choicesFor(
   // may mention a target zone or another person's location.
   const adjacent = adjacentQualifier(suffix);
   const combined = text + adjacent;
-  const numeric = combined.match(OFFSET_TOKEN);
-  if (numeric && !explicitZones(numeric[0])?.length) {
+  const numeric = [...combined.matchAll(OFFSET_TOKEN)].find(
+    (token) => !explicitZones(token[0])?.length,
+  );
+  if (numeric) {
     warnings.push(
       `Invalid timezone offset ${numeric[0]}. Correct it and try again.`,
     );
@@ -170,13 +203,14 @@ function choicesFor(
     return [];
   }
   const explicit = explicitZones(text);
-  const unknownAbbr = adjacent.match(/^\s+([A-Z]{2,5})\b/);
+  const tail = ownedQualifierTail(text, suffix);
+  const unknownAbbr = tail.match(/^\s+([A-Z]{2,5})\b/);
   if (
     (explicit || writtenIsoOffset(c) !== undefined) &&
     unknownAbbr &&
-    (adjacent.trim() === unknownAbbr[1] ||
+    (tail.trim() === unknownAbbr[1] ||
       /^\s+(?:time(?:\s*zone)?\b|zone\b|(?:in|at)\s+)/i.test(
-        adjacent.slice(unknownAbbr[0].length),
+        tail.slice(unknownAbbr[0].length),
       )) &&
     !["AM", "PM", "IN", "AT"].includes(unknownAbbr[1]) &&
     !explicitZones(unknownAbbr[1])
@@ -186,7 +220,10 @@ function choicesFor(
     );
     return [];
   }
-  if (explicit) return explicit;
+  if (explicit) {
+    if (cityChoices(tail, warnings)?.length === 0) return [];
+    return explicit;
+  }
   const suffixZone = adjacent.match(
     /^\s*(?:(?:in|at)\s+)?((?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)\s*[+\-−][\d:]+|(?:US\s+)?(?:Pacific|Eastern|Central|Mountain)(?:\s+Time)?|[A-Z]{2,5}\b)/i,
   );
@@ -266,6 +303,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       parserText.slice(0, prefix.index) +
       " ".repeat(prefix.end - prefix.index) +
       parserText.slice(prefix.end);
+  const preservedDates: ReturnType<typeof parser.parse> = [];
   for (const prefix of prefixes) {
     const adjacent = text.slice(
       prefix.end,
@@ -275,12 +313,35 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           text.length,
       ),
     );
+    const paragraphDate = adjacent.match(/^([^\n]+)\n\s*\n/);
+    if (paragraphDate) {
+      const dateText = paragraphDate[1].trim();
+      const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
+      if (
+        dates.length === 1 &&
+        !dates[0].end &&
+        dates[0].start.isCertain("day") &&
+        !dates[0].start.isCertain("hour") &&
+        !dates[0].start.isCertain("minute") &&
+        dates[0].index === 0 &&
+        dates[0].text.trim() === dateText
+      ) {
+        const date = dates[0] as ParsingResult;
+        date.index = prefix.end + adjacent.indexOf(dateText);
+        preservedDates.push(date);
+        parserText =
+          parserText.slice(0, date.index) +
+          " ".repeat(date.text.length) +
+          parserText.slice(date.index + date.text.length);
+        continue;
+      }
+    }
     const qualifier = adjacent.match(IANA_TOKEN);
     const qualifierSpan = qualifier
       ? adjacent
           .slice(qualifier.index)
           .match(
-            new RegExp(`^${IANA_TOKEN.source}(?:[ \\t]+${IANA_TOKEN.source})*`),
+            /^[^,;.!?\n]*?(?=(?:[ \t]+(?:to|until|through|till)\b|[ \t]*[-–][ \t]*(?:$|[A-Z]))|$)/i,
           )
       : undefined;
     const afterQualifiers = qualifierSpan
@@ -311,15 +372,24 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       dates[0].text.trim() !== dateText
     )
       continue;
-    // A slash-bearing qualifier can make Chrono discard a complete date.
-    // Keep its original ownership available for validation and range rejection.
-    const index = prefix.end + qualifier.index!;
+    // Preserve the isolated complete date before masking it too: a month-name
+    // overlap can otherwise discard its leading day and lose the prefix owner.
+    const date = dates[0] as ParsingResult;
+    date.index = prefix.end + adjacent.indexOf(dateText);
+    const spanEnd = prefix.end + qualifier.index! + qualifierSpan[0].length;
+    date.text =
+      parserText.slice(date.index, prefix.end + qualifier.index!) +
+      " ".repeat(qualifierSpan[0].length);
+    preservedDates.push(date);
     parserText =
-      parserText.slice(0, index) +
-      " ".repeat(qualifierSpan[0].length) +
-      parserText.slice(index + qualifierSpan[0].length);
+      parserText.slice(0, date.index) +
+      " ".repeat(spanEnd - date.index) +
+      parserText.slice(spanEnd);
   }
-  const parsed = parser.parse(parserText, ref, { timezones: timezoneHints });
+  const parsed = [
+    ...parser.parse(parserText, ref, { timezones: timezoneHints }),
+    ...preservedDates,
+  ].sort((a, b) => a.index - b.index);
   const warnings: string[] = [],
     results: TimeResult[] = [];
   const invalidOffsets = [...text.matchAll(OFFSET_TOKEN)].filter(
@@ -342,6 +412,13 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     warnings.push(
       "EOD/COB does not specify a clock time. Replace it with the intended time.",
     );
+  type DateOwner = {
+    date: TemporalTypes.PlainDate;
+    choice: ZoneChoice;
+    referenceUsed: boolean;
+    yearAssumed: boolean;
+  };
+  let contextOwners: DateOwner[] | undefined;
   let contextDate: TemporalTypes.PlainDate | undefined,
     contextText = "",
     contextNumeric = false,
@@ -435,6 +512,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
     ) {
       contextDate = undefined;
+      contextOwners = undefined;
       contextText = "";
       contextNumeric = false;
       contextParagraph = block;
@@ -461,28 +539,59 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const date = componentDate(r.start),
       explicitDate = r.start.isCertain("day");
     const dateOnly = !r.start.isCertain("hour") && !r.start.isCertain("minute");
+    const dateChoices =
+      dateOnly && prefix
+        ? choicesFor(
+            matchedText,
+            qualifierSuffix,
+            r.start,
+            options.sourceZone,
+            warnings,
+          )
+        : undefined;
     if (
-      dateOnly &&
-      prefix &&
-      (!choicesFor(
-        matchedText,
-        qualifierSuffix,
-        r.start,
-        options.sourceZone,
-        warnings,
-      ).length ||
-        cityChoices(adjacentQualifier(qualifierSuffix), warnings)?.length === 0)
+      dateChoices &&
+      (!dateChoices.length ||
+        cityChoices(ownedQualifierTail(matchedText, qualifierSuffix), warnings)
+          ?.length === 0)
     ) {
       reject();
       continue;
     }
+    const dateOwners: DateOwner[] = (
+      dateChoices ??
+      (prefix && explicitDate ? explicitZones(prefix.text) : undefined) ?? [
+        { zone: options.sourceZone, label: "Date only" },
+      ]
+    ).map((choice) => {
+      const local = prefix
+        ? parser.parse(
+            r.text.trim(),
+            {
+              instant: new Date(now),
+              timezone: offsetMinutes(choice.zone, now),
+            },
+            { timezones: timezoneHints },
+          )[0]?.start
+        : r.start;
+      const components = local ?? r.start;
+      return {
+        date: componentDate(components),
+        choice,
+        referenceUsed: usesReferenceDate(components),
+        yearAssumed: !components.isCertain("year"),
+      };
+    });
     if (dateOnly && prefix) {
       const ownerZones = [
         ...(matchedText + adjacentQualifier(suffix)).matchAll(
           new RegExp(`\\b(?:${zoneToken})\\b`, "gi"),
         ),
       ].flatMap((token) => explicitZones(token[0]) ?? []);
-      const cities = cityChoices(adjacentQualifier(qualifierSuffix), warnings);
+      const cities = cityChoices(
+        ownedQualifierTail(matchedText, qualifierSuffix),
+        warnings,
+      );
       const prefixChoices = explicitZones(prefix.text) ?? [];
       const cityConflict = cities?.some((city) =>
         prefixChoices.some((choice) => {
@@ -515,40 +624,51 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         continue;
       }
     }
-    if (explicitDate) {
-      contextDate = date;
+    if (explicitDate && !r.start.tags().has("casualReference/now")) {
+      contextDate = dateOwners[0].date;
+      contextOwners = prefix
+        ? dateOwners.filter(
+            (owner, index, all) =>
+              all.findIndex((other) => other.date.equals(owner.date)) === index,
+          )
+        : undefined;
       contextText = r.text;
       contextNumeric = hasNumericDate(r.start);
       contextOrder = numericDateOrder(r.start, options.dateOrder || "mdy");
     }
-    if (!r.start.isCertain("hour") && !r.start.isCertain("minute")) {
+    if (dateOnly) {
       if (!hasTime)
-        results.push({
-          id: `date-${sourceIndex}`,
-          group: `date-${sourceIndex}`,
-          original: prefix ? matchedText.trim() : r.text,
-          sourceIndex,
-          dateOnly: date.toString(),
-          ...(hasNumericDate(r.start)
-            ? {
-                numericDate: {
-                  date: date.toString(),
-                  order: numericDateOrder(r.start, options.dateOrder || "mdy"),
-                },
-              }
-            : {}),
-          sourceZone: options.sourceZone,
-          sourceLabel: "Date only",
-          assumptions: [
-            ...(!r.start.isCertain("year")
-              ? [`Year assumed: ${date.year}`]
-              : []),
-            ...(usesReferenceDate(r.start)
-              ? [referenceAssumption(now, options.sourceZone)]
-              : []),
-          ],
-          occurrences: 1,
-        });
+        for (const owner of dateOwners)
+          results.push({
+            id: `date-${sourceIndex}-${owner.choice.zone}`,
+            group: `date-${sourceIndex}`,
+            original: prefix ? matchedText.trim() : r.text,
+            sourceIndex,
+            dateOnly: owner.date.toString(),
+            ...(hasNumericDate(r.start)
+              ? {
+                  numericDate: {
+                    date: owner.date.toString(),
+                    order: numericDateOrder(
+                      r.start,
+                      options.dateOrder || "mdy",
+                    ),
+                  },
+                }
+              : {}),
+            sourceZone: owner.choice.zone,
+            sourceLabel: prefix ? owner.choice.label : "Date only",
+            interpretation: owner.choice.interpretation,
+            assumptions: [
+              ...(owner.yearAssumed
+                ? [`Year assumed: ${owner.date.year}`]
+                : []),
+              ...(owner.referenceUsed
+                ? [referenceAssumption(now, owner.choice.zone)]
+                : []),
+            ],
+            occurrences: 1,
+          });
       continue;
     }
     const zoneSuffix = adjacentQualifier(suffix);
@@ -702,185 +822,207 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             ? local.end
             : local.start
           : c;
-        let selectedDate = componentDate(components),
-          assumptions = [
-            ...(choice.assumption ? [choice.assumption] : []),
-            ...(qualifier?.flatMap((city) =>
-              city.assumption ? [city.assumption] : [],
-            ) ?? []),
-          ],
-          referenceUsed = usesReferenceDate(components);
-        if (!explicitDate && contextDate) {
-          const header = parser.parse(contextText, zoneRef, {
-            timezones: timezoneHints,
-          })[0];
-          const context = header ? componentDate(header.start) : contextDate;
-          referenceUsed = header
-            ? usesReferenceDate(header.start)
-            : referenceUsed;
-          selectedDate = context.add({
-            days: componentDate(local?.start || r.start).until(selectedDate)
-              .days,
-          });
-          assumptions.push(`Date from message context: ${context}`);
-        } else if (!explicitDate) {
-          assumptions.push(`Date assumed: ${selectedDate}`);
-        } else if (!c.isCertain("year") && usesReferenceYear(components)) {
-          // An implied range year can inherit the other endpoint's explicit year.
-          // Keep relative-date disclosure policy while excluding that false claim.
-          assumptions.push(`Year assumed: ${selectedDate.year}`);
-        }
-        if (referenceUsed)
-          assumptions.push(referenceAssumption(now, choice.zone));
-        const dt = selectedDate.toPlainDateTime({
-          hour: components.get("hour") || 0,
-          minute: components.get("minute") || 0,
-          second: components.get("second") || 0,
-          millisecond: components.get("millisecond") || 0,
-        });
-        let civil = dt;
-        if (priorResults.length === 1 && !explicitDate) {
-          const start = Temporal.Instant.from(priorResults[0].instant!)
-            .toZonedDateTimeISO(priorResults[0].sourceZone)
-            .toPlainDateTime();
-          civil = start.toPlainDate().toPlainDateTime(dt.toPlainTime());
-          if (
-            Temporal.PlainTime.compare(
-              civil.toPlainTime(),
-              start.toPlainTime(),
-            ) < 0
-          )
-            civil = civil.add({ days: 1 });
-        }
-        if (priorResults.length)
-          priorResults.forEach((result) => {
-            result.endpoint = "start";
-            result.rangeId = `range-${prior.index}`;
-          });
-        // An ISO offset owns this endpoint's instant, even in a repeated hour.
-        // A prefix may supply a label only when its offset agrees at that instant.
-        const isoOffset = writtenIsoOffset(c);
-        const isoInstant =
-          isoOffset === undefined
-            ? undefined
-            : civil
-                .toZonedDateTime(offsetZone(isoOffset))
-                .toInstant()
-                .toString();
-        const cityConflict = qualifier?.some((city) => {
-          if (!/^[+-]/.test(choice.zone))
-            return (
-              zoneIdentity(choice.zone) !== zoneIdentity(city.zone) ||
-              !sameCivilClock(civil, choice.zone, city.zone)
+        for (const dateOwner of !explicitDate && contextOwners
+          ? contextOwners
+          : [undefined]) {
+          let selectedDate = componentDate(components),
+            assumptions = [
+              ...(choice.assumption ? [choice.assumption] : []),
+              ...(qualifier?.flatMap((city) =>
+                city.assumption ? [city.assumption] : [],
+              ) ?? []),
+            ],
+            referenceUsed = usesReferenceDate(components);
+          if (!explicitDate && contextDate) {
+            const header = parser.parse(contextText, zoneRef, {
+              timezones: timezoneHints,
+            })[0];
+            const context =
+              dateOwner?.date ??
+              (header ? componentDate(header.start) : contextDate);
+            referenceUsed =
+              dateOwner?.referenceUsed ??
+              (header ? usesReferenceDate(header.start) : referenceUsed);
+            if (dateOwner)
+              assumptions.push(
+                `Date context timezone: ${dateOwner.choice.label}`,
+              );
+            selectedDate = context.add({
+              days: componentDate(local?.start || r.start).until(selectedDate)
+                .days,
+            });
+            assumptions.push(`Date from message context: ${context}`);
+          } else if (!explicitDate) {
+            assumptions.push(`Date assumed: ${selectedDate}`);
+          } else if (!c.isCertain("year") && usesReferenceYear(components)) {
+            // An implied range year can inherit the other endpoint's explicit year.
+            // Keep relative-date disclosure policy while excluding that false claim.
+            assumptions.push(`Year assumed: ${selectedDate.year}`);
+          }
+          if (referenceUsed)
+            assumptions.push(
+              referenceAssumption(now, dateOwner?.choice.zone ?? choice.zone),
             );
-          const candidates = civilInstants(civil, city.zone).instants;
-          return !candidates.some(
-            (instant) =>
-              offsetMinutes(city.zone, instant) ===
-              offsetMinutes(choice.zone, instant),
-          );
-        });
-        // Browsers can retain pre-1970 backzone history behind a current IANA
-        // link. Compare the actual clock too instead of rewriting either ID.
-        const aliasConflict = zones.some((token) => {
-          if (
-            rangeBoundary !== undefined &&
-            sourceIndex + token.index! >= rangeBoundary !== (endpoint === "end")
-          )
-            return false;
-          return explicitZones(token[0])!.some(
-            (other) =>
-              zoneIdentity(choice.zone) === zoneIdentity(other.zone) &&
-              !sameCivilClock(civil, choice.zone, other.zone),
-          );
-        });
-        if (
-          cityConflict ||
-          aliasConflict ||
-          (isoInstant && offsetMinutes(choice.zone, isoInstant) !== isoOffset)
-        ) {
-          invalidEndpoint = true;
-          warnings.push(
-            "Conflicting timezones around one time. Keep one source timezone per time and try again.",
-          );
-          continue;
-        }
-        // "Now" denotes an instant, including during the repeated civil hour
-        // when a regional zone moves its clocks back.
-        const resolved = isoInstant
-          ? { instants: [isoInstant], nonexistent: false }
-          : components.tags().has("casualReference/now") &&
-              civil.equals(
-                Temporal.Instant.from(now)
-                  .toZonedDateTimeISO(choice.zone)
-                  .toPlainDateTime()
-                  .round({
-                    smallestUnit: "millisecond",
-                    roundingMode: "trunc",
-                  }),
-              )
-            ? {
-                instants: [Temporal.Instant.from(now).toString()],
-                nonexistent: false,
-              }
-            : civilInstants(civil, choice.zone);
-        if (resolved.nonexistent) {
-          invalidEndpoint = true;
-          warnings.push(
-            `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or timezone in your message${choice.assumption?.startsWith("Source timezone assumed:") ? ", or change Source timezone in Message interpretation" : ""}.`,
-          );
-          continue;
-        }
-        for (let n = 0; n < resolved.instants.length; n++) {
-          const instant = resolved.instants[n];
-          results.push({
-            id: `${sourceIndex}-${endpoint || "time"}-${choice.zone}-${n}`,
-            group: `${sourceIndex}-${endpoint || "time"}`,
-            original,
-            sourceIndex,
-            endpoint: priorResults.length ? "end" : endpoint,
-            ...(r.end || priorResults.length
-              ? {
-                  rangeId: `range-${priorResults.length ? prior.index : r.index}`,
-                }
-              : {}),
-            ...(hasNumericDate(c) ||
-            (!c.isCertain("day") &&
-              (hasNumericDate(r.start) ||
-                (r.end && hasNumericDate(r.end)) ||
-                contextNumeric))
-              ? {
-                  numericDate: {
-                    date: civil.toPlainDate().toString(),
-                    order: numericDateOrder(
-                      hasNumericDate(c)
-                        ? c
-                        : hasNumericDate(r.start)
-                          ? r.start
-                          : r.end && hasNumericDate(r.end)
-                            ? r.end
-                            : c,
-                      contextNumeric
-                        ? contextOrder
-                        : options.dateOrder || "mdy",
-                    ),
-                  },
-                }
-              : {}),
-            instant,
-            sourceZone: choice.zone,
-            sourceLabel: choice.label,
-            interpretation:
-              resolved.instants.length > 1
-                ? `${choice.interpretation ? choice.interpretation + " · " : ""}${n === 0 ? "First" : "Second"} occurrence (clocks move back)`
-                : choice.interpretation,
-            assumptions,
-            occurrences: 1,
+          const dt = selectedDate.toPlainDateTime({
+            hour: components.get("hour") || 0,
+            minute: components.get("minute") || 0,
+            second: components.get("second") || 0,
+            millisecond: components.get("millisecond") || 0,
           });
+          let civil = dt;
+          if (priorResults.length === 1 && !explicitDate) {
+            const start = Temporal.Instant.from(priorResults[0].instant!)
+              .toZonedDateTimeISO(priorResults[0].sourceZone)
+              .toPlainDateTime();
+            civil = start.toPlainDate().toPlainDateTime(dt.toPlainTime());
+            if (
+              Temporal.PlainTime.compare(
+                civil.toPlainTime(),
+                start.toPlainTime(),
+              ) < 0
+            )
+              civil = civil.add({ days: 1 });
+          }
+          if (priorResults.length)
+            priorResults.forEach((result) => {
+              result.endpoint = "start";
+              result.rangeId = `range-${prior.index}`;
+            });
+          // An ISO offset owns this endpoint's instant, even in a repeated hour.
+          // A prefix may supply a label only when its offset agrees at that instant.
+          const isoOffset = writtenIsoOffset(c);
+          const isoInstant =
+            isoOffset === undefined
+              ? undefined
+              : civil
+                  .toZonedDateTime(offsetZone(isoOffset))
+                  .toInstant()
+                  .toString();
+          const cityConflict = qualifier?.some((city) => {
+            if (!/^[+-]/.test(choice.zone))
+              return (
+                zoneIdentity(choice.zone) !== zoneIdentity(city.zone) ||
+                !sameCivilClock(civil, choice.zone, city.zone)
+              );
+            const candidates = civilInstants(civil, city.zone).instants;
+            return !candidates.some(
+              (instant) =>
+                offsetMinutes(city.zone, instant) ===
+                offsetMinutes(choice.zone, instant),
+            );
+          });
+          // Browsers can retain pre-1970 backzone history behind a current IANA
+          // link. Compare the actual clock too instead of rewriting either ID.
+          const aliasConflict = zones.some((token) => {
+            if (
+              rangeBoundary !== undefined &&
+              sourceIndex + token.index! >= rangeBoundary !==
+                (endpoint === "end")
+            )
+              return false;
+            return explicitZones(token[0])!.some(
+              (other) =>
+                zoneIdentity(choice.zone) === zoneIdentity(other.zone) &&
+                !sameCivilClock(civil, choice.zone, other.zone),
+            );
+          });
+          if (
+            cityConflict ||
+            aliasConflict ||
+            (isoInstant && offsetMinutes(choice.zone, isoInstant) !== isoOffset)
+          ) {
+            invalidEndpoint = true;
+            warnings.push(
+              "Conflicting timezones around one time. Keep one source timezone per time and try again.",
+            );
+            continue;
+          }
+          // "Now" denotes an instant, including during the repeated civil hour
+          // when a regional zone moves its clocks back.
+          const resolved = isoInstant
+            ? { instants: [isoInstant], nonexistent: false }
+            : components.tags().has("casualReference/now") &&
+                civil.equals(
+                  Temporal.Instant.from(now)
+                    .toZonedDateTimeISO(choice.zone)
+                    .toPlainDateTime()
+                    .round({
+                      smallestUnit: "millisecond",
+                      roundingMode: "trunc",
+                    }),
+                )
+              ? {
+                  instants: [Temporal.Instant.from(now).toString()],
+                  nonexistent: false,
+                }
+              : civilInstants(civil, choice.zone);
+          if (resolved.nonexistent) {
+            invalidEndpoint = true;
+            warnings.push(
+              `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or timezone in your message${choice.assumption?.startsWith("Source timezone assumed:") ? ", or change Source timezone in Message interpretation" : ""}.`,
+            );
+            continue;
+          }
+          for (let n = 0; n < resolved.instants.length; n++) {
+            const instant = resolved.instants[n];
+            results.push({
+              id: `${sourceIndex}-${endpoint || "time"}-${choice.zone}-${dateOwner?.date ?? ""}-${n}`,
+              group: `${sourceIndex}-${endpoint || "time"}`,
+              original,
+              sourceIndex,
+              endpoint: priorResults.length ? "end" : endpoint,
+              ...(r.end || priorResults.length
+                ? {
+                    rangeId: `range-${priorResults.length ? prior.index : r.index}`,
+                  }
+                : {}),
+              ...(hasNumericDate(c) ||
+              (!c.isCertain("day") &&
+                (hasNumericDate(r.start) ||
+                  (r.end && hasNumericDate(r.end)) ||
+                  contextNumeric))
+                ? {
+                    numericDate: {
+                      date: civil.toPlainDate().toString(),
+                      order: numericDateOrder(
+                        hasNumericDate(c)
+                          ? c
+                          : hasNumericDate(r.start)
+                            ? r.start
+                            : r.end && hasNumericDate(r.end)
+                              ? r.end
+                              : c,
+                        contextNumeric
+                          ? contextOrder
+                          : options.dateOrder || "mdy",
+                      ),
+                    },
+                  }
+                : {}),
+              instant,
+              sourceZone: choice.zone,
+              sourceLabel: choice.label,
+              interpretation:
+                resolved.instants.length > 1
+                  ? `${choice.interpretation ? choice.interpretation + " · " : ""}${n === 0 ? "First" : "Second"} occurrence (clocks move back)`
+                  : (choice.interpretation ??
+                    (contextOwners && contextOwners.length > 1
+                      ? `Date context: ${dateOwner?.choice.label}`
+                      : undefined)),
+              assumptions,
+              occurrences: 1,
+            });
+          }
         }
       }
     }
     if (invalidEndpoint) {
+      if (explicitDate && prefix) {
+        contextDate = undefined;
+        contextOwners = undefined;
+        contextText = "";
+        contextNumeric = false;
+      }
       reject();
     }
   }

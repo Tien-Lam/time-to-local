@@ -10,6 +10,8 @@ Ambiguous messages show a warning before the alternatives and Copy actions. Nume
 
 Timezone-first phrases work too: `pdt now, cst midnight`, `JST noon`, `PDT tomorrow midnight`, `UTC+05:45 3pm` and `America/New_York now`. Keep separate phrases separated by commas, semicolons or newlines. CST retains its US Central and China interpretations. “Now” keeps the current instant; an undated midnight means 00:00 on the displayed source reference date. Use “tomorrow midnight” or an explicit date when you mean a different day.
 
+Relative date headings use their own timezone: `JST tomorrow; UTC noon` keeps the JST calendar day for the UTC clock. If an ambiguous heading such as `CST today` gives different dates, both date interpretations remain available. A blank paragraph ends that date context.
+
 The layout adapts to phones, tablets, desktop windows and foldable displays. Supported browsers place input and results clear of a hinge. Conversion runs entirely on your device with no account, conversion server or mandatory model download.
 
 Use **Appearance** in the header to choose the **Original** or **Aqua** design, and **Dark**, **Light** or **System**. Original pairs warm paper/clay Light with forest/lime Dark. Aqua brings early Mac OS X styling: pearl pinstripes, glossy blue gel buttons, recessed fields and translucent menus, with a blue-glass Dark palette. Original/Dark remains the default; System follows your device. Appearance changes keep your current message and results, and preferences are saved locally. Motion respects your reduced-motion preference. See [appearance behavior](docs/developer/appearance.md).

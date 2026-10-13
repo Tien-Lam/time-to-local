@@ -5379,5 +5379,601 @@
     "dates": ["2026-04-08"],
     "sourceIndices": [0],
     "originals": ["America/New_York April 8 America/New_York US/Eastern"]
+  },
+  {
+    "name": "relative date-only JST today owns source day",
+    "text": "JST today",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": [],
+    "dates": ["2026-04-07"],
+    "sourceZones": ["+09:00"],
+    "assumptions": [["Reference date used: 2026-04-07"]]
+  },
+  {
+    "name": "relative date-only JST tomorrow owns source day",
+    "text": "JST tomorrow",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceZones": ["+09:00"],
+    "assumptions": [["Reference date used: 2026-04-07"]]
+  },
+  {
+    "name": "relative date-only JST yesterday owns source day",
+    "text": "JST yesterday",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": [],
+    "dates": ["2026-04-06"],
+    "sourceZones": ["+09:00"],
+    "assumptions": [["Reference date used: 2026-04-07"]]
+  },
+  {
+    "name": "relative date-only CST retains both date and zone interpretations",
+    "text": "CST today",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": [],
+    "dates": ["2026-04-06", "2026-04-07"],
+    "sourceZones": ["-06:00", "+08:00"],
+    "interpretations": ["US Central Standard", "China Standard"],
+    "assumptions": [
+      ["Reference date used: 2026-04-06"],
+      ["Reference date used: 2026-04-07"]
+    ]
+  },
+  {
+    "name": "relative JST date context remains owned with UTC mdy",
+    "text": "JST tomorrow; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "relative JST date context remains owned with UTC dmy",
+    "text": "JST tomorrow; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "relative JST date context remains owned with Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "relative JST date context remains owned with Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "relative JST date context remains owned with America/Los_Angeles mdy",
+    "text": "JST tomorrow; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "sourceZone": "America/Los_Angeles",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "relative JST date context remains owned with America/Los_Angeles dmy",
+    "text": "JST tomorrow; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "sourceZone": "America/Los_Angeles",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "ambiguous date-only CST context preserves independent UTC clock",
+    "text": "CST today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-07T12:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "interpretations": [
+      "Date context: CST · US Central Standard",
+      "Date context: CST · China Standard"
+    ]
+  },
+  {
+    "name": "prefixed timed relative date owns later date context",
+    "text": "JST tomorrow 9am; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-08T12:00:00Z"]
+  },
+  {
+    "name": "relative prefixed date context ends at paragraph",
+    "text": "JST tomorrow\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"]
+  },
+  {
+    "name": "explicit later date replaces relative prefix context",
+    "text": "JST tomorrow; UTC April 12 noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-12T12:00:00Z"]
+  },
+  {
+    "name": "regional date-only owner uses previous civil day",
+    "text": "America/New_York today",
+    "now": "2026-04-06T00:30:00Z",
+    "instants": [],
+    "dates": ["2026-04-05"],
+    "sourceZones": ["America/New_York"],
+    "assumptions": [["Reference date used: 2026-04-05"]]
+  },
+  {
+    "name": "fixed negative date-only owner uses previous civil day",
+    "text": "UTC-12 today",
+    "now": "2026-04-06T00:30:00Z",
+    "instants": [],
+    "dates": ["2026-04-05"],
+    "sourceZones": ["-12:00"]
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 3pm to mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern XYZ time to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 8 April to mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern XYZ time to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 3pm to mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern in Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 8 April to mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern in Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 3pm to mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern America/Foo to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 8 April to mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern America/Foo to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 3pm - mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern XYZ time - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 8 April - mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern XYZ time - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 3pm - mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern in Atlantis - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 8 April - mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern in Atlantis - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 3pm - mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern America/Foo - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 8 April - mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern America/Foo - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 3pm – mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern XYZ time – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 8 April – mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern XYZ time – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 3pm – mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern in Atlantis – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 8 April – mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern in Atlantis – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 3pm – mdy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern America/Foo – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 8 April – mdy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern America/Foo – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 3pm to dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern XYZ time to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 8 April to dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern XYZ time to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 3pm to dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern in Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 8 April to dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern in Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 3pm to dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern America/Foo to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 8 April to dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern America/Foo to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 3pm - dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern XYZ time - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 8 April - dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern XYZ time - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 3pm - dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern in Atlantis - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 8 April - dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern in Atlantis - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 3pm - dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern America/Foo - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 8 April - dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern America/Foo - UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 3pm – dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern XYZ time – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern XYZ time 8 April – dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern XYZ time – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 3pm – dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern in Atlantis – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern in Atlantis 8 April – dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern in Atlantis – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 3pm – dmy rejects complete owner",
+    "text": "America/New_York 3pm US/Eastern America/Foo – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "chained qualifier US/Eastern America/Foo 8 April – dmy rejects complete owner",
+    "text": "America/New_York 8 April US/Eastern America/Foo – UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC 12 April 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "standalone date-only mixed qualifier US/Eastern XYZ time rejects",
+    "text": "America/New_York 8 April US/Eastern XYZ time",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "standalone date-only mixed qualifier US/Eastern in Atlantis rejects",
+    "text": "America/New_York 8 April US/Eastern in Atlantis",
+    "instants": [],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "standalone date-only mixed qualifier US/Eastern in Tokyo rejects",
+    "text": "America/New_York 8 April US/Eastern in Tokyo",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "valid day-first complete date owner matching alias mdy",
+    "text": "America/New_York 8 April US/Eastern",
+    "dateOrder": "mdy",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceZones": ["America/New_York"],
+    "sourceIndices": [0],
+    "originals": ["America/New_York 8 April US/Eastern"]
+  },
+  {
+    "name": "valid day-first complete date owner matching alias dmy",
+    "text": "America/New_York 8 April US/Eastern",
+    "dateOrder": "dmy",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceZones": ["America/New_York"],
+    "sourceIndices": [0],
+    "originals": ["America/New_York 8 April US/Eastern"]
+  },
+  {
+    "name": "relative date-only regional alias retains owner previous day",
+    "text": "America/New_York today US/Eastern",
+    "now": "2026-04-06T00:30:00Z",
+    "instants": [],
+    "dates": ["2026-04-05"],
+    "sourceZones": ["America/New_York"],
+    "assumptions": [["Reference date used: 2026-04-05"]]
+  },
+  {
+    "name": "relative regional alias header retains its day for UTC clock",
+    "text": "America/New_York today US/Eastern; UTC noon",
+    "now": "2026-04-06T00:30:00Z",
+    "instants": ["2026-04-05T12:00:00Z"],
+    "sourceZones": ["+00:00"]
   }
 ]
