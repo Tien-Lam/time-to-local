@@ -30,6 +30,13 @@ test("reference summaries name date-heading zones while clock sources stay indep
   await expect(page.locator(".reference-summary")).toContainText(
     "Reference: Tue, 7 Apr 2026 in JST",
   );
+  await input.fill("JST tomorrow noon to UTC midnight");
+  await expect(page.locator(".hero-time")).toHaveText(["03:00", "00:00"]);
+  await expect(page.locator(".source-label")).toHaveText(["JST", "UTC"]);
+  await expect(page.locator(".reference-summary")).toHaveText([
+    /Reference: Tue, 7 Apr 2026 in JST/,
+    /Reference: Tue, 7 Apr 2026 in JST/,
+  ]);
   await input.fill("CST today; UTC noon");
   await expect(page.locator(".reference-summary")).toHaveText([
     /Reference: Mon, 6 Apr 2026 in CST · US Central Standard/,

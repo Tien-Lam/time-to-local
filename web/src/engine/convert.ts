@@ -514,20 +514,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   for (const nativeResult of native) {
     const result = nativeResult as ParsingResult;
     const leading = result.text.match(/^\s+/)?.[0].length ?? 0;
-    // Casual clocks can begin in a masked heading's last character. Their
-    // actual token owns the paragraph and original excerpt, not that mask.
-    if (
-      leading &&
-      (/\n/.test(result.text.slice(0, leading)) ||
-        preservedDates.some(
-          (date) =>
-            result.index + leading > date.index &&
-            (result.index < date.index + date.text.length ||
-              !parserText
-                .slice(date.index + date.text.length, result.index)
-                .trim()),
-        ))
-    ) {
+    // Casual clocks can include preceding whitespace or masked heading text.
+    // Their actual token owns the context boundary and original excerpt.
+    if (leading) {
       result.index += leading;
       result.text = result.text.slice(leading);
     }
@@ -673,7 +662,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       (block !== contextParagraph &&
         !(unprefixedHeading && !text.slice(previousEnd, sourceIndex).trim())) ||
       startsAfterUnrelatedDate(r.start) ||
-      /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
+      /[!?]|\.(?:\s|$|(?=[A-Za-z]))/.test(text.slice(previousEnd, r.index))
     ) {
       clearContext();
       contextParagraph = block;
@@ -1074,6 +1063,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                 .days,
             });
             referenceUsed = dateOwner.referenceUsed;
+            if (referenceUsed && dateOwner.choice.zone !== choice.zone)
+              assumptions.push(
+                `Date context timezone: ${dateOwner.choice.label}`,
+              );
             if (!c.isCertain("year") && usesReferenceYear(components))
               assumptions.push(`Year assumed: ${selectedDate.year}`);
           } else if (!explicitEndpointDate && contextDate) {

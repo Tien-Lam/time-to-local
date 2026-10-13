@@ -13251,6 +13251,168 @@
       "legacyExpectedCount": 4,
       "expected": [],
       "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-814",
+      "input": "JST tomorrow; UTC noon. UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-815",
+      "input": "JST tomorrow; UTC noon. utc 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-816",
+      "input": "JST tomorrow; UTC noon. 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-817",
+      "input": "JST tomorrow; UTC noon. noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-818",
+      "input": "JST tomorrow; UTC noon! UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-819",
+      "input": "JST tomorrow; UTC noon! utc 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-820",
+      "input": "JST tomorrow; UTC noon! 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-821",
+      "input": "JST tomorrow; UTC noon! noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-822",
+      "input": "JST tomorrow; UTC noon? UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-823",
+      "input": "JST tomorrow; UTC noon? utc 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-824",
+      "input": "JST tomorrow; UTC noon? 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-825",
+      "input": "JST tomorrow; UTC noon? noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-826",
+      "input": "JST tomorrow! 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-827",
+      "input": "JST tomorrow? 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-828",
+      "input": "CST today; UTC noon. utc 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-829",
+      "input": "JST tomorrow noon to UTC midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Sentence punctuation bounds owned context independent of casing; native inherited reference retains start-zone provenance"
+    },
+    {
+      "id": "web-zone-first-830",
+      "input": "JST tomorrow!5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Unspaced sentence punctuation bounds owned date context"
+    },
+    {
+      "id": "web-zone-first-831",
+      "input": "JST tomorrow?5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Unspaced sentence punctuation bounds owned date context"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

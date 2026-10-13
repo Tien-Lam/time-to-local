@@ -15661,5 +15661,1385 @@
     ],
     "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
     "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . UTC 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon. UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . utc 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon. 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . noon UTC mdy",
+    "text": "JST tomorrow; UTC noon. noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! UTC 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon! UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! utc 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon! utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! noon UTC mdy",
+    "text": "JST tomorrow; UTC noon! noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? UTC 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon? UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? utc 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon? utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? 5pm UTC mdy",
+    "text": "JST tomorrow; UTC noon? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? noon UTC mdy",
+    "text": "JST tomorrow; UTC noon? noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ! UTC mdy",
+    "text": "JST tomorrow! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ? UTC mdy",
+    "text": "JST tomorrow? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "ambiguous owned heading reset at lowercase sentence UTC mdy",
+    "text": "CST today; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-07T12:00:00Z",
+      "2026-04-06T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "UTC noon", "utc 5pm"],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"]
+  },
+  {
+    "name": "native inherited reference labels the start calendar UTC mdy",
+    "text": "JST tomorrow noon to UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T03:00:00Z", "2026-04-09T00:00:00Z"],
+    "sourceZones": ["+09:00", "+00:00"],
+    "endpoints": ["start", "end"],
+    "assumption": "Date context timezone: JST"
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . UTC 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon. UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . utc 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon. 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . noon UTC dmy",
+    "text": "JST tomorrow; UTC noon. noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! UTC 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon! UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! utc 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon! utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! noon UTC dmy",
+    "text": "JST tomorrow; UTC noon! noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? UTC 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon? UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? utc 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon? utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? 5pm UTC dmy",
+    "text": "JST tomorrow; UTC noon? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? noon UTC dmy",
+    "text": "JST tomorrow; UTC noon? noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ! UTC dmy",
+    "text": "JST tomorrow! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ? UTC dmy",
+    "text": "JST tomorrow? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "ambiguous owned heading reset at lowercase sentence UTC dmy",
+    "text": "CST today; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-07T12:00:00Z",
+      "2026-04-06T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "UTC noon", "utc 5pm"],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"]
+  },
+  {
+    "name": "native inherited reference labels the start calendar UTC dmy",
+    "text": "JST tomorrow noon to UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T03:00:00Z", "2026-04-09T00:00:00Z"],
+    "sourceZones": ["+09:00", "+00:00"],
+    "endpoints": ["start", "end"],
+    "assumption": "Date context timezone: JST"
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . UTC 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon. UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . utc 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon. 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T08:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . noon Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon. noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! UTC 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon! UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! utc 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon! utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T08:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! noon Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon! noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? UTC 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon? UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? utc 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon? utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? 5pm Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T08:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? noon Asia/Tokyo mdy",
+    "text": "JST tomorrow; UTC noon? noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ! Asia/Tokyo mdy",
+    "text": "JST tomorrow! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ? Asia/Tokyo mdy",
+    "text": "JST tomorrow? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "ambiguous owned heading reset at lowercase sentence Asia/Tokyo mdy",
+    "text": "CST today; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-07T12:00:00Z",
+      "2026-04-06T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "UTC noon", "utc 5pm"],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"]
+  },
+  {
+    "name": "native inherited reference labels the start calendar Asia/Tokyo mdy",
+    "text": "JST tomorrow noon to UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T03:00:00Z", "2026-04-09T00:00:00Z"],
+    "sourceZones": ["+09:00", "+00:00"],
+    "endpoints": ["start", "end"],
+    "assumption": "Date context timezone: JST"
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . UTC 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon. UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . utc 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon. 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T08:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing . noon Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon. noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! UTC 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon! UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! utc 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon! utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T08:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ! noon Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon! noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? UTC 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon? UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? utc 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon? utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "utc 5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      ["Date assumed: 2026-04-06", "Reference date used: 2026-04-06"]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? 5pm Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T08:00:00Z"],
+    "originals": ["UTC noon", "5pm"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "prefixed sentence context ends independent of clock casing ? noon Asia/Tokyo dmy",
+    "text": "JST tomorrow; UTC noon? noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 24],
+    "occurrences": 1,
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ! Asia/Tokyo dmy",
+    "text": "JST tomorrow! 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "compact owned header sentence boundary ? Asia/Tokyo dmy",
+    "text": "JST tomorrow? 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [14],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "ambiguous owned heading reset at lowercase sentence Asia/Tokyo dmy",
+    "text": "CST today; UTC noon. utc 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-07T12:00:00Z",
+      "2026-04-06T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "UTC noon", "utc 5pm"],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"]
+  },
+  {
+    "name": "native inherited reference labels the start calendar Asia/Tokyo dmy",
+    "text": "JST tomorrow noon to UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T03:00:00Z", "2026-04-09T00:00:00Z"],
+    "sourceZones": ["+09:00", "+00:00"],
+    "endpoints": ["start", "end"],
+    "assumption": "Date context timezone: JST"
+  },
+  {
+    "name": "unspaced owned header sentence boundary ! UTC mdy",
+    "text": "JST tomorrow!5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "unspaced owned header sentence boundary ? UTC mdy",
+    "text": "JST tomorrow?5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "unspaced owned header sentence boundary ! UTC dmy",
+    "text": "JST tomorrow!5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "unspaced owned header sentence boundary ? UTC dmy",
+    "text": "JST tomorrow?5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "unspaced owned header sentence boundary ! Asia/Tokyo mdy",
+    "text": "JST tomorrow!5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "unspaced owned header sentence boundary ? Asia/Tokyo mdy",
+    "text": "JST tomorrow?5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "unspaced owned header sentence boundary ! Asia/Tokyo dmy",
+    "text": "JST tomorrow!5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "unspaced owned header sentence boundary ? Asia/Tokyo dmy",
+    "text": "JST tomorrow?5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T08:00:00Z"],
+    "originals": ["5pm"],
+    "sourceIndices": [13],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
   }
 ]
