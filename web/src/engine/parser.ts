@@ -149,10 +149,18 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     // Chrono's clone drops tags. Preserve relative-date provenance before
     // recording which date components the range inherits from either side.
     result.start.addTags(
-      [...from.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+      [...from.start.tags()].filter(
+        (tag) =>
+          !tag.startsWith("chronoshift/") ||
+          tag.startsWith("chronoshift/iso-offset:"),
+      ),
     );
     result.end.addTags(
-      [...to.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+      [...to.start.tags()].filter(
+        (tag) =>
+          !tag.startsWith("chronoshift/") ||
+          tag.startsWith("chronoshift/iso-offset:"),
+      ),
     );
     let startReference = referenceDateParts(from.start);
     let endReference = referenceDateParts(to.start);
@@ -227,6 +235,14 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     refine: (context, results) => {
       const reference = context.createParsingComponents({});
       for (const result of results) {
+        for (const components of [result.start, result.end])
+          if (
+            components?.tags().has("parser/ISOFormatParser") &&
+            components.isCertain("timezoneOffset")
+          )
+            components.addTag(
+              `chronoshift/iso-offset:${components.get("timezoneOffset")}`,
+            );
         if (result.end && result.start.isCertain("hour")) {
           const separator = result.text.match(
             /\b(?:to|until|through|till|and)\b\s*|[-–~〜?]\s*/i,
@@ -234,6 +250,30 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
           if (separator) {
             const endIndex =
               result.index + separator.index! + separator[0].length;
+            const dateOwnsStart = results.some(
+              (date) =>
+                date !== result &&
+                date.start.isCertain("day") &&
+                !date.start.isCertain("hour") &&
+                date.index < result.index &&
+                date.index + date.text.length > result.index &&
+                date.index + date.text.length <= endIndex,
+            );
+            // A month-first date can overlap the apparent START clock too:
+            // "3pm on April 8 to 4pm" must not turn calendar day 8 into 8pm.
+            if (dateOwnsStart) {
+              const resultEnd = result.index + result.text.length;
+              const tags = [...result.end.tags()];
+              result.start = result.end.clone();
+              result.start.addTags(tags);
+              result.end = undefined;
+              result.index = endIndex;
+              result.text = context.text.slice(endIndex, resultEnd);
+              for (const part of dateParts)
+                if (!result.start.isCertain(part))
+                  result.start.imply(part, reference.get(part)!);
+              continue;
+            }
             // A masked prefix can expose a written date's leading day to the
             // clock-range parser ("3pm to 10 April"). Keep the independent
             // date parser's span before overlap removal; later date/time and

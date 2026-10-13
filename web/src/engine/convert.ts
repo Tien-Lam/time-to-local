@@ -24,6 +24,7 @@ import {
 } from "./zones";
 import type { ZoneChoice } from "./zones";
 import { civilInstants } from "./time";
+import { zoneIdentity } from "./zone-aliases";
 import type { Conversion, ConversionOptions, TimeResult } from "./types";
 
 import { MAX_INPUT } from "./limits";
@@ -37,6 +38,25 @@ const timezoneHints = {
 };
 function hasNumericDate(c: ParsedComponents): boolean {
   return c.tags().has("parser/SlashDateFormatParser");
+}
+function writtenIsoOffset(c: ParsedComponents): number | undefined {
+  const tag = [...c.tags()].find((tag) =>
+    tag.startsWith("chronoshift/iso-offset:"),
+  );
+  return tag ? +tag.split(":")[1] : undefined;
+}
+function sameCivilClock(
+  civil: TemporalTypes.PlainDateTime,
+  left: string,
+  right: string,
+): boolean {
+  if (left === right) return true;
+  const candidates = civilInstants(civil, left).instants;
+  const other = civilInstants(civil, right).instants;
+  return (
+    (!candidates.length && !other.length) ||
+    other.some((instant) => candidates.includes(instant))
+  );
 }
 const zoneToken =
   `(?:[A-Z][A-Za-z0-9_+-]*/)+[A-Za-z0-9_+-]+|` +
@@ -454,7 +474,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             new Set(
               owned.map((zone) =>
                 explicitZones(zone[0])!
-                  .map((choice) => choice.zone)
+                  .map((choice) => zoneIdentity(choice.zone))
                   .join("|"),
               ),
             ).size > 1,
@@ -482,9 +502,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           : prefix;
       const choices = choicesFor(
         endpointPrefix?.text ??
-          (endpoint === "end" &&
-          c.tags().has("parser/ISOFormatParser") &&
-          c.isCertain("timezoneOffset")
+          (endpoint === "end" && writtenIsoOffset(c) !== undefined
             ? ""
             : zoneText),
         endpoint === "start" && r.end && (prefix || rangePrefixes.length)
@@ -592,11 +610,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           });
         // An ISO offset owns this endpoint's instant, even in a repeated hour.
         // A prefix may supply a label only when its offset agrees at that instant.
-        const isoOffset =
-          c.tags().has("parser/ISOFormatParser") &&
-          c.isCertain("timezoneOffset")
-            ? c.get("timezoneOffset")!
-            : undefined;
+        const isoOffset = writtenIsoOffset(c);
         const isoInstant =
           isoOffset === undefined
             ? undefined
@@ -607,12 +621,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         const cityConflict = qualifier?.some((city) => {
           if (!/^[+-]/.test(choice.zone))
             return (
-              new Intl.DateTimeFormat("en", {
-                timeZone: choice.zone,
-              }).resolvedOptions().timeZone !==
-              new Intl.DateTimeFormat("en", {
-                timeZone: city.zone,
-              }).resolvedOptions().timeZone
+              zoneIdentity(choice.zone) !== zoneIdentity(city.zone) ||
+              !sameCivilClock(civil, choice.zone, city.zone)
             );
           const candidates = civilInstants(civil, city.zone).instants;
           return !candidates.some(
@@ -621,8 +631,23 @@ export function convert(text: string, options: ConversionOptions): Conversion {
               offsetMinutes(choice.zone, instant),
           );
         });
+        // Browsers can retain pre-1970 backzone history behind a current IANA
+        // link. Compare the actual clock too instead of rewriting either ID.
+        const aliasConflict = zones.some((token) => {
+          if (
+            rangeBoundary !== undefined &&
+            sourceIndex + token.index! >= rangeBoundary !== (endpoint === "end")
+          )
+            return false;
+          return explicitZones(token[0])!.some(
+            (other) =>
+              zoneIdentity(choice.zone) === zoneIdentity(other.zone) &&
+              !sameCivilClock(civil, choice.zone, other.zone),
+          );
+        });
         if (
           cityConflict ||
+          aliasConflict ||
           (isoInstant && offsetMinutes(choice.zone, isoInstant) !== isoOffset)
         ) {
           invalidEndpoint = true;

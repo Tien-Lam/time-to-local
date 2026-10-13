@@ -7068,6 +7068,339 @@
       "legacyExpectedCount": 0,
       "expected": [],
       "description": "timezone-first qualified at invalid offset rejects range"
+    },
+    {
+      "id": "web-zone-first-127",
+      "input": "PDT 3pm on April 8 to JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before to calendar day 8 remains a date"
+    },
+    {
+      "id": "web-zone-first-128",
+      "input": "PDT 3pm on April 9 to JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before to calendar day 9 remains a date"
+    },
+    {
+      "id": "web-zone-first-129",
+      "input": "PDT 3pm on April 10 to JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before to calendar day 10 remains a date"
+    },
+    {
+      "id": "web-zone-first-130",
+      "input": "PDT 3pm on April 11 to JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before to calendar day 11 remains a date"
+    },
+    {
+      "id": "web-zone-first-131",
+      "input": "PDT 3pm on April 8 until JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before until calendar day 8 remains a date"
+    },
+    {
+      "id": "web-zone-first-132",
+      "input": "PDT 3pm on April 9 until JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before until calendar day 9 remains a date"
+    },
+    {
+      "id": "web-zone-first-133",
+      "input": "PDT 3pm on April 10 until JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before until calendar day 10 remains a date"
+    },
+    {
+      "id": "web-zone-first-134",
+      "input": "PDT 3pm on April 11 until JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before until calendar day 11 remains a date"
+    },
+    {
+      "id": "web-zone-first-135",
+      "input": "PDT 3pm on April 8 till JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before till calendar day 8 remains a date"
+    },
+    {
+      "id": "web-zone-first-136",
+      "input": "PDT 3pm on April 9 till JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before till calendar day 9 remains a date"
+    },
+    {
+      "id": "web-zone-first-137",
+      "input": "PDT 3pm on April 10 till JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before till calendar day 10 remains a date"
+    },
+    {
+      "id": "web-zone-first-138",
+      "input": "PDT 3pm on April 11 till JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before till calendar day 11 remains a date"
+    },
+    {
+      "id": "web-zone-first-139",
+      "input": "PDT 3pm on April 8 through JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before through calendar day 8 remains a date"
+    },
+    {
+      "id": "web-zone-first-140",
+      "input": "PDT 3pm on April 9 through JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before through calendar day 9 remains a date"
+    },
+    {
+      "id": "web-zone-first-141",
+      "input": "PDT 3pm on April 10 through JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before through calendar day 10 remains a date"
+    },
+    {
+      "id": "web-zone-first-142",
+      "input": "PDT 3pm on April 11 through JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before through calendar day 11 remains a date"
+    },
+    {
+      "id": "web-zone-first-143",
+      "input": "PDT 3pm on April 8 - JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before - calendar day 8 remains a date"
+    },
+    {
+      "id": "web-zone-first-144",
+      "input": "PDT 3pm on April 9 - JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before - calendar day 9 remains a date"
+    },
+    {
+      "id": "web-zone-first-145",
+      "input": "PDT 3pm on April 10 - JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before - calendar day 10 remains a date"
+    },
+    {
+      "id": "web-zone-first-146",
+      "input": "PDT 3pm on April 11 - JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before - calendar day 11 remains a date"
+    },
+    {
+      "id": "web-zone-first-147",
+      "input": "PDT 3pm on April 8 – JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before – calendar day 8 remains a date"
+    },
+    {
+      "id": "web-zone-first-148",
+      "input": "PDT 3pm on April 9 – JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before – calendar day 9 remains a date"
+    },
+    {
+      "id": "web-zone-first-149",
+      "input": "PDT 3pm on April 10 – JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before – calendar day 10 remains a date"
+    },
+    {
+      "id": "web-zone-first-150",
+      "input": "PDT 3pm on April 11 – JST 4pm on April 12",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first date before – calendar day 11 remains a date"
+    },
+    {
+      "id": "web-zone-first-151",
+      "input": "PT 3pm in US/Pacific",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first regional alias qualifier accepted"
+    },
+    {
+      "id": "web-zone-first-152",
+      "input": "America/Los_Angeles 3pm in US/Pacific",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first IANA alias qualifier accepted"
+    },
+    {
+      "id": "web-zone-first-153",
+      "input": "America/New_York noon in US/Eastern",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first eastern alias qualifier accepted"
+    },
+    {
+      "id": "web-zone-first-154",
+      "input": "US/Pacific 3pm in Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first alias prefix matching city retains identity"
+    },
+    {
+      "id": "web-zone-first-155",
+      "input": "Asia/Kolkata noon in Asia/Calcutta",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first renamed India IANA qualifier accepted"
+    },
+    {
+      "id": "web-zone-first-156",
+      "input": "Europe/Kyiv noon in Europe/Kiev",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first renamed Kyiv IANA qualifier accepted"
+    },
+    {
+      "id": "web-zone-first-157",
+      "input": "PT 3pm in US/Pacific to ET 4pm in US/Eastern",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first aliases retain qualified range ownership"
+    },
+    {
+      "id": "web-zone-first-158",
+      "input": "CT 3pm in US/Pacific",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first genuinely conflicting alias rejected"
+    },
+    {
+      "id": "web-zone-first-159",
+      "input": "2026-04-09T15:00 at Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "offsetless unprefixed ISO consumed at uses city"
+    },
+    {
+      "id": "web-zone-first-160",
+      "input": "America/New_York 2026-11-01T01:30-05:00 to 2026-11-01T16:00+09:00",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first independently offset ISO fold range preserves provenance"
+    },
+    {
+      "id": "web-zone-first-161",
+      "input": "PT 2026-04-09T15:00 at Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first offsetless ISO consumed at does not invent offset"
+    },
+    {
+      "id": "web-zone-first-162",
+      "input": "PT 2026-04-09T15:00 At Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first offsetless ISO consumed At does not invent offset"
+    },
+    {
+      "id": "web-zone-first-163",
+      "input": "PT 2026-04-09T15:00 aT Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first offsetless ISO consumed aT does not invent offset"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
