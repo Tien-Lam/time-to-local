@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 418,
+  "total": 429,
   "crashes": 0,
   "legacyCountDifferences": 27,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -524,6 +524,116 @@
       "input": "JST noon, PT 3pm in Atlantis",
       "legacyExpectedCount": 1,
       "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-064",
+      "input": "PT 3pm to 4pm in London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-065",
+      "input": "PT 3pm to 4pm in Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-067",
+      "input": "PT 3pm to XYZ: 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-068",
+      "input": "XYZ: 3pm to PDT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-069",
+      "input": "PT 3pm to Mars/Olympus 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-070",
+      "input": "Mars/Olympus 3pm to PDT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-071",
+      "input": "PT 3pm to ET 4pm XYZ",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-072",
+      "input": "JST noon, PT 3pm to XYZ: 4pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-073",
+      "input": "PT March 8, 2026 1am to 2:30am",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "2026-03-08 02:30:00 doesn't exist in Los Angeles because the clocks move forward. Edit the time or timezone in your message."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-074",
+      "input": "PT 3pm in Los Angeles to ET 4pm in Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
       "missingLocalTimes": [],
       "warnings": [
         "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."

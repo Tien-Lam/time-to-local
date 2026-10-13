@@ -6501,6 +6501,105 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "timezone-first invalid city leaves independent clause intact"
+    },
+    {
+      "id": "web-zone-first-064",
+      "input": "PT 3pm to 4pm in London",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first inherited end city conflicts"
+    },
+    {
+      "id": "web-zone-first-065",
+      "input": "PT 3pm to 4pm in Atlantis",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first inherited end unknown city rejected"
+    },
+    {
+      "id": "web-zone-first-066",
+      "input": "PT 3pm to 4pm in Los Angeles",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end matching city retains range"
+    },
+    {
+      "id": "web-zone-first-067",
+      "input": "PT 3pm to XYZ: 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first unknown end prefix rejects entire range"
+    },
+    {
+      "id": "web-zone-first-068",
+      "input": "XYZ: 3pm to PDT 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first unknown start prefix rejects entire range"
+    },
+    {
+      "id": "web-zone-first-069",
+      "input": "PT 3pm to Mars/Olympus 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first unknown end IANA rejects entire range"
+    },
+    {
+      "id": "web-zone-first-070",
+      "input": "Mars/Olympus 3pm to PDT 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first unknown start IANA rejects entire range"
+    },
+    {
+      "id": "web-zone-first-071",
+      "input": "PT 3pm to ET 4pm XYZ",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first unknown end suffix rejects entire range"
+    },
+    {
+      "id": "web-zone-first-072",
+      "input": "JST noon, PT 3pm to XYZ: 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "timezone-first invalid range retains independent clause"
+    },
+    {
+      "id": "web-zone-first-073",
+      "input": "PT March 8, 2026 1am to 2:30am",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first DST gap rejects entire range"
+    },
+    {
+      "id": "web-zone-first-074",
+      "input": "PT 3pm in Los Angeles to ET 4pm in Atlantis",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "timezone-first qualified unknown endpoint rejects prior start"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

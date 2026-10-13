@@ -461,17 +461,23 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         /^[A-Z]{2,5}$/.test(endpointPrefix.text) &&
         !explicitZones(endpointPrefix.text)
       ) {
+        invalidEndpoint = true;
         warnings.push(
           `Unknown timezone ${endpointPrefix.text}. Correct or remove it, then choose a source timezone.`,
         );
         continue;
       }
-      const qualifier = endpointPrefix
-        ? cityChoices(
-            adjacentQualifier(endpoint === "start" && r.end ? "" : suffix),
-            warnings,
-          )
-        : undefined;
+      if (!choices.length) {
+        invalidEndpoint = true;
+        continue;
+      }
+      const qualifier =
+        prefix || rangePrefixes.length
+          ? cityChoices(
+              adjacentQualifier(endpoint === "start" && r.end ? "" : suffix),
+              warnings,
+            )
+          : undefined;
       if (qualifier && !qualifier.length) {
         invalidEndpoint = true;
         continue;
@@ -605,6 +611,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
               }
             : civilInstants(civil, choice.zone);
         if (resolved.nonexistent) {
+          invalidEndpoint = true;
           warnings.push(
             `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or timezone in your message${choice.assumption?.startsWith("Source timezone assumed:") ? ", or change Source timezone in Message interpretation" : ""}.`,
           );
