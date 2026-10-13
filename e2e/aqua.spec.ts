@@ -187,9 +187,28 @@ test("Aqua forced colours retain pressed Copy contrast", async ({ page }) => {
     expect(paint.background).toBe("none");
     expect(paint.shadow).toBe("none");
     expect(paint.colour).not.toBe(paint.fill);
+    expect(
+      await button.evaluate(
+        (element) => getComputedStyle(element, "::before").content,
+      ),
+    ).toBe("none");
   } finally {
     await page.mouse.up();
   }
+  const arrow = page.getByRole("button", {
+    name: "Show target timezones",
+    exact: true,
+  });
+  const arrowPaint = await arrow.evaluate((element) => ({
+    reflection: getComputedStyle(element, "::before").content,
+    colour: getComputedStyle(element).color,
+    icon: getComputedStyle(element.querySelector("svg")!).color,
+  }));
+  expect(arrowPaint.reflection).toBe("none");
+  expect(arrowPaint.icon).toBe(arrowPaint.colour);
+  await arrow.click();
+  await expect(page.getByRole("listbox")).toBeVisible();
+  await page.keyboard.press("Escape");
 });
 
 for (const theme of ["light", "dark"] as const) {
