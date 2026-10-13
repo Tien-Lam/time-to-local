@@ -271,7 +271,8 @@
   isolation: isolate;
   color: #fff;
   --pressed-ink: #fff;
-  border-radius: calc(var(--control-radius) - 1px);
+  /* Follow the surrounding popup field, rather than the text-recess radius. */
+  border-radius: calc(var(--aqua-popup-radius) - 1px);
   background: transparent;
 }
 :root[data-design="aqua"] .choice-toggle::before {
