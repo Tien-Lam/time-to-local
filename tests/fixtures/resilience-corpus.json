@@ -6218,6 +6218,46 @@
         }
       ],
       "description": "uppercase colleague prose cannot steal ownership"
+    },
+    {
+      "id": "web-zone-first-035",
+      "input": "PDT 9 April 2026 3pm to JST 10 April 2026 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "written end date cannot become a clock"
+    },
+    {
+      "id": "web-zone-first-036",
+      "input": "PDT 31 December 2027 11pm to JST 1 January 2028 1am",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 1,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "written end date preserves explicit year boundary"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

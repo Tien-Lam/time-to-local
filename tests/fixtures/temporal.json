@@ -1121,5 +1121,68 @@
     "text": "03/04/2026\nPDT noon",
     "dateOrder": "dmy",
     "instants": ["2026-04-03T19:00:00Z"]
+  },
+  {
+    "name": "timezone-first complete written endpoint dates mdy",
+    "text": "PDT 9 April 2026 3pm to JST 10 April 2026 4pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-09T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 9 April 2026 3pm to JST 10 April 2026 4pm",
+      "PDT 9 April 2026 3pm to JST 10 April 2026 4pm"
+    ],
+    "assumptions": [[], []]
+  },
+  {
+    "name": "timezone-first written endpoints retain explicit years mdy",
+    "text": "PDT 31 December 2027 11pm to JST 1 January 2028 1am",
+    "dateOrder": "mdy",
+    "instants": ["2028-01-01T06:00:00Z", "2027-12-31T16:00:00Z"],
+    "endpoints": ["start", "end"],
+    "assumptions": [[], []]
+  },
+  {
+    "name": "timezone-first complete written endpoint dates dmy",
+    "text": "PDT 9 April 2026 3pm to JST 10 April 2026 4pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-09T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 9 April 2026 3pm to JST 10 April 2026 4pm",
+      "PDT 9 April 2026 3pm to JST 10 April 2026 4pm"
+    ],
+    "assumptions": [[], []]
+  },
+  {
+    "name": "timezone-first written endpoints retain explicit years dmy",
+    "text": "PDT 31 December 2027 11pm to JST 1 January 2028 1am",
+    "dateOrder": "dmy",
+    "instants": ["2028-01-01T06:00:00Z", "2027-12-31T16:00:00Z"],
+    "endpoints": ["start", "end"],
+    "assumptions": [[], []]
+  },
+  {
+    "name": "timezone-first numeric endpoint dates remain independent",
+    "text": "PDT 09/04/2026 3pm to JST 10/04/2026 4pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-09T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first month-first endpoint dates remain independent",
+    "text": "PDT April 9, 2026 3pm to JST April 10, 2026 4pm",
+    "instants": ["2026-04-09T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first ordinal endpoint dates remain independent",
+    "text": "PDT 9th April 2026 3pm to JST 10th April 2026 4pm",
+    "instants": ["2026-04-09T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "endpoints": ["start", "end"]
   }
 ]

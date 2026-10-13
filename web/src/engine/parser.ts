@@ -231,10 +231,27 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
           const separator = result.text.match(
             /\b(?:to|until|through|till|and)\b\s*|[-–~〜?]\s*/i,
           );
-          if (separator)
-            result.end.addTag(
-              `chronoshift/endpoint-index:${result.index + separator.index! + separator[0].length}`,
-            );
+          if (separator) {
+            const endIndex =
+              result.index + separator.index! + separator[0].length;
+            // A masked prefix can expose a written date's leading day to the
+            // clock-range parser ("3pm to 10 April"). Keep the independent
+            // date parser's span before overlap removal; later date/time and
+            // range refiners can then merge the complete endpoints.
+            if (
+              results.some(
+                (date) =>
+                  date !== result &&
+                  date.index === endIndex &&
+                  date.start.isCertain("day") &&
+                  date.text.length >
+                    result.index + result.text.length - endIndex,
+              )
+            ) {
+              result.text = result.text.slice(0, separator.index).trimEnd();
+              result.end = undefined;
+            } else result.end.addTag(`chronoshift/endpoint-index:${endIndex}`);
+          }
         }
         for (const components of [result.start, result.end])
           if (
