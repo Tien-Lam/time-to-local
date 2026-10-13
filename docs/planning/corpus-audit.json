@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 355,
+  "total": 429,
   "crashes": 0,
   "legacyCountDifferences": 27,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -342,6 +342,17 @@
       "dates": [
         "2026-04-09"
       ]
+    },
+    {
+      "id": "web-145-url-followup-v08",
+      "input": "March 12, 2026\n- 15:40 UTC [EOD and COB follow-up](https://example.invalid/agenda)",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "EOD/COB does not specify a clock time. Replace it with the intended time."
+      ],
+      "dates": []
     }
   ]
 }

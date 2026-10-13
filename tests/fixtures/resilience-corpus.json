@@ -5613,10 +5613,26 @@
       "intendedCoverage": "deterministic-baseline",
       "legacyExpectedCount": 4,
       "expected": [
-        { "hour": 9, "minute": 0, "timezone": "UTC" },
-        { "hour": 11, "minute": 0, "timezone": "UTC" },
-        { "hour": 10, "minute": 0, "timezone": "UTC" },
-        { "hour": 11, "minute": 0, "timezone": "UTC" }
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "UTC"
+        }
       ],
       "description": "Independent ranges must not lose a shared endpoint through deduplication"
     },
@@ -5634,6 +5650,672 @@
         }
       ],
       "description": "New web regression: an unrelated following announcement must not replace the call's reference date. Independent exact instant, source identity and disclosures are in temporal.json."
+    },
+    {
+      "id": "web-145-h01",
+      "input": "May 14, 2026\n- 09:10 UTC opening\n- 11:40 UTC closing",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored web regression: separate bullet items cannot become a range. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h08",
+      "input": "May 14, 2026\n- 11pm-1am UTC maintenance\n- 2am UTC handoff",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored web regression: supported overnight range does not roll sibling. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h13",
+      "input": "May 15\n- 06:10 UTC early\n- 16:40 UTC late",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored web regression: yearless month-first two-digit day under dmy. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h20",
+      "input": "May 14, 2026\n- 09:15 UTC first\n- 09:15 UTC repeat",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored web regression: duplicate point cardinality is occurrence count. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-r06",
+      "input": "Date: May 15\nTime: 12:25 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored web regression: record yearless context disclosures. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-n06",
+      "input": "Date: May 14, 2026\nTime: 08:40 UTC\nDate: May 16, 2026",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored web regression: late duplicate Date invalidates complete record. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-h22",
+      "input": "November 1, 2026\n- 01:35 America/New_York fold\n- 03:15 America/New_York after",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored web regression: New York fold keeps earlier/later alternatives and independent sibling. Exact instants, source ownership, endpoint cardinality and disclosures are maintained directly in temporal.json; count is an inventory only."
+    },
+    {
+      "id": "web-145-review-q01",
+      "input": "Date: March 8, 2026\nTime: 09:00 in London to 10:30 in Paris",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: one qualified Time range owns March8. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-q04",
+      "input": "Date: March 8, 2026\nTime: 09:00 UTC opening and 15:00 UTC reminder",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: unrelated Time clocks reject whole record. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-u01",
+      "input": "March 8, 2026\n- 09:00 UTC [Agenda 🧭](https://example.invalid/March-9-2026)\n- 10:00 UTC next",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: date URL destination is invisible to owner. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-u02",
+      "input": "Date: March 8, 2026\nActivity: [Agenda](https://example.invalid/15:00)\nTime: 09:00 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development regression: clock URL destination produces no extra clock. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-y01",
+      "input": "Date: December 31\nTime: 11pm in London to 1am in Paris",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: each endpoint discloses its actual assumed year. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-s01",
+      "input": "June 28\n- 9am UTC-10:00",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development regression: omitted owner year follows explicit source reference. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-s05",
+      "input": "Date: June 28\nTime: 9am CST",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived development regression: CST alternatives choose source-local omitted year separately. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-f01",
+      "input": "````text\nMarch 8, 2026\n- 09:00 UTC inside\n```\nMarch 9, 2026\n- 10:00 UTC still inside\n```` trailing\nMarch 10, 2026\n- 11:00 UTC still inside",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independent review-derived development regression: short and trailing-text delimiters do not close four-backtick fence. Exact expected instants, cardinality, source identity and disclosures are maintained directly in temporal.json; inventory is not sealed accuracy evidence."
+    },
+    {
+      "id": "web-145-review-u06",
+      "input": "Date: March 8, 2026\nLocation: https://example.invalid/15:00/March-9-2026\nTime: 09:00 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived raw URL metadata case; exact expected DTO semantics are maintained directly in temporal.json. Corpus count is inventory only."
+    },
+    {
+      "id": "web-145-review-u07",
+      "input": "March 8, 2026\n- 09:00 UTC https://example.invalid/1775736000",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived epoch URL metadata regression: exactly the stated contextual clock and no phantom Unix row; expected DTO semantics in temporal.json. Inventory only."
+    },
+    {
+      "id": "web-145-url-followup-v01",
+      "input": "March 12, 2026\n- 11:20 UTC [Outline 🧭](https://example.invalid/(intro)/2026-05-20)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v02",
+      "input": "March 12, 2026\n- 14:35 UTC [Resources](https://example.invalid/(materials)/1775736000)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v03",
+      "input": "May 12\n- 09:45 [Outline](/June/22/2026)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v04",
+      "input": "March 12, 2026\n- 10:15 https://localhost/June/22/2026",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v05",
+      "input": "Date: March 12, 2026\nActivity: [Outline](https://example.invalid/(intro)/2026-05-20)\nTime: 06:25 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v06",
+      "input": "Date: March 12, 2026\nActivity: [June 22, 2026](https://example.invalid/(intro)/agenda)\nTime: 07:40 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived development control for ordinary inline/raw URL metadata isolation and preserved visible-label validation. Exact source/zone/instant/cardinality/reference expectations maintained directly in temporal.json; count is inventory, not accuracy."
+    },
+    {
+      "id": "web-145-url-followup-v07",
+      "input": "March 12, 2026\n- 13:10 UTC [Outline](https://example.invalid/EOD/COB)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived warning metadata control: URL-only EOD/COB is ignored and visible label keeps established warning. Exact clock/context/source/warnings maintained directly in temporal.json; pre-existing bounded gap, inventory only."
+    },
+    {
+      "id": "web-145-url-followup-v08",
+      "input": "March 12, 2026\n- 15:40 UTC [EOD and COB follow-up](https://example.invalid/agenda)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived warning metadata control: URL-only EOD/COB is ignored and visible label keeps established warning. Exact clock/context/source/warnings maintained directly in temporal.json; pre-existing bounded gap, inventory only."
+    },
+    {
+      "id": "web-145-url-title-t01",
+      "input": "March 15, 2026\n- 08:55 UTC [Notes](https://example.invalid/path \"Intro) May 24, 2026 EOD\")",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived ordinary inline-link quoted-title/angle/escaped destination metadata exclusion. Exact stated UTC clock, context, warning array, cardinality and source identity maintained in temporal.json; exposed development data, inventory only."
+    },
+    {
+      "id": "web-145-url-title-t02",
+      "input": "March 15, 2026\n- 11:05 UTC [Materials](<https://example.invalid/material)2026-05-24/EOD>)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived ordinary inline-link quoted-title/angle/escaped destination metadata exclusion. Exact stated UTC clock, context, warning array, cardinality and source identity maintained in temporal.json; exposed development data, inventory only."
+    },
+    {
+      "id": "web-145-url-title-t03",
+      "input": "Date: March 15, 2026\nActivity: [Materials](https://example.invalid/intro\\)May-24-2026/EOD)\nTime: 14:20 UTC",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent review-derived ordinary inline-link quoted-title/angle/escaped destination metadata exclusion. Exact stated UTC clock, context, warning array, cardinality and source identity maintained in temporal.json; exposed development data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n01",
+      "input": "March 18, 2026\n- 09:25 UTC [Guide](https://example.invalid/a\\\n- 10:05 UTC)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n02",
+      "input": "March 18, 2026\r\n- 09:35 UTC [Guide](https://example.invalid/a\\\r\n- 10:35 UTC)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n03",
+      "input": "March 18, 2026\n- 08:25 UTC [Guide 🧭\\\n- 11:50 UTC](https://example.invalid/a)",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
+    },
+    {
+      "id": "web-145-escaped-newline-n04",
+      "input": "March 18, 2026\n- 10:50 UTC [Guide 🧭](https://example.invalid/a\\)2026-05-24/EOD)\n- 12:15 UTC next",
+      "category": "Bounded date context",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independent review-derived same-line metadata boundary control: LF/CRLF/UTF16 label boundary and valid escaped delimiter preserve independent sibling clocks. Exact source/date/cardinality/warnings in temporal.json; exposed DEVELOPMENT data, inventory only."
+    },
+    {
+      "id": "web-154-155-z01-winter-multiword",
+      "input": "January 19, 2027\n- 08:15 Pacific Time Morning briefing\n- 09:25 Eastern Time afternoon workshop",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-z02-summer-multiword",
+      "input": "August 19, 2026\n- 08:15 Pacific Time Morning briefing\n- 09:25 Eastern Time afternoon workshop",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-z03-iana-fractional",
+      "input": "August 19, 2026\n- 08:15 America/Los_Angeles: Morning briefing\n- 09:25 UTC+05:45 evening workshop",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-z04-fixed-regional",
+      "input": "August 19, 2026\n- 08:15 PST Morning briefing\n- 08:15 PT afternoon workshop",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-a01-vague-siblings",
+      "input": "August 19, 2026\n- 08:15 UTC Morning briefing\n- 09:25 UTC afternoon lab\n- 10:35 UTC evening showcase\n- 11:45 UTC night shift",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-a02-colon-activity",
+      "input": "August 19, 2026\n- 08:15 UTC: Morning briefing\n- 09:25 UTC: evening lab",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-a03-nonclock-first",
+      "input": "August 19, 2026\n- Morning briefing\n- 09:25 UTC workshop",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-a04-native-exact-word-range",
+      "input": "August 19, 2026\n- 1am-midnight UTC\n- 02:15 UTC next",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-o01-month-title-before",
+      "input": "Date: August 19, 2026\nTitle: September planning\nTime: 08:15 UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-o02-month-title-after",
+      "input": "dAtE: August 19, 2026\ntImE: 09:25 UTC\ntItLe: October planning",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-o03-month-fields",
+      "input": "Date: August 19, 2026\nActivity: March preparations\nLocation: May hall\nTime: 10:35 UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-o04-month-link-label",
+      "input": "Date: August 19, 2026\nTitle: [September planning](https://example.invalid/June-20-2029/15:00 \"Tomorrow at noon\")\nTime: 11:45 UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-p01-stated-noon",
+      "input": "August 19, 2026 at noon UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-p02-stated-midnight",
+      "input": "August 19, 2026 at midnight UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-p03-owned-casual-clocks",
+      "input": "August 19, 2026\n- noon UTC\n- midnight UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-p04-yearless-owner",
+      "input": "August 19\n- noon UTC\n- midnight UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-p05-relative-noon",
+      "input": "Tomorrow at noon UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-p06-stated-overnight",
+      "input": "August 19, 2026 11pm-midnight UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-q01-quoted-seed",
+      "input": "> August 19, 2026\n> - 08:15 UTC quoted\n09:25 UTC outside",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-q02-nested-crlf-separator",
+      "input": ">> August 19, 2026\r\n>>\r\n>> - 08:15 UTC quoted\r\n\r\nSeptember 21, 2026\r\n- 09:25 UTC outside",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-q03-own-explicit",
+      "input": "> August 19, 2026 at noon UTC",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-q04-entry-exit",
+      "input": "August 19, 2026\n- 07:05 UTC before\n> September 21, 2026\n> - 08:15 UTC quoted\n09:25 UTC outside",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-q05-quoted-date-only",
+      "input": "> August 19, 2026",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-r01-native-duplicate",
+      "input": "August 19, 2026\n- 08:15-09:25 UTC first\n- 08:15-09:25 UTC second",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-r02-qualified-record-duplicate",
+      "input": "Date: August 19, 2026\nTime: 08:15 UTC to 09:25 JST\n\nDate: August 19, 2026\nTime: 08:15 UTC to 09:25 JST",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-r03-intervening-point",
+      "input": "August 19, 2026\n- 08:15-09:25 UTC first\n- 08:15 UTC independent\n- 08:15-09:25 UTC repeat",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-r04-shared-endpoints",
+      "input": "August 19, 2026\n- 08:15-09:25 UTC first\n- 08:15-10:35 UTC later\n- 07:05-09:25 UTC earlier",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 6,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-r05-distinct-owner-days",
+      "input": "August 19, 2026\n- 08:15-09:25 UTC first\n\nAugust 20, 2026\n- 08:15-09:25 UTC later",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-b01-utf16-crlf-metadata",
+      "input": "🧭 notes\r\n\r\nAugust 19, 2026\r\n- 08:15 Pacific Time: Morning [Guide 🧭](https://example.invalid/a\\)2029-05-20 \"Tomorrow) noon\")\r\n- 09:25 UTC evening lab",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-b02-ordinal-substring-owner",
+      "input": "August 19, 2026\n- 18:15 UTC first\n- 8:15 UTC Morning briefing\n- 8:15 UTC afternoon repeat",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-b03-real-newline-link",
+      "input": "August 19, 2026\r\n- 08:15 UTC [Guide](https://example.invalid/a\\\r\n- 09:25 UTC evening lab)",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-b04-metadata-blank-reset",
+      "input": "August 19, 2026\n- 08:15 UTC [Guide](<https://example.invalid/June-20-2029/noon>)\n\n- 09:25 UTC evening lab",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs under approved bounded public grammar; literal civil/instant/source/disclosure/atomic-range expectations directly maintained in temporal.json. Exposed DEVELOPMENT controls only, not sealed acceptance."
+    },
+    {
+      "id": "web-154-155-z05-ambiguous-activity",
+      "input": "August 19, 2026\n- 08:15 CST Morning briefing\n- 09:25 UTC afternoon lab",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independently authored before engine outputs; exact DEVELOPMENT expectations directly maintained in temporal.json. Inventory only, not fresh sealed acceptance."
+    },
+    {
+      "id": "web-154-155-z06-multiword-range",
+      "input": "August 19, 2026\n- 08:15-09:25 Pacific Time Morning workshop",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs; exact DEVELOPMENT expectations directly maintained in temporal.json. Inventory only, not fresh sealed acceptance."
+    },
+    {
+      "id": "web-154-155-r06-ambiguous-range-duplicate",
+      "input": "August 19, 2026\n- 08:15-09:25 CST first\n- 08:15-09:25 CST repeat",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored before engine outputs; exact DEVELOPMENT expectations directly maintained in temporal.json. Inventory only, not fresh sealed acceptance."
+    },
+    {
+      "id": "web-154-155-z07-city-envelope",
+      "input": "August 19, 2026\n- 08:15 in Tokyo Morning briefing\n- 09:25 at London afternoon workshop",
+      "category": "Bounded context repair DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Independently authored before engine outputs: asserted recognized in/at city envelopes exclude activity suffixes. Exact DEVELOPMENT expectations in temporal.json; inventory only."
+    },
+    {
+      "id": "web-155-precision-p01-hour-minute-second-zero-utf16",
+      "input": "🧭 programme\r\n\r\nNovember 18, 2026\r\n- 6am-7am UTC hour inventory\r\n- 6:00am-7:00am UTC minute inventory\r\n- 06:00:00-07:00:00 UTC second inventory\r\n- 06:00 UTC independent point",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 7,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p02-zero-fraction-digit-count-versus-seconds",
+      "input": "November 18, 2026\n- 10:40:00-11:50:00 UTC seconds\n- 10:40:00.0-11:50:00.0 UTC explicit single zero fraction\n- 10:40:00.000-11:50:00.000 UTC explicit triple zero fraction",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 6,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p03-independent-mixed-endpoint-precision",
+      "input": "November 18, 2026\n- 12:05-13:15:00 UTC endpoint inventory 1\n- 12:05:00-13:15 UTC endpoint inventory 2\n- 12:05:00-13:15:00 UTC endpoint inventory 3",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 6,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p04-identical-seconds-and-fractions-collapse",
+      "input": "November 18, 2026\n- 14:20:00-15:30:00 UTC first seconds\n- 14:20:00-15:30:00 UTC repeated seconds\n- 14:20:00.123-15:30:00.456 UTC first fraction\n- 14:20:00.123-15:30:00.456 UTC repeated fraction",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p05-qualified-offset-colons-are-not-seconds",
+      "input": "Date: November 18, 2026\nTime: 06:20 UTC+05:45 to 07:30 UTC+05:45\n\nDate: November 18, 2026\nTime: 06:20:00 UTC+05:45 to 07:30:00 UTC+05:45",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
+    },
+    {
+      "id": "web-155-precision-p06-multiword-zone-keeps-precision",
+      "input": "November 18, 2026\n- 08:15-09:25 Pacific Time: Morning workshop\n- 08:15:00-09:25:00 Pacific Time: afternoon workshop",
+      "category": "Atomic range precision DEVELOPMENT",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Independently authored literal clock precision and civil arithmetic before repair outputs; exact DEVELOPMENT expectations maintained directly in temporal.json. Inventory only, not fresh acceptance."
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

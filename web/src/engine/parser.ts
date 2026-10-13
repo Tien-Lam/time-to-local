@@ -7,6 +7,49 @@ import type { ParsedComponents } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
 import { temporal as Temporal } from "./temporal";
 import { AMBIGUOUS, FIXED, REGIONAL } from "./zones";
+import type { AuthoredClockPrecision } from "./range-dedup";
+const precisionTag = "chronoshift/authored-precision/";
+const clockIdentityTag = "chronoshift/authored-clock/";
+
+/** Source-local lexical token identity distinguishes authored endpoint clocks. */
+export function authoredClockIdentity(
+  components: ParsedComponents,
+): string | undefined {
+  const tags = [...components.tags()].filter((tag) =>
+    tag.startsWith(clockIdentityTag),
+  );
+  return tags.length === 1 ? tags[0].slice(clockIdentityTag.length) : undefined;
+}
+
+/** Private literal precision, never inferred from normalized component values. */
+export function authoredClockPrecision(
+  components: ParsedComponents,
+): AuthoredClockPrecision | undefined {
+  const tags = [...components.tags()].filter((tag) =>
+    tag.startsWith(precisionTag),
+  );
+  if (tags.length !== 1) return;
+  const precision = tags[0].slice(precisionTag.length);
+  return /^(?:hour|minute|second|fraction\/[1-6])$/.test(precision)
+    ? (precision as AuthoredClockPrecision)
+    : undefined;
+}
+function markPrecision(
+  components: ParsingResult["start"],
+  precision: AuthoredClockPrecision,
+  identity: string,
+): void {
+  components.addTag(precisionTag + precision);
+  components.addTag(clockIdentityTag + identity);
+}
+function numericClockPrecision(
+  match: RegExpMatchArray,
+): AuthoredClockPrecision {
+  if (match[5]) return `fraction/${match[5].length}` as AuthoredClockPrecision;
+  if (match[4] !== undefined) return "second";
+  if (match[3] !== undefined || Number(match[2]) > 100) return "minute";
+  return "hour";
+}
 const abbreviations = Object.keys({ ...FIXED, ...AMBIGUOUS, ...REGIONAL }).join(
   "|",
 );
@@ -17,10 +60,14 @@ export function startsAfterUnrelatedDate(c: ParsedComponents): boolean {
 }
 function referenceDateParts(c: ParsedComponents) {
   const tags = c.tags();
-  const relative = [...tags].some(
-    (tag) =>
-      tag.startsWith("casualReference/") || tag === "result/relativeDate",
-  );
+  // Casual clock labels supply hours, not calendar provenance. A merged
+  // stated date plus noon/midnight therefore keeps its certain date parts.
+  const relative =
+    tags.has("result/relativeDate") ||
+    tags.has("parser/ENCasualDateParser") ||
+    [...tags].some((tag) =>
+      /^casualReference\/(?:now|today|tomorrow|yesterday|tonight)$/.test(tag),
+    );
   return Object.fromEntries(
     dateParts.map((part) => [
       part,
@@ -47,11 +94,75 @@ export function numericDateOrder(
       : fallback;
 }
 function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
+  type ClockParser = {
+    extractPrimaryTimeComponents(
+      context: ParsingContext,
+      match: RegExpMatchArray,
+    ): ParsingResult["start"] | null;
+    extractFollowingTimeComponents(
+      context: ParsingContext,
+      match: RegExpMatchArray,
+      result: ParsingResult,
+    ): ParsingResult["start"] | null;
+  };
+  const nativeClocks = parser.parsers.filter((candidate) => {
+    const clock = candidate as unknown as Partial<ClockParser>;
+    return (
+      typeof clock.extractPrimaryTimeComponents === "function" &&
+      typeof clock.extractFollowingTimeComponents === "function"
+    );
+  });
+  if (nativeClocks.length !== 1)
+    throw new Error(
+      "Chrono clock precision adapter requires review after dependency upgrade",
+    );
+  for (const candidate of nativeClocks) {
+    const clock = candidate as unknown as ClockParser;
+    const adapter = Object.create(candidate) as typeof candidate & ClockParser;
+    parser.parsers[parser.parsers.indexOf(candidate)] = adapter;
+    adapter.extractPrimaryTimeComponents = (context, match) => {
+      const components = clock.extractPrimaryTimeComponents.call(
+        adapter,
+        context,
+        match,
+      );
+      if (components)
+        markPrecision(
+          components,
+          numericClockPrecision(match),
+          `numeric/${match.index}/primary`,
+        );
+      return components;
+    };
+    adapter.extractFollowingTimeComponents = (context, match, result) => {
+      const components = clock.extractFollowingTimeComponents.call(
+        adapter,
+        context,
+        match,
+        result,
+      );
+      if (components)
+        markPrecision(
+          components,
+          numericClockPrecision(match),
+          `numeric/${result.index}/following`,
+        );
+      return components;
+    };
+  }
   // Annotate each parser-owned date before date/time and range merging. Chrono
   // swaps an impossible month; the saved preference is then not the used order.
   parser.refiners.unshift({
     refine: (_context, results) => {
       for (const result of results) {
+        // Exact parser-owned clock words carry hour granularity before any
+        // merging. Vague casual periods do not manufacture literal precision.
+        if (
+          !result.end &&
+          result.start.isCertain("hour") &&
+          /^\s*(?:this)?\s*(?:noon|midday|midnight)\s*$/i.test(result.text)
+        )
+          markPrecision(result.start, "hour", `word/${result.index}`);
         if (!result.start.tags().has("parser/SlashDateFormatParser")) continue;
         const [first, second] = result.text.split(/[\/.-]/).map(Number);
         const order = first > 12 ? "dmy" : second > 12 ? "mdy" : preference;
@@ -149,10 +260,20 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     // Chrono's clone drops tags. Preserve relative-date provenance before
     // recording which date components the range inherits from either side.
     result.start.addTags(
-      [...from.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+      [...from.start.tags()].filter(
+        (tag) =>
+          !tag.startsWith("chronoshift/") ||
+          tag.startsWith(precisionTag) ||
+          tag.startsWith(clockIdentityTag),
+      ),
     );
     result.end.addTags(
-      [...to.start.tags()].filter((tag) => !tag.startsWith("chronoshift/")),
+      [...to.start.tags()].filter(
+        (tag) =>
+          !tag.startsWith("chronoshift/") ||
+          tag.startsWith(precisionTag) ||
+          tag.startsWith(clockIdentityTag),
+      ),
     );
     let startReference = referenceDateParts(from.start);
     let endReference = referenceDateParts(to.start);
@@ -225,32 +346,51 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
         `\\b([01]\\d|2[0-3])([0-5]\\d)\\s*(?:hours\\b|Zulu\\b|(?=(?:${abbreviations})\\b))`,
         "i",
       ),
-    extract: (_context, match) => ({
-      hour: +match[1],
-      minute: +match[2],
-      second: 0,
-    }),
+    extract: (context, match) => {
+      const result = context.createParsingResult(match.index!, match[0], {
+        hour: +match[1],
+        minute: +match[2],
+        second: 0,
+      });
+      markPrecision(result.start, "minute", `military/${match.index}`);
+      return result;
+    },
   });
   parser.parsers.unshift({
     pattern: () => /\b(1[0-2]|[1-9])([ap])\b(?=\s+[A-Z]{2,5}\b)/i,
-    extract: (_context, m) => ({
-      hour: (+m[1] % 12) + (m[2].toLowerCase() === "p" ? 12 : 0),
-      minute: 0,
-      second: 0,
-      meridiem: m[2].toLowerCase() === "p" ? 1 : 0,
-    }),
+    extract: (context, m) => {
+      const result = context.createParsingResult(m.index!, m[0], {
+        hour: (+m[1] % 12) + (m[2].toLowerCase() === "p" ? 12 : 0),
+        minute: 0,
+        second: 0,
+        meridiem: m[2].toLowerCase() === "p" ? 1 : 0,
+      });
+      markPrecision(result.start, "hour", `shorthand/${m.index}`);
+      return result;
+    },
   });
   parser.parsers.unshift({
     pattern: () =>
       /\bbetween\s+(1[0-2]|[1-9])(?::([0-5]\d))?\s+and\s+(1[0-2]|[1-9])(?::([0-5]\d))?\s*([ap])m\b/i,
     extract: (context, m) => {
       const pm = m[5].toLowerCase() === "p" ? 12 : 0;
-      return context.createParsingResult(
+      const result = context.createParsingResult(
         m.index!,
         m[0],
         { hour: (+m[1] % 12) + pm, minute: +(m[2] || 0), meridiem: pm ? 1 : 0 },
         { hour: (+m[3] % 12) + pm, minute: +(m[4] || 0), meridiem: pm ? 1 : 0 },
       );
+      markPrecision(
+        result.start,
+        m[2] === undefined ? "hour" : "minute",
+        `between/${m.index}/start`,
+      );
+      markPrecision(
+        result.end!,
+        m[4] === undefined ? "hour" : "minute",
+        `between/${m.index}/end`,
+      );
+      return result;
     },
   });
   return parser;
