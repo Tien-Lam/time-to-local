@@ -1,11 +1,195 @@
 import { test, expect, disconnect } from "./fixtures";
 import AxeBuilder from "@axe-core/playwright";
+import type { Locator } from "@playwright/test";
 import {
   choose,
   choiceTrigger,
   enterZone,
   enterReferenceDate,
 } from "./choices";
+
+async function descriptionContrast(item: Locator) {
+  return item.evaluate((element) => {
+    const surface = getComputedStyle(element);
+    const description = getComputedStyle(
+      element.querySelector('[slot="description"]')!,
+    );
+    const rgb = (value: string) =>
+      value
+        .match(/[\d.]+/g)!
+        .slice(0, 3)
+        .map(Number);
+    const luminance = (channels: number[]) =>
+      channels
+        .map((channel) => {
+          const value = channel / 255;
+          return value <= 0.04045
+            ? value / 12.92
+            : ((value + 0.055) / 1.055) ** 2.4;
+        })
+        .reduce(
+          (sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index],
+          0,
+        );
+    const ink = luminance(rgb(description.color));
+    const stops = [...surface.backgroundImage.matchAll(/rgba?\([^)]+\)/g)].map(
+      ([colour]) => colour,
+    );
+    const ratios = (stops.length ? stops : [surface.backgroundColor]).map(
+      (colour) => {
+        const fill = luminance(rgb(colour));
+        return (Math.max(ink, fill) + 0.05) / (Math.min(ink, fill) + 0.05);
+      },
+    );
+    return {
+      held:
+        element.matches(":active") ||
+        element.hasAttribute("data-touch-pressed") ||
+        element.getAttribute("data-pressed") === "true",
+      contrast: Math.min(...ratios),
+    };
+  });
+}
+
+for (const theme of ["light", "dark"] as const) {
+  test(`Aqua ${theme} pressed option descriptions stay readable`, async ({
+    page,
+  }, info) => {
+    await page.goto("/");
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await choose(page, "Design", "aqua");
+    await choose(page, "Theme", theme);
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await page.getByLabel("Convert to", { exact: true }).fill("Tokyo");
+    const option = page.locator(
+      '.choice-popover [role="option"][data-value="Asia/Tokyo"]',
+    );
+    await expect(option).toBeVisible();
+    await option.hover();
+    await page.mouse.down();
+    try {
+      const paint = await descriptionContrast(option);
+      expect(paint.held).toBe(true);
+      expect(paint.contrast).toBeGreaterThanOrEqual(4.5);
+      await page.screenshot({
+        path: info.outputPath(`aqua-${theme}-held-option.png`),
+      });
+    } finally {
+      await page.mouse.up();
+    }
+    await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
+      "Tokyo",
+    );
+  });
+
+  test(`Aqua ${theme} checkbox and invalid field retain native semantics`, async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await choose(page, "Design", "aqua");
+    await choose(page, "Theme", theme);
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await page
+      .getByRole("button", { name: "Support diagnostics", exact: true })
+      .click();
+    const checkbox = page.getByRole("checkbox", {
+      name: "Enable detailed logs",
+    });
+    await expect(checkbox).not.toBeChecked();
+    await checkbox.check();
+    await expect(checkbox).toBeChecked();
+    await checkbox.press("Space");
+    await expect(checkbox).not.toBeChecked();
+    await expect(checkbox).toBeFocused();
+    expect(
+      await checkbox.evaluate(
+        (element) => element.closest("label")!.getBoundingClientRect().height,
+      ),
+    ).toBeGreaterThanOrEqual(44);
+    const target = page.getByLabel("Convert to", { exact: true });
+    const normalBorder = await target.evaluate(
+      (element) => getComputedStyle(element).borderColor,
+    );
+    await enterZone(page, "Not a real place");
+    await expect(target).toHaveAttribute("aria-invalid", "true");
+    expect(
+      await target.evaluate((element) => getComputedStyle(element).borderColor),
+    ).not.toBe(normalBorder);
+    await enterZone(page, "UTC");
+    await expect(target).not.toHaveAttribute("aria-invalid", "true");
+    expect(
+      await target.evaluate((element) => getComputedStyle(element).borderColor),
+    ).toBe(normalBorder);
+    await page.emulateMedia({ forcedColors: "active" });
+    expect(
+      await checkbox.evaluate((element) => ({
+        appearance: getComputedStyle(element).appearance,
+        glyph: getComputedStyle(element, "::before").content,
+      })),
+    ).toEqual({ appearance: "auto", glyph: "none" });
+    await checkbox.press("Space");
+    await expect(checkbox).toBeChecked();
+  });
+}
+
+test("Aqua Light option descriptions remain readable through native touch", async ({
+  browser,
+  browserName,
+  baseURL,
+}, info) => {
+  test.skip(
+    browserName !== "chromium",
+    "Native touch dispatch requires Chromium CDP",
+  );
+  const context = await browser.newContext({
+    baseURL,
+    hasTouch: true,
+    viewport: { width: 390, height: 844 },
+  });
+  try {
+    const page = await context.newPage();
+    await page.goto("/");
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await choose(page, "Design", "aqua");
+    await choose(page, "Theme", "light");
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await page.getByLabel("Convert to", { exact: true }).fill("Tokyo");
+    const option = page.locator(
+      '.choice-popover [role="option"][data-value="Asia/Tokyo"]',
+    );
+    await expect(option).toBeVisible();
+    const bounds = (await option.boundingBox())!;
+    const cdp = await context.newCDPSession(page);
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchStart",
+      touchPoints: [
+        { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 },
+      ],
+    });
+    try {
+      await expect
+        .poll(async () => (await descriptionContrast(option)).held)
+        .toBe(true);
+      expect(
+        (await descriptionContrast(option)).contrast,
+      ).toBeGreaterThanOrEqual(4.5);
+      await page.screenshot({
+        path: info.outputPath("aqua-light-held-touch-option.png"),
+      });
+    } finally {
+      await cdp.send("Input.dispatchTouchEvent", {
+        type: "touchEnd",
+        touchPoints: [],
+      });
+    }
+    await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
+      "Tokyo",
+    );
+  } finally {
+    await context.close();
+  }
+});
 
 for (const theme of ["light", "dark"] as const) {
   test(`Aqua ${theme} retains precision, reference date and usable menus across design changes`, async ({

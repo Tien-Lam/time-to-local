@@ -40,6 +40,8 @@ import { ChoiceSelect, ZoneChoice } from "./components/Choices";
 import { DeferredDateChoice } from "./components/DeferredDateChoice";
 import { ActionButton } from "./components/ui/ActionButton";
 import { ControlIcon } from "./components/ui/ControlIcon";
+import { Checkbox } from "./components/ui/Checkbox";
+import { StatusIndicator } from "./components/ui/StatusIndicator";
 import { Disclosure } from "./components/Disclosure";
 import { About, GITHUB_URL } from "./components/About";
 import { ConverterGuide, ConverterIntro } from "./components/ConverterGuide";
@@ -1106,7 +1108,7 @@ export default function App({
                     ? `In ${zoneName(targetZone)}`
                     : "Converted time"}
                 </h2>
-                <span className="live-indicator" data-state={liveState}>
+                <StatusIndicator state={liveState}>
                   {initializing
                     ? "Preparing"
                     : liveState === "pending"
@@ -1118,7 +1120,7 @@ export default function App({
                           : liveState === "warning"
                             ? "Check time"
                             : summary}
-                </span>
+                </StatusIndicator>
               </div>
               <div role="status" className="sr-only">
                 {busy
@@ -1314,8 +1316,7 @@ export default function App({
               id="support-options"
             >
               <label className="diagnostic-toggle">
-                <input
-                  type="checkbox"
+                <Checkbox
                   checked={detailedLogs}
                   onChange={(event) => {
                     const enabled = event.target.checked;

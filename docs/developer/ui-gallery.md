@@ -81,6 +81,15 @@ labels, disabled/pending/success/error, fields/help/invalid input, disclosure,
 search/date/menu/calendar compositions. Actual hover/keyboard focus/mouse press
 and native touch are driven by tests, not fabricated CSS state props.
 
+The Aqua-only `dev/AquaCatalog.tsx` extends those fixtures with the owned native
+Checkbox and StatusIndicator, actual searchbox semantics, invalid/disabled fields,
+editor/manual-copy textareas, disabled gel/pearl and pending pearl actions, all seven
+status states, and labeled update/import/install material samples. Switch to
+`?design=aqua&theme=dark` for the navy adaptation. Support samples are explicitly
+local examples; they do not certify update/import/install lifecycles. The real
+workspace and production suites remain those behavior owners. Aqua material and
+part contracts are documented in [appearance.md](appearance.md#owned-aqua-component-library).
+
 A Vite `apply: serve` middleware creates this HTML route. Production main.tsx has
 no gallery import, production HTML has no gallery entry and public assets contain
 no gallery. No hosted account or visual service is used. This dev route is not an

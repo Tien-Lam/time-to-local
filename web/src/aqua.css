@@ -15,7 +15,12 @@
   --primary: #1264b5;
   --primary-ink: #fff;
   --shadow: #000b2480;
-  --control-radius: 3px;
+  --aqua-field-radius: 3px;
+  --aqua-popup-radius: 8px;
+  --aqua-gem-radius: 6px;
+  --aqua-capsule-radius: 999px;
+  --aqua-invalid: #ff9b9b;
+  --control-radius: var(--aqua-field-radius);
   --aqua-pinstripe: repeating-linear-gradient(
     180deg,
     #ffffff0a 0 1px,
@@ -69,6 +74,7 @@
   --accent: #07539f;
   --focus: #075cb6;
   --primary: #1264b5;
+  --aqua-invalid: #a3333b;
   --shadow: #153a6040;
   --aqua-pinstripe: repeating-linear-gradient(
     180deg,
@@ -155,7 +161,58 @@
     0 1px 0 var(--aqua-edge);
 }
 :root[data-design="aqua"] input[type="search"] {
-  border-radius: 999px;
+  border-radius: var(--aqua-capsule-radius);
+}
+:root[data-design="aqua"] .ui-input[aria-invalid="true"] {
+  border-color: var(--aqua-invalid);
+  box-shadow: inset 0 0 0 1px var(--aqua-invalid);
+}
+:root[data-design="aqua"] .ui-input:disabled {
+  color: var(--muted);
+  background: var(--soft);
+}
+/* A native checkbox keeps its label, keyboard and checked-state semantics. */
+:root[data-design="aqua"] .ui-checkbox {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--control-border);
+  border-radius: var(--aqua-field-radius);
+  color: var(--ink);
+  background: var(--aqua-pearl);
+  box-shadow:
+    inset 0 1px 1px var(--aqua-glint),
+    0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] .ui-checkbox::before {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+}
+:root[data-design="aqua"] .ui-checkbox:checked {
+  border-color: var(--aqua-gel-border);
+  color: var(--primary-ink);
+  background: var(--aqua-gel);
+}
+:root[data-design="aqua"] .ui-checkbox:checked::before {
+  opacity: 1;
+}
+:root[data-design="aqua"] .ui-checkbox:active:not(:disabled) {
+  background: var(--aqua-gel-pressed);
+  color: var(--primary-ink);
+}
+:root[data-design="aqua"] .ui-checkbox:disabled {
+  opacity: 0.5;
 }
 :root[data-design="aqua"]
   :is(
@@ -177,15 +234,15 @@
 :root[data-design="aqua"] .action-outline,
 :root[data-design="aqua"] .example-button,
 :root[data-design="aqua"] .calendar-clear-choice {
-  border-radius: 999px;
+  border-radius: var(--aqua-capsule-radius);
 }
 :root[data-design="aqua"] button.choice-trigger {
   position: relative;
   isolation: isolate;
-  border-radius: 8px;
+  border-radius: var(--aqua-popup-radius);
 }
 :root[data-design="aqua"] .choice-control input {
-  border-radius: 8px;
+  border-radius: var(--aqua-popup-radius);
 }
 /* The inset gem is decoration inside the existing 44px arrow target. */
 :root[data-design="aqua"] button.choice-trigger::before,
@@ -198,7 +255,7 @@
   inset-inline-end: 5px;
   width: 28px;
   border: 1px solid var(--aqua-gel-border);
-  border-radius: 6px;
+  border-radius: var(--aqua-gem-radius);
   background:
     radial-gradient(ellipse at 50% 0, #ffffffc2, transparent 48%),
     var(--aqua-gel);
@@ -292,13 +349,26 @@
 }
 :root[data-design="aqua"] .choice-item {
   border-radius: 4px;
+  --pressed-background: var(--aqua-selection);
+  --pressed-ink: var(--aqua-selection-ink);
+  --pressed-ring: var(--aqua-selection-ink);
 }
 :root[data-design="aqua"] .choice-item:is([data-focused], [data-selected]) {
   background: var(--aqua-selection);
   color: var(--aqua-selection-ink);
 }
+:root[data-design="aqua"] .choice-item[data-focus-visible],
+:root[data-design="aqua"] .calendar-day[data-selected][data-focus-visible] {
+  outline-color: var(--aqua-selection-ink);
+}
 :root[data-design="aqua"]
-  .choice-item:is([data-focused], [data-selected])
+  .choice-item:is(
+    [data-focused],
+    [data-selected],
+    :active,
+    [data-pressed],
+    [data-touch-pressed]
+  )
   [slot="description"] {
   color: var(--aqua-selection-muted);
 }
@@ -343,17 +413,23 @@
   height: 9px;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 1px solid #287346;
+  border: 1px solid var(--control-border);
+  background: var(--aqua-pearl);
+  box-shadow: 0 1px 1px var(--aqua-inset);
+}
+:root[data-design="aqua"] .live-indicator[data-state="ready"]::before {
+  border-color: #287346;
   background: radial-gradient(
     circle at 35% 25%,
     #ffffff,
     #73dd8d 35%,
     #16843b 80%
   );
-  box-shadow: 0 1px 1px var(--aqua-inset);
 }
 :root[data-design="aqua"] .live-indicator[data-state="pending"]::before,
-:root[data-design="aqua"] .live-indicator[data-state="paused"]::before {
+:root[data-design="aqua"] .live-indicator[data-state="paused"]::before,
+:root[data-design="aqua"] .live-indicator[data-state="warning"]::before,
+:root[data-design="aqua"] .live-indicator[data-state="ambiguous"]::before {
   border-color: #926315;
   background: radial-gradient(
     circle at 35% 25%,
@@ -470,6 +546,19 @@
   opacity: 0.35;
 }
 @media (forced-colors: active) {
+  :root[data-design="aqua"] .choice-item[data-focus-visible],
+  :root[data-design="aqua"] .calendar-day[data-selected][data-focus-visible] {
+    outline-color: HighlightText;
+  }
+  :root[data-design="aqua"] .ui-checkbox {
+    appearance: auto;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+  :root[data-design="aqua"] .ui-checkbox::before {
+    content: none;
+  }
   :root[data-design="aqua"],
   :root[data-design="aqua"] body {
     background: Canvas;
@@ -541,6 +630,8 @@
       [data-selected],
       [data-focused],
       [data-hovered],
+      :active,
+      [data-pressed],
       [data-touch-pressed]
     )
     [slot="description"] {
