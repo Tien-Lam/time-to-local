@@ -10909,5 +10909,2125 @@
     "endpoints": ["undefined", "undefined"],
     "rangeIds": [null, null],
     "sourceIndices": [12, 33]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" noon UTC mdy",
+    "text": "JST tomorrow\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" noon UTC mdy",
+    "text": "UTC 10 April\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" midnight UTC mdy",
+    "text": "JST tomorrow\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" midnight UTC mdy",
+    "text": "UTC 10 April\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" noon UTC mdy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" noon UTC mdy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" midnight UTC mdy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" midnight UTC mdy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight no heading UTC mdy",
+    "text": "PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight no heading UTC mdy",
+    "text": "PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon no heading UTC mdy",
+    "text": "PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am no heading UTC mdy",
+    "text": "PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday no heading UTC mdy",
+    "text": "PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday no heading UTC mdy",
+    "text": "PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight no heading UTC mdy",
+    "text": "PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight no heading UTC mdy",
+    "text": "PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight no heading UTC mdy",
+    "text": "PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight heading UTC mdy",
+    "text": "UTC 10 April; PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" noon UTC dmy",
+    "text": "JST tomorrow\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" noon UTC dmy",
+    "text": "UTC 10 April\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" midnight UTC dmy",
+    "text": "JST tomorrow\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" midnight UTC dmy",
+    "text": "UTC 10 April\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" noon UTC dmy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" noon UTC dmy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" midnight UTC dmy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" midnight UTC dmy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T00:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight no heading UTC dmy",
+    "text": "PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight no heading UTC dmy",
+    "text": "PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon no heading UTC dmy",
+    "text": "PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am no heading UTC dmy",
+    "text": "PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday no heading UTC dmy",
+    "text": "PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday no heading UTC dmy",
+    "text": "PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight no heading UTC dmy",
+    "text": "PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight no heading UTC dmy",
+    "text": "PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight no heading UTC dmy",
+    "text": "PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight heading UTC dmy",
+    "text": "UTC 10 April; PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" noon Asia/Tokyo mdy",
+    "text": "JST tomorrow\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" noon Asia/Tokyo mdy",
+    "text": "UTC 10 April\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" midnight Asia/Tokyo mdy",
+    "text": "JST tomorrow\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" midnight Asia/Tokyo mdy",
+    "text": "UTC 10 April\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" noon Asia/Tokyo mdy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" noon Asia/Tokyo mdy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" midnight Asia/Tokyo mdy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" midnight Asia/Tokyo mdy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight no heading Asia/Tokyo mdy",
+    "text": "PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight no heading Asia/Tokyo mdy",
+    "text": "PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon no heading Asia/Tokyo mdy",
+    "text": "PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am no heading Asia/Tokyo mdy",
+    "text": "PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday no heading Asia/Tokyo mdy",
+    "text": "PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday no heading Asia/Tokyo mdy",
+    "text": "PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight no heading Asia/Tokyo mdy",
+    "text": "PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight no heading Asia/Tokyo mdy",
+    "text": "PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight no heading Asia/Tokyo mdy",
+    "text": "PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight heading Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" noon Asia/Tokyo dmy",
+    "text": "JST tomorrow\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" noon Asia/Tokyo dmy",
+    "text": "UTC 10 April\nUTC noon\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\n\\n\" midnight Asia/Tokyo dmy",
+    "text": "JST tomorrow\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\n\\n\" midnight Asia/Tokyo dmy",
+    "text": "UTC 10 April\nUTC noon\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [13, 23],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" noon Asia/Tokyo dmy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" noon Asia/Tokyo dmy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-07T03:00:00Z"],
+    "originals": ["UTC noon", "noon"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock JST tomorrow \"\\r\\n\\r\\n\" midnight Asia/Tokyo dmy",
+    "text": "JST tomorrow\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: JST",
+        "Date from message context: 2026-04-08",
+        "Reference date used: 2026-04-07"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "consumed prefixed heading blank bare clock UTC 10 April \"\\r\\n\\r\\n\" midnight Asia/Tokyo dmy",
+    "text": "UTC 10 April\r\nUTC noon\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T15:00:00Z"],
+    "originals": ["UTC noon", "midnight"],
+    "sourceIndices": [14, 26],
+    "endpoints": ["undefined", "undefined"],
+    "assumptions": [
+      [
+        "Date context timezone: UTC",
+        "Date from message context: 2026-04-10",
+        "Reference date used: 2026-04-06"
+      ],
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight no heading Asia/Tokyo dmy",
+    "text": "PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday midnight heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday midnight",
+      "PDT noon to JST Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight no heading Asia/Tokyo dmy",
+    "text": "PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST next Friday midnight heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST next Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST next Friday midnight",
+      "PDT noon to JST next Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon no heading Asia/Tokyo dmy",
+    "text": "PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday noon heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST Friday noon; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T03:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday noon",
+      "PDT noon to JST Friday noon",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am no heading Asia/Tokyo dmy",
+    "text": "PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST Friday 12am heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST Friday 12am; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST Friday 12am",
+      "PDT noon to JST Friday 12am",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday no heading Asia/Tokyo dmy",
+    "text": "PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight Friday heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight Friday",
+      "PDT noon to JST midnight Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday no heading Asia/Tokyo dmy",
+    "text": "PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar JST midnight on Friday heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight on Friday; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "originals": [
+      "PDT noon to JST midnight on Friday",
+      "PDT noon to JST midnight on Friday",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight no heading Asia/Tokyo dmy",
+    "text": "PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar America/New_York this Friday midnight heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to America/New_York this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "America/New_York", "+00:00"],
+    "originals": [
+      "PDT noon to America/New_York this Friday midnight",
+      "PDT noon to America/New_York this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight no heading Asia/Tokyo dmy",
+    "text": "PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar EST this Friday midnight heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to EST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T05:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "originals": [
+      "PDT noon to EST this Friday midnight",
+      "PDT noon to EST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight no heading Asia/Tokyo dmy",
+    "text": "PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday end retains calendar CST this Friday midnight heading Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to CST this Friday midnight; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "originals": [
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "PDT noon to CST this Friday midnight",
+      "UTC noon"
+    ],
+    "endpoints": ["start", "end", "end", "undefined"]
   }
 ]

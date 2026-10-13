@@ -518,14 +518,15 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     // actual token owns the paragraph and original excerpt, not that mask.
     if (
       leading &&
-      preservedDates.some(
-        (date) =>
-          result.index + leading > date.index &&
-          (result.index < date.index + date.text.length ||
-            !parserText
-              .slice(date.index + date.text.length, result.index)
-              .trim()),
-      )
+      (/\n/.test(result.text.slice(0, leading)) ||
+        preservedDates.some(
+          (date) =>
+            result.index + leading > date.index &&
+            (result.index < date.index + date.text.length ||
+              !parserText
+                .slice(date.index + date.text.length, result.index)
+                .trim()),
+        ))
     ) {
       result.index += leading;
       result.text = result.text.slice(leading);
@@ -987,11 +988,23 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         const local = parser.parse(r.text, zoneRef, {
           timezones: timezoneHints,
         })[0];
-        const components = local
-          ? endpoint === "end" && local.end
-            ? local.end
-            : local.start
-          : c;
+        const weekdayEnd =
+          endpoint === "end" && endpointPrefix && c.isCertain("weekday")
+            ? parser.parse(
+                text.slice(endpointPrefix.end, r.index + r.text.length),
+                zoneRef,
+                { timezones: timezoneHints },
+              )[0]?.start
+            : undefined;
+        // Native clock-range rollover can rewrite an end weekday's implied
+        // date. An explicitly prefixed weekday owns its independent calendar.
+        const components =
+          weekdayEnd ??
+          (local
+            ? endpoint === "end" && local.end
+              ? local.end
+              : local.start
+            : c);
         const exactNow = components.tags().has("casualReference/now");
         const explicitEndpointDate =
           explicitDate ||

@@ -12711,6 +12711,240 @@
       "legacyExpectedCount": 3,
       "expected": [],
       "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-754",
+      "input": "JST tomorrow\nUTC noon\n\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-755",
+      "input": "UTC 10 April\nUTC noon\n\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-756",
+      "input": "JST tomorrow\nUTC noon\n\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-757",
+      "input": "UTC 10 April\nUTC noon\n\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-758",
+      "input": "JST tomorrow\r\nUTC noon\r\n\r\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-759",
+      "input": "UTC 10 April\r\nUTC noon\r\n\r\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-760",
+      "input": "JST tomorrow\r\nUTC noon\r\n\r\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-761",
+      "input": "UTC 10 April\r\nUTC noon\r\n\r\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-762",
+      "input": "PDT noon to JST Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-763",
+      "input": "UTC 10 April; PDT noon to JST Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-764",
+      "input": "PDT noon to JST next Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-765",
+      "input": "UTC 10 April; PDT noon to JST next Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-766",
+      "input": "PDT noon to JST Friday noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-767",
+      "input": "UTC 10 April; PDT noon to JST Friday noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-768",
+      "input": "PDT noon to JST Friday 12am; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-769",
+      "input": "UTC 10 April; PDT noon to JST Friday 12am; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-770",
+      "input": "PDT noon to JST midnight Friday; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-771",
+      "input": "UTC 10 April; PDT noon to JST midnight Friday; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-772",
+      "input": "PDT noon to JST midnight on Friday; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-773",
+      "input": "UTC 10 April; PDT noon to JST midnight on Friday; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-774",
+      "input": "PDT noon to America/New_York this Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-775",
+      "input": "UTC 10 April; PDT noon to America/New_York this Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-776",
+      "input": "PDT noon to EST this Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-777",
+      "input": "UTC 10 April; PDT noon to EST this Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-778",
+      "input": "PDT noon to CST this Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-779",
+      "input": "UTC 10 April; PDT noon to CST this Friday midnight; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
