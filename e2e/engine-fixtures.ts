@@ -84,11 +84,11 @@ export async function verifyProductionFixtures(page: Page) {
         output.conversion.results.map((r: any) => r.rangeId),
         f.name,
       ).toEqual(f.rangeIds.map((id) => id ?? undefined));
-    if ("interpretations" in f)
+    if (f.interpretations !== undefined)
       expect(
         output.conversion.results.map((r: any) => r.interpretation),
         f.name,
-      ).toEqual(f.interpretations);
+      ).toEqual(f.interpretations.map((value) => value ?? undefined));
     if ("assumption" in f)
       expect(
         output.conversion.results.flatMap((r: any) => r.assumptions).join("\n"),

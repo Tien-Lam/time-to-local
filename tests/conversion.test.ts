@@ -52,7 +52,7 @@ describe("independently specified temporal fixtures", () => {
         expect(result.results.map((r) => r.sourceZone)).toEqual(f.sourceZones);
       if (f.interpretations !== undefined)
         expect(result.results.map((r) => r.interpretation)).toEqual(
-          f.interpretations,
+          f.interpretations.map((value) => value ?? undefined),
         );
       if (f.rangeIds !== undefined)
         expect(result.results.map((r) => r.rangeId)).toEqual(

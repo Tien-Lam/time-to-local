@@ -7500,5 +7500,738 @@
     "sourceZones": ["-07:00", "+09:00"],
     "endpoints": ["start", "end"],
     "originals": ["PDT 3pm to JST 5pm", "PDT 3pm to JST 5pm"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 2 mdy UTC",
+    "text": "10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 4 mdy UTC",
+    "text": "10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [12],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 2 mdy UTC",
+    "text": "UTC 10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 4 mdy UTC",
+    "text": "UTC 10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 2 mdy UTC",
+    "text": "JST tomorrow\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 4 mdy UTC",
+    "text": "JST tomorrow\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "clause-local invalid newline owner XYZ: mdy UTC",
+    "text": "UTC 8 April; XYZ: 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "clause-local invalid newline owner America/Foo mdy UTC",
+    "text": "UTC 8 April; America/Foo 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+ mdy UTC",
+    "text": "UTC 8 April; UTC+ 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+99 mdy UTC",
+    "text": "UTC 8 April; UTC+99 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local valid newline heading mdy UTC",
+    "text": "UTC 8 April; UTC 10 April\nUTC noon; UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T00:00:00Z"],
+    "originals": ["UTC noon", "UTC midnight"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"\\n\" mdy UTC",
+    "text": "UTC 10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"; \" mdy UTC",
+    "text": "UTC 10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"\\n\" mdy UTC",
+    "text": "10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"; \" mdy UTC",
+    "text": "10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"\\n\" mdy UTC",
+    "text": "JST tomorrow\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"; \" mdy UTC",
+    "text": "JST tomorrow; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 2 mdy Asia/Tokyo",
+    "text": "10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 4 mdy Asia/Tokyo",
+    "text": "10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [12],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 2 mdy Asia/Tokyo",
+    "text": "UTC 10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 4 mdy Asia/Tokyo",
+    "text": "UTC 10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 2 mdy Asia/Tokyo",
+    "text": "JST tomorrow\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 4 mdy Asia/Tokyo",
+    "text": "JST tomorrow\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "clause-local invalid newline owner XYZ: mdy Asia/Tokyo",
+    "text": "UTC 8 April; XYZ: 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "clause-local invalid newline owner America/Foo mdy Asia/Tokyo",
+    "text": "UTC 8 April; America/Foo 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+ mdy Asia/Tokyo",
+    "text": "UTC 8 April; UTC+ 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+99 mdy Asia/Tokyo",
+    "text": "UTC 8 April; UTC+99 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local valid newline heading mdy Asia/Tokyo",
+    "text": "UTC 8 April; UTC 10 April\nUTC noon; UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T00:00:00Z"],
+    "originals": ["UTC noon", "UTC midnight"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"\\n\" mdy Asia/Tokyo",
+    "text": "UTC 10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"; \" mdy Asia/Tokyo",
+    "text": "UTC 10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"\\n\" mdy Asia/Tokyo",
+    "text": "10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"; \" mdy Asia/Tokyo",
+    "text": "10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"\\n\" mdy Asia/Tokyo",
+    "text": "JST tomorrow\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"; \" mdy Asia/Tokyo",
+    "text": "JST tomorrow; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 2 dmy UTC",
+    "text": "10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 4 dmy UTC",
+    "text": "10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [12],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 2 dmy UTC",
+    "text": "UTC 10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 4 dmy UTC",
+    "text": "UTC 10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 2 dmy UTC",
+    "text": "JST tomorrow\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 4 dmy UTC",
+    "text": "JST tomorrow\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "clause-local invalid newline owner XYZ: dmy UTC",
+    "text": "UTC 8 April; XYZ: 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "clause-local invalid newline owner America/Foo dmy UTC",
+    "text": "UTC 8 April; America/Foo 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+ dmy UTC",
+    "text": "UTC 8 April; UTC+ 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+99 dmy UTC",
+    "text": "UTC 8 April; UTC+99 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local valid newline heading dmy UTC",
+    "text": "UTC 8 April; UTC 10 April\nUTC noon; UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T00:00:00Z"],
+    "originals": ["UTC noon", "UTC midnight"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"\\n\" dmy UTC",
+    "text": "UTC 10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"; \" dmy UTC",
+    "text": "UTC 10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"\\n\" dmy UTC",
+    "text": "10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"; \" dmy UTC",
+    "text": "10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"\\n\" dmy UTC",
+    "text": "JST tomorrow\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"; \" dmy UTC",
+    "text": "JST tomorrow; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 2 dmy Asia/Tokyo",
+    "text": "10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading 10 April 4 dmy Asia/Tokyo",
+    "text": "10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [12],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 2 dmy Asia/Tokyo",
+    "text": "UTC 10 April\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading UTC 10 April 4 dmy Asia/Tokyo",
+    "text": "UTC 10 April\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 2 dmy Asia/Tokyo",
+    "text": "JST tomorrow\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "CRLF independent heading JST tomorrow 4 dmy Asia/Tokyo",
+    "text": "JST tomorrow\r\n\r\nUTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "clause-local invalid newline owner XYZ: dmy Asia/Tokyo",
+    "text": "UTC 8 April; XYZ: 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "clause-local invalid newline owner America/Foo dmy Asia/Tokyo",
+    "text": "UTC 8 April; America/Foo 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+ dmy Asia/Tokyo",
+    "text": "UTC 8 April; UTC+ 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local invalid newline owner UTC+99 dmy Asia/Tokyo",
+    "text": "UTC 8 April; UTC+99 10 April\nUTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "clause-local valid newline heading dmy Asia/Tokyo",
+    "text": "UTC 8 April; UTC 10 April\nUTC noon; UTC midnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T00:00:00Z"],
+    "originals": ["UTC noon", "UTC midnight"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"\\n\" dmy Asia/Tokyo",
+    "text": "UTC 10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact UTC 10 April \"; \" dmy Asia/Tokyo",
+    "text": "UTC 10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"\\n\" dmy Asia/Tokyo",
+    "text": "10 April\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact 10 April \"; \" dmy Asia/Tokyo",
+    "text": "10 April; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"\\n\" dmy Asia/Tokyo",
+    "text": "JST tomorrow\nUTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "range endpoint now exact JST tomorrow \"; \" dmy Asia/Tokyo",
+    "text": "JST tomorrow; UTC midnight to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T00:00:00Z", "2026-04-06T22:00:00.123456789Z"],
+    "sourceZones": ["+00:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "temporal wording is not city tomorrow at noon UTC",
+    "text": "tomorrow at noon UTC",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-07T12:00:00Z"]
+  },
+  {
+    "name": "temporal wording is not city April 10 at noon UTC",
+    "text": "April 10 at noon UTC",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-10T12:00:00Z"]
+  },
+  {
+    "name": "temporal wording is not city in an hour UTC",
+    "text": "in an hour UTC",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-06T23:00:00.123Z"]
+  },
+  {
+    "name": "date-only relative in wording is not city",
+    "text": "UTC in a week",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": [],
+    "dates": ["2026-04-13"],
+    "sourceZones": ["+00:00"]
+  },
+  {
+    "name": "ambiguous heading range now remains singular exact",
+    "text": "CST today; UTC noon to PDT now",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-07T12:00:00Z",
+      "2026-04-06T22:00:00.123456789Z"
+    ],
+    "endpoints": ["start", "start", "end"],
+    "interpretations": [
+      "Date context: CST · US Central Standard",
+      "Date context: CST · China Standard",
+      null
+    ]
+  },
+  {
+    "name": "now range start keeps current-date rollover",
+    "text": "UTC 10 April; PDT now to UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-06T22:00:00.123456789Z", "2026-04-07T12:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "fold range endpoint now exact with nanoseconds",
+    "text": "UTC 10 November; UTC midnight to America/New_York now",
+    "now": "2026-11-01T06:30:00.123456789Z",
+    "instants": ["2026-11-10T00:00:00Z", "2026-11-01T06:30:00.123456789Z"],
+    "sourceZones": ["+00:00", "America/New_York"],
+    "endpoints": ["start", "end"]
   }
 ]

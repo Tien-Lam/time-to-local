@@ -11964,6 +11964,222 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-671",
+      "input": "10 April\r\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-672",
+      "input": "10 April\r\n\r\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-673",
+      "input": "UTC 10 April\r\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-674",
+      "input": "UTC 10 April\r\n\r\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-675",
+      "input": "JST tomorrow\r\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-676",
+      "input": "JST tomorrow\r\n\r\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-677",
+      "input": "UTC 8 April; XYZ: 10 April\nUTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-678",
+      "input": "UTC 8 April; America/Foo 10 April\nUTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-679",
+      "input": "UTC 8 April; UTC+ 10 April\nUTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-680",
+      "input": "UTC 8 April; UTC+99 10 April\nUTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-681",
+      "input": "UTC 8 April; UTC 10 April\nUTC noon; UTC midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-682",
+      "input": "UTC 10 April\nUTC midnight to PDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-683",
+      "input": "UTC 10 April; UTC midnight to PDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-684",
+      "input": "10 April\nUTC midnight to PDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-685",
+      "input": "10 April; UTC midnight to PDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-686",
+      "input": "JST tomorrow\nUTC midnight to PDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-687",
+      "input": "JST tomorrow; UTC midnight to PDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-688",
+      "input": "tomorrow at noon UTC",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-689",
+      "input": "April 10 at noon UTC",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-690",
+      "input": "in an hour UTC",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-691",
+      "input": "UTC in a week",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-692",
+      "input": "CST today; UTC noon to PDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-693",
+      "input": "UTC 10 April; PDT now to UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-694",
+      "input": "UTC 10 November; UTC midnight to America/New_York now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

@@ -246,7 +246,7 @@ function choicesFor(
     return [];
   }
   if (explicit) {
-    if (cityChoices(combined, warnings)?.length === 0) return [];
+    if (cityChoices(adjacent, warnings)?.length === 0) return [];
     return explicit;
   }
   const suffixZone = adjacent.match(
@@ -332,25 +332,28 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   // A whole date heading and the next line's prefixed clock are independent
   // owners. Preserve the heading before masked whitespace can alter Chrono's
   // overlap selection or merge their two source zones into one timestamp.
-  for (const line of text.matchAll(/^(.*)\n/gm)) {
-    const start = line.index!;
+  for (const line of text.matchAll(/^([^\r\n]*)\r?\n/gm)) {
+    const start = line.index! + line[1].lastIndexOf(";") + 1;
+    const lineEnd = line.index! + line[1].length;
     const following = prefixes.find(
-      (prefix) => prefix.index >= start + line[0].length,
+      (prefix) => prefix.index >= line.index! + line[0].length,
     );
     if (
       !following ||
-      text.slice(start + line[0].length, following.index).trim()
+      text.slice(line.index! + line[0].length, following.index).trim()
     )
       continue;
     const owner = prefixes.find(
-      (prefix) => prefix.index >= start && prefix.end <= start + line[1].length,
+      (prefix) => prefix.index >= start && prefix.end <= lineEnd,
     );
     if (owner && !/^\s*(?:#{1,6}\s+)?$/.test(text.slice(start, owner.index)))
       continue;
     const dateStart =
       owner?.end ??
-      start + (line[1].match(/^\s*(?:#{1,6}\s+)?/)?.[0].length ?? 0);
-    const dateText = text.slice(dateStart, start + line[1].length).trim();
+      start +
+        (text.slice(start, lineEnd).match(/^\s*(?:#{1,6}\s+)?/)?.[0].length ??
+          0);
+    const dateText = text.slice(dateStart, lineEnd).trim();
     const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
     if (
       dates.length !== 1 ||
@@ -383,7 +386,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           text.length,
       ),
     );
-    const paragraphDate = adjacent.match(/^([^\n]+)\n\s*\n/);
+    const paragraphDate = adjacent.match(/^([^\r\n]+)\r?\n/);
     if (paragraphDate) {
       const dateText = paragraphDate[1].trim();
       const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
@@ -623,6 +626,15 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const explicitDate =
       r.start.isCertain("day") || (!!prefix && r.start.isCertain("weekday"));
     const dateOnly = !r.start.isCertain("hour") && !r.start.isCertain("minute");
+    const dateSpan = dateOnly
+      ? parser.parse(r.text.trim(), ref, { timezones: timezoneHints })[0]
+      : undefined;
+    const citySuffix = dateSpan
+      ? text.slice(
+          r.index + dateSpan.text.trimEnd().length,
+          r.index + r.text.length,
+        ) + qualifierSuffix
+      : qualifierSuffix;
     const dateChoices =
       prefix && (dateOnly || explicitDate)
         ? choicesFor(
@@ -636,8 +648,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     if (
       dateChoices &&
       (!dateChoices.length ||
-        (dateOnly &&
-          cityChoices(matchedText + qualifierSuffix, warnings)?.length === 0))
+        (dateOnly && cityChoices(citySuffix, warnings)?.length === 0))
     ) {
       reject();
       continue;
@@ -672,7 +683,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           new RegExp(`\\b(?:${zoneToken})\\b`, "gi"),
         ),
       ].flatMap((token) => explicitZones(token[0]) ?? []);
-      const cities = cityChoices(matchedText + qualifierSuffix, warnings);
+      const cities = cityChoices(citySuffix, warnings);
       const prefixChoices = explicitZones(prefix.text) ?? [];
       const cityConflict = cities?.some((city) =>
         dateOwners.some(({ choice, date }) => {
@@ -907,7 +918,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             ? local.end
             : local.start
           : c;
-        for (const dateOwner of !explicitDate && contextOwners
+        const exactNow = components.tags().has("casualReference/now");
+        for (const dateOwner of !exactNow && !explicitDate && contextOwners
           ? contextOwners
           : [undefined]) {
           let selectedDate = componentDate(components),
@@ -918,7 +930,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
               ) ?? []),
             ],
             referenceUsed = usesReferenceDate(components);
-          if (!explicitDate && contextDate) {
+          if (exactNow) {
+            selectedDate = Temporal.Instant.from(now)
+              .toZonedDateTimeISO(choice.zone)
+              .toPlainDate();
+          } else if (!explicitDate && contextDate) {
             const header = parser.parse(contextText, zoneRef, {
               timezones: timezoneHints,
             })[0];
@@ -954,8 +970,13 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             second: components.get("second") || 0,
             millisecond: components.get("millisecond") || 0,
           });
-          let civil = dt;
-          if (priorResults.length === 1 && !explicitDate) {
+          let civil = exactNow
+            ? Temporal.Instant.from(now)
+                .toZonedDateTimeISO(choice.zone)
+                .toPlainDateTime()
+                .round({ smallestUnit: "millisecond", roundingMode: "trunc" })
+            : dt;
+          if (!exactNow && priorResults.length === 1 && !explicitDate) {
             const start = Temporal.Instant.from(priorResults[0].instant!)
               .toZonedDateTimeISO(priorResults[0].sourceZone)
               .toPlainDateTime();
@@ -1026,16 +1047,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           // when a regional zone moves its clocks back.
           const resolved = isoInstant
             ? { instants: [isoInstant], nonexistent: false }
-            : components.tags().has("casualReference/now") &&
-                civil.equals(
-                  Temporal.Instant.from(now)
-                    .toZonedDateTimeISO(choice.zone)
-                    .toPlainDateTime()
-                    .round({
-                      smallestUnit: "millisecond",
-                      roundingMode: "trunc",
-                    }),
-                )
+            : exactNow
               ? {
                   instants: [Temporal.Instant.from(now).toString()],
                   nonexistent: false,
@@ -1091,7 +1103,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                 resolved.instants.length > 1
                   ? `${choice.interpretation ? choice.interpretation + " · " : ""}${n === 0 ? "First" : "Second"} occurrence (clocks move back)`
                   : (choice.interpretation ??
-                    (contextOwners && contextOwners.length > 1
+                    (dateOwner && contextOwners && contextOwners.length > 1
                       ? `Date context: ${dateOwner?.choice.label}`
                       : undefined)),
               assumptions,

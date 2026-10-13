@@ -5,9 +5,9 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 1025,
+  "total": 1049,
   "crashes": 0,
-  "legacyCountDifferences": 40,
+  "legacyCountDifferences": 42,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
   "differences": [
     {
@@ -110,23 +110,6 @@
       "dates": []
     },
     {
-      "id": "android-117",
-      "input": "Jan 1, 2027 at midnight EST",
-      "legacyExpectedCount": 1,
-      "actualCount": 0,
-      "missingLocalTimes": [
-        {
-          "hour": 0,
-          "minute": 0,
-          "timezone": "EST"
-        }
-      ],
-      "warnings": [
-        "Couldn't identify the city “midnight”. Correct or remove the city, then choose a source timezone in More options."
-      ],
-      "dates": []
-    },
-    {
       "id": "android-120",
       "input": "June 15th 2026 14:00 IST",
       "legacyExpectedCount": 1,
@@ -160,40 +143,6 @@
       "actualCount": 4,
       "missingLocalTimes": [],
       "warnings": [],
-      "dates": []
-    },
-    {
-      "id": "android-171",
-      "input": "this Friday at noon PST",
-      "legacyExpectedCount": 1,
-      "actualCount": 0,
-      "missingLocalTimes": [
-        {
-          "hour": 12,
-          "minute": 0,
-          "timezone": "PST"
-        }
-      ],
-      "warnings": [
-        "Couldn't identify the city “noon”. Correct or remove the city, then choose a source timezone in More options."
-      ],
-      "dates": []
-    },
-    {
-      "id": "android-174",
-      "input": "tomorrow at noon GMT",
-      "legacyExpectedCount": 1,
-      "actualCount": 0,
-      "missingLocalTimes": [
-        {
-          "hour": 12,
-          "minute": 0,
-          "timezone": "GMT"
-        }
-      ],
-      "warnings": [
-        "Couldn't identify the city “noon”. Correct or remove the city, then choose a source timezone in More options."
-      ],
       "dates": []
     },
     {
@@ -3736,6 +3685,59 @@
     {
       "id": "web-zone-first-670",
       "input": "UTC 10 April\nPDT 3pm to JST 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-677",
+      "input": "UTC 8 April; XYZ: 10 April\nUTC noon; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-678",
+      "input": "UTC 8 April; America/Foo 10 April\nUTC noon; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-679",
+      "input": "UTC 8 April; UTC+ 10 April\nUTC noon; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-680",
+      "input": "UTC 8 April; UTC+99 10 April\nUTC noon; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 2,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+99. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-681",
+      "input": "UTC 8 April; UTC 10 April\nUTC noon; UTC midnight",
       "legacyExpectedCount": 1,
       "actualCount": 2,
       "missingLocalTimes": [],
