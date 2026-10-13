@@ -3963,5 +3963,227 @@
     "text": "PDT April 8 in Atlantis to JST April 10 3pm; UTC April 11 noon",
     "instants": ["2026-04-11T12:00:00Z"],
     "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "known conflicting date-only JST rejects to owned end",
+    "text": "PDT April 8 JST to JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only PST rejects to owned end",
+    "text": "PDT April 8 PST to JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only America/New_York rejects to owned end",
+    "text": "PDT April 8 America/New_York to JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only in Tokyo rejects to owned end",
+    "text": "PDT April 8 in Tokyo to JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only JST rejects until owned end",
+    "text": "PDT April 8 JST until JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only PST rejects until owned end",
+    "text": "PDT April 8 PST until JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only America/New_York rejects until owned end",
+    "text": "PDT April 8 America/New_York until JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only in Tokyo rejects until owned end",
+    "text": "PDT April 8 in Tokyo until JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only JST rejects till owned end",
+    "text": "PDT April 8 JST till JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only PST rejects till owned end",
+    "text": "PDT April 8 PST till JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only America/New_York rejects till owned end",
+    "text": "PDT April 8 America/New_York till JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only in Tokyo rejects till owned end",
+    "text": "PDT April 8 in Tokyo till JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only JST rejects through owned end",
+    "text": "PDT April 8 JST through JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only PST rejects through owned end",
+    "text": "PDT April 8 PST through JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only America/New_York rejects through owned end",
+    "text": "PDT April 8 America/New_York through JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only in Tokyo rejects through owned end",
+    "text": "PDT April 8 in Tokyo through JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only JST rejects - owned end",
+    "text": "PDT April 8 JST - JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only PST rejects - owned end",
+    "text": "PDT April 8 PST - JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only America/New_York rejects - owned end",
+    "text": "PDT April 8 America/New_York - JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only in Tokyo rejects - owned end",
+    "text": "PDT April 8 in Tokyo - JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only JST rejects – owned end",
+    "text": "PDT April 8 JST – JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only PST rejects – owned end",
+    "text": "PDT April 8 PST – JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only America/New_York rejects – owned end",
+    "text": "PDT April 8 America/New_York – JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "known conflicting date-only in Tokyo rejects – owned end",
+    "text": "PDT April 8 in Tokyo – JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "unprefixed date heading MEET prose retains context",
+    "text": "April 8 MEET soon; 3pm UTC",
+    "instants": ["2026-04-08T15:00:00Z"]
+  },
+  {
+    "name": "unprefixed date heading TEAM prose retains context",
+    "text": "April 8 TEAM soon; 3pm UTC",
+    "instants": ["2026-04-08T15:00:00Z"]
+  },
+  {
+    "name": "unprefixed date heading RSVP prose retains context",
+    "text": "April 8 RSVP soon; 3pm UTC",
+    "instants": ["2026-04-08T15:00:00Z"]
+  },
+  {
+    "name": "ordinary standalone uppercase date prose retains date result",
+    "text": "April 8 RSVP please",
+    "instants": [],
+    "dates": ["2026-04-08"]
+  },
+  {
+    "name": "compatible city on date-only prefix retains explicitly timed end",
+    "text": "PDT April 8 in Seattle to JST April 10 3pm",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "compact range keeps both clocks with shared written date",
+    "text": "3pm-4pm on April 10",
+    "instants": ["2026-04-10T15:00:00Z", "2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC", "UTC"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "compact range trailing end date retains independent date owners",
+    "text": "April 8 3pm-4pm on April 10",
+    "instants": ["2026-04-08T15:00:00Z", "2026-04-10T16:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "compact range bare trailing date preserves native clock ownership",
+    "text": "April 8 3pm-4pm April 10",
+    "instants": ["2026-04-08T15:00:00Z", "2026-04-08T16:00:00Z"],
+    "sourceZones": ["UTC", "UTC"]
+  },
+  {
+    "name": "compact prefixed range retains trailing end date",
+    "text": "PDT April 8 3pm-4pm on April 10",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T23:00:00Z"],
+    "sourceZones": ["-07:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "compact trailing date inherits explicit start year across year boundary",
+    "text": "PDT December 31, 2027 3pm-4pm on January 1",
+    "instants": ["2027-12-31T22:00:00Z", "2028-01-01T23:00:00Z"],
+    "sourceZones": ["-07:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "next-line date owns its independently written clock",
+    "text": "April 8 3pm to 4pm\nApril 10 5pm",
+    "instants": [
+      "2026-04-08T15:00:00Z",
+      "2026-04-08T16:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ]
+  },
+  {
+    "name": "next-line date owns its independently connected clock",
+    "text": "April 8 3pm to 4pm\nApril 10 at 5pm",
+    "instants": [
+      "2026-04-08T15:00:00Z",
+      "2026-04-08T16:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ]
   }
 ]

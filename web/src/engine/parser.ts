@@ -234,7 +234,6 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
   parser.refiners.unshift({
     refine: (context, results) => {
       const reference = context.createParsingComponents({});
-      const separated: ParsingResult[] = [];
       for (const result of results) {
         for (const components of [result.start, result.end])
           if (
@@ -292,39 +291,6 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
             ) {
               result.text = result.text.slice(0, separator.index).trimEnd();
               result.end = undefined;
-            } else if (
-              result.start.isCertain("hour") &&
-              results.some(
-                (date) =>
-                  date !== result &&
-                  date.start.isCertain("day") &&
-                  !date.start.isCertain("hour") &&
-                  date.index >= result.index + result.text.length &&
-                  /^\s+(?:on\s+)?$/i.test(
-                    context.text.slice(
-                      result.index + result.text.length,
-                      date.index,
-                    ),
-                  ),
-              )
-            ) {
-              // Let each clock merge with its own surrounding date before
-              // combining the range; a trailing date belongs to the end.
-              const end = result.clone();
-              end.start = result.end.clone();
-              end.start.addTags([...result.end.tags()]);
-              end.end = undefined;
-              end.index = endIndex;
-              end.text = context.text.slice(
-                endIndex,
-                result.index + result.text.length,
-              );
-              for (const part of dateParts)
-                if (!end.start.isCertain(part))
-                  end.start.imply(part, reference.get(part)!);
-              separated.push(end);
-              result.text = result.text.slice(0, separator.index).trimEnd();
-              result.end = undefined;
             } else if (result.start.isCertain("hour"))
               result.end.addTag(`chronoshift/endpoint-index:${endIndex}`);
           }
@@ -337,7 +303,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
             for (const part of dateParts)
               components.imply(part, reference.get(part)!);
       }
-      return [...results, ...separated].sort((a, b) => a.index - b.index);
+      return results;
     },
   });
   parser.parsers.unshift({
@@ -372,6 +338,71 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
         { hour: (+m[1] % 12) + pm, minute: +(m[2] || 0), meridiem: pm ? 1 : 0 },
         { hour: (+m[3] % 12) + pm, minute: +(m[4] || 0), meridiem: pm ? 1 : 0 },
       );
+    },
+  });
+  parser.refiners.push({
+    refine: (context, results) => {
+      const consumed = new Set<number>();
+      return results.flatMap((result, index) => {
+        if (consumed.has(index)) return [];
+        const date = results[index + 1];
+        const endpointTag = [...(result.end?.tags() ?? [])].find((tag) =>
+          tag.startsWith("chronoshift/endpoint-index:"),
+        );
+        const connector = date
+          ? context.text.slice(result.index + result.text.length, date.index)
+          : "";
+        if (
+          !result.end ||
+          !result.start.isCertain("hour") ||
+          !result.end.isCertain("hour") ||
+          !date?.start.isOnlyDate() ||
+          !endpointTag ||
+          !(
+            /^[ \t]+on[ \t]+$/i.test(connector) ||
+            (/^[ \t]+$/.test(connector) && /^on[ \t]+/i.test(date.text))
+          )
+        )
+          return [result];
+        // Resolve date/time ownership first. A date with its own clock is no
+        // longer date-only here, and compact hyphens retain range ownership
+        // through native offset extraction.
+        const endIndex = +endpointTag.split(":")[1];
+        const start = result.clone();
+        start.start.addTags([...result.start.tags()]);
+        start.end = undefined;
+        start.text = result.text
+          .slice(0, endIndex - result.index)
+          .replace(/(?:to|until|through|till|and|[-–~])\s*$/i, "")
+          .trimEnd();
+        const end = result.clone();
+        end.start = result.end.clone();
+        end.start.addTags(
+          [...result.end.tags()].filter(
+            (tag) =>
+              !tag.startsWith("chronoshift/") ||
+              tag.startsWith("chronoshift/iso-offset:"),
+          ),
+        );
+        end.start.addTags([...date.start.tags()]);
+        for (const part of dateParts) {
+          end.start.delete([part]);
+          if (date.start.isCertain(part))
+            end.start.assign(part, date.start.get(part)!);
+          else end.start.imply(part, date.start.get(part)!);
+        }
+        end.end = undefined;
+        end.index = endIndex;
+        end.text = context.text.slice(endIndex, date.index + date.text.length);
+        consumed.add(index + 1);
+        return [
+          range.mergeResults(
+            context.text.slice(start.index + start.text.length, endIndex),
+            start,
+            end,
+          ),
+        ];
+      });
     },
   });
   parser.refiners.push({

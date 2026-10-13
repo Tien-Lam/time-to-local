@@ -264,6 +264,38 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       parserText.slice(0, prefix.index) +
       " ".repeat(prefix.end - prefix.index) +
       parserText.slice(prefix.end);
+  for (const prefix of prefixes) {
+    const adjacent = text.slice(prefix.end, prefix.end + 100);
+    const qualifier = adjacent.match(IANA_TOKEN);
+    if (
+      !qualifier ||
+      !/^\s+(?:to|until|through|till|[-–])\s*/i.test(
+        adjacent.slice(qualifier.index! + qualifier[0].length),
+      )
+    )
+      continue;
+    const dateText = adjacent
+      .slice(0, qualifier.index)
+      .replace(/\s+(?:in|at)\s*$/i, "")
+      .trim();
+    const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
+    if (
+      dates.length !== 1 ||
+      !dates[0].start.isCertain("day") ||
+      dates[0].start.isCertain("hour") ||
+      dates[0].start.isCertain("minute") ||
+      dates[0].index !== 0 ||
+      dates[0].text.trim() !== dateText
+    )
+      continue;
+    // A slash-bearing qualifier can make Chrono discard a complete date.
+    // Keep its original ownership available for validation and range rejection.
+    const index = prefix.end + qualifier.index!;
+    parserText =
+      parserText.slice(0, index) +
+      " ".repeat(qualifier[0].length) +
+      parserText.slice(index + qualifier[0].length);
+  }
   const parsed = parser.parse(parserText, ref, { timezones: timezoneHints });
   const warnings: string[] = [],
     results: TimeResult[] = [];
@@ -407,6 +439,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const dateOnly = !r.start.isCertain("hour") && !r.start.isCertain("minute");
     if (
       dateOnly &&
+      prefix &&
       (!choicesFor(
         prefix?.text ?? matchedText,
         qualifierSuffix,
@@ -418,6 +451,45 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     ) {
       reject();
       continue;
+    }
+    if (dateOnly && prefix) {
+      const ownerZones = [
+        ...(matchedText + adjacentQualifier(suffix)).matchAll(
+          new RegExp(`\\b(?:${zoneToken})\\b`, "gi"),
+        ),
+      ].flatMap((token) => explicitZones(token[0]) ?? []);
+      const cities = cityChoices(adjacentQualifier(qualifierSuffix), warnings);
+      const prefixChoices = explicitZones(prefix.text) ?? [];
+      const cityConflict = cities?.some((city) =>
+        prefixChoices.some((choice) => {
+          if (!/^[+-]/.test(choice.zone))
+            return zoneIdentity(choice.zone) !== zoneIdentity(city.zone);
+          // A date-only owner has no selected clock. Accept a fixed/city
+          // pairing only when that offset is possible on its written date.
+          return !Array.from({ length: 24 }, (_, hour) => hour).some((hour) =>
+            civilInstants(
+              date.toPlainDateTime({ hour }),
+              city.zone,
+            ).instants.some(
+              (instant) =>
+                offsetMinutes(city.zone, instant) ===
+                offsetMinutes(choice.zone, instant),
+            ),
+          );
+        }),
+      );
+      if (
+        new Set(ownerZones.map((choice) => zoneIdentity(choice.zone))).size >
+          new Set(prefixChoices.map((choice) => zoneIdentity(choice.zone)))
+            .size ||
+        cityConflict
+      ) {
+        warnings.push(
+          "Conflicting timezones around one time. Keep one source timezone per time and try again.",
+        );
+        reject();
+        continue;
+      }
     }
     if (explicitDate) {
       contextDate = date;
