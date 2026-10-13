@@ -74,7 +74,7 @@ function zonePrefixes(text: string) {
     `(?:this|next|last|in)\\b|` +
     `(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\b|` +
     `\\d{1,2}(?:st|nd|rd|th)?[ \\t]+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\b|` +
-    `\\d{1,4}(?=[:/\\-]|[ \\t]*[ap]m\\b|[ \\t]+hours\\b)`;
+    `\\d{1,4}(?=[:/.\\-]|[ \\t]*[ap]m\\b|[ \\t]+hours\\b)`;
   const pattern = new RegExp(
     `(?:^|[,;.!?\\n(–-]|\\b(?:and|then|to|until|till|through|at|in)\\b)[ \\t]*` +
       `(${zoneToken})(?:[ \\t]*:[ \\t]*|[ \\t]+)(?:at[ \\t]+)?(?=${temporalStart})`,

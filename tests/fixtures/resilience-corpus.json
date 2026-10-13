@@ -13413,6 +13413,150 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "Unspaced sentence punctuation bounds owned date context"
+    },
+    {
+      "id": "web-zone-first-832",
+      "input": "PDT 2026.04.10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-833",
+      "input": "JST 2026.04.10 noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-834",
+      "input": "CST 2026.04.10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-835",
+      "input": "America/New_York 2026.04.10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-836",
+      "input": "JST 04.10.2026 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-837",
+      "input": "JST 2026.04.10; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-838",
+      "input": "JST 2026.04.10 noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-839",
+      "input": "PDT 2026.04.10 noon to JST 2026.04.12 midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-840",
+      "input": "JST 2026.04.10 noon. utc 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-841",
+      "input": "JST 2026.04.10; UTC noon. utc 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-842",
+      "input": "JST 2026.04.10 noon PST; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-843",
+      "input": "America/Atlantis 2026.04.10 noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-844",
+      "input": "ZZZ: 2026.04.10 noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-845",
+      "input": "UTC+25:00 2026.04.10 noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-846",
+      "input": "JST 2026.04.10 noon to UTC+25:00 midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
+    },
+    {
+      "id": "web-zone-first-847",
+      "input": "JST 2026.04.10 noon to America/Atlantis midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Dotted date prefix ownership, source identity, calendar context and whole-range rejection/recovery"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

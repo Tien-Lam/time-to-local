@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 1186,
+  "total": 1202,
   "crashes": 0,
   "legacyCountDifferences": 38,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -3741,6 +3741,72 @@
       "missingLocalTimes": [],
       "warnings": [
         "Invalid timezone offset UTC+99. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-842",
+      "input": "JST 2026.04.10 noon PST; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-843",
+      "input": "America/Atlantis 2026.04.10 noon; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Atlantis. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-844",
+      "input": "ZZZ: 2026.04.10 noon; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone ZZZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-845",
+      "input": "UTC+25:00 2026.04.10 noon; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-846",
+      "input": "JST 2026.04.10 noon to UTC+25:00 midnight; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-847",
+      "input": "JST 2026.04.10 noon to America/Atlantis midnight; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Atlantis. Correct it and try again."
       ],
       "dates": []
     }
