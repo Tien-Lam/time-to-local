@@ -2153,5 +2153,308 @@
     "instants": ["2026-04-09T22:00:00Z"],
     "sourceZones": ["America/Los_Angeles"],
     "originals": ["PT 2026-04-09T15:00 aT Seattle"]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 4pm with to",
+    "text": "PDT 3pm on April 8 to JST 10 April 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 to JST 10 April 4pm",
+      "PDT 3pm on April 8 to JST 10 April 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April at 4pm with to",
+    "text": "PDT 3pm on April 8 to JST 10 April at 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 to JST 10 April at 4pm",
+      "PDT 3pm on April 8 to JST 10 April at 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 2026 4pm with to",
+    "text": "PDT 3pm on April 8 to JST 10 April 2026 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 to JST 10 April 2026 4pm",
+      "PDT 3pm on April 8 to JST 10 April 2026 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 4pm with until",
+    "text": "PDT 3pm on April 8 until JST 10 April 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 until JST 10 April 4pm",
+      "PDT 3pm on April 8 until JST 10 April 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April at 4pm with until",
+    "text": "PDT 3pm on April 8 until JST 10 April at 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 until JST 10 April at 4pm",
+      "PDT 3pm on April 8 until JST 10 April at 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 2026 4pm with until",
+    "text": "PDT 3pm on April 8 until JST 10 April 2026 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 until JST 10 April 2026 4pm",
+      "PDT 3pm on April 8 until JST 10 April 2026 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 4pm with till",
+    "text": "PDT 3pm on April 8 till JST 10 April 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 till JST 10 April 4pm",
+      "PDT 3pm on April 8 till JST 10 April 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April at 4pm with till",
+    "text": "PDT 3pm on April 8 till JST 10 April at 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 till JST 10 April at 4pm",
+      "PDT 3pm on April 8 till JST 10 April at 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 2026 4pm with till",
+    "text": "PDT 3pm on April 8 till JST 10 April 2026 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 till JST 10 April 2026 4pm",
+      "PDT 3pm on April 8 till JST 10 April 2026 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 4pm with through",
+    "text": "PDT 3pm on April 8 through JST 10 April 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 through JST 10 April 4pm",
+      "PDT 3pm on April 8 through JST 10 April 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April at 4pm with through",
+    "text": "PDT 3pm on April 8 through JST 10 April at 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 through JST 10 April at 4pm",
+      "PDT 3pm on April 8 through JST 10 April at 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 2026 4pm with through",
+    "text": "PDT 3pm on April 8 through JST 10 April 2026 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 through JST 10 April 2026 4pm",
+      "PDT 3pm on April 8 through JST 10 April 2026 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 4pm with -",
+    "text": "PDT 3pm on April 8 - JST 10 April 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 - JST 10 April 4pm",
+      "PDT 3pm on April 8 - JST 10 April 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April at 4pm with -",
+    "text": "PDT 3pm on April 8 - JST 10 April at 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 - JST 10 April at 4pm",
+      "PDT 3pm on April 8 - JST 10 April at 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 2026 4pm with -",
+    "text": "PDT 3pm on April 8 - JST 10 April 2026 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 - JST 10 April 2026 4pm",
+      "PDT 3pm on April 8 - JST 10 April 2026 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 4pm with –",
+    "text": "PDT 3pm on April 8 – JST 10 April 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 – JST 10 April 4pm",
+      "PDT 3pm on April 8 – JST 10 April 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April at 4pm with –",
+    "text": "PDT 3pm on April 8 – JST 10 April at 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 – JST 10 April at 4pm",
+      "PDT 3pm on April 8 – JST 10 April at 4pm"
+    ]
+  },
+  {
+    "name": "timezone-first complete day-first end 10 April 2026 4pm with –",
+    "text": "PDT 3pm on April 8 – JST 10 April 2026 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT 3pm on April 8 – JST 10 April 2026 4pm",
+      "PDT 3pm on April 8 – JST 10 April 2026 4pm"
+    ]
+  },
+  {
+    "name": "unprefixed written ISO start owns offset with to end prefix",
+    "text": "2026-04-09T15:00Z to JST 4pm",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO start owns offset with until end prefix",
+    "text": "2026-04-09T15:00Z until JST 4pm",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO start owns offset with till end prefix",
+    "text": "2026-04-09T15:00Z till JST 4pm",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO start owns offset with through end prefix",
+    "text": "2026-04-09T15:00Z through JST 4pm",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO start owns offset with - end prefix",
+    "text": "2026-04-09T15:00Z - JST 4pm",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO start owns offset with – end prefix",
+    "text": "2026-04-09T15:00Z – JST 4pm",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO nonzero start owns offset before regional end",
+    "text": "2026-04-09T15:00-07:00 to ET 4pm",
+    "instants": ["2026-04-09T22:00:00Z", "2026-04-09T20:00:00Z"],
+    "sourceZones": ["-07:00", "America/New_York"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO matching suffix keeps endpoint ownership",
+    "text": "2026-04-09T15:00Z UTC to JST 4pm",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unprefixed written ISO conflicting suffix rejects complete range",
+    "text": "2026-04-09T15:00Z PST to JST 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "native complete calendar-day range preserved under overlap guard",
+    "text": "April 8-10, 2026 3pm PDT",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T22:00:00Z"],
+    "sourceZones": ["-07:00", "-07:00"],
+    "endpoints": ["start", "end"]
   }
 ]

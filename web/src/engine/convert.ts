@@ -500,11 +500,18 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             ? rangePrefixes.at(-1)
             : undefined
           : prefix;
+      const isoZoneText = zones
+        .filter(
+          (token) =>
+            rangeBoundary === undefined ||
+            sourceIndex + token.index! >= rangeBoundary ===
+              (endpoint === "end"),
+        )
+        .map((token) => token[0])
+        .join(" ");
       const choices = choicesFor(
         endpointPrefix?.text ??
-          (endpoint === "end" && writtenIsoOffset(c) !== undefined
-            ? ""
-            : zoneText),
+          (writtenIsoOffset(c) !== undefined ? isoZoneText : zoneText),
         endpoint === "start" && r.end && (prefix || rangePrefixes.length)
           ? ""
           : qualifierSuffix,

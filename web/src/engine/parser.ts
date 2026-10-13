@@ -243,7 +243,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
             components.addTag(
               `chronoshift/iso-offset:${components.get("timezoneOffset")}`,
             );
-        if (result.end && result.start.isCertain("hour")) {
+        if (result.end) {
           const separator = result.text.match(
             /\b(?:to|until|through|till|and)\b\s*|[-–~〜?]\s*/i,
           );
@@ -261,7 +261,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
             );
             // A month-first date can overlap the apparent START clock too:
             // "3pm on April 8 to 4pm" must not turn calendar day 8 into 8pm.
-            if (dateOwnsStart) {
+            if (result.start.isCertain("hour") && dateOwnsStart) {
               const resultEnd = result.index + result.text.length;
               const tags = [...result.end.tags()];
               result.start = result.end.clone();
@@ -290,7 +290,8 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
             ) {
               result.text = result.text.slice(0, separator.index).trimEnd();
               result.end = undefined;
-            } else result.end.addTag(`chronoshift/endpoint-index:${endIndex}`);
+            } else if (result.start.isCertain("hour"))
+              result.end.addTag(`chronoshift/endpoint-index:${endIndex}`);
           }
         }
         for (const components of [result.start, result.end])
