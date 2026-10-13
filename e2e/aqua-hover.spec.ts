@@ -1,10 +1,14 @@
 import { test, expect } from "./fixtures";
 import { choose, enterZone } from "./choices";
 
+test.use({ actionTimeout: 10_000 });
+
 for (const theme of ["light", "dark"] as const) {
   test(`Aqua ${theme} dropdown feedback follows the field curve`, async ({
     page,
   }, info) => {
+    // Capture both fields during hover and press without borrowing the action deadline.
+    test.setTimeout(60_000);
     await page.goto("/");
     await page.getByLabel("Appearance", { exact: true }).click();
     await choose(page, "Design", "aqua");
