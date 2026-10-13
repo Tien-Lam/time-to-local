@@ -376,6 +376,44 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       parserText.slice(date.index + date.text.length);
   }
   for (const prefix of prefixes) {
+    // An unprefixed complete date can own a following prefixed range clock
+    // too. Keep that native heading before the masked endpoint exposes its
+    // leading day to partial month/offset matches.
+    const before = text.slice(0, prefix.index);
+    const separator = before.match(
+      /(?:[ \t]+(?:to|until|through|till)|[ \t]*[-–])[ \t]*$/i,
+    );
+    if (!separator) continue;
+    const start =
+      Math.max(
+        before.lastIndexOf("\n", separator.index! - 1),
+        before.lastIndexOf(";", separator.index! - 1),
+      ) + 1;
+    const rawDate = before.slice(start, separator.index);
+    if (rawDate.length > 100) continue;
+    const dateText = rawDate.trim();
+    const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
+    if (
+      dates.length !== 1 ||
+      dates[0].end ||
+      dates[0].start.isCertain("hour") ||
+      dates[0].start.isCertain("minute") ||
+      (!dates[0].start.isCertain("day") &&
+        !dates[0].start.isCertain("weekday")) ||
+      dates[0].index !== 0 ||
+      dates[0].text.trim() !== dateText
+    )
+      continue;
+    const date = dates[0] as ParsingResult;
+    date.index = start + rawDate.indexOf(dateText);
+    if (preservedDates.some((saved) => saved.index === date.index)) continue;
+    preservedDates.push(date);
+    parserText =
+      parserText.slice(0, date.index) +
+      " ".repeat(date.text.length) +
+      parserText.slice(date.index + date.text.length);
+  }
+  for (const prefix of prefixes) {
     if (preservedDates.some((date) => prefixAt(date.index) === prefix))
       continue;
     const adjacent = text.slice(
@@ -386,9 +424,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           text.length,
       ),
     );
-    const paragraphDate = adjacent.match(/^([^\r\n]+)\r?\n/);
-    if (paragraphDate) {
-      const dateText = paragraphDate[1].trim();
+    const isolatedDate = adjacent.match(
+      /^(.+?)(?:\r?\n|[ \t]+(?:to|until|through|till)[ \t]*$|[ \t]*[-–][ \t]*$)/i,
+    );
+    if (isolatedDate) {
+      const dateText = isolatedDate[1].trim();
       const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
       if (
         dates.length === 1 &&

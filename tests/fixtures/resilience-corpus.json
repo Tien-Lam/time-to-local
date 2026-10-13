@@ -12180,6 +12180,303 @@
       "legacyExpectedCount": 2,
       "expected": [],
       "description": "CRLF and clause-local date owners, exact now endpoints, temporal/city boundaries"
+    },
+    {
+      "id": "web-zone-first-695",
+      "input": "UTC 10 April - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-696",
+      "input": "UTC 10 April - PDT 3pm on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-697",
+      "input": "UTC 10 April - UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-698",
+      "input": "UTC 10 April - UTC noon on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-699",
+      "input": "UTC 10 April - UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-700",
+      "input": "UTC 10 April - UTC midnight on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-701",
+      "input": "UTC 2026-04-10 - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-702",
+      "input": "UTC 2026-04-10 - PDT 3pm on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-703",
+      "input": "UTC 2026-04-10 - UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-704",
+      "input": "UTC 2026-04-10 - UTC noon on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-705",
+      "input": "UTC 2026-04-10 - UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-706",
+      "input": "UTC 2026-04-10 - UTC midnight on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-707",
+      "input": "America/New_York 10 April - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-708",
+      "input": "America/New_York 10 April - PDT 3pm on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-709",
+      "input": "America/New_York 10 April - UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-710",
+      "input": "America/New_York 10 April - UTC noon on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-711",
+      "input": "America/New_York 10 April - UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-712",
+      "input": "America/New_York 10 April - UTC midnight on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-713",
+      "input": "10 April - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-714",
+      "input": "10 April - PDT 3pm on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-715",
+      "input": "10 April - UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-716",
+      "input": "10 April - UTC noon on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-717",
+      "input": "10 April - UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-718",
+      "input": "10 April - UTC midnight on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-719",
+      "input": "JST tomorrow - UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-720",
+      "input": "JST tomorrow – UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-721",
+      "input": "JST next Monday - UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-722",
+      "input": "JST next Monday – UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-723",
+      "input": "UTC 8 April; XYZ: 10 April - PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-724",
+      "input": "UTC 8 April; America/Foo 10 April - PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-725",
+      "input": "UTC 8 April; UTC+ 10 April - PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-726",
+      "input": "UTC 8 April; UTC+99 10 April - PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-727",
+      "input": "UTC 10 April - PDT now; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

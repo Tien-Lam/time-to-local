@@ -8233,5 +8233,1041 @@
     "instants": ["2026-11-10T00:00:00Z", "2026-11-01T06:30:00.123456789Z"],
     "sourceZones": ["+00:00", "America/New_York"],
     "endpoints": ["start", "end"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - PDT 3pm mdy",
+    "text": "UTC 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - PDT 3pm on 12 April mdy",
+    "text": "UTC 10 April - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC noon mdy",
+    "text": "UTC 10 April - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC noon on 12 April mdy",
+    "text": "UTC 10 April - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC midnight mdy",
+    "text": "UTC 10 April - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC midnight on 12 April mdy",
+    "text": "UTC 10 April - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to PDT 3pm mdy",
+    "text": "UTC 10 April to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to PDT 3pm on 12 April mdy",
+    "text": "UTC 10 April to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC noon mdy",
+    "text": "UTC 10 April to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC noon on 12 April mdy",
+    "text": "UTC 10 April to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC midnight mdy",
+    "text": "UTC 10 April to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC midnight on 12 April mdy",
+    "text": "UTC 10 April to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - PDT 3pm mdy",
+    "text": "UTC 2026-04-10 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - PDT 3pm on 12 April mdy",
+    "text": "UTC 2026-04-10 - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC noon mdy",
+    "text": "UTC 2026-04-10 - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC noon on 12 April mdy",
+    "text": "UTC 2026-04-10 - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC midnight mdy",
+    "text": "UTC 2026-04-10 - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC midnight on 12 April mdy",
+    "text": "UTC 2026-04-10 - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to PDT 3pm mdy",
+    "text": "UTC 2026-04-10 to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to PDT 3pm on 12 April mdy",
+    "text": "UTC 2026-04-10 to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC noon mdy",
+    "text": "UTC 2026-04-10 to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC noon on 12 April mdy",
+    "text": "UTC 2026-04-10 to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC midnight mdy",
+    "text": "UTC 2026-04-10 to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC midnight on 12 April mdy",
+    "text": "UTC 2026-04-10 to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - PDT 3pm mdy",
+    "text": "America/New_York 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - PDT 3pm on 12 April mdy",
+    "text": "America/New_York 10 April - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC noon mdy",
+    "text": "America/New_York 10 April - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC noon on 12 April mdy",
+    "text": "America/New_York 10 April - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC midnight mdy",
+    "text": "America/New_York 10 April - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC midnight on 12 April mdy",
+    "text": "America/New_York 10 April - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to PDT 3pm mdy",
+    "text": "America/New_York 10 April to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to PDT 3pm on 12 April mdy",
+    "text": "America/New_York 10 April to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC noon mdy",
+    "text": "America/New_York 10 April to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC noon on 12 April mdy",
+    "text": "America/New_York 10 April to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC midnight mdy",
+    "text": "America/New_York 10 April to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC midnight on 12 April mdy",
+    "text": "America/New_York 10 April to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - PDT 3pm mdy",
+    "text": "10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - PDT 3pm on 12 April mdy",
+    "text": "10 April - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC noon mdy",
+    "text": "10 April - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC noon on 12 April mdy",
+    "text": "10 April - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC midnight mdy",
+    "text": "10 April - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC midnight on 12 April mdy",
+    "text": "10 April - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to PDT 3pm mdy",
+    "text": "10 April to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to PDT 3pm on 12 April mdy",
+    "text": "10 April to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC noon mdy",
+    "text": "10 April to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC noon on 12 April mdy",
+    "text": "10 April to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC midnight mdy",
+    "text": "10 April to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC midnight on 12 April mdy",
+    "text": "10 April to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - PDT 3pm dmy",
+    "text": "UTC 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - PDT 3pm on 12 April dmy",
+    "text": "UTC 10 April - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC noon dmy",
+    "text": "UTC 10 April - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC noon on 12 April dmy",
+    "text": "UTC 10 April - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC midnight dmy",
+    "text": "UTC 10 April - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April - UTC midnight on 12 April dmy",
+    "text": "UTC 10 April - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to PDT 3pm dmy",
+    "text": "UTC 10 April to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to PDT 3pm on 12 April dmy",
+    "text": "UTC 10 April to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC noon dmy",
+    "text": "UTC 10 April to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC noon on 12 April dmy",
+    "text": "UTC 10 April to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC midnight dmy",
+    "text": "UTC 10 April to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 10 April to UTC midnight on 12 April dmy",
+    "text": "UTC 10 April to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - PDT 3pm dmy",
+    "text": "UTC 2026-04-10 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - PDT 3pm on 12 April dmy",
+    "text": "UTC 2026-04-10 - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC noon dmy",
+    "text": "UTC 2026-04-10 - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC noon on 12 April dmy",
+    "text": "UTC 2026-04-10 - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC midnight dmy",
+    "text": "UTC 2026-04-10 - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 - UTC midnight on 12 April dmy",
+    "text": "UTC 2026-04-10 - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to PDT 3pm dmy",
+    "text": "UTC 2026-04-10 to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to PDT 3pm on 12 April dmy",
+    "text": "UTC 2026-04-10 to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC noon dmy",
+    "text": "UTC 2026-04-10 to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC noon on 12 April dmy",
+    "text": "UTC 2026-04-10 to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC midnight dmy",
+    "text": "UTC 2026-04-10 to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner UTC 2026-04-10 to UTC midnight on 12 April dmy",
+    "text": "UTC 2026-04-10 to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - PDT 3pm dmy",
+    "text": "America/New_York 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - PDT 3pm on 12 April dmy",
+    "text": "America/New_York 10 April - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC noon dmy",
+    "text": "America/New_York 10 April - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC noon on 12 April dmy",
+    "text": "America/New_York 10 April - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC midnight dmy",
+    "text": "America/New_York 10 April - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April - UTC midnight on 12 April dmy",
+    "text": "America/New_York 10 April - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to PDT 3pm dmy",
+    "text": "America/New_York 10 April to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to PDT 3pm on 12 April dmy",
+    "text": "America/New_York 10 April to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC noon dmy",
+    "text": "America/New_York 10 April to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC noon on 12 April dmy",
+    "text": "America/New_York 10 April to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC midnight dmy",
+    "text": "America/New_York 10 April to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner America/New_York 10 April to UTC midnight on 12 April dmy",
+    "text": "America/New_York 10 April to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - PDT 3pm dmy",
+    "text": "10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - PDT 3pm on 12 April dmy",
+    "text": "10 April - PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC noon dmy",
+    "text": "10 April - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC noon on 12 April dmy",
+    "text": "10 April - UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC midnight dmy",
+    "text": "10 April - UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April - UTC midnight on 12 April dmy",
+    "text": "10 April - UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to PDT 3pm dmy",
+    "text": "10 April to PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to PDT 3pm on 12 April dmy",
+    "text": "10 April to PDT 3pm on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["-07:00", "+00:00"],
+    "originals": ["PDT 3pm on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC noon dmy",
+    "text": "10 April to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC noon on 12 April dmy",
+    "text": "10 April to UTC noon on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T12:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC noon on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC midnight dmy",
+    "text": "10 April to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-10T00:00:00Z", "2026-04-10T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "complete date-only range owner 10 April to UTC midnight on 12 April dmy",
+    "text": "10 April to UTC midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T00:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "originals": ["UTC midnight on 12 April", "UTC 5pm"],
+    "endpoints": ["undefined", "undefined"]
+  },
+  {
+    "name": "relative date-only range owner JST tomorrow -",
+    "text": "JST tomorrow - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-08T17:00:00Z"]
+  },
+  {
+    "name": "relative date-only range owner JST tomorrow –",
+    "text": "JST tomorrow – UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-08T12:00:00Z", "2026-04-08T17:00:00Z"]
+  },
+  {
+    "name": "relative date-only range owner JST next Monday -",
+    "text": "JST next Monday - UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-13T12:00:00Z", "2026-04-13T17:00:00Z"]
+  },
+  {
+    "name": "relative date-only range owner JST next Monday –",
+    "text": "JST next Monday – UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-13T12:00:00Z", "2026-04-13T17:00:00Z"]
+  },
+  {
+    "name": "invalid date-only bare range owner XYZ:",
+    "text": "UTC 8 April; XYZ: 10 April - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC noon"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "invalid date-only bare range owner America/Foo",
+    "text": "UTC 8 April; America/Foo 10 April - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC noon"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "invalid date-only bare range owner UTC+",
+    "text": "UTC 8 April; UTC+ 10 April - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC noon"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "invalid date-only bare range owner UTC+99",
+    "text": "UTC 8 April; UTC+99 10 April - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "endpoints": ["undefined"],
+    "originals": ["UTC noon"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "complete date-only range endpoint now exact UTC",
+    "text": "UTC 10 April - PDT now; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T22:00:00.123456789Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT now", "UTC noon"]
+  },
+  {
+    "name": "complete date-only range endpoint now exact Asia/Tokyo",
+    "text": "UTC 10 April - PDT now; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T22:00:00.123456789Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT now", "UTC noon"]
   }
 ]

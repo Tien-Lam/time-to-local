@@ -5,9 +5,9 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 1049,
+  "total": 1082,
   "crashes": 0,
-  "legacyCountDifferences": 42,
+  "legacyCountDifferences": 38,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
   "differences": [
     {
@@ -2336,50 +2336,6 @@
       "dates": []
     },
     {
-      "id": "web-zone-first-473",
-      "input": "PDT 04-08-2026-UTC 4pm on April 10; UTC April 12 5pm",
-      "legacyExpectedCount": 2,
-      "actualCount": 1,
-      "missingLocalTimes": [],
-      "warnings": [
-        "Conflicting timezones around one time. Keep one source timezone per time and try again."
-      ],
-      "dates": []
-    },
-    {
-      "id": "web-zone-first-477",
-      "input": "PDT 04-08-2026 - UTC 4pm on April 10; UTC April 12 5pm",
-      "legacyExpectedCount": 2,
-      "actualCount": 1,
-      "missingLocalTimes": [],
-      "warnings": [
-        "Conflicting timezones around one time. Keep one source timezone per time and try again."
-      ],
-      "dates": []
-    },
-    {
-      "id": "web-zone-first-481",
-      "input": "PDT 08-04-2026-UTC 4pm on April 10; UTC April 12 5pm",
-      "legacyExpectedCount": 2,
-      "actualCount": 1,
-      "missingLocalTimes": [],
-      "warnings": [
-        "Conflicting timezones around one time. Keep one source timezone per time and try again."
-      ],
-      "dates": []
-    },
-    {
-      "id": "web-zone-first-485",
-      "input": "PDT 08-04-2026 - UTC 4pm on April 10; UTC April 12 5pm",
-      "legacyExpectedCount": 2,
-      "actualCount": 1,
-      "missingLocalTimes": [],
-      "warnings": [
-        "Conflicting timezones around one time. Keep one source timezone per time and try again."
-      ],
-      "dates": []
-    },
-    {
       "id": "web-zone-first-488",
       "input": "America/New_York 3pm Mars/Olympus; UTC April 12 5pm",
       "legacyExpectedCount": 1,
@@ -3742,6 +3698,50 @@
       "actualCount": 2,
       "missingLocalTimes": [],
       "warnings": [],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-723",
+      "input": "UTC 8 April; XYZ: 10 April - PDT 3pm on 12 April; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-724",
+      "input": "UTC 8 April; America/Foo 10 April - PDT 3pm on 12 April; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-725",
+      "input": "UTC 8 April; UTC+ 10 April - PDT 3pm on 12 April; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-726",
+      "input": "UTC 8 April; UTC+99 10 April - PDT 3pm on 12 April; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+99. Correct it and try again."
+      ],
       "dates": []
     }
   ]
