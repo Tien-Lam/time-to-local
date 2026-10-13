@@ -5,9 +5,9 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 931,
+  "total": 964,
   "crashes": 0,
-  "legacyCountDifferences": 31,
+  "legacyCountDifferences": 33,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
   "differences": [
     {
@@ -3080,6 +3080,325 @@
       "missingLocalTimes": [],
       "warnings": [
         "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-577",
+      "input": "UTC+99 tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+99. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-578",
+      "input": "UTC+99 today; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+99. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-579",
+      "input": "UTC+15:00 tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+15:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-580",
+      "input": "UTC+15:00 today; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+15:00. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-581",
+      "input": "GMT+14:01 tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset GMT+14:01. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-582",
+      "input": "GMT+14:01 today; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset GMT+14:01. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-583",
+      "input": "UTC+05:99 tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+05:99. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-584",
+      "input": "UTC+05:99 today; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+05:99. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-585",
+      "input": "UTC+ tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-586",
+      "input": "UTC+ today; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-587",
+      "input": "UTC+03:xx tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+03:xx. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-588",
+      "input": "UTC+03:xx today; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+03:xx. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-589",
+      "input": "America/New_York April 10 3pm UTC; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-590",
+      "input": "America/New_York April 10 3pm in Tokyo; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-591",
+      "input": "UTC 8 April; America/New_York April 10 3pm UTC; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-592",
+      "input": "UTC 8 April; America/New_York April 10 3pm in Tokyo; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-593",
+      "input": "America/New_York 10 April 3pm UTC; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-594",
+      "input": "America/New_York 10 April 3pm in Tokyo; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-595",
+      "input": "UTC 8 April; America/New_York 10 April 3pm UTC; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-596",
+      "input": "UTC 8 April; America/New_York 10 April 3pm in Tokyo; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-597",
+      "input": "JST today; XYZ: tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-598",
+      "input": "JST today; Mars/Olympus tomorrow noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-599",
+      "input": "JST today; JST tomorrow noon UTC; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-600",
+      "input": "JST today; JST tomorrow noon in London; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-601",
+      "input": "America/New_York 8 April US/Eastern to XYZ: noon; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-602",
+      "input": "PDT today in Los Angeles",
+      "legacyExpectedCount": 0,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [],
+      "dates": [
+        "2026-04-06"
+      ]
+    },
+    {
+      "id": "web-zone-first-603",
+      "input": "PST today in Los Angeles",
+      "legacyExpectedCount": 1,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-604",
+      "input": "America/New_York 8 April US/Eastern In Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-605",
+      "input": "America/New_York 8 April US/Eastern At Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
       ],
       "dates": []
     }

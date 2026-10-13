@@ -5975,5 +5975,453 @@
     "now": "2026-04-06T00:30:00Z",
     "instants": ["2026-04-05T12:00:00Z"],
     "sourceZones": ["+00:00"]
+  },
+  {
+    "name": "malformed dated prefix UTC+99 tomorrow noon mdy warns and recovers",
+    "text": "UTC+99 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+99 today mdy warns and recovers",
+    "text": "UTC+99 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+15:00 tomorrow noon mdy warns and recovers",
+    "text": "UTC+15:00 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+15:00 today mdy warns and recovers",
+    "text": "UTC+15:00 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix GMT+14:01 tomorrow noon mdy warns and recovers",
+    "text": "GMT+14:01 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix GMT+14:01 today mdy warns and recovers",
+    "text": "GMT+14:01 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+05:99 tomorrow noon mdy warns and recovers",
+    "text": "UTC+05:99 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+05:99 today mdy warns and recovers",
+    "text": "UTC+05:99 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+ tomorrow noon mdy warns and recovers",
+    "text": "UTC+ tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+ today mdy warns and recovers",
+    "text": "UTC+ today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+03:xx tomorrow noon mdy warns and recovers",
+    "text": "UTC+03:xx tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+03:xx today mdy warns and recovers",
+    "text": "UTC+03:xx today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+99 tomorrow noon dmy warns and recovers",
+    "text": "UTC+99 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+99 today dmy warns and recovers",
+    "text": "UTC+99 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+15:00 tomorrow noon dmy warns and recovers",
+    "text": "UTC+15:00 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+15:00 today dmy warns and recovers",
+    "text": "UTC+15:00 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix GMT+14:01 tomorrow noon dmy warns and recovers",
+    "text": "GMT+14:01 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix GMT+14:01 today dmy warns and recovers",
+    "text": "GMT+14:01 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+05:99 tomorrow noon dmy warns and recovers",
+    "text": "UTC+05:99 tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+05:99 today dmy warns and recovers",
+    "text": "UTC+05:99 today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+ tomorrow noon dmy warns and recovers",
+    "text": "UTC+ tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+ today dmy warns and recovers",
+    "text": "UTC+ today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+03:xx tomorrow noon dmy warns and recovers",
+    "text": "UTC+03:xx tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "malformed dated prefix UTC+03:xx today dmy warns and recovers",
+    "text": "UTC+03:xx today; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "rejected dated owner UTC clears context mdy no header",
+    "text": "America/New_York April 10 3pm UTC; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected dated owner in Tokyo clears context mdy no header",
+    "text": "America/New_York April 10 3pm in Tokyo; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected dated owner UTC clears context mdy prior header",
+    "text": "UTC 8 April; America/New_York April 10 3pm UTC; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected dated owner in Tokyo clears context mdy prior header",
+    "text": "UTC 8 April; America/New_York April 10 3pm in Tokyo; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected dated owner UTC clears context dmy no header",
+    "text": "America/New_York 10 April 3pm UTC; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected dated owner in Tokyo clears context dmy no header",
+    "text": "America/New_York 10 April 3pm in Tokyo; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected dated owner UTC clears context dmy prior header",
+    "text": "UTC 8 April; America/New_York 10 April 3pm UTC; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected dated owner in Tokyo clears context dmy prior header",
+    "text": "UTC 8 April; America/New_York 10 April 3pm in Tokyo; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected relative owner XYZ: tomorrow noon ends prior date context",
+    "text": "JST today; XYZ: tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "rejected relative owner Mars/Olympus tomorrow noon ends prior date context",
+    "text": "JST today; Mars/Olympus tomorrow noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "rejected relative owner JST tomorrow noon UTC ends prior date context",
+    "text": "JST today; JST tomorrow noon UTC; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected relative owner JST tomorrow noon in London ends prior date context",
+    "text": "JST today; JST tomorrow noon in London; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "rejected hidden date-only range clears the starting header context",
+    "text": "America/New_York 8 April US/Eastern to XYZ: noon; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "date-only fixed city validates owner PDT 2026-03-07 mdy",
+    "text": "PDT today in Los Angeles",
+    "now": "2026-03-08T00:30:00Z",
+    "dateOrder": "mdy",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "date-only fixed city validates owner PST 2026-03-08 mdy",
+    "text": "PST today in Los Angeles",
+    "now": "2026-03-09T00:30:00Z",
+    "dateOrder": "mdy",
+    "instants": [],
+    "dates": ["2026-03-08"],
+    "sourceZones": ["-08:00"]
+  },
+  {
+    "name": "date-only fixed city validates owner PST 2026-10-31 mdy",
+    "text": "PST today in Los Angeles",
+    "now": "2026-11-01T00:30:00Z",
+    "dateOrder": "mdy",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "date-only fixed city validates owner PDT 2026-11-01 mdy",
+    "text": "PDT today in Los Angeles",
+    "now": "2026-11-02T00:30:00Z",
+    "dateOrder": "mdy",
+    "instants": [],
+    "dates": ["2026-11-01"],
+    "sourceZones": ["-07:00"]
+  },
+  {
+    "name": "date-only fixed city validates owner PDT 2026-03-07 dmy",
+    "text": "PDT today in Los Angeles",
+    "now": "2026-03-08T00:30:00Z",
+    "dateOrder": "dmy",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "date-only fixed city validates owner PST 2026-03-08 dmy",
+    "text": "PST today in Los Angeles",
+    "now": "2026-03-09T00:30:00Z",
+    "dateOrder": "dmy",
+    "instants": [],
+    "dates": ["2026-03-08"],
+    "sourceZones": ["-08:00"]
+  },
+  {
+    "name": "date-only fixed city validates owner PST 2026-10-31 dmy",
+    "text": "PST today in Los Angeles",
+    "now": "2026-11-01T00:30:00Z",
+    "dateOrder": "dmy",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "date-only fixed city validates owner PDT 2026-11-01 dmy",
+    "text": "PDT today in Los Angeles",
+    "now": "2026-11-02T00:30:00Z",
+    "dateOrder": "dmy",
+    "instants": [],
+    "dates": ["2026-11-01"],
+    "sourceZones": ["-07:00"]
+  },
+  {
+    "name": "mixed alias title-case city connector In mdy rejects range",
+    "text": "America/New_York 8 April US/Eastern In Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "mixed alias title-case city connector At mdy rejects range",
+    "text": "America/New_York 8 April US/Eastern At Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "mixed alias title-case city connector In dmy rejects range",
+    "text": "America/New_York 8 April US/Eastern In Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "mixed alias title-case city connector At dmy rejects range",
+    "text": "America/New_York 8 April US/Eastern At Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "warning": "identify the city “Atlantis”"
+  },
+  {
+    "name": "prefixed weekday header owns later clock date",
+    "text": "JST next Monday; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-13T12:00:00Z"],
+    "assumption": "Date context timezone: JST"
+  },
+  {
+    "name": "prefixed weekday header ends at blank paragraph",
+    "text": "JST next Monday\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"]
+  },
+  {
+    "name": "prefixed timed weekday owns later UTC clock date",
+    "text": "JST next Monday 9am; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-13T00:00:00Z", "2026-04-13T12:00:00Z"]
+  },
+  {
+    "name": "valid timed header still owns later independent clock",
+    "text": "America/New_York 10 April 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T19:00:00Z", "2026-04-10T12:00:00Z"]
   }
 ]

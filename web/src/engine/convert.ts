@@ -60,7 +60,7 @@ function sameCivilClock(
 }
 const zoneToken =
   `(?:[A-Z][A-Za-z0-9_+-]*/)+[A-Za-z0-9_+-]+|` +
-  `(?:UTC|GMT)[ \\t]*[+\\-−][A-Za-z0-9+\\-−:]+|` +
+  `(?:UTC|GMT)[ \\t]*[+\\-−][A-Za-z0-9+\\-−:]*|` +
   `(?:US[ \\t]+)?(?:Pacific|Eastern|Central|Mountain)(?:[ \\t]+Time)?|` +
   Object.keys(timezoneHints).join("|") +
   `|[A-Z]{2,5}(?=[ \\t]*:)`;
@@ -168,7 +168,7 @@ function ownedQualifierTail(text: string, suffix: string): string {
       ? combined.slice(lastOwned.index! + lastOwned[0].length)
       : adjacent,
   );
-  return /^\s+(?:[A-Z]{2,5}\b|(?:in|at)\s+)/.test(ownedTail)
+  return /^\s+(?:[A-Z]{2,5}\b|(?:[Ii][Nn]|[Aa][Tt])\s+)/.test(ownedTail)
     ? ownedTail
     : qualifierTail(adjacent);
 }
@@ -320,7 +320,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       if (
         dates.length === 1 &&
         !dates[0].end &&
-        dates[0].start.isCertain("day") &&
+        (dates[0].start.isCertain("day") ||
+          dates[0].start.isCertain("weekday")) &&
         !dates[0].start.isCertain("hour") &&
         !dates[0].start.isCertain("minute") &&
         dates[0].index === 0 &&
@@ -365,7 +366,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     if (
       dates.length !== 1 ||
       dates[0].end ||
-      !dates[0].start.isCertain("day") ||
+      (!dates[0].start.isCertain("day") &&
+        !dates[0].start.isCertain("weekday")) ||
       dates[0].start.isCertain("hour") ||
       dates[0].start.isCertain("minute") ||
       dates[0].index !== 0 ||
@@ -419,12 +421,20 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     yearAssumed: boolean;
   };
   let contextOwners: DateOwner[] | undefined;
+  let contextOwnerIndex: number | undefined;
   let contextDate: TemporalTypes.PlainDate | undefined,
     contextText = "",
     contextNumeric = false,
     contextOrder = options.dateOrder || "mdy",
     contextParagraph = -1,
     previousEnd = 0;
+  const clearContext = () => {
+    contextDate = undefined;
+    contextOwners = undefined;
+    contextOwnerIndex = undefined;
+    contextText = "";
+    contextNumeric = false;
+  };
   const hasTime = parsed.some((r) => r.start.isCertain("hour"));
   const rejected = new Set<number>();
 
@@ -456,6 +466,14 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     // Qualified ranges can arrive as separate parses. Keep their rejection
     // state even when the first endpoint never produced a usable result.
     const reject = () => {
+      if (
+        contextOwnerIndex === r.index ||
+        (qualifiedRange && contextOwnerIndex === prior.index) ||
+        (prefix &&
+          (r.start.isCertain("day") || r.start.isCertain("weekday")) &&
+          !r.start.tags().has("casualReference/now"))
+      )
+        clearContext();
       rejected.add(r.index);
       const ranges = new Set(
         priorResults.flatMap((result) =>
@@ -511,10 +529,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       startsAfterUnrelatedDate(r.start) ||
       /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
     ) {
-      contextDate = undefined;
-      contextOwners = undefined;
-      contextText = "";
-      contextNumeric = false;
+      clearContext();
       contextParagraph = block;
     }
     const suffixEnd = Math.min(
@@ -536,14 +551,14 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       /^\s+[\p{L}]/u.test(suffix);
     const qualifierSuffix = consumedAt ? ` at${suffix}` : suffix;
     previousEnd = r.index + r.text.length;
-    const date = componentDate(r.start),
-      explicitDate = r.start.isCertain("day");
+    const explicitDate =
+      r.start.isCertain("day") || (!!prefix && r.start.isCertain("weekday"));
     const dateOnly = !r.start.isCertain("hour") && !r.start.isCertain("minute");
     const dateChoices =
-      dateOnly && prefix
+      prefix && (dateOnly || explicitDate)
         ? choicesFor(
-            matchedText,
-            qualifierSuffix,
+            dateOnly ? matchedText : prefix.text,
+            dateOnly ? qualifierSuffix : "",
             r.start,
             options.sourceZone,
             warnings,
@@ -552,8 +567,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     if (
       dateChoices &&
       (!dateChoices.length ||
-        cityChoices(ownedQualifierTail(matchedText, qualifierSuffix), warnings)
-          ?.length === 0)
+        (dateOnly &&
+          cityChoices(
+            ownedQualifierTail(matchedText, qualifierSuffix),
+            warnings,
+          )?.length === 0))
     ) {
       reject();
       continue;
@@ -594,7 +612,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       );
       const prefixChoices = explicitZones(prefix.text) ?? [];
       const cityConflict = cities?.some((city) =>
-        prefixChoices.some((choice) => {
+        dateOwners.some(({ choice, date }) => {
           if (!/^[+-]/.test(choice.zone))
             return zoneIdentity(choice.zone) !== zoneIdentity(city.zone);
           // A date-only owner has no selected clock. Accept a fixed/city
@@ -625,6 +643,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       }
     }
     if (explicitDate && !r.start.tags().has("casualReference/now")) {
+      contextOwnerIndex = r.index;
       contextDate = dateOwners[0].date;
       contextOwners = prefix
         ? dateOwners.filter(
@@ -1017,12 +1036,6 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       }
     }
     if (invalidEndpoint) {
-      if (explicitDate && prefix) {
-        contextDate = undefined;
-        contextOwners = undefined;
-        contextText = "";
-        contextNumeric = false;
-      }
       reject();
     }
   }

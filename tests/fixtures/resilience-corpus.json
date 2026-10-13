@@ -11118,6 +11118,303 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "Regional alias date-only owner retains source reference date"
+    },
+    {
+      "id": "web-zone-first-577",
+      "input": "UTC+99 tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-578",
+      "input": "UTC+99 today; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-579",
+      "input": "UTC+15:00 tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-580",
+      "input": "UTC+15:00 today; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-581",
+      "input": "GMT+14:01 tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-582",
+      "input": "GMT+14:01 today; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-583",
+      "input": "UTC+05:99 tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-584",
+      "input": "UTC+05:99 today; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-585",
+      "input": "UTC+ tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-586",
+      "input": "UTC+ today; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-587",
+      "input": "UTC+03:xx tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-588",
+      "input": "UTC+03:xx today; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-589",
+      "input": "America/New_York April 10 3pm UTC; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-590",
+      "input": "America/New_York April 10 3pm in Tokyo; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-591",
+      "input": "UTC 8 April; America/New_York April 10 3pm UTC; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-592",
+      "input": "UTC 8 April; America/New_York April 10 3pm in Tokyo; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-593",
+      "input": "America/New_York 10 April 3pm UTC; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-594",
+      "input": "America/New_York 10 April 3pm in Tokyo; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-595",
+      "input": "UTC 8 April; America/New_York 10 April 3pm UTC; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-596",
+      "input": "UTC 8 April; America/New_York 10 April 3pm in Tokyo; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-597",
+      "input": "JST today; XYZ: tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-598",
+      "input": "JST today; Mars/Olympus tomorrow noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-599",
+      "input": "JST today; JST tomorrow noon UTC; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-600",
+      "input": "JST today; JST tomorrow noon in London; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-601",
+      "input": "America/New_York 8 April US/Eastern to XYZ: noon; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-602",
+      "input": "PDT today in Los Angeles",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-603",
+      "input": "PST today in Los Angeles",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-604",
+      "input": "America/New_York 8 April US/Eastern In Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-605",
+      "input": "America/New_York 8 April US/Eastern At Atlantis to UTC 10 April 4pm; UTC 12 April 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-606",
+      "input": "JST next Monday; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-607",
+      "input": "JST next Monday\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-608",
+      "input": "JST next Monday 9am; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-609",
+      "input": "America/New_York 10 April 3pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
