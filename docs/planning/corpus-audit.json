@@ -5,9 +5,9 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 818,
+  "total": 842,
   "crashes": 0,
-  "legacyCountDifferences": 27,
+  "legacyCountDifferences": 31,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
   "differences": [
     {
@@ -2332,6 +2332,50 @@
       "missingLocalTimes": [],
       "warnings": [
         "Unknown timezone Mars/Olympus. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-473",
+      "input": "PDT 04-08-2026-UTC 4pm on April 10; UTC April 12 5pm",
+      "legacyExpectedCount": 2,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-477",
+      "input": "PDT 04-08-2026 - UTC 4pm on April 10; UTC April 12 5pm",
+      "legacyExpectedCount": 2,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-481",
+      "input": "PDT 08-04-2026-UTC 4pm on April 10; UTC April 12 5pm",
+      "legacyExpectedCount": 2,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-485",
+      "input": "PDT 08-04-2026 - UTC 4pm on April 10; UTC April 12 5pm",
+      "legacyExpectedCount": 2,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
       ],
       "dates": []
     }

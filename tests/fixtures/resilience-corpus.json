@@ -10101,6 +10101,222 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "word connector rescued date-only range clock follows its own on date selected source"
+    },
+    {
+      "id": "web-zone-first-464",
+      "input": "PDT 2026-04-08-UTC 2026-04-10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 compact hyphen keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-465",
+      "input": "PDT 2026-04-08-UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 compact hyphen keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-466",
+      "input": "PDT 2026-04-08–UTC 2026-04-10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 compact en dash keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-467",
+      "input": "PDT 2026-04-08–UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 compact en dash keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-468",
+      "input": "PDT 2026-04-08 - UTC 2026-04-10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 spaced hyphen keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-469",
+      "input": "PDT 2026-04-08 - UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 spaced hyphen keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-470",
+      "input": "PDT 2026-04-08 to UTC 2026-04-10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 word connector keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-471",
+      "input": "PDT 2026-04-08 to UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 2026-04-08 word connector keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-472",
+      "input": "PDT 04-08-2026-UTC 04-10-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 compact hyphen keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-473",
+      "input": "PDT 04-08-2026-UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 compact hyphen keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-474",
+      "input": "PDT 04-08-2026–UTC 04-10-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 compact en dash keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-475",
+      "input": "PDT 04-08-2026–UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 compact en dash keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-476",
+      "input": "PDT 04-08-2026 - UTC 04-10-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 spaced hyphen keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-477",
+      "input": "PDT 04-08-2026 - UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 spaced hyphen keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-478",
+      "input": "PDT 04-08-2026 to UTC 04-10-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 word connector keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-479",
+      "input": "PDT 04-08-2026 to UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "mdy numeric date-only start 04-08-2026 word connector keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-480",
+      "input": "PDT 08-04-2026-UTC 10-04-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 compact hyphen keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-481",
+      "input": "PDT 08-04-2026-UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 compact hyphen keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-482",
+      "input": "PDT 08-04-2026–UTC 10-04-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 compact en dash keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-483",
+      "input": "PDT 08-04-2026–UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 compact en dash keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-484",
+      "input": "PDT 08-04-2026 - UTC 10-04-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 spaced hyphen keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-485",
+      "input": "PDT 08-04-2026 - UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 spaced hyphen keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-486",
+      "input": "PDT 08-04-2026 to UTC 10-04-2026 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 word connector keeps leading complete date end identity"
+    },
+    {
+      "id": "web-zone-first-487",
+      "input": "PDT 08-04-2026 to UTC 4pm on April 10; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "dmy numeric date-only start 08-04-2026 word connector keeps trailing complete date end identity"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

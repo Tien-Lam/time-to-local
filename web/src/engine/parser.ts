@@ -390,22 +390,29 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
       results.flatMap((result) => {
         if (!result.end?.isCertain("hour") || result.start.isCertain("hour"))
           return [result];
-        const separator = result.text.match(
-          /\b(?:to|until|through|till|and)\b\s*|[-–~]\s*/i,
-        );
+        // Numeric start dates contain their own separators. Search only after
+        // that complete date so the end retains its written clock and span.
+        const startDateLength =
+          result.text.match(
+            /^\d{4}[-/.]\d{1,2}[-/.]\d{1,2}\b|^\d{1,2}[-/.]\d{1,2}(?:[-/.]\d{2,4})?\b/,
+          )?.[0].length ?? 0;
+        const separator = result.text
+          .slice(startDateLength)
+          .match(/\b(?:to|until|through|till|and)\b\s*|[-–~]\s*/i);
         if (!separator) return [result];
+        const separatorIndex = startDateLength + separator.index!;
         // A native date range can attach a clock only to its final date.
         // Keep that explicitly parsed time without inventing a start clock.
         const end = result.clone();
         end.start = result.end.clone();
         end.start.addTags([...result.end.tags()]);
         end.end = undefined;
-        end.index = result.index + separator.index! + separator[0].length;
+        end.index = result.index + separatorIndex + separator[0].length;
         end.text = context.text.slice(
           end.index,
           result.index + result.text.length,
         );
-        result.text = result.text.slice(0, separator.index).trimEnd();
+        result.text = result.text.slice(0, separatorIndex).trimEnd();
         result.end = undefined;
         return [result, end];
       }),

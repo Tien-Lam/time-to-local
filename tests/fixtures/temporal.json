@@ -4718,5 +4718,137 @@
     "instants": ["2026-04-10T16:00:00Z"],
     "sourceZones": ["UTC"],
     "endpoints": ["undefined"]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 compact hyphen keeps leading complete date end identity",
+    "text": "PDT 2026-04-08-UTC 2026-04-10 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [15, 35],
+    "originals": ["UTC 2026-04-10 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 compact hyphen keeps trailing complete date end identity",
+    "text": "PDT 2026-04-08-UTC 4pm on April 10; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [15, 36],
+    "originals": ["UTC 4pm on April 10", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 compact en dash keeps leading complete date end identity",
+    "text": "PDT 2026-04-08–UTC 2026-04-10 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [15, 35],
+    "originals": ["UTC 2026-04-10 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 compact en dash keeps trailing complete date end identity",
+    "text": "PDT 2026-04-08–UTC 4pm on April 10; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [15, 36],
+    "originals": ["UTC 4pm on April 10", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 spaced hyphen keeps leading complete date end identity",
+    "text": "PDT 2026-04-08 - UTC 2026-04-10 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [17, 37],
+    "originals": ["UTC 2026-04-10 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 spaced hyphen keeps trailing complete date end identity",
+    "text": "PDT 2026-04-08 - UTC 4pm on April 10; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [17, 38],
+    "originals": ["UTC 4pm on April 10", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 word connector keeps leading complete date end identity",
+    "text": "PDT 2026-04-08 to UTC 2026-04-10 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [18, 38],
+    "originals": ["UTC 2026-04-10 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 2026-04-08 word connector keeps trailing complete date end identity",
+    "text": "PDT 2026-04-08 to UTC 4pm on April 10; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [18, 39],
+    "originals": ["UTC 4pm on April 10", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 04-08-2026 compact hyphen keeps leading complete date end identity",
+    "text": "PDT 04-08-2026-UTC 04-10-2026 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [15, 35],
+    "originals": ["UTC 04-10-2026 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 04-08-2026 compact en dash keeps leading complete date end identity",
+    "text": "PDT 04-08-2026–UTC 04-10-2026 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [15, 35],
+    "originals": ["UTC 04-10-2026 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 04-08-2026 spaced hyphen keeps leading complete date end identity",
+    "text": "PDT 04-08-2026 - UTC 04-10-2026 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [17, 37],
+    "originals": ["UTC 04-10-2026 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
+  },
+  {
+    "name": "mdy numeric date-only start 04-08-2026 word connector keeps leading complete date end identity",
+    "text": "PDT 04-08-2026 to UTC 04-10-2026 4pm; UTC April 12 5pm",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T16:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00", "+00:00"],
+    "sourceIndices": [18, 38],
+    "originals": ["UTC 04-10-2026 4pm", "UTC April 12 5pm"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null]
   }
 ]
