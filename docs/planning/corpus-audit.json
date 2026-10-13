@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 964,
+  "total": 978,
   "crashes": 0,
   "legacyCountDifferences": 33,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -3399,6 +3399,127 @@
       "missingLocalTimes": [],
       "warnings": [
         "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-610",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo - 5pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-611",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo – 5pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-612",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo to 5pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-613",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo until 5pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-614",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo through 5pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-615",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo till 5pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-616",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-617",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo. UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-618",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo\nUTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-619",
+      "input": "UTC 8 April; America/New_York 10 April America/Foo - 5pm; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-623",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo-Bar; UTC noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone America/Foo-Bar. Correct it and try again."
       ],
       "dates": []
     }

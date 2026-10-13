@@ -6423,5 +6423,123 @@
     "text": "America/New_York 10 April 3pm; UTC noon",
     "now": "2026-04-06T22:00:00Z",
     "instants": ["2026-04-10T19:00:00Z", "2026-04-10T12:00:00Z"]
+  },
+  {
+    "name": "hidden month-first invalid IANA bare end - clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo - 5pm; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA bare end – clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo – 5pm; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA bare end to clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo to 5pm; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA bare end until clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo until 5pm; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA bare end through clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo through 5pm; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA bare end till clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo till 5pm; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA clause \"; \" clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA clause \". \" clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo. UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden month-first invalid IANA clause \"\\n\" clears context",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo\nUTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden day-first invalid IANA bare end mdy rejects",
+    "text": "UTC 8 April; America/New_York 10 April America/Foo - 5pm; UTC noon",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "hidden day-first invalid IANA bare end dmy rejects",
+    "text": "UTC 8 April; America/New_York 10 April America/Foo - 5pm; UTC noon",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "matching date-only alias retains bare clock zone UTC",
+    "text": "UTC 8 April; America/New_York April 10 US/Eastern - 5pm; UTC noon",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T17:00:00Z", "2026-04-10T12:00:00Z"],
+    "sourceZones": ["UTC", "+00:00"]
+  },
+  {
+    "name": "matching date-only alias retains bare clock zone Asia/Tokyo",
+    "text": "UTC 8 April; America/New_York April 10 US/Eastern - 5pm; UTC noon",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T08:00:00Z", "2026-04-10T12:00:00Z"],
+    "sourceZones": ["Asia/Tokyo", "+00:00"]
+  },
+  {
+    "name": "complete hyphenated IANA date qualifier America/Port-au-Prince",
+    "text": "America/Port-au-Prince 8 April America/Port-au-Prince",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceZones": ["America/Port-au-Prince"],
+    "originals": ["America/Port-au-Prince 8 April America/Port-au-Prince"],
+    "sourceIndices": [0]
+  },
+  {
+    "name": "complete hyphenated IANA date qualifier Africa/Porto-Novo",
+    "text": "Africa/Porto-Novo 8 April Africa/Porto-Novo",
+    "instants": [],
+    "dates": ["2026-04-08"],
+    "sourceZones": ["Africa/Porto-Novo"],
+    "originals": ["Africa/Porto-Novo 8 April Africa/Porto-Novo"],
+    "sourceIndices": [0]
+  },
+  {
+    "name": "unknown hyphenated IANA qualifier retains whole token",
+    "text": "UTC 8 April; America/New_York April 10 America/Foo-Bar; UTC noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Unknown timezone America/Foo-Bar"
   }
 ]

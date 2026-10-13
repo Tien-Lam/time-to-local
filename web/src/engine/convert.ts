@@ -122,6 +122,20 @@ function qualifierTail(text: string): string {
   }
 }
 
+function boundedQualifierSpan(text: string): string {
+  const clause = text.split(/[,;.!?\n]/)[0];
+  // Consume complete zone/offset tokens before looking for separators so a
+  // hyphen inside an IANA identifier cannot split that qualifier.
+  const tokens = new RegExp(
+    `${IANA_TOKEN.source}|${OFFSET_TOKEN.source}|` +
+      `([ \\t]+(?:to|until|through|till)\\b|[ \\t]+[-–][ \\t]*|` +
+      `[-–](?=[ \\t]*(?:$|\\d|(?:${zoneToken})(?:[ \\t]*:[ \\t]*|[ \\t]+))))`,
+    "gi",
+  );
+  const boundary = [...clause.matchAll(tokens)].find((token) => token[1]);
+  return clause.slice(0, boundary?.index ?? clause.length);
+}
+
 function cityChoices(
   adjacent: string,
   warnings: string[],
@@ -339,14 +353,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     }
     const qualifier = adjacent.match(IANA_TOKEN);
     const qualifierSpan = qualifier
-      ? adjacent
-          .slice(qualifier.index)
-          .match(
-            /^[^,;.!?\n]*?(?=(?:[ \t]+(?:to|until|through|till)\b|[ \t]*[-–][ \t]*(?:$|[A-Z]))|$)/i,
-          )
+      ? boundedQualifierSpan(adjacent.slice(qualifier.index))
       : undefined;
     const afterQualifiers = qualifierSpan
-      ? adjacent.slice(qualifier!.index! + qualifierSpan[0].length)
+      ? adjacent.slice(qualifier!.index! + qualifierSpan.length)
       : "";
     if (
       !qualifier ||
@@ -378,10 +388,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     // overlap can otherwise discard its leading day and lose the prefix owner.
     const date = dates[0] as ParsingResult;
     date.index = prefix.end + adjacent.indexOf(dateText);
-    const spanEnd = prefix.end + qualifier.index! + qualifierSpan[0].length;
+    const spanEnd = prefix.end + qualifier.index! + qualifierSpan.length;
     date.text =
       parserText.slice(date.index, prefix.end + qualifier.index!) +
-      " ".repeat(qualifierSpan[0].length);
+      " ".repeat(qualifierSpan.length);
     preservedDates.push(date);
     parserText =
       parserText.slice(0, date.index) +

@@ -11415,6 +11415,132 @@
       "legacyExpectedCount": 2,
       "expected": [],
       "description": "Rejected calendar owners clear bounded context; valid weekday and DST date owners retained"
+    },
+    {
+      "id": "web-zone-first-610",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-611",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo – 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-612",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo to 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-613",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo until 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-614",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo through 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-615",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo till 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-616",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-617",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo. UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-618",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-619",
+      "input": "UTC 8 April; America/New_York 10 April America/Foo - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-620",
+      "input": "UTC 8 April; America/New_York April 10 US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-621",
+      "input": "America/Port-au-Prince 8 April America/Port-au-Prince",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-622",
+      "input": "Africa/Porto-Novo 8 April Africa/Porto-Novo",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-623",
+      "input": "UTC 8 April; America/New_York April 10 America/Foo-Bar; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
