@@ -38,6 +38,40 @@ const timezoneHints = {
 function hasNumericDate(c: ParsedComponents): boolean {
   return c.tags().has("parser/SlashDateFormatParser");
 }
+const zoneToken =
+  `(?:[A-Z][A-Za-z0-9_+-]*/)+[A-Za-z0-9_+-]+|` +
+  `(?:UTC|GMT)[ \\t]*[+\\-−][A-Za-z0-9+\\-−:]+|` +
+  `(?:US[ \\t]+)?(?:Pacific|Eastern|Central|Mountain)(?:[ \\t]+Time)?|` +
+  Object.keys(timezoneHints).join("|") +
+  `|[A-Z]{2,5}(?=[ \\t]*:)`;
+
+function zonePrefixes(text: string) {
+  // Claim zones only at phrase boundaries and immediately before a temporal
+  // expression. Masking them before Chrono runs prevents a comma-separated
+  // prefix from being consumed as the preceding clock's timezone suffix.
+  const temporalStart =
+    `now\\b|noon\\b|midnight\\b|today\\b|tomorrow\\b|yesterday\\b|tonight\\b|between\\b|` +
+    `(?:this|next|last|in)\\b|` +
+    `(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\b|` +
+    `\\d{1,2}(?:st|nd|rd|th)?[ \\t]+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\b|` +
+    `\\d{1,4}(?=[:/\\-]|[ \\t]*[ap]m\\b|[ \\t]+hours\\b)`;
+  const pattern = new RegExp(
+    `(?:^|[,;.!?\\n(–-]|\\b(?:and|then|to|until|till|through|at|in)\\b)[ \\t]*` +
+      `(${zoneToken})(?:[ \\t]*:[ \\t]*|[ \\t]+)(?:at[ \\t]+)?(?=${temporalStart})`,
+    "gi",
+  );
+  return [...text.matchAll(pattern)].flatMap((match) => {
+    if (
+      !explicitZones(match[1]) &&
+      !IANA_TOKEN.test(match[1]) &&
+      !/^[A-Z]{2,5}$/.test(match[1])
+    )
+      return [];
+    const end = match.index! + match[0].length;
+    const index = match.index! + match[0].indexOf(match[1]);
+    return [{ index, end, text: match[1] }];
+  });
+}
 
 function componentDate(c: ParsedComponents): TemporalTypes.PlainDate {
   return Temporal.PlainDate.from(
@@ -83,6 +117,18 @@ function choicesFor(
     return [];
   }
   const explicit = explicitZones(text);
+  const unknownAbbr = adjacent.match(/^\s+([A-Z]{2,5})\b/);
+  if (
+    explicit &&
+    unknownAbbr &&
+    !["AM", "PM", "IN", "AT"].includes(unknownAbbr[1]) &&
+    !explicitZones(unknownAbbr[1])
+  ) {
+    warnings.push(
+      `Unknown timezone ${unknownAbbr[1]}. Correct or remove it, then choose a source timezone.`,
+    );
+    return [];
+  }
   if (explicit) return explicit;
   const suffixZone = adjacent.match(
     /^\s*(?:(?:in|at)\s+)?((?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)\s*[+\-−][\d:]+|(?:US\s+)?(?:Pacific|Eastern|Central|Mountain)(?:\s+Time)?|[A-Z]{2,5}\b)/i,
@@ -134,7 +180,6 @@ function choicesFor(
     const zone = offsetZone(c.get("timezoneOffset")!);
     return [{ zone, label: zoneName(zone) }];
   }
-  const unknownAbbr = suffix.match(/^\s+([A-Z]{2,5})\b/);
   if (unknownAbbr && !["AM", "PM"].includes(unknownAbbr[1])) {
     warnings.push(
       `Unknown timezone ${unknownAbbr[1]}. Correct or remove it, then choose a source timezone.`,
@@ -172,9 +217,22 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   // Chrono can parse the digits in UTC+03:00 as a second clock time, especially
   // in ranges. Mask only those tokens without moving source indices; resolve
   // their full original spelling below using deterministic zone semantics.
-  const parserText = text.replace(OFFSET_TOKEN, (token) =>
+  const prefixes = zonePrefixes(text);
+  const prefixAt = (index: number) =>
+    prefixes.find(
+      (p) =>
+        p.index <= index &&
+        (index < p.end ||
+          /^(?:between)?$/i.test(text.slice(p.end, index).trim())),
+    );
+  let parserText = text.replace(OFFSET_TOKEN, (token) =>
     " ".repeat(token.length),
   );
+  for (const prefix of prefixes)
+    parserText =
+      parserText.slice(0, prefix.index) +
+      " ".repeat(prefix.end - prefix.index) +
+      parserText.slice(prefix.end);
   const parsed = parser.parse(parserText, ref, { timezones: timezoneHints });
   const warnings: string[] = [],
     results: TimeResult[] = [];
@@ -209,7 +267,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   for (let i = 0; i < parsed.length; i++) {
     const r = parsed[i],
       block = paragraph(text, r.index);
-    const matchedText = text.slice(r.index, r.index + r.text.length);
+    const prefix = prefixAt(r.index);
+    const sourceIndex = prefix?.index ?? r.index;
+    const matchedText = text.slice(sourceIndex, r.index + r.text.length);
     const prior = parsed[i - 1];
     const qualifiedRange =
       prior &&
@@ -218,7 +278,9 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       );
     const priorResults = qualifiedRange
       ? results.filter(
-          (result) => result.sourceIndex === prior.index && result.instant,
+          (result) =>
+            result.sourceIndex ===
+              (prefixAt(prior.index)?.index ?? prior.index) && result.instant,
         )
       : [];
     if (
@@ -313,22 +375,81 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     ];
     const zones = [
       ...(matchedText + zoneSuffix).matchAll(
-        /\b(?:UTC|GMT)\s*[+\-−][\d:]+|\b(?:[A-Z]{2,5})\b/gi,
+        new RegExp(`\\b(?:${zoneToken})\\b`, "gi"),
       ),
     ].filter((m) => !!explicitZones(m[0]));
+    const rangePrefixes = prefixes.filter(
+      (p) => p.index >= sourceIndex && p.end < r.index + r.text.length,
+    );
+    const endIndexTag = [...(r.end?.tags() ?? [])].find((tag) =>
+      tag.startsWith("chronoshift/endpoint-index:"),
+    );
+    const endIndex = endIndexTag ? +endIndexTag.split(":")[1] : undefined;
+    const rangeBoundary =
+      rangePrefixes.find(
+        (p) =>
+          p !== prefix &&
+          endIndex !== undefined &&
+          p.index <= endIndex &&
+          (endIndex < p.end || !text.slice(p.end, endIndex).trim()),
+      )?.index ?? endIndex;
+    if (prefix || rangePrefixes.length) {
+      const owners =
+        rangeBoundary === undefined
+          ? [zones]
+          : [
+              zones.filter((zone) => sourceIndex + zone.index! < rangeBoundary),
+              zones.filter(
+                (zone) => sourceIndex + zone.index! >= rangeBoundary,
+              ),
+            ];
+      if (
+        owners.some(
+          (owned) =>
+            new Set(
+              owned.map((zone) =>
+                explicitZones(zone[0])!
+                  .map((choice) => choice.zone)
+                  .join("|"),
+              ),
+            ).size > 1,
+        )
+      ) {
+        warnings.push(
+          "Conflicting timezones around one time. Keep one source timezone per time and try again.",
+        );
+        continue;
+      }
+    }
     for (const [c, endpoint] of endpoints) {
       // If both endpoints carry a different abbreviation, resolve each independently.
       const zoneText =
         r.end && zones.length > 1
           ? zones[endpoint === "end" ? zones.length - 1 : 0][0]
           : matchedText;
+      const endpointPrefix =
+        endpoint === "end"
+          ? rangePrefixes.length > (prefix ? 1 : 0)
+            ? rangePrefixes.at(-1)
+            : undefined
+          : prefix;
       const choices = choicesFor(
-        zoneText,
+        endpointPrefix?.text ?? zoneText,
         suffix,
         c,
         options.sourceZone,
         warnings,
       );
+      if (
+        endpointPrefix &&
+        /^[A-Z]{2,5}$/.test(endpointPrefix.text) &&
+        !explicitZones(endpointPrefix.text)
+      ) {
+        warnings.push(
+          `Unknown timezone ${endpointPrefix.text}. Correct or remove it, then choose a source timezone.`,
+        );
+        continue;
+      }
       for (const choice of choices) {
         const zoneRef = {
           instant: new Date(now),
@@ -392,7 +513,21 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             result.endpoint = "start";
             result.rangeId = `range-${prior.index}`;
           });
-        const resolved = civilInstants(civil, choice.zone);
+        // "Now" denotes an instant, including during the repeated civil hour
+        // when a regional zone moves its clocks back.
+        const resolved =
+          components.tags().has("casualReference/now") &&
+          civil.equals(
+            Temporal.Instant.from(now)
+              .toZonedDateTimeISO(choice.zone)
+              .toPlainDateTime()
+              .round({ smallestUnit: "millisecond", roundingMode: "trunc" }),
+          )
+            ? {
+                instants: [Temporal.Instant.from(now).toString()],
+                nonexistent: false,
+              }
+            : civilInstants(civil, choice.zone);
         if (resolved.nonexistent) {
           warnings.push(
             `${civil.toString().replace("T", " ")} doesn't exist in ${choice.label} because the clocks move forward. Edit the time or timezone in your message${choice.assumption?.startsWith("Source timezone assumed:") ? ", or change Source timezone in Message interpretation" : ""}.`,
@@ -402,10 +537,10 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         for (let n = 0; n < resolved.instants.length; n++) {
           const instant = resolved.instants[n];
           results.push({
-            id: `${r.index}-${endpoint || "time"}-${choice.zone}-${n}`,
-            group: `${r.index}-${endpoint || "time"}`,
+            id: `${sourceIndex}-${endpoint || "time"}-${choice.zone}-${n}`,
+            group: `${sourceIndex}-${endpoint || "time"}`,
             original,
-            sourceIndex: r.index,
+            sourceIndex,
             endpoint: priorResults.length ? "end" : endpoint,
             ...(r.end || priorResults.length
               ? {

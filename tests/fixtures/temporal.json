@@ -756,5 +756,370 @@
       ["Year assumed: 2026", "Reference date used: 2026-04-06"],
       ["Year assumed: 2026", "Reference date used: 2026-04-06"]
     ]
+  },
+  {
+    "name": "timezone-first user example preserves phrase identity and CST ambiguity",
+    "text": "pdt now, cst midnight",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-06T06:00:00Z",
+      "2026-04-05T16:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00"],
+    "originals": ["pdt now", "cst midnight", "cst midnight"],
+    "sourceIndices": [0, 9, 9]
+  },
+  {
+    "name": "timezone-first example across independent source dates",
+    "text": "pdt now, cst midnight",
+    "now": "2026-04-06T01:23:45.123Z",
+    "instants": [
+      "2026-04-06T01:23:45.123Z",
+      "2026-04-05T06:00:00Z",
+      "2026-04-05T16:00:00Z"
+    ]
+  },
+  {
+    "name": "timezone-first noon and midnight do not steal adjacent prefixes",
+    "text": "PDT noon, JST midnight",
+    "instants": ["2026-04-06T19:00:00Z", "2026-04-05T15:00:00Z"],
+    "originals": ["PDT noon", "JST midnight"]
+  },
+  {
+    "name": "timezone-first ordinary clocks remain separate",
+    "text": "PDT 3pm, CST 4pm",
+    "instants": [
+      "2026-04-06T22:00:00Z",
+      "2026-04-06T22:00:00Z",
+      "2026-04-06T08:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00"]
+  },
+  {
+    "name": "timezone-first mixed prefix and suffix",
+    "text": "3pm PDT, CST midnight",
+    "instants": [
+      "2026-04-06T22:00:00Z",
+      "2026-04-06T06:00:00Z",
+      "2026-04-05T16:00:00Z"
+    ]
+  },
+  {
+    "name": "timezone-first colon labels and relative noon",
+    "text": "PDT: now; IST: tomorrow noon",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-07T06:30:00Z",
+      "2026-04-07T11:00:00Z"
+    ]
+  },
+  {
+    "name": "timezone-first fractional offsets",
+    "text": "UTC+05:45 noon; GMT-03:30 midnight",
+    "instants": ["2026-04-06T06:15:00Z", "2026-04-06T03:30:00Z"],
+    "sourceZones": ["+05:45", "-03:30"]
+  },
+  {
+    "name": "timezone-first IANA midnight uses its own date",
+    "text": "America/New_York midnight",
+    "now": "2026-04-06T01:23:45.123Z",
+    "instants": ["2026-04-05T04:00:00Z"],
+    "sourceZones": ["America/New_York"],
+    "assumption": "Date assumed: 2026-04-05"
+  },
+  {
+    "name": "timezone-first tomorrow midnight",
+    "text": "PDT tomorrow midnight",
+    "instants": ["2026-04-07T07:00:00Z"]
+  },
+  {
+    "name": "timezone-first fixed summer abbreviation with explicit date",
+    "text": "PDT July 15, 2026 noon",
+    "instants": ["2026-07-15T19:00:00Z"]
+  },
+  {
+    "name": "timezone-first regional winter semantics",
+    "text": "PT January 15, 2026 noon",
+    "instants": ["2026-01-15T20:00:00Z"],
+    "sourceZones": ["America/Los_Angeles"]
+  },
+  {
+    "name": "timezone-first regional names",
+    "text": "Pacific Time noon; Eastern Time midnight",
+    "instants": ["2026-04-06T19:00:00Z", "2026-04-06T04:00:00Z"],
+    "sourceZones": ["America/Los_Angeles", "America/New_York"]
+  },
+  {
+    "name": "timezone-first numeric date day first",
+    "text": "PDT 09/04/2026 15:00",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-09T22:00:00Z"]
+  },
+  {
+    "name": "timezone-first newline bounds",
+    "text": "PDT noon\nJST midnight",
+    "instants": ["2026-04-06T19:00:00Z", "2026-04-05T15:00:00Z"]
+  },
+  {
+    "name": "timezone-first connector bounds",
+    "text": "PDT noon and JST midnight",
+    "instants": ["2026-04-06T19:00:00Z", "2026-04-05T15:00:00Z"]
+  },
+  {
+    "name": "timezone-first overnight range",
+    "text": "PDT 11pm to JST 1am",
+    "instants": ["2026-04-07T06:00:00Z", "2026-04-06T16:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["-07:00", "+09:00"]
+  },
+  {
+    "name": "timezone-first ambiguous overnight range",
+    "text": "CST 11pm to CST midnight",
+    "instants": [
+      "2026-04-07T05:00:00Z",
+      "2026-04-06T15:00:00Z",
+      "2026-04-07T06:00:00Z",
+      "2026-04-06T16:00:00Z"
+    ],
+    "endpoints": ["start", "start", "end", "end"]
+  },
+  {
+    "name": "timezone-first source override and reference date stay independent",
+    "text": "PDT midnight",
+    "sourceZone": "Asia/Tokyo",
+    "targetZone": "Europe/London",
+    "referenceDate": "2026-04-09",
+    "instants": ["2026-04-08T07:00:00Z"]
+  },
+  {
+    "name": "now keeps earlier instant in a regional fold",
+    "text": "America/New_York now",
+    "now": "2026-11-01T05:30:45.123Z",
+    "instants": ["2026-11-01T05:30:45.123Z"],
+    "sourceZones": ["America/New_York"]
+  },
+  {
+    "name": "now keeps later instant in a regional fold",
+    "text": "America/New_York now",
+    "now": "2026-11-01T06:30:45.123Z",
+    "instants": ["2026-11-01T06:30:45.123Z"]
+  },
+  {
+    "name": "now preserves supplied submillisecond precision",
+    "text": "PDT now",
+    "now": "2026-04-06T12:34:56.123456789Z",
+    "instants": ["2026-04-06T12:34:56.123456789Z"]
+  },
+  {
+    "name": "undated suffix midnight uses the disclosed reference date",
+    "text": "midnight JST",
+    "instants": ["2026-04-05T15:00:00Z"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "midnight follows explicit tomorrow",
+    "text": "tomorrow midnight JST",
+    "instants": ["2026-04-06T15:00:00Z"]
+  },
+  {
+    "name": "midnight follows explicit date",
+    "text": "April 9, 2026 midnight JST",
+    "instants": ["2026-04-08T15:00:00Z"]
+  },
+  {
+    "name": "timezone-first unknown IANA rejected",
+    "text": "Mars/Olympus midnight",
+    "instants": [],
+    "warning": "Unknown timezone"
+  },
+  {
+    "name": "timezone-first unknown abbreviation rejected",
+    "text": "XYZ: noon",
+    "instants": [],
+    "warning": "Unknown timezone"
+  },
+  {
+    "name": "timezone-first invalid offset rejected",
+    "text": "UTC+05:99 noon",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "ordinary prose is not a regional prefix",
+    "text": "at noon",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["UTC"]
+  },
+  {
+    "name": "timezone-first mixed range end suffix",
+    "text": "PDT 3pm to 4pm JST",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["-07:00", "+09:00"]
+  },
+  {
+    "name": "timezone-first mixed range start suffix",
+    "text": "3pm PDT to JST 4pm",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["-07:00", "+09:00"]
+  },
+  {
+    "name": "timezone-first conflicting explicit suffix rejected",
+    "text": "PDT noon UTC",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first repeated matching suffix accepted",
+    "text": "PDT noon PDT",
+    "instants": ["2026-04-06T19:00:00Z"]
+  },
+  {
+    "name": "timezone-first military clock",
+    "text": "PDT 1500 hours",
+    "instants": ["2026-04-06T22:00:00Z"]
+  },
+  {
+    "name": "uppercase ordinary prose before suffix zone is retained",
+    "text": "CALL 9:00 AM PST",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["-08:00"]
+  },
+  {
+    "name": "timezone-first IANA start and abbreviation end",
+    "text": "America/New_York 3pm to 4pm JST",
+    "instants": ["2026-04-06T19:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["America/New_York", "+09:00"]
+  },
+  {
+    "name": "timezone-first abbreviation start and IANA end",
+    "text": "PDT 3pm to 4pm Asia/Tokyo",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["-07:00", "Asia/Tokyo"]
+  },
+  {
+    "name": "timezone-first range start conflict rejected",
+    "text": "PDT noon UTC to JST 1pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first range end conflict rejected",
+    "text": "PDT noon to JST 1pm UTC",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first matching range suffixes remain valid",
+    "text": "PDT 3pm PDT to JST 4pm JST",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first inline range separator",
+    "text": "PDT 3pm-4pm JST",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first qualified range keeps overnight ownership",
+    "text": "PT 11pm in Los Angeles to 1am in Tokyo",
+    "instants": ["2026-04-07T06:00:00Z", "2026-04-06T16:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 26]
+  },
+  {
+    "name": "timezone-first written day-first date",
+    "text": "PDT 9 April 2026 midnight",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-09T07:00:00Z"],
+    "originals": ["PDT 9 April 2026 midnight"],
+    "sourceIndices": [0]
+  },
+  {
+    "name": "timezone-first ordinal written date",
+    "text": "PDT 9th April 2026 midnight",
+    "instants": ["2026-04-09T07:00:00Z"]
+  },
+  {
+    "name": "timezone-first between range",
+    "text": "JST between 4 and 5pm",
+    "instants": ["2026-04-06T07:00:00Z", "2026-04-06T08:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first later between range cannot steal prior zone",
+    "text": "PDT 3pm, JST between 4 and 5pm",
+    "instants": [
+      "2026-04-06T22:00:00Z",
+      "2026-04-06T07:00:00Z",
+      "2026-04-06T08:00:00Z"
+    ]
+  },
+  {
+    "name": "timezone-first unknown suffix still rejected",
+    "text": "PDT noon XYZ",
+    "instants": [],
+    "warning": "Unknown timezone"
+  },
+  {
+    "name": "bounded uppercase connector after explicit suffix",
+    "text": "noon JST AND tomorrow 3pm",
+    "instants": ["2026-04-06T03:00:00Z", "2026-04-07T15:00:00Z"]
+  },
+  {
+    "name": "bounded uppercase prose after explicit dated suffix",
+    "text": "April 9, 2026 3pm JST FOR Alice",
+    "instants": ["2026-04-09T06:00:00Z"]
+  },
+  {
+    "name": "bounded uppercase destination prose after suffix",
+    "text": "3pm PDT TO Japan",
+    "instants": ["2026-04-06T22:00:00Z"]
+  },
+  {
+    "name": "bounded uppercase colleague prose after suffix",
+    "text": "3pm PDT WITH colleagues",
+    "instants": ["2026-04-06T22:00:00Z"]
+  },
+  {
+    "name": "timezone-first uppercase connector remains bounded",
+    "text": "PDT noon AND JST midnight",
+    "instants": ["2026-04-06T19:00:00Z", "2026-04-05T15:00:00Z"]
+  },
+  {
+    "name": "timezone-first between individually marked clocks",
+    "text": "PDT between 3pm and 4pm JST",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "sourceIndices": [0, 20],
+    "originals": ["PDT between 3pm", "4pm JST"]
+  },
+  {
+    "name": "timezone-first hyphen separated endpoint prefix",
+    "text": "PDT 3pm - JST 4pm",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"],
+    "sourceZones": ["-07:00", "+09:00"]
+  },
+  {
+    "name": "timezone-first en dash separated endpoint prefix",
+    "text": "PDT 3pm – JST 4pm",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T07:00:00Z"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first respects unrelated explicit date boundary",
+    "text": "April 9, 2026.\n\nPDT noon",
+    "instants": ["2026-04-06T19:00:00Z"]
+  },
+  {
+    "name": "timezone-first retains numeric heading date ownership",
+    "text": "03/04/2026\nPDT noon",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-03T19:00:00Z"]
   }
 ]

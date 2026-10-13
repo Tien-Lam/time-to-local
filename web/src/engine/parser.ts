@@ -214,11 +214,39 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
       for (const part of dateParts)
         if (reference[part]) components.addTag(`chronoshift/reference-${part}`);
     }
+    result.end.addTag(`chronoshift/endpoint-index:${to.index}`);
     result.text = from.text + between + to.text;
     return result;
   };
   // Bounded extensions cover audited shorthand without treating room numbers
   // or prices as times. Native Chrono refiners still merge dates and zones.
+  // Like an undated 00:00 clock, midnight uses the source reference date.
+  // Explicit today/tomorrow/date context and overnight ranges still bind via
+  // the normal date/range refiners; do not silently choose the coming midnight.
+  parser.refiners.unshift({
+    refine: (context, results) => {
+      const reference = context.createParsingComponents({});
+      for (const result of results) {
+        if (result.end && result.start.isCertain("hour")) {
+          const separator = result.text.match(
+            /\b(?:to|until|through|till|and)\b\s*|[-–~〜?]\s*/i,
+          );
+          if (separator)
+            result.end.addTag(
+              `chronoshift/endpoint-index:${result.index + separator.index! + separator[0].length}`,
+            );
+        }
+        for (const components of [result.start, result.end])
+          if (
+            components?.tags().has("casualReference/midnight") &&
+            !components.isCertain("day")
+          )
+            for (const part of dateParts)
+              components.imply(part, reference.get(part)!);
+      }
+      return results;
+    },
+  });
   parser.parsers.unshift({
     pattern: () =>
       new RegExp(

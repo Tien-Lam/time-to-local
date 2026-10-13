@@ -5613,10 +5613,26 @@
       "intendedCoverage": "deterministic-baseline",
       "legacyExpectedCount": 4,
       "expected": [
-        { "hour": 9, "minute": 0, "timezone": "UTC" },
-        { "hour": 11, "minute": 0, "timezone": "UTC" },
-        { "hour": 10, "minute": 0, "timezone": "UTC" },
-        { "hour": 11, "minute": 0, "timezone": "UTC" }
+        {
+          "hour": 9,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 10,
+          "minute": 0,
+          "timezone": "UTC"
+        },
+        {
+          "hour": 11,
+          "minute": 0,
+          "timezone": "UTC"
+        }
       ],
       "description": "Independent ranges must not lose a shared endpoint through deduplication"
     },
@@ -5634,6 +5650,574 @@
         }
       ],
       "description": "New web regression: an unrelated following announcement must not replace the call's reference date. Independent exact instant, source identity and disclosures are in temporal.json."
+    },
+    {
+      "id": "web-zone-first-001",
+      "input": "pdt now, cst midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 5,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "CST"
+        }
+      ],
+      "description": "zone-first current instant and both CST alternatives"
+    },
+    {
+      "id": "web-zone-first-002",
+      "input": "PDT noon, JST midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "zone-first casual clocks"
+    },
+    {
+      "id": "web-zone-first-003",
+      "input": "PDT 3pm, CST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "CST"
+        }
+      ],
+      "description": "ordinary clocks with independent ambiguity"
+    },
+    {
+      "id": "web-zone-first-004",
+      "input": "PDT: now; IST: tomorrow noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 5,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "IST"
+        }
+      ],
+      "description": "colon labels and relative day"
+    },
+    {
+      "id": "web-zone-first-005",
+      "input": "UTC+05:45 noon; GMT-03:30 midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "UTC+05:45"
+        },
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "GMT-03:30"
+        }
+      ],
+      "description": "fractional fixed offsets"
+    },
+    {
+      "id": "web-zone-first-006",
+      "input": "America/New_York midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "America/New_York"
+        }
+      ],
+      "description": "regional source identity"
+    },
+    {
+      "id": "web-zone-first-007",
+      "input": "PDT tomorrow midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "explicit tomorrow binds midnight"
+    },
+    {
+      "id": "web-zone-first-008",
+      "input": "PT January 15, 2026 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PT"
+        }
+      ],
+      "description": "regional winter offset"
+    },
+    {
+      "id": "web-zone-first-009",
+      "input": "PDT 11pm to JST 1am",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 1,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "distinct range endpoint zones"
+    },
+    {
+      "id": "web-zone-first-010",
+      "input": "3pm PDT, CST midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "CST"
+        }
+      ],
+      "description": "mixed suffix and prefix clauses"
+    },
+    {
+      "id": "web-zone-first-011",
+      "input": "PDT noon\nJST midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "newline phrase boundary"
+    },
+    {
+      "id": "web-zone-first-012",
+      "input": "PDT 1500 hours",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "military clock prefix"
+    },
+    {
+      "id": "web-zone-first-013",
+      "input": "XYZ: noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown prefix rejected"
+    },
+    {
+      "id": "web-zone-first-014",
+      "input": "Mars/Olympus midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown IANA prefix rejected"
+    },
+    {
+      "id": "web-zone-first-015",
+      "input": "UTC+05:99 noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "invalid numeric prefix rejected"
+    },
+    {
+      "id": "web-zone-first-016",
+      "input": "PDT noon UTC",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "conflicting source zones rejected"
+    },
+    {
+      "id": "web-zone-first-017",
+      "input": "America/New_York 3pm to 4pm JST",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "America/New_York"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "mixed IANA start and abbreviation suffix"
+    },
+    {
+      "id": "web-zone-first-018",
+      "input": "PDT 3pm to 4pm Asia/Tokyo",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "Asia/Tokyo"
+        }
+      ],
+      "description": "mixed abbreviation start and IANA suffix"
+    },
+    {
+      "id": "web-zone-first-019",
+      "input": "PDT noon UTC to JST 1pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "conflicting start sources rejected"
+    },
+    {
+      "id": "web-zone-first-020",
+      "input": "PDT noon to JST 1pm UTC",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "conflicting end sources rejected"
+    },
+    {
+      "id": "web-zone-first-021",
+      "input": "PDT 3pm PDT to JST 4pm JST",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "matching repeated endpoint zones"
+    },
+    {
+      "id": "web-zone-first-022",
+      "input": "PDT 3pm-4pm JST",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "inline range endpoint ownership"
+    },
+    {
+      "id": "web-zone-first-023",
+      "input": "PT 11pm in Los Angeles to 1am in Tokyo",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 23,
+          "minute": 0,
+          "timezone": "PT"
+        },
+        {
+          "hour": 1,
+          "minute": 0,
+          "timezone": "Asia/Tokyo"
+        }
+      ],
+      "description": "qualified range preserves overnight endpoint lookup"
+    },
+    {
+      "id": "web-zone-first-024",
+      "input": "PDT 9 April 2026 midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "written day-before-month date"
+    },
+    {
+      "id": "web-zone-first-025",
+      "input": "PDT 9th April 2026 midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 0,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "ordinal date before midnight"
+    },
+    {
+      "id": "web-zone-first-026",
+      "input": "JST between 4 and 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "bounded between range"
+    },
+    {
+      "id": "web-zone-first-027",
+      "input": "PDT 3pm, JST between 4 and 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        },
+        {
+          "hour": 17,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "later between range cannot steal previous source"
+    },
+    {
+      "id": "web-zone-first-028",
+      "input": "PDT noon XYZ",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown adjacent suffix still rejected"
+    },
+    {
+      "id": "web-zone-first-029",
+      "input": "PDT between 3pm and 4pm JST",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "individually marked between clocks retain first prefix"
+    },
+    {
+      "id": "web-zone-first-030",
+      "input": "PDT 3pm - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "hyphen-separated end prefix"
+    },
+    {
+      "id": "web-zone-first-031",
+      "input": "PDT 3pm – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        },
+        {
+          "hour": 16,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "en-dash-separated end prefix"
+    },
+    {
+      "id": "web-zone-first-032",
+      "input": "noon JST AND tomorrow 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [
+        {
+          "hour": 12,
+          "minute": 0,
+          "timezone": "JST"
+        },
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "UTC"
+        }
+      ],
+      "description": "uppercase clause connector remains bounded"
+    },
+    {
+      "id": "web-zone-first-033",
+      "input": "April 9, 2026 3pm JST FOR Alice",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "JST"
+        }
+      ],
+      "description": "uppercase prose is not an unknown zone"
+    },
+    {
+      "id": "web-zone-first-034",
+      "input": "3pm PDT WITH colleagues",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [
+        {
+          "hour": 15,
+          "minute": 0,
+          "timezone": "PDT"
+        }
+      ],
+      "description": "uppercase colleague prose cannot steal ownership"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
