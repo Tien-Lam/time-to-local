@@ -282,7 +282,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const prior = parsed[i - 1];
     const qualifiedRange =
       prior &&
-      /^\s+(?:(?:(?:in|at)\s+)?[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
+      /^\s+(?:(?:in|at)\s+)?(?:[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][A-Za-z0-9+\-−:]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
         text.slice(prior.index + prior.text.length, sourceIndex),
       );
     const priorResults = qualifiedRange
@@ -385,20 +385,24 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       continue;
     }
     const suffixEnd = Math.min(
-      parsed[i + 1]?.index ?? text.length,
+      parsed[i + 1]
+        ? (prefixAt(parsed[i + 1].index)?.index ?? parsed[i + 1].index)
+        : text.length,
       r.index + r.text.length + 100,
     );
     const suffix = text
       .slice(r.index + r.text.length, suffixEnd)
-      .split(/\n|[.;!?]|,(?!\s*\d)/)[0];
-    // Chrono treats lowercase "at" as the regional AT abbreviation and may
-    // include it in the clock span. Reattach only that lowercase connector to
-    // its original suffix; uppercase AT retains its explicit zone semantics.
-    const consumedAt = /\bat\s*$/.test(r.text) && /^\s+[\p{L}]/u.test(suffix);
+      .split(/\n|[.;!?]|,(?!\s*\d)/)[0]
+      .replace(/\s+(?:to|until|through|till|[-–])\s*$/i, "");
+    // Chrono treats case-insensitive "at" as the regional AT abbreviation and
+    // may include it in the clock span. Reattach the connector to its original
+    // suffix unless it is exactly uppercase AT, which retains zone semantics.
+    const consumedAt =
+      /\bat\s*$/i.test(r.text) &&
+      !/\bAT\s*$/.test(r.text) &&
+      /^\s+[\p{L}]/u.test(suffix);
     const qualifierSuffix = consumedAt ? ` at${suffix}` : suffix;
-    const zoneSuffix = suffix.split(
-      /\b(?:to|with|because|please|but|then|and)\b/i,
-    )[0];
+    const zoneSuffix = adjacentQualifier(suffix);
     const leadingZone = zoneSuffix
       .trim()
       .match(/^(?:UTC|GMT)\s*[+\-−][\d:]+|^[A-Z]{2,5}\b/i);

@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 448,
+  "total": 481,
   "crashes": 0,
   "legacyCountDifferences": 27,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -802,6 +802,216 @@
       "missingLocalTimes": [],
       "warnings": [
         "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-096",
+      "input": "PDT 3pm in Foo/Bar to PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Foo/Bar. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-097",
+      "input": "PDT 3pm in Europe/London to PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-100",
+      "input": "PDT 3pm in Foo/Bar until PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Foo/Bar. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-101",
+      "input": "PDT 3pm in Europe/London until PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-104",
+      "input": "PDT 3pm in Foo/Bar till PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Foo/Bar. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-105",
+      "input": "PDT 3pm in Europe/London till PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-108",
+      "input": "PDT 3pm in Foo/Bar through PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Foo/Bar. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-109",
+      "input": "PDT 3pm in Europe/London through PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-112",
+      "input": "PDT 3pm in Foo/Bar - PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Foo/Bar. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-113",
+      "input": "PDT 3pm in Europe/London - PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-116",
+      "input": "PDT 3pm in Foo/Bar – PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Foo/Bar. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-117",
+      "input": "PDT 3pm in Europe/London – PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-118",
+      "input": "PT 3pm At London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-119",
+      "input": "PT 3pm At Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-121",
+      "input": "PT 3pm aT London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-122",
+      "input": "PT 3pm aT Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-124",
+      "input": "PDT 3pm in Foo/Bar to PT 4pm, CET noon",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone Foo/Bar. Correct it and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-125",
+      "input": "PDT 3pm in UTC+25:00 to PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again.",
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-126",
+      "input": "PDT 3pm at UTC+25:00 to PT 4pm",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Invalid timezone offset UTC+25:00. Correct it and try again."
       ],
       "dates": []
     }

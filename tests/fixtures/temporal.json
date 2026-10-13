@@ -1533,5 +1533,230 @@
     "text": "AT 3pm",
     "instants": ["2026-04-06T18:00:00Z"],
     "sourceZones": ["America/Halifax"]
+  },
+  {
+    "name": "timezone-first qualified to preserves separate owners",
+    "text": "PDT 3pm in Seattle to ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["-07:00", "America/New_York"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "ET 4pm in New York"],
+    "sourceIndices": [0, 22]
+  },
+  {
+    "name": "timezone-first qualified to bounds matching zone excerpts",
+    "text": "PDT 3pm in Seattle to PDT 4pm in Seattle",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T23:00:00Z"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "PDT 4pm in Seattle"]
+  },
+  {
+    "name": "timezone-first qualified to unknown IANA rejects range",
+    "text": "PDT 3pm in Foo/Bar to PT 4pm",
+    "instants": [],
+    "warning": "Unknown timezone Foo/Bar"
+  },
+  {
+    "name": "timezone-first qualified to conflicting IANA rejects range",
+    "text": "PDT 3pm in Europe/London to PT 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first qualified until preserves separate owners",
+    "text": "PDT 3pm in Seattle until ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["-07:00", "America/New_York"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "ET 4pm in New York"],
+    "sourceIndices": [0, 25]
+  },
+  {
+    "name": "timezone-first qualified until bounds matching zone excerpts",
+    "text": "PDT 3pm in Seattle until PDT 4pm in Seattle",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T23:00:00Z"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "PDT 4pm in Seattle"]
+  },
+  {
+    "name": "timezone-first qualified until unknown IANA rejects range",
+    "text": "PDT 3pm in Foo/Bar until PT 4pm",
+    "instants": [],
+    "warning": "Unknown timezone Foo/Bar"
+  },
+  {
+    "name": "timezone-first qualified until conflicting IANA rejects range",
+    "text": "PDT 3pm in Europe/London until PT 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first qualified till preserves separate owners",
+    "text": "PDT 3pm in Seattle till ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["-07:00", "America/New_York"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "ET 4pm in New York"],
+    "sourceIndices": [0, 24]
+  },
+  {
+    "name": "timezone-first qualified till bounds matching zone excerpts",
+    "text": "PDT 3pm in Seattle till PDT 4pm in Seattle",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T23:00:00Z"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "PDT 4pm in Seattle"]
+  },
+  {
+    "name": "timezone-first qualified till unknown IANA rejects range",
+    "text": "PDT 3pm in Foo/Bar till PT 4pm",
+    "instants": [],
+    "warning": "Unknown timezone Foo/Bar"
+  },
+  {
+    "name": "timezone-first qualified till conflicting IANA rejects range",
+    "text": "PDT 3pm in Europe/London till PT 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first qualified through preserves separate owners",
+    "text": "PDT 3pm in Seattle through ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["-07:00", "America/New_York"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "ET 4pm in New York"],
+    "sourceIndices": [0, 27]
+  },
+  {
+    "name": "timezone-first qualified through bounds matching zone excerpts",
+    "text": "PDT 3pm in Seattle through PDT 4pm in Seattle",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T23:00:00Z"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "PDT 4pm in Seattle"]
+  },
+  {
+    "name": "timezone-first qualified through unknown IANA rejects range",
+    "text": "PDT 3pm in Foo/Bar through PT 4pm",
+    "instants": [],
+    "warning": "Unknown timezone Foo/Bar"
+  },
+  {
+    "name": "timezone-first qualified through conflicting IANA rejects range",
+    "text": "PDT 3pm in Europe/London through PT 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first qualified - preserves separate owners",
+    "text": "PDT 3pm in Seattle - ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["-07:00", "America/New_York"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "ET 4pm in New York"],
+    "sourceIndices": [0, 21]
+  },
+  {
+    "name": "timezone-first qualified - bounds matching zone excerpts",
+    "text": "PDT 3pm in Seattle - PDT 4pm in Seattle",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T23:00:00Z"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "PDT 4pm in Seattle"]
+  },
+  {
+    "name": "timezone-first qualified - unknown IANA rejects range",
+    "text": "PDT 3pm in Foo/Bar - PT 4pm",
+    "instants": [],
+    "warning": "Unknown timezone Foo/Bar"
+  },
+  {
+    "name": "timezone-first qualified - conflicting IANA rejects range",
+    "text": "PDT 3pm in Europe/London - PT 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first qualified – preserves separate owners",
+    "text": "PDT 3pm in Seattle – ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["-07:00", "America/New_York"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "ET 4pm in New York"],
+    "sourceIndices": [0, 21]
+  },
+  {
+    "name": "timezone-first qualified – bounds matching zone excerpts",
+    "text": "PDT 3pm in Seattle – PDT 4pm in Seattle",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T23:00:00Z"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm in Seattle", "PDT 4pm in Seattle"]
+  },
+  {
+    "name": "timezone-first qualified – unknown IANA rejects range",
+    "text": "PDT 3pm in Foo/Bar – PT 4pm",
+    "instants": [],
+    "warning": "Unknown timezone Foo/Bar"
+  },
+  {
+    "name": "timezone-first qualified – conflicting IANA rejects range",
+    "text": "PDT 3pm in Europe/London – PT 4pm",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first consumed At city conflict rejected",
+    "text": "PT 3pm At London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first consumed At unknown city rejected",
+    "text": "PT 3pm At Atlantis",
+    "instants": [],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first consumed At matching city retains excerpt",
+    "text": "PT 3pm At Seattle",
+    "instants": ["2026-04-06T22:00:00Z"],
+    "originals": ["PT 3pm At Seattle"],
+    "sourceIndices": [0]
+  },
+  {
+    "name": "timezone-first consumed aT city conflict rejected",
+    "text": "PT 3pm aT London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first consumed aT unknown city rejected",
+    "text": "PT 3pm aT Atlantis",
+    "instants": [],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first consumed aT matching city retains excerpt",
+    "text": "PT 3pm aT Seattle",
+    "instants": ["2026-04-06T22:00:00Z"],
+    "originals": ["PT 3pm aT Seattle"],
+    "sourceIndices": [0]
+  },
+  {
+    "name": "timezone-first qualified IANA rejection preserves independent clause",
+    "text": "PDT 3pm in Foo/Bar to PT 4pm, CET noon",
+    "instants": ["2026-04-06T11:00:00Z"],
+    "warning": "Unknown timezone Foo/Bar",
+    "originals": ["CET noon"]
+  },
+  {
+    "name": "timezone-first qualified in invalid offset rejects range",
+    "text": "PDT 3pm in UTC+25:00 to PT 4pm",
+    "instants": [],
+    "warning": "Invalid timezone offset"
+  },
+  {
+    "name": "timezone-first qualified at invalid offset rejects range",
+    "text": "PDT 3pm at UTC+25:00 to PT 4pm",
+    "instants": [],
+    "warning": "Invalid timezone offset"
   }
 ]
