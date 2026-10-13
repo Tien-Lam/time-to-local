@@ -12945,6 +12945,312 @@
       "legacyExpectedCount": 4,
       "expected": [],
       "description": "Consumed heading paragraph reset and independent prefixed weekday range-end ownership"
+    },
+    {
+      "id": "web-zone-first-780",
+      "input": "PDT noon to JST Friday midnight on 17 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-781",
+      "input": "PDT noon to EST Friday midnight on 17 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-782",
+      "input": "PDT noon to CST Friday midnight on 17 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-783",
+      "input": "JST Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-784",
+      "input": "JST next Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-785",
+      "input": "JST this Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-786",
+      "input": "UTC Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-787",
+      "input": "UTC next Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-788",
+      "input": "UTC this Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-789",
+      "input": "America/New_York Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-790",
+      "input": "America/New_York next Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-791",
+      "input": "America/New_York this Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-792",
+      "input": "CST Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-793",
+      "input": "CST next Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-794",
+      "input": "CST this Friday noon to UTC midnight on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-795",
+      "input": "JST Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-796",
+      "input": "JST next Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-797",
+      "input": "JST this Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-798",
+      "input": "JST Friday midnight to UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-799",
+      "input": "UTC Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-800",
+      "input": "UTC next Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-801",
+      "input": "UTC this Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-802",
+      "input": "UTC Friday midnight to UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-803",
+      "input": "America/New_York Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-804",
+      "input": "America/New_York next Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-805",
+      "input": "America/New_York this Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-806",
+      "input": "America/New_York Friday midnight to UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-807",
+      "input": "CST Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-808",
+      "input": "CST next Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-809",
+      "input": "CST this Friday noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-810",
+      "input": "CST Friday midnight to UTC noon; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-811",
+      "input": "JST today noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-812",
+      "input": "JST tomorrow noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
+    },
+    {
+      "id": "web-zone-first-813",
+      "input": "CST today noon to UTC midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 4,
+      "expected": [],
+      "description": "Accepted calendar dates retain authority; prefixed weekday and relative starts own inherited end calendars"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

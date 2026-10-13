@@ -727,6 +727,29 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       reject();
       continue;
     }
+    const weekdayStartText =
+      prefix && r.start.isCertain("weekday") && !r.start.isCertain("day")
+        ? text
+            .slice(
+              prefix.end,
+              r.end
+                ? (prefixes.find(
+                    (next) =>
+                      next.index > r.index &&
+                      next.index < r.index + r.text.length,
+                  )?.index ??
+                    +(
+                      [...r.end.tags()]
+                        .find((tag) =>
+                          tag.startsWith("chronoshift/endpoint-index:"),
+                        )
+                        ?.split(":")[1] ?? r.index + r.text.length
+                    ))
+                : r.index + r.text.length,
+            )
+            .replace(/(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*$/i, "")
+            .trim()
+        : undefined;
     const dateOwners: DateOwner[] = (
       dateChoices ??
       (prefix && explicitDate ? explicitZones(prefix.text) : undefined) ?? [
@@ -735,7 +758,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     ).map((choice) => {
       const local = prefix
         ? parser.parse(
-            r.text.trim(),
+            weekdayStartText ?? r.text.trim(),
             {
               instant: new Date(now),
               timezone: offsetMinutes(choice.zone, now),
@@ -988,18 +1011,20 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         const local = parser.parse(r.text, zoneRef, {
           timezones: timezoneHints,
         })[0];
-        const weekdayEnd =
-          endpoint === "end" && endpointPrefix && c.isCertain("weekday")
+        const ownedWeekday =
+          endpointPrefix && c.isCertain("weekday") && !c.isCertain("day")
             ? parser.parse(
-                text.slice(endpointPrefix.end, r.index + r.text.length),
+                endpoint === "end"
+                  ? text.slice(endpointPrefix.end, r.index + r.text.length)
+                  : (weekdayStartText ?? r.text),
                 zoneRef,
                 { timezones: timezoneHints },
               )[0]?.start
             : undefined;
-        // Native clock-range rollover can rewrite an end weekday's implied
-        // date. An explicitly prefixed weekday owns its independent calendar.
+        // Native range inheritance can rewrite a weekday's implied date.
+        // Resolve its owned span independently, retaining accepted full dates.
         const components =
-          weekdayEnd ??
+          ownedWeekday ??
           (local
             ? endpoint === "end" && local.end
               ? local.end
@@ -1010,10 +1035,24 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           explicitDate ||
           c.isCertain("day") ||
           (!!endpointPrefix && c.isCertain("weekday"));
-        for (const dateOwner of !exactNow &&
-        !explicitEndpointDate &&
-        contextOwners
-          ? contextOwners
+        const inheritsOwnedStart =
+          endpoint === "end" &&
+          prefix &&
+          explicitDate &&
+          !r.start.tags().has("casualReference/now") &&
+          !c.isCertain("day") &&
+          !c.isCertain("weekday");
+        const calendarOwners = inheritsOwnedStart
+          ? dateOwners.filter(
+              (owner, index, all) =>
+                all.findIndex((other) => other.date.equals(owner.date)) ===
+                index,
+            )
+          : !explicitEndpointDate
+            ? contextOwners
+            : undefined;
+        for (const dateOwner of !exactNow && calendarOwners
+          ? calendarOwners
           : [undefined]) {
           let selectedDate = componentDate(components),
             assumptions = [
@@ -1027,6 +1066,16 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             selectedDate = Temporal.Instant.from(now)
               .toZonedDateTimeISO(choice.zone)
               .toPlainDate();
+          } else if (inheritsOwnedStart && dateOwner) {
+            // The end inherits the accepted start calendar, not a new reading
+            // of that start's relative date in the end timezone.
+            selectedDate = dateOwner.date.add({
+              days: componentDate(local?.start ?? r.start).until(selectedDate)
+                .days,
+            });
+            referenceUsed = dateOwner.referenceUsed;
+            if (!c.isCertain("year") && usesReferenceYear(components))
+              assumptions.push(`Year assumed: ${selectedDate.year}`);
           } else if (!explicitEndpointDate && contextDate) {
             const header = parser.parse(contextText, zoneRef, {
               timezones: timezoneHints,

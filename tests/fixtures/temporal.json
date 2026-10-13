@@ -13029,5 +13029,2637 @@
       "UTC noon"
     ],
     "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday JST UTC mdy",
+    "text": "PDT noon to JST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST Friday midnight on 17 April",
+      "PDT noon to JST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday EST UTC mdy",
+    "text": "PDT noon to EST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T05:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to EST Friday midnight on 17 April",
+      "PDT noon to EST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday CST UTC mdy",
+    "text": "PDT noon to CST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T06:00:00Z",
+      "2026-04-16T16:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST Friday UTC mdy",
+    "text": "JST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight on 12 April",
+      "JST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST next Friday UTC mdy",
+    "text": "JST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight on 12 April",
+      "JST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST this Friday UTC mdy",
+    "text": "JST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight on 12 April",
+      "JST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC Friday UTC mdy",
+    "text": "UTC Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC next Friday UTC mdy",
+    "text": "UTC next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC this Friday UTC mdy",
+    "text": "UTC this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York Friday UTC mdy",
+    "text": "America/New_York Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York next Friday UTC mdy",
+    "text": "America/New_York next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York this Friday UTC mdy",
+    "text": "America/New_York this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST Friday UTC mdy",
+    "text": "CST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST next Friday UTC mdy",
+    "text": "CST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST this Friday UTC mdy",
+    "text": "CST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday noon UTC mdy",
+    "text": "JST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight",
+      "JST Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST next Friday noon UTC mdy",
+    "text": "JST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight",
+      "JST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST this Friday noon UTC mdy",
+    "text": "JST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight",
+      "JST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday midnight UTC mdy",
+    "text": "JST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday midnight to UTC noon",
+      "JST Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday noon UTC mdy",
+    "text": "UTC Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight",
+      "UTC Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC next Friday noon UTC mdy",
+    "text": "UTC next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight",
+      "UTC next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC this Friday noon UTC mdy",
+    "text": "UTC this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight",
+      "UTC this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday midnight UTC mdy",
+    "text": "UTC Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T00:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday midnight to UTC noon",
+      "UTC Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday noon UTC mdy",
+    "text": "America/New_York Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight",
+      "America/New_York Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York next Friday noon UTC mdy",
+    "text": "America/New_York next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight",
+      "America/New_York next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York this Friday noon UTC mdy",
+    "text": "America/New_York this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight",
+      "America/New_York this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday midnight UTC mdy",
+    "text": "America/New_York Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T04:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday midnight to UTC noon",
+      "America/New_York Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday noon UTC mdy",
+    "text": "CST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST next Friday noon UTC mdy",
+    "text": "CST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST this Friday noon UTC mdy",
+    "text": "CST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday midnight UTC mdy",
+    "text": "CST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST today UTC mdy",
+    "text": "JST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-07T03:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST tomorrow UTC mdy",
+    "text": "JST tomorrow noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-08T03:00:00Z",
+      "2026-04-09T00:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end CST today UTC mdy",
+    "text": "CST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T18:00:00Z",
+      "2026-04-07T04:00:00Z",
+      "2026-04-07T00:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-06T17:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday JST UTC dmy",
+    "text": "PDT noon to JST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST Friday midnight on 17 April",
+      "PDT noon to JST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday EST UTC dmy",
+    "text": "PDT noon to EST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T05:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to EST Friday midnight on 17 April",
+      "PDT noon to EST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday CST UTC dmy",
+    "text": "PDT noon to CST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T06:00:00Z",
+      "2026-04-16T16:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST Friday UTC dmy",
+    "text": "JST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight on 12 April",
+      "JST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST next Friday UTC dmy",
+    "text": "JST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight on 12 April",
+      "JST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST this Friday UTC dmy",
+    "text": "JST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight on 12 April",
+      "JST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC Friday UTC dmy",
+    "text": "UTC Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC next Friday UTC dmy",
+    "text": "UTC next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC this Friday UTC dmy",
+    "text": "UTC this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York Friday UTC dmy",
+    "text": "America/New_York Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York next Friday UTC dmy",
+    "text": "America/New_York next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York this Friday UTC dmy",
+    "text": "America/New_York this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST Friday UTC dmy",
+    "text": "CST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST next Friday UTC dmy",
+    "text": "CST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST this Friday UTC dmy",
+    "text": "CST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday noon UTC dmy",
+    "text": "JST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight",
+      "JST Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST next Friday noon UTC dmy",
+    "text": "JST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight",
+      "JST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST this Friday noon UTC dmy",
+    "text": "JST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight",
+      "JST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday midnight UTC dmy",
+    "text": "JST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday midnight to UTC noon",
+      "JST Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday noon UTC dmy",
+    "text": "UTC Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight",
+      "UTC Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC next Friday noon UTC dmy",
+    "text": "UTC next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight",
+      "UTC next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC this Friday noon UTC dmy",
+    "text": "UTC this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight",
+      "UTC this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday midnight UTC dmy",
+    "text": "UTC Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T00:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday midnight to UTC noon",
+      "UTC Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday noon UTC dmy",
+    "text": "America/New_York Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight",
+      "America/New_York Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York next Friday noon UTC dmy",
+    "text": "America/New_York next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight",
+      "America/New_York next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York this Friday noon UTC dmy",
+    "text": "America/New_York this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight",
+      "America/New_York this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday midnight UTC dmy",
+    "text": "America/New_York Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T04:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday midnight to UTC noon",
+      "America/New_York Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday noon UTC dmy",
+    "text": "CST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST next Friday noon UTC dmy",
+    "text": "CST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST this Friday noon UTC dmy",
+    "text": "CST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday midnight UTC dmy",
+    "text": "CST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST today UTC dmy",
+    "text": "JST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-07T03:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST tomorrow UTC dmy",
+    "text": "JST tomorrow noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-08T03:00:00Z",
+      "2026-04-09T00:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end CST today UTC dmy",
+    "text": "CST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T18:00:00Z",
+      "2026-04-07T04:00:00Z",
+      "2026-04-07T00:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-06T17:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday JST Asia/Tokyo mdy",
+    "text": "PDT noon to JST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST Friday midnight on 17 April",
+      "PDT noon to JST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday EST Asia/Tokyo mdy",
+    "text": "PDT noon to EST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T05:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to EST Friday midnight on 17 April",
+      "PDT noon to EST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday CST Asia/Tokyo mdy",
+    "text": "PDT noon to CST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T06:00:00Z",
+      "2026-04-16T16:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST Friday Asia/Tokyo mdy",
+    "text": "JST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight on 12 April",
+      "JST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST next Friday Asia/Tokyo mdy",
+    "text": "JST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight on 12 April",
+      "JST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST this Friday Asia/Tokyo mdy",
+    "text": "JST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight on 12 April",
+      "JST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC Friday Asia/Tokyo mdy",
+    "text": "UTC Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC next Friday Asia/Tokyo mdy",
+    "text": "UTC next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC this Friday Asia/Tokyo mdy",
+    "text": "UTC this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York Friday Asia/Tokyo mdy",
+    "text": "America/New_York Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York next Friday Asia/Tokyo mdy",
+    "text": "America/New_York next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York this Friday Asia/Tokyo mdy",
+    "text": "America/New_York this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST Friday Asia/Tokyo mdy",
+    "text": "CST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST next Friday Asia/Tokyo mdy",
+    "text": "CST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST this Friday Asia/Tokyo mdy",
+    "text": "CST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday noon Asia/Tokyo mdy",
+    "text": "JST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight",
+      "JST Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST next Friday noon Asia/Tokyo mdy",
+    "text": "JST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight",
+      "JST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST this Friday noon Asia/Tokyo mdy",
+    "text": "JST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight",
+      "JST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday midnight Asia/Tokyo mdy",
+    "text": "JST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday midnight to UTC noon",
+      "JST Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday noon Asia/Tokyo mdy",
+    "text": "UTC Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight",
+      "UTC Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC next Friday noon Asia/Tokyo mdy",
+    "text": "UTC next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight",
+      "UTC next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC this Friday noon Asia/Tokyo mdy",
+    "text": "UTC this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight",
+      "UTC this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday midnight Asia/Tokyo mdy",
+    "text": "UTC Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T00:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday midnight to UTC noon",
+      "UTC Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday noon Asia/Tokyo mdy",
+    "text": "America/New_York Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight",
+      "America/New_York Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York next Friday noon Asia/Tokyo mdy",
+    "text": "America/New_York next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight",
+      "America/New_York next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York this Friday noon Asia/Tokyo mdy",
+    "text": "America/New_York this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight",
+      "America/New_York this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday midnight Asia/Tokyo mdy",
+    "text": "America/New_York Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T04:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday midnight to UTC noon",
+      "America/New_York Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday noon Asia/Tokyo mdy",
+    "text": "CST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST next Friday noon Asia/Tokyo mdy",
+    "text": "CST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST this Friday noon Asia/Tokyo mdy",
+    "text": "CST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday midnight Asia/Tokyo mdy",
+    "text": "CST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-03T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST today Asia/Tokyo mdy",
+    "text": "JST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-07T03:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST tomorrow Asia/Tokyo mdy",
+    "text": "JST tomorrow noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-08T03:00:00Z",
+      "2026-04-09T00:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end CST today Asia/Tokyo mdy",
+    "text": "CST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T18:00:00Z",
+      "2026-04-07T04:00:00Z",
+      "2026-04-07T00:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-06T17:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday JST Asia/Tokyo dmy",
+    "text": "PDT noon to JST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-16T15:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST Friday midnight on 17 April",
+      "PDT noon to JST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday EST Asia/Tokyo dmy",
+    "text": "PDT noon to EST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T05:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to EST Friday midnight on 17 April",
+      "PDT noon to EST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-05:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "accepted trailing date beats weekday CST Asia/Tokyo dmy",
+    "text": "PDT noon to CST Friday midnight on 17 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-16T19:00:00Z",
+      "2026-04-17T06:00:00Z",
+      "2026-04-16T16:00:00Z",
+      "2026-04-17T12:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "PDT noon to CST Friday midnight on 17 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-07:00", "-06:00", "+08:00", "+00:00"],
+    "endpoints": ["start", "end", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST Friday Asia/Tokyo dmy",
+    "text": "JST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight on 12 April",
+      "JST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST next Friday Asia/Tokyo dmy",
+    "text": "JST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight on 12 April",
+      "JST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end JST this Friday Asia/Tokyo dmy",
+    "text": "JST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight on 12 April",
+      "JST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC Friday Asia/Tokyo dmy",
+    "text": "UTC Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC next Friday Asia/Tokyo dmy",
+    "text": "UTC next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end UTC this Friday Asia/Tokyo dmy",
+    "text": "UTC this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York Friday Asia/Tokyo dmy",
+    "text": "America/New_York Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "America/New_York Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York next Friday Asia/Tokyo dmy",
+    "text": "America/New_York next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "America/New_York next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end America/New_York this Friday Asia/Tokyo dmy",
+    "text": "America/New_York this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "America/New_York this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST Friday Asia/Tokyo dmy",
+    "text": "CST Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "CST Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST next Friday Asia/Tokyo dmy",
+    "text": "CST next Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "CST next Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "owned weekday start independent from dated end CST this Friday Asia/Tokyo dmy",
+    "text": "CST this Friday noon to UTC midnight on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-12T00:00:00Z",
+      "2026-04-12T12:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "CST this Friday noon to UTC midnight on 12 April",
+      "UTC noon"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday noon Asia/Tokyo dmy",
+    "text": "JST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday noon to UTC midnight",
+      "JST Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST next Friday noon Asia/Tokyo dmy",
+    "text": "JST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T03:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "JST next Friday noon to UTC midnight",
+      "JST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST this Friday noon Asia/Tokyo dmy",
+    "text": "JST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T03:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST this Friday noon to UTC midnight",
+      "JST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars JST Friday midnight Asia/Tokyo dmy",
+    "text": "JST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-09T15:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "JST Friday midnight to UTC noon",
+      "JST Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday noon Asia/Tokyo dmy",
+    "text": "UTC Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T12:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday noon to UTC midnight",
+      "UTC Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC next Friday noon Asia/Tokyo dmy",
+    "text": "UTC next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T12:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "UTC next Friday noon to UTC midnight",
+      "UTC next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC this Friday noon Asia/Tokyo dmy",
+    "text": "UTC this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T12:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "UTC this Friday noon to UTC midnight",
+      "UTC this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars UTC Friday midnight Asia/Tokyo dmy",
+    "text": "UTC Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T00:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "UTC Friday midnight to UTC noon",
+      "UTC Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday noon Asia/Tokyo dmy",
+    "text": "America/New_York Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T16:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday noon to UTC midnight",
+      "America/New_York Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York next Friday noon Asia/Tokyo dmy",
+    "text": "America/New_York next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T16:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York next Friday noon to UTC midnight",
+      "America/New_York next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York this Friday noon Asia/Tokyo dmy",
+    "text": "America/New_York this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T16:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York this Friday noon to UTC midnight",
+      "America/New_York this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars America/New_York Friday midnight Asia/Tokyo dmy",
+    "text": "America/New_York Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T04:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-03T17:00:00Z"
+    ],
+    "originals": [
+      "America/New_York Friday midnight to UTC noon",
+      "America/New_York Friday midnight to UTC noon",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["America/New_York", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday noon Asia/Tokyo dmy",
+    "text": "CST Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-04T00:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "CST Friday noon to UTC midnight",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST next Friday noon Asia/Tokyo dmy",
+    "text": "CST next Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-17T18:00:00Z",
+      "2026-04-17T04:00:00Z",
+      "2026-04-18T00:00:00Z",
+      "2026-04-17T17:00:00Z"
+    ],
+    "originals": [
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "CST next Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST this Friday noon Asia/Tokyo dmy",
+    "text": "CST this Friday noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T18:00:00Z",
+      "2026-04-10T04:00:00Z",
+      "2026-04-11T00:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "CST this Friday noon to UTC midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "undefined"]
+  },
+  {
+    "name": "undated end inherits all owned start calendars CST Friday midnight Asia/Tokyo dmy",
+    "text": "CST Friday midnight to UTC noon; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-03T06:00:00Z",
+      "2026-04-09T16:00:00Z",
+      "2026-04-03T12:00:00Z",
+      "2026-04-10T12:00:00Z",
+      "2026-04-03T17:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": [
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "CST Friday midnight to UTC noon",
+      "UTC 5pm",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST today Asia/Tokyo dmy",
+    "text": "JST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-07T03:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end JST tomorrow Asia/Tokyo dmy",
+    "text": "JST tomorrow noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-08T03:00:00Z",
+      "2026-04-09T00:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "sourceZones": ["+09:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "relative start calendar independent from undated end CST today Asia/Tokyo dmy",
+    "text": "CST today noon to UTC midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T18:00:00Z",
+      "2026-04-07T04:00:00Z",
+      "2026-04-07T00:00:00Z",
+      "2026-04-08T00:00:00Z",
+      "2026-04-06T17:00:00Z",
+      "2026-04-07T17:00:00Z"
+    ],
+    "sourceZones": ["-06:00", "+08:00", "+00:00", "+00:00", "+00:00", "+00:00"],
+    "endpoints": ["start", "start", "end", "end", "undefined", "undefined"]
   }
 ]
