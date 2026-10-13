@@ -90,8 +90,11 @@ export function referenceSummary(
   const date = result.assumptions
     .find((value) => value.startsWith("Reference date used: "))
     ?.slice(21);
+  const contextZone = result.assumptions
+    .find((value) => value.startsWith("Date context timezone: "))
+    ?.slice("Date context timezone: ".length);
   return date
-    ? `Reference: ${humanDate(date, locale)} in ${result.dateOnly ? zoneName(result.sourceZone) : result.sourceLabel}`
+    ? `Reference: ${humanDate(date, locale)} in ${contextZone ?? (result.dateOnly ? zoneName(result.sourceZone) : result.sourceLabel)}`
     : undefined;
 }
 

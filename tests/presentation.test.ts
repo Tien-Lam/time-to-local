@@ -271,3 +271,57 @@ test("date-only reference summaries name the zone anchoring their day", () => {
     );
   }
 });
+
+test("inherited reference dates name the heading zone independently of the clock", () => {
+  for (const sourceZone of ["UTC", "Asia/Tokyo"])
+    for (const dateOrder of ["mdy", "dmy"] as const)
+      for (const [text, now, instant, reference] of [
+        [
+          "JST today; UTC noon",
+          "2026-04-06T22:00:00Z",
+          "2026-04-07T12:00:00Z",
+          "Reference: Tue, 7 Apr 2026 in JST",
+        ],
+        [
+          "JST tomorrow; UTC noon",
+          "2026-04-06T22:00:00Z",
+          "2026-04-08T12:00:00Z",
+          "Reference: Tue, 7 Apr 2026 in JST",
+        ],
+        [
+          "America/New_York today; UTC noon",
+          "2026-04-06T00:30:00Z",
+          "2026-04-05T12:00:00Z",
+          "Reference: Sun, 5 Apr 2026 in New York",
+        ],
+      ]) {
+        const result = convert(text, { ...options, now, sourceZone, dateOrder })
+          .results[0];
+        expect(result.instant).toBe(instant);
+        expect(result.sourceLabel).toBe("UTC");
+        expect(referenceSummary(result, "en-AU")).toBe(reference);
+      }
+});
+
+test("ambiguous heading reference summaries preserve each owning timezone", () => {
+  const results = convert("CST today; UTC noon", {
+    ...options,
+    now: "2026-04-06T22:00:00Z",
+  }).results;
+  expect(results.map((result) => referenceSummary(result, "en-AU"))).toEqual([
+    "Reference: Mon, 6 Apr 2026 in CST · US Central Standard",
+    "Reference: Tue, 7 Apr 2026 in CST · China Standard",
+  ]);
+  expect(results.map((result) => result.sourceLabel)).toEqual(["UTC", "UTC"]);
+});
+
+test("exact now in a contextual range keeps its own reference timezone", () => {
+  const results = convert("JST tomorrow; UTC noon to PDT now", {
+    ...options,
+    now: "2026-04-06T22:00:00.123456789Z",
+  }).results;
+  expect(results.map((result) => referenceSummary(result, "en-AU"))).toEqual([
+    "Reference: Tue, 7 Apr 2026 in JST",
+    "Reference: Mon, 6 Apr 2026 in PDT",
+  ]);
+});
