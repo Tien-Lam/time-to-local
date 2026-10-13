@@ -4,6 +4,7 @@ export interface Preferences {
   hourCycle: "auto" | "12" | "24";
   dateOrder: "mdy" | "dmy";
   theme: "dark" | "light" | "system";
+  design: "command" | "aqua";
 }
 export const DEFAULTS: Preferences = {
   target: "",
@@ -11,6 +12,7 @@ export const DEFAULTS: Preferences = {
   hourCycle: "auto",
   dateOrder: "mdy",
   theme: "dark",
+  design: "command",
 };
 const KEY = "chronoshift.preferences.v1";
 export function loadPreferences(): Preferences {
@@ -26,6 +28,7 @@ export function loadPreferences(): Preferences {
       theme: ["dark", "light", "system"].includes(raw.theme)
         ? raw.theme
         : "dark",
+      design: raw.design === "aqua" ? "aqua" : "command",
     };
   } catch {
     return { ...DEFAULTS };
@@ -39,7 +42,14 @@ export function savePreferences(value: Preferences): boolean {
       )
     )
       localStorage.removeItem(KEY);
-    else localStorage.setItem(KEY, JSON.stringify(value));
+    else {
+      // Keep the original preference shape for the default design and legacy clients.
+      const { design, ...original } = value;
+      localStorage.setItem(
+        KEY,
+        JSON.stringify(design === "aqua" ? value : original),
+      );
+    }
     return true;
   } catch {
     return false;

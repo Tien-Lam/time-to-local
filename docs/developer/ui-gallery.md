@@ -71,7 +71,9 @@ migration exceptions, not claims of adopting every shadcn recipe.
 ## Development-only gallery
 
 Run `bun install --frozen-lockfile`, then `bun run dev:gallery` and visit
-`http://127.0.0.1:44101/__gallery/`. `?theme=light` selects the other palette.
+`http://127.0.0.1:44101/__gallery/`. `?theme=light` selects the other palette;
+`?design=aqua&theme=light` previews classic Aqua controls. Workspace views use
+the real app's saved appearance preference and Appearance selector.
 `?view=workspace` renders the actual App; its fixtures are entered through the
 real editor in Playwright, using independently specified expected times/labels.
 The gallery includes quiet/primary/outline/icon, text and icons, long/adjacent

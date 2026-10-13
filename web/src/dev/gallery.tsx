@@ -18,6 +18,8 @@ const query = new URLSearchParams(location.search);
 const theme = query.get("theme") === "light" ? "light" : "dark";
 const fault = query.get("fault");
 document.documentElement.dataset.theme = theme;
+document.documentElement.dataset.design =
+  query.get("design") === "aqua" ? "aqua" : "command";
 
 function Icon() {
   return (

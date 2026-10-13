@@ -30,7 +30,11 @@ for (const legacyDesign of ["lens", "command"])
       "data-design",
       "command",
     );
-    await expect(page.getByLabel("Design", { exact: true })).toHaveCount(0);
+    await page.getByLabel("Appearance", { exact: true }).click();
+    await expect(
+      page.getByRole("button", { name: "Original Design", exact: true }),
+    ).toBeVisible();
+    await page.getByLabel("Appearance", { exact: true }).click();
     await expect(page.getByLabel("Message with a date or time")).toHaveValue(
       "",
     );
