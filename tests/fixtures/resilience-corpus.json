@@ -10317,6 +10317,114 @@
       "legacyExpectedCount": 2,
       "expected": [],
       "description": "dmy numeric date-only start 08-04-2026 word connector keeps trailing complete date end identity"
+    },
+    {
+      "id": "web-zone-first-488",
+      "input": "America/New_York 3pm Mars/Olympus; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 1"
+    },
+    {
+      "id": "web-zone-first-489",
+      "input": "America/New_York 3pm in Mars/Olympus; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 2"
+    },
+    {
+      "id": "web-zone-first-490",
+      "input": "America/New_York 3pm America/Foo to UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 3"
+    },
+    {
+      "id": "web-zone-first-491",
+      "input": "PDT 3pm to America/New_York 4pm Mars/Olympus; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 4"
+    },
+    {
+      "id": "web-zone-first-492",
+      "input": "America/New_York April 8 Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 5"
+    },
+    {
+      "id": "web-zone-first-493",
+      "input": "America/New_York April 8 in Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 6"
+    },
+    {
+      "id": "web-zone-first-494",
+      "input": "UTC+03:00 3pm UTC+25:00; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 7"
+    },
+    {
+      "id": "web-zone-first-495",
+      "input": "UTC+03:00 3pm UTC+25:00 to UTC 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 8"
+    },
+    {
+      "id": "web-zone-first-496",
+      "input": "UTC+03:00 April 8 UTC+25:00 - UTC April 10 4pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 9"
+    },
+    {
+      "id": "web-zone-first-497",
+      "input": "UTC+03:00 3pm to UTC+02:00 4pm UTC+25:00; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "valid zone prefix preserves invalid adjacent qualifier rejection 10"
+    },
+    {
+      "id": "web-zone-first-498",
+      "input": "America/New_York April 8 3pm America/New_York; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "valid IANA prefix accepts matching adjacent America/New_York"
+    },
+    {
+      "id": "web-zone-first-499",
+      "input": "America/New_York April 8 3pm US/Eastern; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "valid IANA prefix accepts matching adjacent US/Eastern"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

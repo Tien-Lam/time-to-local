@@ -4850,5 +4850,117 @@
     "originals": ["UTC 04-10-2026 4pm", "UTC April 12 5pm"],
     "endpoints": ["undefined", "undefined"],
     "rangeIds": [null, null]
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 1",
+    "text": "America/New_York 3pm Mars/Olympus; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 2",
+    "text": "America/New_York 3pm in Mars/Olympus; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 3",
+    "text": "America/New_York 3pm America/Foo to UTC 4pm; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone America/Foo"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 4",
+    "text": "PDT 3pm to America/New_York 4pm Mars/Olympus; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 5",
+    "text": "America/New_York April 8 Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 6",
+    "text": "America/New_York April 8 in Mars/Olympus - UTC April 10 4pm; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Unknown timezone Mars/Olympus"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 7",
+    "text": "UTC+03:00 3pm UTC+25:00; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Invalid timezone offset UTC+25:00"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 8",
+    "text": "UTC+03:00 3pm UTC+25:00 to UTC 4pm; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Invalid timezone offset UTC+25:00"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 9",
+    "text": "UTC+03:00 April 8 UTC+25:00 - UTC April 10 4pm; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Invalid timezone offset UTC+25:00"
+  },
+  {
+    "name": "valid zone prefix preserves invalid adjacent qualifier rejection 10",
+    "text": "UTC+03:00 3pm to UTC+02:00 4pm UTC+25:00; UTC April 12 5pm",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC April 12 5pm"],
+    "endpoints": ["undefined"],
+    "warning": "Invalid timezone offset UTC+25:00"
+  },
+  {
+    "name": "valid IANA prefix accepts matching adjacent America/New_York",
+    "text": "America/New_York April 8 3pm America/New_York; UTC April 12 5pm",
+    "instants": ["2026-04-08T19:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["America/New_York", "+00:00"]
+  },
+  {
+    "name": "valid IANA prefix accepts matching adjacent US/Eastern",
+    "text": "America/New_York April 8 3pm US/Eastern; UTC April 12 5pm",
+    "instants": ["2026-04-08T19:00:00Z", "2026-04-12T17:00:00Z"],
+    "sourceZones": ["America/New_York", "+00:00"]
   }
 ]

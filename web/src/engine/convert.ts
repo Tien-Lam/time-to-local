@@ -160,8 +160,10 @@ function choicesFor(
     );
     return [];
   }
-  const unknownIana = combined.match(IANA_TOKEN);
-  if (unknownIana && !validZone(unknownIana[0])) {
+  const unknownIana = [
+    ...combined.matchAll(new RegExp(IANA_TOKEN.source, "g")),
+  ].find((token) => !validZone(token[0]));
+  if (unknownIana) {
     warnings.push(
       `Unknown timezone ${unknownIana[0]}. Correct it and try again.`,
     );
