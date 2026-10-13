@@ -340,10 +340,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       : "";
     const qualifiedRange =
       prior &&
-      (/^\s+(?:(?:in|at)\s+)?(?:[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][A-Za-z0-9+\-−:]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
+      !prior.end &&
+      (/^\s+(?:(?:in|at)\s+)?(?:[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+|(?:UTC|GMT)[ \t]*[+\-−][A-Za-z0-9+\-−:]+)(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*$/iu.test(
         priorSuffix,
       ) ||
-        /^\s+(?:to|until|through|till|[-–])\s*$/i.test(priorSuffix));
+        /^(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*$/i.test(priorSuffix));
     const priorResults = qualifiedRange
       ? results.filter(
           (result) =>
@@ -424,7 +425,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const suffix = text
       .slice(r.index + r.text.length, suffixEnd)
       .split(/\n|[.;!?]|,(?!\s*\d)/)[0]
-      .replace(/\s+(?:to|until|through|till|[-–])\s*$/i, "");
+      .replace(/(?:\s+(?:to|until|through|till)|[ \t]*[-–])\s*$/i, "");
     // Chrono treats case-insensitive "at" as the regional AT abbreviation and
     // may include it in the clock span. Reattach the connector to its original
     // suffix unless it is exactly uppercase AT, which retains zone semantics.

@@ -1,7 +1,6 @@
-import { en } from "chrono-node";
+import { en, ParsingContext } from "chrono-node";
 import type { Chrono } from "chrono-node";
 import type { ParsingResult } from "chrono-node";
-import type { ParsingContext } from "chrono-node";
 import type { Refiner } from "chrono-node";
 import type { ParsedComponents } from "chrono-node";
 import type { Temporal as TemporalTypes } from "@js-temporal/polyfill";
@@ -291,6 +290,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
             ) {
               result.text = result.text.slice(0, separator.index).trimEnd();
               result.end = undefined;
+              result.start.addTag("chronoshift/date-range-boundary");
             } else if (result.start.isCertain("hour"))
               result.end.addTag(`chronoshift/endpoint-index:${endIndex}`);
           }
@@ -306,6 +306,42 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
       return results;
     },
   });
+  const offsetRefiners = parser.refiners.filter((refiner) => {
+    const context = new ParsingContext("3pm-10", {
+      instant: new Date("2026-04-06T12:00:00Z"),
+      timezone: 0,
+    });
+    const result = context.createParsingResult(0, "3pm", {
+      hour: 15,
+      minute: 0,
+    });
+    const refined = refiner.refine(context, [result]);
+    return (
+      refined.length === 1 &&
+      refined[0].text === "3pm-10" &&
+      refined[0].start.isCertain("timezoneOffset") &&
+      refined[0].start.get("timezoneOffset") === -600
+    );
+  });
+  if (offsetRefiners.length !== 1)
+    throw new Error(
+      "Chrono offset boundary adapter requires dependency review",
+    );
+  const offsetRefiner = offsetRefiners[0];
+  parser.refiners[parser.refiners.indexOf(offsetRefiner)] = {
+    refine: (context, results) => {
+      // A complete written date owns the digits after this separator. Native
+      // offset extraction must not reinterpret its compact '-10' as -10:00.
+      offsetRefiner.refine(
+        context,
+        results.filter(
+          (result) =>
+            !result.start.tags().has("chronoshift/date-range-boundary"),
+        ),
+      );
+      return results;
+    },
+  };
   parser.parsers.unshift({
     pattern: () =>
       new RegExp(
@@ -341,6 +377,31 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
     },
   });
   parser.refiners.push({
+    refine: (context, results) =>
+      results.flatMap((result) => {
+        if (!result.end?.isCertain("hour") || result.start.isCertain("hour"))
+          return [result];
+        const separator = result.text.match(
+          /\b(?:to|until|through|till|and)\b\s*|[-–~]\s+/i,
+        );
+        if (!separator) return [result];
+        // A native date range can attach a clock only to its final date.
+        // Keep that explicitly parsed time without inventing a start clock.
+        const end = result.clone();
+        end.start = result.end.clone();
+        end.start.addTags([...result.end.tags()]);
+        end.end = undefined;
+        end.index = result.index + separator.index! + separator[0].length;
+        end.text = context.text.slice(
+          end.index,
+          result.index + result.text.length,
+        );
+        result.text = result.text.slice(0, separator.index).trimEnd();
+        result.end = undefined;
+        return [result, end];
+      }),
+  });
+  parser.refiners.push({
     refine: (context, results) => {
       const consumed = new Set<number>();
       return results.flatMap((result, index) => {
@@ -357,6 +418,7 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
           !result.start.isCertain("hour") ||
           !result.end.isCertain("hour") ||
           !date?.start.isOnlyDate() ||
+          date.end ||
           !endpointTag ||
           !(
             /^[ \t]+on[ \t]+$/i.test(connector) ||
@@ -404,31 +466,6 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
         ];
       });
     },
-  });
-  parser.refiners.push({
-    refine: (context, results) =>
-      results.flatMap((result) => {
-        if (!result.end?.isCertain("hour") || result.start.isCertain("hour"))
-          return [result];
-        const separator = result.text.match(
-          /\b(?:to|until|through|till|and)\b\s*|[-–~]\s+/i,
-        );
-        if (!separator) return [result];
-        // A native date range can attach a clock only to its final date.
-        // Keep that explicitly parsed time without inventing a start clock.
-        const end = result.clone();
-        end.start = result.end.clone();
-        end.start.addTags([...result.end.tags()]);
-        end.end = undefined;
-        end.index = result.index + separator.index! + separator[0].length;
-        end.text = context.text.slice(
-          end.index,
-          result.index + result.text.length,
-        );
-        result.text = result.text.slice(0, separator.index).trimEnd();
-        result.end = undefined;
-        return [result, end];
-      }),
   });
   return parser;
 }

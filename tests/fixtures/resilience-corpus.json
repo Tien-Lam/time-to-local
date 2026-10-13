@@ -9579,6 +9579,276 @@
       "legacyExpectedCount": 3,
       "expected": [],
       "description": "next-line date owns its independently connected clock"
+    },
+    {
+      "id": "web-zone-first-406",
+      "input": "April 8 3pm-10 April 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unprefixed complete day-first end owns compact hyphen"
+    },
+    {
+      "id": "web-zone-first-407",
+      "input": "PDT April 8 3pm-10 April 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "PDT complete day-first end owns compact hyphen"
+    },
+    {
+      "id": "web-zone-first-408",
+      "input": "PDT 3pm PST- JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock PST hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-409",
+      "input": "PDT April 8 PST- JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only PST hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-410",
+      "input": "PDT 3pm in Tokyo- JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock in Tokyo hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-411",
+      "input": "PDT April 8 in Tokyo- JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only in Tokyo hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-412",
+      "input": "PDT 3pm XYZ- JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock XYZ hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-413",
+      "input": "PDT April 8 XYZ- JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only XYZ hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-414",
+      "input": "PDT 3pm in Seattle- JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "compatible city hyphen retains paired clocks and independent recovery"
+    },
+    {
+      "id": "web-zone-first-415",
+      "input": "April 8 3pm–10 April 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unprefixed complete day-first end owns compact en dash"
+    },
+    {
+      "id": "web-zone-first-416",
+      "input": "PDT April 8 3pm–10 April 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "PDT complete day-first end owns compact en dash"
+    },
+    {
+      "id": "web-zone-first-417",
+      "input": "PDT 3pm PST– JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock PST en dash rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-418",
+      "input": "PDT April 8 PST– JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only PST en dash rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-419",
+      "input": "PDT 3pm in Tokyo– JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock in Tokyo en dash rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-420",
+      "input": "PDT April 8 in Tokyo– JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only in Tokyo en dash rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-421",
+      "input": "PDT 3pm XYZ– JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock XYZ en dash rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-422",
+      "input": "PDT April 8 XYZ– JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only XYZ en dash rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-423",
+      "input": "PDT 3pm in Seattle– JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "compatible city en dash retains paired clocks and independent recovery"
+    },
+    {
+      "id": "web-zone-first-424",
+      "input": "April 8 3pm - 10 April 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unprefixed complete day-first end owns compact spaced hyphen"
+    },
+    {
+      "id": "web-zone-first-425",
+      "input": "PDT April 8 3pm - 10 April 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "PDT complete day-first end owns compact spaced hyphen"
+    },
+    {
+      "id": "web-zone-first-426",
+      "input": "PDT 3pm PST -  JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock PST spaced hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-427",
+      "input": "PDT April 8 PST -  JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only PST spaced hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-428",
+      "input": "PDT 3pm in Tokyo -  JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock in Tokyo spaced hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-429",
+      "input": "PDT April 8 in Tokyo -  JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only in Tokyo spaced hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-430",
+      "input": "PDT 3pm XYZ -  JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "clock XYZ spaced hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-431",
+      "input": "PDT April 8 XYZ -  JST April 10 3pm; UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only XYZ spaced hyphen rejects both owned endpoints"
+    },
+    {
+      "id": "web-zone-first-432",
+      "input": "PDT 3pm in Seattle -  JST 4pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "compatible city spaced hyphen retains paired clocks and independent recovery"
+    },
+    {
+      "id": "web-zone-first-433",
+      "input": "3pm-4pm on April 10 to April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "completed range keeps following separately timed date standalone"
+    },
+    {
+      "id": "web-zone-first-434",
+      "input": "3pm-4pm on April 10 to UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "completed range retains separately prefixed date standalone"
+    },
+    {
+      "id": "web-zone-first-435",
+      "input": "PDT April 8 3pm-4pm on April 10 to UTC April 12 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "trailing date range retains its independently timed endpoint"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

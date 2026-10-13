@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 760,
+  "total": 790,
   "crashes": 0,
   "legacyCountDifferences": 27,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -2046,6 +2046,204 @@
       "missingLocalTimes": [],
       "warnings": [
         "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-408",
+      "input": "PDT 3pm PST- JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-409",
+      "input": "PDT April 8 PST- JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-410",
+      "input": "PDT 3pm in Tokyo- JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-411",
+      "input": "PDT April 8 in Tokyo- JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-412",
+      "input": "PDT 3pm XYZ- JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-413",
+      "input": "PDT April 8 XYZ- JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-417",
+      "input": "PDT 3pm PST– JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-418",
+      "input": "PDT April 8 PST– JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-419",
+      "input": "PDT 3pm in Tokyo– JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-420",
+      "input": "PDT April 8 in Tokyo– JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-421",
+      "input": "PDT 3pm XYZ– JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-422",
+      "input": "PDT April 8 XYZ– JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-426",
+      "input": "PDT 3pm PST -  JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-427",
+      "input": "PDT April 8 PST -  JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-428",
+      "input": "PDT 3pm in Tokyo -  JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-429",
+      "input": "PDT April 8 in Tokyo -  JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-430",
+      "input": "PDT 3pm XYZ -  JST 4pm; UTC 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-431",
+      "input": "PDT April 8 XYZ -  JST April 10 3pm; UTC April 12 5pm",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
       ],
       "dates": []
     }

@@ -51,7 +51,9 @@ describe("independently specified temporal fixtures", () => {
       if (f.sourceZones !== undefined)
         expect(result.results.map((r) => r.sourceZone)).toEqual(f.sourceZones);
       if (f.rangeIds !== undefined)
-        expect(result.results.map((r) => r.rangeId)).toEqual(f.rangeIds);
+        expect(result.results.map((r) => r.rangeId)).toEqual(
+          f.rangeIds.map((id) => id ?? undefined),
+        );
     });
 });
 test("paragraph isolation retains mixed-message date-only suppression", () => {

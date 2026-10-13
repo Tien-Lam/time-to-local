@@ -4185,5 +4185,286 @@
       "2026-04-08T16:00:00Z",
       "2026-04-10T17:00:00Z"
     ]
+  },
+  {
+    "name": "unprefixed complete day-first end owns compact hyphen",
+    "text": "April 8 3pm-10 April 4pm",
+    "instants": ["2026-04-08T15:00:00Z", "2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC", "UTC"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "PDT complete day-first end owns compact hyphen",
+    "text": "PDT April 8 3pm-10 April 4pm",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T23:00:00Z"],
+    "sourceZones": ["-07:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "clock PST hyphen rejects both owned endpoints",
+    "text": "PDT 3pm PST- JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only PST hyphen rejects both owned endpoints",
+    "text": "PDT April 8 PST- JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "clock in Tokyo hyphen rejects both owned endpoints",
+    "text": "PDT 3pm in Tokyo- JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only in Tokyo hyphen rejects both owned endpoints",
+    "text": "PDT April 8 in Tokyo- JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "clock XYZ hyphen rejects both owned endpoints",
+    "text": "PDT 3pm XYZ- JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only XYZ hyphen rejects both owned endpoints",
+    "text": "PDT April 8 XYZ- JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "compatible city hyphen retains paired clocks and independent recovery",
+    "text": "PDT 3pm in Seattle- JST 4pm; UTC 5pm",
+    "instants": [
+      "2026-04-06T22:00:00Z",
+      "2026-04-06T07:00:00Z",
+      "2026-04-06T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "rangeIds": ["range-4", "range-4", null]
+  },
+  {
+    "name": "unprefixed complete day-first end owns compact en dash",
+    "text": "April 8 3pm–10 April 4pm",
+    "instants": ["2026-04-08T15:00:00Z", "2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC", "UTC"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "PDT complete day-first end owns compact en dash",
+    "text": "PDT April 8 3pm–10 April 4pm",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T23:00:00Z"],
+    "sourceZones": ["-07:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "clock PST en dash rejects both owned endpoints",
+    "text": "PDT 3pm PST– JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only PST en dash rejects both owned endpoints",
+    "text": "PDT April 8 PST– JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "clock in Tokyo en dash rejects both owned endpoints",
+    "text": "PDT 3pm in Tokyo– JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only in Tokyo en dash rejects both owned endpoints",
+    "text": "PDT April 8 in Tokyo– JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "clock XYZ en dash rejects both owned endpoints",
+    "text": "PDT 3pm XYZ– JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only XYZ en dash rejects both owned endpoints",
+    "text": "PDT April 8 XYZ– JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "compatible city en dash retains paired clocks and independent recovery",
+    "text": "PDT 3pm in Seattle– JST 4pm; UTC 5pm",
+    "instants": [
+      "2026-04-06T22:00:00Z",
+      "2026-04-06T07:00:00Z",
+      "2026-04-06T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "rangeIds": ["range-4", "range-4", null]
+  },
+  {
+    "name": "unprefixed complete day-first end owns compact spaced hyphen",
+    "text": "April 8 3pm - 10 April 4pm",
+    "instants": ["2026-04-08T15:00:00Z", "2026-04-10T16:00:00Z"],
+    "sourceZones": ["UTC", "UTC"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "PDT complete day-first end owns compact spaced hyphen",
+    "text": "PDT April 8 3pm - 10 April 4pm",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T23:00:00Z"],
+    "sourceZones": ["-07:00", "-07:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "clock PST spaced hyphen rejects both owned endpoints",
+    "text": "PDT 3pm PST -  JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only PST spaced hyphen rejects both owned endpoints",
+    "text": "PDT April 8 PST -  JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "clock in Tokyo spaced hyphen rejects both owned endpoints",
+    "text": "PDT 3pm in Tokyo -  JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only in Tokyo spaced hyphen rejects both owned endpoints",
+    "text": "PDT April 8 in Tokyo -  JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "clock XYZ spaced hyphen rejects both owned endpoints",
+    "text": "PDT 3pm XYZ -  JST 4pm; UTC 5pm",
+    "instants": ["2026-04-06T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "date-only XYZ spaced hyphen rejects both owned endpoints",
+    "text": "PDT April 8 XYZ -  JST April 10 3pm; UTC April 12 5pm",
+    "instants": ["2026-04-12T17:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ",
+    "endpoints": ["undefined"],
+    "rangeIds": [null]
+  },
+  {
+    "name": "compatible city spaced hyphen retains paired clocks and independent recovery",
+    "text": "PDT 3pm in Seattle -  JST 4pm; UTC 5pm",
+    "instants": [
+      "2026-04-06T22:00:00Z",
+      "2026-04-06T07:00:00Z",
+      "2026-04-06T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "rangeIds": ["range-4", "range-4", null]
+  },
+  {
+    "name": "completed range keeps following separately timed date standalone",
+    "text": "3pm-4pm on April 10 to April 12 5pm",
+    "instants": [
+      "2026-04-10T15:00:00Z",
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["UTC", "UTC", "UTC"],
+    "endpoints": ["start", "end", "undefined"],
+    "rangeIds": ["range-0", "range-0", null]
+  },
+  {
+    "name": "completed range retains separately prefixed date standalone",
+    "text": "3pm-4pm on April 10 to UTC April 12 5pm",
+    "instants": [
+      "2026-04-10T15:00:00Z",
+      "2026-04-10T16:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["UTC", "UTC", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "rangeIds": ["range-0", "range-0", null]
+  },
+  {
+    "name": "trailing date range retains its independently timed endpoint",
+    "text": "PDT April 8 3pm-4pm on April 10 to UTC April 12 5pm",
+    "instants": [
+      "2026-04-08T22:00:00Z",
+      "2026-04-10T23:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "sourceZones": ["-07:00", "-07:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"],
+    "rangeIds": ["range-4", "range-4", null],
+    "originals": [
+      "PDT April 8 3pm-4pm on April 10",
+      "PDT April 8 3pm-4pm on April 10",
+      "UTC April 12 5pm"
+    ]
   }
 ]
