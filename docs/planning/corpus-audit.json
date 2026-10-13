@@ -5,7 +5,7 @@
     "targetZone": "Australia/Sydney",
     "dateOrder": "mdy"
   },
-  "total": 391,
+  "total": 418,
   "crashes": 0,
   "legacyCountDifferences": 27,
   "note": "This inventories actual browser engine output. Count matches and local clock matches are not exact date/zone accuracy evidence. Reviewed exact fixtures are in tests/fixtures/temporal.json. Differences include intentional ambiguity, deduplication and date-only changes as well as parser gaps.",
@@ -417,6 +417,116 @@
       "missingLocalTimes": [],
       "warnings": [
         "Unknown timezone XYZ. Correct or remove it, then choose a source timezone."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-037",
+      "input": "PT 2026-04-10T15:00Z",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-038",
+      "input": "PDT 2026-04-09T15:00:00+09:00",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-045",
+      "input": "America/New_York 2026-11-01T01:30-03:00",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-048",
+      "input": "PT 3pm in London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-049",
+      "input": "PT 3pm in Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-050",
+      "input": "PDT now in Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-053",
+      "input": "PST July 15, 2026 3pm in Los Angeles",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-054",
+      "input": "PT 3pm to ET 4pm in Atlantis",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-055",
+      "input": "PT 3pm to ET 4pm in London",
+      "legacyExpectedCount": 0,
+      "actualCount": 0,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Conflicting timezones around one time. Keep one source timezone per time and try again."
+      ],
+      "dates": []
+    },
+    {
+      "id": "web-zone-first-063",
+      "input": "JST noon, PT 3pm in Atlantis",
+      "legacyExpectedCount": 1,
+      "actualCount": 1,
+      "missingLocalTimes": [],
+      "warnings": [
+        "Couldn't identify the city “Atlantis”. Correct or remove the city, then choose a source timezone in More options."
       ],
       "dates": []
     }

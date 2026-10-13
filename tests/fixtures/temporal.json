@@ -1184,5 +1184,167 @@
     "text": "PDT 9th April 2026 3pm to JST 10th April 2026 4pm",
     "instants": ["2026-04-09T22:00:00Z", "2026-04-10T07:00:00Z"],
     "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first ISO Z conflict rejected",
+    "text": "PT 2026-04-10T15:00Z",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first ISO numeric conflict rejected",
+    "text": "PDT 2026-04-09T15:00:00+09:00",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first matching ISO Z retained",
+    "text": "UTC 2026-04-09T15:00:00Z",
+    "instants": ["2026-04-09T15:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [0],
+    "originals": ["UTC 2026-04-09T15:00:00Z"]
+  },
+  {
+    "name": "timezone-first matching ISO numeric retained",
+    "text": "JST 2026-04-09T15:00:00+09:00",
+    "instants": ["2026-04-09T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "timezone-first matching regional ISO summer",
+    "text": "PT 2026-07-15T15:00:00-07:00",
+    "instants": ["2026-07-15T22:00:00Z"],
+    "sourceZones": ["America/Los_Angeles"]
+  },
+  {
+    "name": "timezone-first matching regional ISO winter",
+    "text": "PT 2026-01-15T15:00:00-08:00",
+    "instants": ["2026-01-15T23:00:00Z"],
+    "sourceZones": ["America/Los_Angeles"]
+  },
+  {
+    "name": "timezone-first ISO owns later fold instant",
+    "text": "America/New_York 2026-11-01T01:30-05:00",
+    "instants": ["2026-11-01T06:30:00Z"],
+    "sourceZones": ["America/New_York"]
+  },
+  {
+    "name": "timezone-first ISO owns earlier fold instant",
+    "text": "America/New_York 2026-11-01T01:30-04:00",
+    "instants": ["2026-11-01T05:30:00Z"],
+    "sourceZones": ["America/New_York"]
+  },
+  {
+    "name": "timezone-first ISO invalid regional fold offset rejected",
+    "text": "America/New_York 2026-11-01T01:30-03:00",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first start prefix cannot overwrite ISO end",
+    "text": "UTC 2026-04-09T15:00:00Z to 2026-04-09T16:00:00+09:00",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first matching numeric prefix ISO",
+    "text": "UTC+02:00 2026-04-09T15:00+02:00",
+    "instants": ["2026-04-09T13:00:00Z"],
+    "sourceZones": ["+02:00"]
+  },
+  {
+    "name": "timezone-first conflicting city rejected",
+    "text": "PT 3pm in London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first unknown city rejected",
+    "text": "PT 3pm in Atlantis",
+    "instants": [],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first now cannot hide unknown city",
+    "text": "PDT now in Atlantis",
+    "instants": [],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first matching city accepted",
+    "text": "PT 3pm in Los Angeles",
+    "instants": ["2026-04-06T22:00:00Z"],
+    "sourceZones": ["America/Los_Angeles"]
+  },
+  {
+    "name": "timezone-first fixed summer offset matches city",
+    "text": "PDT July 15, 2026 3pm in Los Angeles",
+    "instants": ["2026-07-15T22:00:00Z"],
+    "sourceZones": ["-07:00"]
+  },
+  {
+    "name": "timezone-first fixed standard offset conflicts with summer city",
+    "text": "PST July 15, 2026 3pm in Los Angeles",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first unknown end city rejects range",
+    "text": "PT 3pm to ET 4pm in Atlantis",
+    "instants": [],
+    "warning": "Couldn't identify the city"
+  },
+  {
+    "name": "timezone-first conflicting end city rejects range",
+    "text": "PT 3pm to ET 4pm in London",
+    "instants": [],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "timezone-first end city belongs only to end",
+    "text": "PT 3pm to ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["America/Los_Angeles", "America/New_York"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first independent cities retain endpoint ownership",
+    "text": "PT 3pm in Los Angeles to ET 4pm in New York",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T20:00:00Z"],
+    "sourceZones": ["America/Los_Angeles", "America/New_York"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "timezone-first prose target city remains bounded",
+    "text": "PT 3pm for London",
+    "instants": ["2026-04-06T22:00:00Z"]
+  },
+  {
+    "name": "explicit zone uppercase IS remains prose",
+    "text": "3pm PDT IS fine",
+    "instants": ["2026-04-06T22:00:00Z"]
+  },
+  {
+    "name": "explicit zone uppercase IF remains prose",
+    "text": "3pm PDT IF available",
+    "instants": ["2026-04-06T22:00:00Z"]
+  },
+  {
+    "name": "explicit zone uppercase ASAP remains prose",
+    "text": "noon PDT ASAP",
+    "instants": ["2026-04-06T19:00:00Z"]
+  },
+  {
+    "name": "explicit zone uppercase prose with following words remains bounded",
+    "text": "PDT 3pm MEET soon",
+    "instants": ["2026-04-06T22:00:00Z"]
+  },
+  {
+    "name": "timezone-first invalid city leaves independent clause intact",
+    "text": "JST noon, PT 3pm in Atlantis",
+    "instants": ["2026-04-06T03:00:00Z"],
+    "warning": "Couldn't identify the city"
   }
 ]

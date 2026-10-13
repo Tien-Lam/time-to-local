@@ -89,6 +89,39 @@ function paragraph(text: string, index: number): number {
   return (text.slice(0, index).match(/\n\s*\n/g) || []).length;
 }
 
+function cityChoices(
+  adjacent: string,
+  warnings: string[],
+): ZoneChoice[] | undefined {
+  // Explicit zone suffixes are validated separately, including invalid IANA IDs.
+  if (explicitZones(adjacent) || IANA_TOKEN.test(adjacent)) return;
+  const city = adjacent.match(/^\s+(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/iu);
+  if (!city) return;
+  const query = city[1].replace(/[.,]+$/, "").trim();
+  const resolved = resolveCity(query);
+  if (!resolved.zones.length) {
+    warnings.push(
+      `Couldn't identify the city “${query}”. Correct or remove the city, then choose a source timezone in More options.`,
+    );
+    return [];
+  }
+  return resolved.zones.map((zone) => ({
+    zone,
+    label: zoneName(zone),
+    ...(resolved.corrected
+      ? {
+          assumption: `City interpreted as ${zoneName(zone)}; check this match`,
+        }
+      : {}),
+  }));
+}
+
+function adjacentQualifier(suffix: string): string {
+  return suffix.split(
+    /\b(?:to|until|till|through|on|tomorrow|today|and|then|but|please|for|with|because|is|if|asap)\b|[.!?]/i,
+  )[0];
+}
+
 function choicesFor(
   text: string,
   suffix: string,
@@ -98,9 +131,7 @@ function choicesFor(
 ): ZoneChoice[] {
   // Only a zone directly following the timestamp belongs to it. Later prose
   // may mention a target zone or another person's location.
-  const adjacent = suffix.split(
-    /\b(?:to|until|till|through|on|tomorrow|today|and|then|but|please|for|with|because)\b|[.!?]/i,
-  )[0];
+  const adjacent = adjacentQualifier(suffix);
   const combined = text + adjacent;
   const numeric = combined.match(OFFSET_TOKEN);
   if (numeric && !explicitZones(numeric[0])?.length) {
@@ -117,7 +148,7 @@ function choicesFor(
     return [];
   }
   const explicit = explicitZones(text);
-  const unknownAbbr = adjacent.match(/^\s+([A-Z]{2,5})\b/);
+  const unknownAbbr = adjacent.match(/^\s+([A-Z]{2,5})\s*$/);
   if (
     explicit &&
     unknownAbbr &&
@@ -137,32 +168,8 @@ function choicesFor(
     const choices = explicitZones(suffixZone[1]);
     if (choices) return choices;
   }
-  const city = adjacent.match(/^\s+(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/iu);
-  if (city) {
-    const query = city[1]
-      .replace(
-        /\s+(?:to|on|tomorrow|today|and|then|but|please|for|with|because)\b.*$/i,
-        "",
-      )
-      .replace(/[.,]+$/, "")
-      .trim();
-    const resolved = resolveCity(query);
-    if (!resolved.zones.length) {
-      warnings.push(
-        `Couldn't identify the city “${query}”. Correct or remove the city, then choose a source timezone in More options.`,
-      );
-      return [];
-    }
-    return resolved.zones.map((zone) => ({
-      zone,
-      label: zoneName(zone),
-      ...(resolved.corrected
-        ? {
-            assumption: `City interpreted as ${zoneName(zone)}; check this match`,
-          }
-        : {}),
-    }));
-  }
+  const city = cityChoices(adjacent, warnings);
+  if (city) return city;
   const bare = adjacent.match(/^\s+([\p{L}][\p{L} .'-]{1,40})/u);
   if (bare) {
     const words = bare[1]
@@ -274,7 +281,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     const qualifiedRange =
       prior &&
       /^\s+(?:(?:(?:in|at)\s+)?[\p{L} .'-]+?|(?:[A-Z][A-Za-z0-9_+-]*\/)+[A-Za-z0-9_+-]+)\s+(?:to|until|through|till|[-–])\s*$/iu.test(
-        text.slice(prior.index + prior.text.length, r.index),
+        text.slice(prior.index + prior.text.length, sourceIndex),
       );
     const priorResults = qualifiedRange
       ? results.filter(
@@ -421,6 +428,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         continue;
       }
     }
+    const resultStart = results.length;
+    let invalidEndpoint = false;
     for (const [c, endpoint] of endpoints) {
       // If both endpoints carry a different abbreviation, resolve each independently.
       const zoneText =
@@ -434,8 +443,15 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             : undefined
           : prefix;
       const choices = choicesFor(
-        endpointPrefix?.text ?? zoneText,
-        suffix,
+        endpointPrefix?.text ??
+          (endpoint === "end" &&
+          c.tags().has("parser/ISOFormatParser") &&
+          c.isCertain("timezoneOffset")
+            ? ""
+            : zoneText),
+        endpoint === "start" && r.end && (prefix || rangePrefixes.length)
+          ? ""
+          : suffix,
         c,
         options.sourceZone,
         warnings,
@@ -448,6 +464,16 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         warnings.push(
           `Unknown timezone ${endpointPrefix.text}. Correct or remove it, then choose a source timezone.`,
         );
+        continue;
+      }
+      const qualifier = endpointPrefix
+        ? cityChoices(
+            adjacentQualifier(endpoint === "start" && r.end ? "" : suffix),
+            warnings,
+          )
+        : undefined;
+      if (qualifier && !qualifier.length) {
+        invalidEndpoint = true;
         continue;
       }
       for (const choice of choices) {
@@ -464,7 +490,12 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             : local.start
           : c;
         let selectedDate = componentDate(components),
-          assumptions = choice.assumption ? [choice.assumption] : [],
+          assumptions = [
+            ...(choice.assumption ? [choice.assumption] : []),
+            ...(qualifier?.flatMap((city) =>
+              city.assumption ? [city.assumption] : [],
+            ) ?? []),
+          ],
           referenceUsed = usesReferenceDate(components);
         if (!explicitDate && contextDate) {
           const header = parser.parse(contextText, zoneRef, {
@@ -513,16 +544,61 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             result.endpoint = "start";
             result.rangeId = `range-${prior.index}`;
           });
+        // An ISO offset owns this endpoint's instant, even in a repeated hour.
+        // A prefix may supply a label only when its offset agrees at that instant.
+        const isoOffset =
+          c.tags().has("parser/ISOFormatParser") &&
+          c.isCertain("timezoneOffset")
+            ? c.get("timezoneOffset")!
+            : undefined;
+        const isoInstant =
+          isoOffset === undefined
+            ? undefined
+            : civil
+                .toZonedDateTime(offsetZone(isoOffset))
+                .toInstant()
+                .toString();
+        const cityConflict = qualifier?.some((city) => {
+          if (!/^[+-]/.test(choice.zone))
+            return (
+              new Intl.DateTimeFormat("en", {
+                timeZone: choice.zone,
+              }).resolvedOptions().timeZone !==
+              new Intl.DateTimeFormat("en", {
+                timeZone: city.zone,
+              }).resolvedOptions().timeZone
+            );
+          const candidates = civilInstants(civil, city.zone).instants;
+          return !candidates.some(
+            (instant) =>
+              offsetMinutes(city.zone, instant) ===
+              offsetMinutes(choice.zone, instant),
+          );
+        });
+        if (
+          cityConflict ||
+          (isoInstant && offsetMinutes(choice.zone, isoInstant) !== isoOffset)
+        ) {
+          invalidEndpoint = true;
+          warnings.push(
+            "Conflicting timezones around one time. Keep one source timezone per time and try again.",
+          );
+          continue;
+        }
         // "Now" denotes an instant, including during the repeated civil hour
         // when a regional zone moves its clocks back.
-        const resolved =
-          components.tags().has("casualReference/now") &&
-          civil.equals(
-            Temporal.Instant.from(now)
-              .toZonedDateTimeISO(choice.zone)
-              .toPlainDateTime()
-              .round({ smallestUnit: "millisecond", roundingMode: "trunc" }),
-          )
+        const resolved = isoInstant
+          ? { instants: [isoInstant], nonexistent: false }
+          : components.tags().has("casualReference/now") &&
+              civil.equals(
+                Temporal.Instant.from(now)
+                  .toZonedDateTimeISO(choice.zone)
+                  .toPlainDateTime()
+                  .round({
+                    smallestUnit: "millisecond",
+                    roundingMode: "trunc",
+                  }),
+              )
             ? {
                 instants: [Temporal.Instant.from(now).toString()],
                 nonexistent: false,
@@ -581,6 +657,13 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             occurrences: 1,
           });
         }
+      }
+    }
+    if (invalidEndpoint) {
+      results.splice(resultStart);
+      for (const result of priorResults) {
+        const index = results.indexOf(result);
+        if (index >= 0) results.splice(index, 1);
       }
     }
   }
