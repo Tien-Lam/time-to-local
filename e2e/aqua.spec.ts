@@ -114,9 +114,11 @@ for (const theme of ["light", "dark"] as const) {
     );
     await enterZone(page, "Not a real place");
     await expect(target).toHaveAttribute("aria-invalid", "true");
-    expect(
-      await target.evaluate((element) => getComputedStyle(element).borderColor),
-    ).not.toBe(normalBorder);
+    await expect
+      .poll(() =>
+        target.evaluate((element) => getComputedStyle(element).borderColor),
+      )
+      .not.toBe(normalBorder);
     await enterZone(page, "UTC");
     await expect(target).not.toHaveAttribute("aria-invalid", "true");
     await expect
