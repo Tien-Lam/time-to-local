@@ -140,28 +140,39 @@ function cityChoices(
   adjacent: string,
   warnings: string[],
 ): ZoneChoice[] | undefined {
-  // Explicit zone suffixes are validated separately, including invalid IANA IDs.
-  adjacent = qualifierTail(adjacent);
-  if (explicitZones(adjacent) || IANA_TOKEN.test(adjacent)) return;
-  const city = adjacent.match(/^\s+(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/iu);
-  if (!city) return;
-  const query = city[1].replace(/[.,]+$/, "").trim();
-  const resolved = resolveCity(query);
-  if (!resolved.zones.length) {
-    warnings.push(
-      `Couldn't identify the city “${query}”. Correct or remove the city, then choose a source timezone in More options.`,
+  // Every owned city must be checked, including one before a trailing alias.
+  // Complete zone tokens delimit city names; they never erase earlier cities.
+  const withoutZones = adjacent.replace(
+    new RegExp(`\\b(?:${zoneToken})\\b`, "gi"),
+    (token) => (/^(?:in|at)$/i.test(token) && token !== "AT" ? token : "|"),
+  );
+  const cities = [
+    ...withoutZones.matchAll(/\b(?:in|at)\s+([\p{L}][\p{L} .'-]{1,40})/giu),
+  ];
+  if (!cities.length) return;
+  const choices: ZoneChoice[] = [];
+  for (const city of cities) {
+    const query = city[1].replace(/[.,]+$/, "").trim();
+    const resolved = resolveCity(query);
+    if (!resolved.zones.length) {
+      warnings.push(
+        `Couldn't identify the city “${query}”. Correct or remove the city, then choose a source timezone in More options.`,
+      );
+      return [];
+    }
+    choices.push(
+      ...resolved.zones.map((zone) => ({
+        zone,
+        label: zoneName(zone),
+        ...(resolved.corrected
+          ? {
+              assumption: `City interpreted as ${zoneName(zone)}; check this match`,
+            }
+          : {}),
+      })),
     );
-    return [];
   }
-  return resolved.zones.map((zone) => ({
-    zone,
-    label: zoneName(zone),
-    ...(resolved.corrected
-      ? {
-          assumption: `City interpreted as ${zoneName(zone)}; check this match`,
-        }
-      : {}),
-  }));
+  return choices;
 }
 
 function adjacentQualifier(suffix: string): string {
@@ -235,7 +246,7 @@ function choicesFor(
     return [];
   }
   if (explicit) {
-    if (cityChoices(tail, warnings)?.length === 0) return [];
+    if (cityChoices(combined, warnings)?.length === 0) return [];
     return explicit;
   }
   const suffixZone = adjacent.match(
@@ -318,7 +329,52 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       " ".repeat(prefix.end - prefix.index) +
       parserText.slice(prefix.end);
   const preservedDates: ReturnType<typeof parser.parse> = [];
+  // A whole date heading and the next line's prefixed clock are independent
+  // owners. Preserve the heading before masked whitespace can alter Chrono's
+  // overlap selection or merge their two source zones into one timestamp.
+  for (const line of text.matchAll(/^(.*)\n/gm)) {
+    const start = line.index!;
+    const following = prefixes.find(
+      (prefix) => prefix.index >= start + line[0].length,
+    );
+    if (
+      !following ||
+      text.slice(start + line[0].length, following.index).trim()
+    )
+      continue;
+    const owner = prefixes.find(
+      (prefix) => prefix.index >= start && prefix.end <= start + line[1].length,
+    );
+    if (owner && !/^\s*(?:#{1,6}\s+)?$/.test(text.slice(start, owner.index)))
+      continue;
+    const dateStart =
+      owner?.end ??
+      start + (line[1].match(/^\s*(?:#{1,6}\s+)?/)?.[0].length ?? 0);
+    const dateText = text.slice(dateStart, start + line[1].length).trim();
+    const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
+    if (
+      dates.length !== 1 ||
+      dates[0].end ||
+      dates[0].start.isCertain("hour") ||
+      dates[0].start.isCertain("minute") ||
+      (!dates[0].start.isCertain("day") &&
+        !dates[0].start.isCertain("weekday")) ||
+      dates[0].index !== 0 ||
+      dates[0].text.trim() !== dateText
+    )
+      continue;
+    const date = dates[0] as ParsingResult;
+    date.index = dateStart + text.slice(dateStart).indexOf(dateText);
+    if (!owner) date.start.addTag("chronoshift/unprefixed-heading");
+    preservedDates.push(date);
+    parserText =
+      parserText.slice(0, date.index) +
+      " ".repeat(date.text.length) +
+      parserText.slice(date.index + date.text.length);
+  }
   for (const prefix of prefixes) {
+    if (preservedDates.some((date) => prefixAt(date.index) === prefix))
+      continue;
     const adjacent = text.slice(
       prefix.end,
       Math.min(
@@ -432,6 +488,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
   };
   let contextOwners: DateOwner[] | undefined;
   let contextOwnerIndex: number | undefined;
+  let unprefixedHeading = false;
   let contextDate: TemporalTypes.PlainDate | undefined,
     contextText = "",
     contextNumeric = false,
@@ -442,6 +499,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     contextDate = undefined;
     contextOwners = undefined;
     contextOwnerIndex = undefined;
+    unprefixedHeading = false;
     contextText = "";
     contextNumeric = false;
   };
@@ -535,7 +593,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       continue;
     }
     if (
-      block !== contextParagraph ||
+      (block !== contextParagraph &&
+        !(unprefixedHeading && !text.slice(previousEnd, sourceIndex).trim())) ||
       startsAfterUnrelatedDate(r.start) ||
       /[.!?]\s+[A-Z]/.test(text.slice(previousEnd, r.index))
     ) {
@@ -578,10 +637,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       dateChoices &&
       (!dateChoices.length ||
         (dateOnly &&
-          cityChoices(
-            ownedQualifierTail(matchedText, qualifierSuffix),
-            warnings,
-          )?.length === 0))
+          cityChoices(matchedText + qualifierSuffix, warnings)?.length === 0))
     ) {
       reject();
       continue;
@@ -616,10 +672,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           new RegExp(`\\b(?:${zoneToken})\\b`, "gi"),
         ),
       ].flatMap((token) => explicitZones(token[0]) ?? []);
-      const cities = cityChoices(
-        ownedQualifierTail(matchedText, qualifierSuffix),
-        warnings,
-      );
+      const cities = cityChoices(matchedText + qualifierSuffix, warnings);
       const prefixChoices = explicitZones(prefix.text) ?? [];
       const cityConflict = cities?.some((city) =>
         dateOwners.some(({ choice, date }) => {
@@ -654,6 +707,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     }
     if (explicitDate && !r.start.tags().has("casualReference/now")) {
       contextOwnerIndex = r.index;
+      unprefixedHeading = r.start.tags().has("chronoshift/unprefixed-heading");
       contextDate = dateOwners[0].date;
       contextOwners = prefix
         ? dateOwners.filter(
@@ -700,6 +754,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           });
       continue;
     }
+    unprefixedHeading = false;
+    contextParagraph = block;
     const zoneSuffix = adjacentQualifier(suffix);
     const leadingZone = zoneSuffix
       .trim()

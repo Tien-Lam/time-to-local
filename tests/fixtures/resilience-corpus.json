@@ -11541,6 +11541,429 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "Complete hidden date qualifier boundaries preserve rejection and bare end ownership"
+    },
+    {
+      "id": "web-zone-first-624",
+      "input": "10 April\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-625",
+      "input": "10 April\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-626",
+      "input": "10 April\n\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-627",
+      "input": "April 10\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-628",
+      "input": "April 10\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-629",
+      "input": "April 10\n\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-630",
+      "input": "10 April 2026\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-631",
+      "input": "10 April 2026\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-632",
+      "input": "10 April 2026\n\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-633",
+      "input": "UTC 10 April\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-634",
+      "input": "UTC 10 April\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-635",
+      "input": "UTC 10 April\n\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-636",
+      "input": "America/New_York 10 April\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-637",
+      "input": "America/New_York 10 April\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-638",
+      "input": "America/New_York 10 April\n\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-639",
+      "input": "JST next Monday\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-640",
+      "input": "JST next Monday\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-641",
+      "input": "JST next Monday\n\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-642",
+      "input": "JST tomorrow\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-643",
+      "input": "JST tomorrow\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-644",
+      "input": "JST tomorrow\n\n\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-645",
+      "input": "UTC 10 April\nPDT 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-646",
+      "input": "UTC 10 April\nUTC midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-647",
+      "input": "UTC 10 April\nPDT now",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-648",
+      "input": "UTC 8 April; America/New_York 10 April 3pm in Tokyo US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-649",
+      "input": "UTC 8 April; America/New_York 10 April 3pm at Tokyo US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-650",
+      "input": "UTC 8 April; America/New_York 10 April 3pm In Tokyo US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-651",
+      "input": "UTC 8 April; America/New_York 10 April 3pm At Tokyo US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-652",
+      "input": "UTC 8 April; America/New_York 10 April 3pm in Atlantis US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-653",
+      "input": "UTC 8 April; America/New_York 10 April 3pm at Atlantis US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-654",
+      "input": "UTC 8 April; America/New_York 10 April 3pm In Atlantis US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-655",
+      "input": "UTC 8 April; America/New_York 10 April 3pm At Atlantis US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-656",
+      "input": "UTC 8 April; America/New_York 10 April 3pm in New York US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-657",
+      "input": "UTC 8 April; America/New_York 10 April 3pm at New York US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-658",
+      "input": "UTC 8 April; America/New_York 10 April 3pm In New York US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-659",
+      "input": "UTC 8 April; America/New_York 10 April 3pm At New York US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-660",
+      "input": "America/New_York 3pm in Tokyo US/Eastern; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-661",
+      "input": "America/New_York 3pm in Atlantis US/Eastern; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-662",
+      "input": "America/New_York 3pm in New York US/Eastern; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Independent newline heading ownership and city-before-zone validation with range recovery"
+    },
+    {
+      "id": "web-zone-first-663",
+      "input": "America/New_York 10 April in Tokyo US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-664",
+      "input": "America/New_York 10 April in Atlantis US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-665",
+      "input": "America/New_York 10 April in New York US/Eastern - 5pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-666",
+      "input": "10 April\nUTC noon\n\nUTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-667",
+      "input": "UTC 10 April\nCST midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-668",
+      "input": "JST today\nUTC midnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-669",
+      "input": "CST today\nUTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
+    },
+    {
+      "id": "web-zone-first-670",
+      "input": "UTC 10 April\nPDT 3pm to JST 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Date-only city order, newline calendar ambiguity and bounded heading recovery"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

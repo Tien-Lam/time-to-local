@@ -6541,5 +6541,964 @@
     "text": "UTC 8 April; America/New_York April 10 America/Foo-Bar; UTC noon",
     "instants": ["2026-04-06T12:00:00Z"],
     "warning": "Unknown timezone America/Foo-Bar"
+  },
+  {
+    "name": "independent newline heading 10 April 1 mdy UTC",
+    "text": "10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [9],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2 mdy UTC",
+    "text": "10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 1 mdy UTC",
+    "text": "10 April 2026\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 2 mdy UTC",
+    "text": "10 April 2026\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [15],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 1 mdy UTC",
+    "text": "UTC 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 2 mdy UTC",
+    "text": "UTC 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 1 mdy UTC",
+    "text": "America/New_York 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [26],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 2 mdy UTC",
+    "text": "America/New_York 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [27],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST next Monday 1 mdy UTC",
+    "text": "JST next Monday\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-13T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-13"
+  },
+  {
+    "name": "independent newline heading JST next Monday 2 mdy UTC",
+    "text": "JST next Monday\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [17],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 1 mdy UTC",
+    "text": "JST tomorrow\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-08"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 2 mdy UTC",
+    "text": "JST tomorrow\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading 10 April 1 mdy Asia/Tokyo",
+    "text": "10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [9],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2 mdy Asia/Tokyo",
+    "text": "10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 1 mdy Asia/Tokyo",
+    "text": "10 April 2026\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 2 mdy Asia/Tokyo",
+    "text": "10 April 2026\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [15],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 1 mdy Asia/Tokyo",
+    "text": "UTC 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 2 mdy Asia/Tokyo",
+    "text": "UTC 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 1 mdy Asia/Tokyo",
+    "text": "America/New_York 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [26],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 2 mdy Asia/Tokyo",
+    "text": "America/New_York 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [27],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST next Monday 1 mdy Asia/Tokyo",
+    "text": "JST next Monday\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-13T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-13"
+  },
+  {
+    "name": "independent newline heading JST next Monday 2 mdy Asia/Tokyo",
+    "text": "JST next Monday\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [17],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 1 mdy Asia/Tokyo",
+    "text": "JST tomorrow\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-08"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 2 mdy Asia/Tokyo",
+    "text": "JST tomorrow\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading 10 April 1 dmy UTC",
+    "text": "10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [9],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2 dmy UTC",
+    "text": "10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 1 dmy UTC",
+    "text": "10 April 2026\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 2 dmy UTC",
+    "text": "10 April 2026\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [15],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 1 dmy UTC",
+    "text": "UTC 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 2 dmy UTC",
+    "text": "UTC 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 1 dmy UTC",
+    "text": "America/New_York 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [26],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 2 dmy UTC",
+    "text": "America/New_York 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [27],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST next Monday 1 dmy UTC",
+    "text": "JST next Monday\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-13T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-13"
+  },
+  {
+    "name": "independent newline heading JST next Monday 2 dmy UTC",
+    "text": "JST next Monday\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [17],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 1 dmy UTC",
+    "text": "JST tomorrow\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-08"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 2 dmy UTC",
+    "text": "JST tomorrow\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading 10 April 1 dmy Asia/Tokyo",
+    "text": "10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [9],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2 dmy Asia/Tokyo",
+    "text": "10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [10],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 1 dmy Asia/Tokyo",
+    "text": "10 April 2026\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading 10 April 2026 2 dmy Asia/Tokyo",
+    "text": "10 April 2026\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [15],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 1 dmy Asia/Tokyo",
+    "text": "UTC 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading UTC 10 April 2 dmy Asia/Tokyo",
+    "text": "UTC 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 1 dmy Asia/Tokyo",
+    "text": "America/New_York 10 April\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [26],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-10"
+  },
+  {
+    "name": "independent newline heading America/New_York 10 April 2 dmy Asia/Tokyo",
+    "text": "America/New_York 10 April\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [27],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST next Monday 1 dmy Asia/Tokyo",
+    "text": "JST next Monday\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-13T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [16],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-13"
+  },
+  {
+    "name": "independent newline heading JST next Monday 2 dmy Asia/Tokyo",
+    "text": "JST next Monday\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [17],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 1 dmy Asia/Tokyo",
+    "text": "JST tomorrow\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-08T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [13],
+    "originals": ["UTC noon"],
+    "assumption": "Date from message context: 2026-04-08"
+  },
+  {
+    "name": "independent newline heading JST tomorrow 2 dmy Asia/Tokyo",
+    "text": "JST tomorrow\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "sourceZone": "Asia/Tokyo",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "sourceIndices": [14],
+    "originals": ["UTC noon"],
+    "assumption": "Date assumed: 2026-04-06"
+  },
+  {
+    "name": "month first newline heading April 10 1",
+    "text": "April 10\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "month first newline heading April 10 2",
+    "text": "April 10\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "month first newline heading April 10, 2026 1",
+    "text": "April 10, 2026\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "month first newline heading April 10, 2026 2",
+    "text": "April 10, 2026\n\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T12:00:00Z"],
+    "originals": ["UTC noon"]
+  },
+  {
+    "name": "dated newline independent PDT 3pm",
+    "text": "UTC 10 April\nPDT 3pm",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T22:00:00Z"],
+    "sourceZones": ["-07:00"],
+    "originals": ["PDT 3pm"]
+  },
+  {
+    "name": "dated newline independent UTC midnight",
+    "text": "UTC 10 April\nUTC midnight",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T00:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "originals": ["UTC midnight"]
+  },
+  {
+    "name": "dated newline independent PDT now",
+    "text": "UTC 10 April\nPDT now",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T22:00:00Z"],
+    "sourceZones": ["-07:00"],
+    "originals": ["PDT now"]
+  },
+  {
+    "name": "city before trailing alias Tokyo in mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm in Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Tokyo at mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm at Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Tokyo In mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm In Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Tokyo At mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm At Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis in mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm in Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis at mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm at Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis In mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm In Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis At mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm At Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias New York in mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm in New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before trailing alias New York at mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm at New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before trailing alias New York In mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm In New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before trailing alias New York At mdy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm At New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before trailing alias Tokyo in dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm in Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Tokyo at dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm at Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Tokyo In dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm In Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Tokyo At dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm At Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis in dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm in Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis at dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm at Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis In dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm In Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias Atlantis At dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm At Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "originals": ["UTC noon"],
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "city before trailing alias New York in dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm in New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before trailing alias New York at dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm at New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before trailing alias New York In dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm In New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before trailing alias New York At dmy",
+    "text": "UTC 8 April; America/New_York 10 April 3pm At New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-10T17:00:00Z",
+      "2026-04-10T12:00:00Z"
+    ]
+  },
+  {
+    "name": "city before matching alias simple Tokyo",
+    "text": "America/New_York 3pm in Tokyo US/Eastern; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones"
+  },
+  {
+    "name": "city before matching alias simple Atlantis",
+    "text": "America/New_York 3pm in Atlantis US/Eastern; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”"
+  },
+  {
+    "name": "city before matching alias simple New York",
+    "text": "America/New_York 3pm in New York US/Eastern; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T19:00:00Z", "2026-04-06T12:00:00Z"]
+  },
+  {
+    "name": "date only city before matching alias Tokyo",
+    "text": "America/New_York 10 April in Tokyo US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Conflicting timezones",
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "date only city before matching alias Atlantis",
+    "text": "America/New_York 10 April in Atlantis US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "warning": "Couldn't identify the city “Atlantis”",
+    "endpoints": ["undefined"]
+  },
+  {
+    "name": "date only city before matching alias New York",
+    "text": "America/New_York 10 April in New York US/Eastern - 5pm; UTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T17:00:00Z", "2026-04-10T12:00:00Z"]
+  },
+  {
+    "name": "unprefixed newline heading expires after its clock",
+    "text": "10 April\nUTC noon\n\nUTC 5pm",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T12:00:00Z", "2026-04-06T17:00:00Z"],
+    "originals": ["UTC noon", "UTC 5pm"]
+  },
+  {
+    "name": "prefixed newline CST midnight retains both clocks",
+    "text": "UTC 10 April\nCST midnight",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z", "2026-04-09T16:00:00Z"],
+    "sourceZones": ["-06:00", "+08:00"],
+    "interpretations": ["US Central Standard", "China Standard"]
+  },
+  {
+    "name": "relative newline heading owns midnight day",
+    "text": "JST today\nUTC midnight",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-07T00:00:00Z"],
+    "assumption": "Date context timezone: JST"
+  },
+  {
+    "name": "ambiguous newline heading retains distinct dates",
+    "text": "CST today\nUTC noon",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-06T12:00:00Z", "2026-04-07T12:00:00Z"],
+    "interpretations": [
+      "Date context: CST · US Central Standard",
+      "Date context: CST · China Standard"
+    ]
+  },
+  {
+    "name": "newline heading preserves independent range zones",
+    "text": "UTC 10 April\nPDT 3pm to JST 5pm",
+    "now": "2026-04-06T22:00:00Z",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T08:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "originals": ["PDT 3pm to JST 5pm", "PDT 3pm to JST 5pm"]
   }
 ]
