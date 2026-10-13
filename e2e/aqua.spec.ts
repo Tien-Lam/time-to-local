@@ -77,9 +77,10 @@ for (const theme of ["light", "dark"] as const) {
     } finally {
       await page.mouse.up();
     }
-    await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
-      "Tokyo",
-    );
+    const target = page.getByLabel("Convert to", { exact: true });
+    await expect(target).toHaveValue("Asia/Tokyo");
+    await target.press("Tab");
+    await expect(target).toHaveValue("Tokyo");
   });
 
   test(`Aqua ${theme} checkbox and invalid field retain native semantics`, async ({
@@ -118,9 +119,11 @@ for (const theme of ["light", "dark"] as const) {
     ).not.toBe(normalBorder);
     await enterZone(page, "UTC");
     await expect(target).not.toHaveAttribute("aria-invalid", "true");
-    expect(
-      await target.evaluate((element) => getComputedStyle(element).borderColor),
-    ).toBe(normalBorder);
+    await expect
+      .poll(() =>
+        target.evaluate((element) => getComputedStyle(element).borderColor),
+      )
+      .toBe(normalBorder);
     await page.emulateMedia({ forcedColors: "active" });
     expect(
       await checkbox.evaluate((element) => ({
@@ -183,9 +186,10 @@ test("Aqua Light option descriptions remain readable through native touch", asyn
         touchPoints: [],
       });
     }
-    await expect(page.getByLabel("Convert to", { exact: true })).toHaveValue(
-      "Tokyo",
-    );
+    const target = page.getByLabel("Convert to", { exact: true });
+    await expect(target).toHaveValue("Asia/Tokyo");
+    await target.press("Tab");
+    await expect(target).toHaveValue("Tokyo");
   } finally {
     await context.close();
   }
