@@ -12477,6 +12477,240 @@
       "legacyExpectedCount": 2,
       "expected": [],
       "description": "Complete date-only starts before prefixed range clocks retain or reject calendar ownership"
+    },
+    {
+      "id": "web-zone-first-728",
+      "input": "UTC noon, 10 April - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-729",
+      "input": "UTC noon. 10 April - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-730",
+      "input": "UTC noon! 10 April - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-731",
+      "input": "UTC noon? 10 April - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-732",
+      "input": "JST tomorrow\n\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-733",
+      "input": "JST tomorrow\n\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-734",
+      "input": "JST tomorrow\r\n\r\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-735",
+      "input": "JST tomorrow\r\n\r\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-736",
+      "input": "UTC 10 April\n\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-737",
+      "input": "UTC 10 April\n\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-738",
+      "input": "UTC 10 April\r\n\r\nnoon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-739",
+      "input": "UTC 10 April\r\n\r\nmidnight",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-740",
+      "input": "UTC 10 April; PDT noon to JST midnight on 12 April; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-741",
+      "input": "UTC 10 April; PDT noon to JST midnight on 2026-04-12; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-742",
+      "input": "UTC 10 April; PDT noon to JST 12 April midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-743",
+      "input": "UTC 10 April; PDT noon to JST tomorrow midnight; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-744",
+      "input": "UTC April 10 - PDT 3pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-745",
+      "input": "UTC April 10 - PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-746",
+      "input": "UTC April 10 to PDT 3pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-747",
+      "input": "UTC April 10 to PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-748",
+      "input": "April 10 - PDT 3pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-749",
+      "input": "April 10 - PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-750",
+      "input": "April 10 to PDT 3pm; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-751",
+      "input": "April 10 to PDT 3pm on 12 April; UTC noon",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-752",
+      "input": "UTC noon, April 10, 2026 - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
+    },
+    {
+      "id": "web-zone-first-753",
+      "input": "UTC noon, 2026.04.10 - PDT 3pm; UTC 5pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 3,
+      "expected": [],
+      "description": "Clause and paragraph boundaries, native explicitly dated ends and complete date spans retain temporal ownership"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

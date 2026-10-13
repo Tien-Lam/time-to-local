@@ -384,26 +384,38 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       /(?:[ \t]+(?:to|until|through|till)|[ \t]*[-–])[ \t]*$/i,
     );
     if (!separator) continue;
-    const start =
+    const clauseStart =
       Math.max(
         before.lastIndexOf("\n", separator.index! - 1),
         before.lastIndexOf(";", separator.index! - 1),
       ) + 1;
-    const rawDate = before.slice(start, separator.index);
-    if (rawDate.length > 100) continue;
-    const dateText = rawDate.trim();
-    const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
-    if (
-      dates.length !== 1 ||
-      dates[0].end ||
-      dates[0].start.isCertain("hour") ||
-      dates[0].start.isCertain("minute") ||
-      (!dates[0].start.isCertain("day") &&
-        !dates[0].start.isCertain("weekday")) ||
-      dates[0].index !== 0 ||
-      dates[0].text.trim() !== dateText
-    )
-      continue;
+    // Try complete spans from the outer clause first. Commas and periods can
+    // delimit an earlier clock, but can also belong to a written date/year.
+    const starts = [
+      clauseStart,
+      ...[
+        ...before.slice(clauseStart, separator.index).matchAll(/[,.!?]/g),
+      ].map((boundary) => clauseStart + boundary.index! + 1),
+    ];
+    const candidate = starts.flatMap((start) => {
+      const rawDate = before.slice(start, separator.index);
+      if (rawDate.length > 100) return [];
+      const dateText = rawDate.trim();
+      const dates = parser.parse(dateText, ref, { timezones: timezoneHints });
+      return dates.length === 1 &&
+        !dates[0].end &&
+        !dates[0].start.isCertain("hour") &&
+        !dates[0].start.isCertain("minute") &&
+        (dates[0].start.isCertain("day") ||
+          dates[0].start.isCertain("weekday") ||
+          dates[0].start.isCertain("month")) &&
+        dates[0].index === 0 &&
+        dates[0].text.trim() === dateText
+        ? [{ start, rawDate, dateText, dates }]
+        : [];
+    })[0];
+    if (!candidate) continue;
+    const { start, rawDate, dateText, dates } = candidate;
     const date = dates[0] as ParsingResult;
     date.index = start + rawDate.indexOf(dateText);
     if (preservedDates.some((saved) => saved.index === date.index)) continue;
@@ -434,7 +446,8 @@ export function convert(text: string, options: ConversionOptions): Conversion {
         dates.length === 1 &&
         !dates[0].end &&
         (dates[0].start.isCertain("day") ||
-          dates[0].start.isCertain("weekday")) &&
+          dates[0].start.isCertain("weekday") ||
+          dates[0].start.isCertain("month")) &&
         !dates[0].start.isCertain("hour") &&
         !dates[0].start.isCertain("minute") &&
         dates[0].index === 0 &&
@@ -497,10 +510,30 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       " ".repeat(spanEnd - date.index) +
       parserText.slice(spanEnd);
   }
-  const parsed = [
-    ...parser.parse(parserText, ref, { timezones: timezoneHints }),
-    ...preservedDates,
-  ].sort((a, b) => a.index - b.index);
+  const native = parser.parse(parserText, ref, { timezones: timezoneHints });
+  for (const nativeResult of native) {
+    const result = nativeResult as ParsingResult;
+    const leading = result.text.match(/^\s+/)?.[0].length ?? 0;
+    // Casual clocks can begin in a masked heading's last character. Their
+    // actual token owns the paragraph and original excerpt, not that mask.
+    if (
+      leading &&
+      preservedDates.some(
+        (date) =>
+          result.index + leading > date.index &&
+          (result.index < date.index + date.text.length ||
+            !parserText
+              .slice(date.index + date.text.length, result.index)
+              .trim()),
+      )
+    ) {
+      result.index += leading;
+      result.text = result.text.slice(leading);
+    }
+  }
+  const parsed = [...native, ...preservedDates].sort(
+    (a, b) => a.index - b.index,
+  );
   const warnings: string[] = [],
     results: TimeResult[] = [];
   const invalidOffsets = [...text.matchAll(OFFSET_TOKEN)].filter(
@@ -877,6 +910,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
       }
     }
     let invalidEndpoint = false;
+    const endDateOwners: DateOwner[] = [];
     for (const [c, endpoint] of endpoints) {
       // If both endpoints carry a different abbreviation, resolve each independently.
       const zoneText =
@@ -959,7 +993,13 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             : local.start
           : c;
         const exactNow = components.tags().has("casualReference/now");
-        for (const dateOwner of !exactNow && !explicitDate && contextOwners
+        const explicitEndpointDate =
+          explicitDate ||
+          c.isCertain("day") ||
+          (!!endpointPrefix && c.isCertain("weekday"));
+        for (const dateOwner of !exactNow &&
+        !explicitEndpointDate &&
+        contextOwners
           ? contextOwners
           : [undefined]) {
           let selectedDate = componentDate(components),
@@ -974,7 +1014,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             selectedDate = Temporal.Instant.from(now)
               .toZonedDateTimeISO(choice.zone)
               .toPlainDate();
-          } else if (!explicitDate && contextDate) {
+          } else if (!explicitEndpointDate && contextDate) {
             const header = parser.parse(contextText, zoneRef, {
               timezones: timezoneHints,
             })[0];
@@ -993,7 +1033,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                 .days,
             });
             assumptions.push(`Date from message context: ${context}`);
-          } else if (!explicitDate) {
+          } else if (!explicitEndpointDate) {
             assumptions.push(`Date assumed: ${selectedDate}`);
           } else if (!c.isCertain("year") && usesReferenceYear(components)) {
             // An implied range year can inherit the other endpoint's explicit year.
@@ -1016,7 +1056,7 @@ export function convert(text: string, options: ConversionOptions): Conversion {
                 .toPlainDateTime()
                 .round({ smallestUnit: "millisecond", roundingMode: "trunc" })
             : dt;
-          if (!exactNow && priorResults.length === 1 && !explicitDate) {
+          if (!exactNow && priorResults.length === 1 && !explicitEndpointDate) {
             const start = Temporal.Instant.from(priorResults[0].instant!)
               .toZonedDateTimeISO(priorResults[0].sourceZone)
               .toPlainDateTime();
@@ -1100,6 +1140,19 @@ export function convert(text: string, options: ConversionOptions): Conversion {
             );
             continue;
           }
+          if (
+            endpoint === "end" &&
+            (c.isCertain("day") ||
+              (!!endpointPrefix && c.isCertain("weekday"))) &&
+            !exactNow
+          )
+            endDateOwners.push({
+              date: civil.toPlainDate(),
+              choice,
+              referenceUsed,
+              yearAssumed:
+                !c.isCertain("year") && usesReferenceYear(components),
+            });
           for (let n = 0; n < resolved.instants.length; n++) {
             const instant = resolved.instants[n];
             results.push({
@@ -1155,6 +1208,17 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     }
     if (invalidEndpoint) {
       reject();
+    } else if (endDateOwners.length) {
+      contextOwnerIndex = r.index;
+      contextDate = endDateOwners[0].date;
+      contextOwners = endDateOwners.filter(
+        (owner, index, all) =>
+          all.findIndex((other) => other.date.equals(owner.date)) === index,
+      );
+      contextText = "";
+      contextNumeric = hasNumericDate(r.end!);
+      contextOrder = numericDateOrder(r.end!, options.dateOrder || "mdy");
+      contextParagraph = paragraph(text, r.index + r.text.length);
     }
   }
   for (const match of text.matchAll(/\b(1[4-9]\d{8}|[2-9]\d{9})\b/g)) {

@@ -9269,5 +9269,1645 @@
     "sourceZone": "Asia/Tokyo",
     "instants": ["2026-04-06T22:00:00.123456789Z", "2026-04-10T12:00:00Z"],
     "originals": ["PDT now", "UTC noon"]
+  },
+  {
+    "name": "complete heading after clause , UTC mdy",
+    "text": "UTC noon, 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause . UTC mdy",
+    "text": "UTC noon. 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ! UTC mdy",
+    "text": "UTC noon! 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ? UTC mdy",
+    "text": "UTC noon? 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "whole date punctuation preserved April 10, 2026 UTC mdy",
+    "text": "UTC noon, April 10, 2026 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "whole date punctuation preserved 2026.04.10 UTC mdy",
+    "text": "UTC noon, 2026.04.10 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' noon UTC mdy",
+    "text": "JST tomorrow\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' midnight UTC mdy",
+    "text": "JST tomorrow\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' noon UTC mdy",
+    "text": "JST tomorrow\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' midnight UTC mdy",
+    "text": "JST tomorrow\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' noon UTC mdy",
+    "text": "UTC 10 April\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' midnight UTC mdy",
+    "text": "UTC 10 April\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' noon UTC mdy",
+    "text": "UTC 10 April\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' midnight UTC mdy",
+    "text": "UTC 10 April\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 12 April UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 12 April",
+      "PDT noon to JST midnight on 12 April",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 2026-04-12 UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 2026-04-12; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 2026-04-12",
+      "PDT noon to JST midnight on 2026-04-12",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST 12 April midnight UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST 12 April midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST 12 April midnight",
+      "PDT noon to JST 12 April midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST tomorrow midnight UTC mdy",
+    "text": "UTC 10 April; PDT noon to JST tomorrow midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-07T15:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST tomorrow midnight",
+      "PDT noon to JST tomorrow midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - ''' UTC mdy",
+    "text": "UTC April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 24]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - '' on 12 April' UTC mdy",
+    "text": "UTC April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 36]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to ''' UTC mdy",
+    "text": "UTC April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 25]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to '' on 12 April' UTC mdy",
+    "text": "UTC April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 37]
+  },
+  {
+    "name": "date digits never invent start ''' - ''' UTC mdy",
+    "text": "April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 20]
+  },
+  {
+    "name": "date digits never invent start ''' - '' on 12 April' UTC mdy",
+    "text": "April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 32]
+  },
+  {
+    "name": "date digits never invent start ''' to ''' UTC mdy",
+    "text": "April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 21]
+  },
+  {
+    "name": "date digits never invent start ''' to '' on 12 April' UTC mdy",
+    "text": "April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 33]
+  },
+  {
+    "name": "complete heading after clause , UTC dmy",
+    "text": "UTC noon, 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause . UTC dmy",
+    "text": "UTC noon. 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ! UTC dmy",
+    "text": "UTC noon! 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ? UTC dmy",
+    "text": "UTC noon? 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "whole date punctuation preserved April 10, 2026 UTC dmy",
+    "text": "UTC noon, April 10, 2026 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "whole date punctuation preserved 2026.04.10 UTC dmy",
+    "text": "UTC noon, 2026.04.10 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' noon UTC dmy",
+    "text": "JST tomorrow\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' midnight UTC dmy",
+    "text": "JST tomorrow\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' noon UTC dmy",
+    "text": "JST tomorrow\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' midnight UTC dmy",
+    "text": "JST tomorrow\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' noon UTC dmy",
+    "text": "UTC 10 April\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' midnight UTC dmy",
+    "text": "UTC 10 April\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' noon UTC dmy",
+    "text": "UTC 10 April\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T12:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' midnight UTC dmy",
+    "text": "UTC 10 April\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T00:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["UTC"],
+    "assumptions": [
+      [
+        "Source timezone assumed: UTC",
+        "Date assumed: 2026-04-06",
+        "Reference date used: 2026-04-06"
+      ]
+    ]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 12 April UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 12 April",
+      "PDT noon to JST midnight on 12 April",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 2026-04-12 UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 2026-04-12; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 2026-04-12",
+      "PDT noon to JST midnight on 2026-04-12",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST 12 April midnight UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST 12 April midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST 12 April midnight",
+      "PDT noon to JST 12 April midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST tomorrow midnight UTC dmy",
+    "text": "UTC 10 April; PDT noon to JST tomorrow midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-07T15:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST tomorrow midnight",
+      "PDT noon to JST tomorrow midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - ''' UTC dmy",
+    "text": "UTC April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 24]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - '' on 12 April' UTC dmy",
+    "text": "UTC April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 36]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to ''' UTC dmy",
+    "text": "UTC April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 25]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to '' on 12 April' UTC dmy",
+    "text": "UTC April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 37]
+  },
+  {
+    "name": "date digits never invent start ''' - ''' UTC dmy",
+    "text": "April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 20]
+  },
+  {
+    "name": "date digits never invent start ''' - '' on 12 April' UTC dmy",
+    "text": "April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 32]
+  },
+  {
+    "name": "date digits never invent start ''' to ''' UTC dmy",
+    "text": "April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 21]
+  },
+  {
+    "name": "date digits never invent start ''' to '' on 12 April' UTC dmy",
+    "text": "April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "UTC",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 33]
+  },
+  {
+    "name": "complete heading after clause , Asia/Tokyo mdy",
+    "text": "UTC noon, 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause . Asia/Tokyo mdy",
+    "text": "UTC noon. 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ! Asia/Tokyo mdy",
+    "text": "UTC noon! 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ? Asia/Tokyo mdy",
+    "text": "UTC noon? 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "whole date punctuation preserved April 10, 2026 Asia/Tokyo mdy",
+    "text": "UTC noon, April 10, 2026 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "whole date punctuation preserved 2026.04.10 Asia/Tokyo mdy",
+    "text": "UTC noon, 2026.04.10 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' noon Asia/Tokyo mdy",
+    "text": "JST tomorrow\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' midnight Asia/Tokyo mdy",
+    "text": "JST tomorrow\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' noon Asia/Tokyo mdy",
+    "text": "JST tomorrow\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' midnight Asia/Tokyo mdy",
+    "text": "JST tomorrow\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' noon Asia/Tokyo mdy",
+    "text": "UTC 10 April\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' midnight Asia/Tokyo mdy",
+    "text": "UTC 10 April\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' noon Asia/Tokyo mdy",
+    "text": "UTC 10 April\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' midnight Asia/Tokyo mdy",
+    "text": "UTC 10 April\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 12 April Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 12 April",
+      "PDT noon to JST midnight on 12 April",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 2026-04-12 Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 2026-04-12; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 2026-04-12",
+      "PDT noon to JST midnight on 2026-04-12",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST 12 April midnight Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST 12 April midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST 12 April midnight",
+      "PDT noon to JST 12 April midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST tomorrow midnight Asia/Tokyo mdy",
+    "text": "UTC 10 April; PDT noon to JST tomorrow midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-07T15:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST tomorrow midnight",
+      "PDT noon to JST tomorrow midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - ''' Asia/Tokyo mdy",
+    "text": "UTC April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 24]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - '' on 12 April' Asia/Tokyo mdy",
+    "text": "UTC April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 36]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to ''' Asia/Tokyo mdy",
+    "text": "UTC April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 25]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to '' on 12 April' Asia/Tokyo mdy",
+    "text": "UTC April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 37]
+  },
+  {
+    "name": "date digits never invent start ''' - ''' Asia/Tokyo mdy",
+    "text": "April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 20]
+  },
+  {
+    "name": "date digits never invent start ''' - '' on 12 April' Asia/Tokyo mdy",
+    "text": "April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 32]
+  },
+  {
+    "name": "date digits never invent start ''' to ''' Asia/Tokyo mdy",
+    "text": "April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-10T22:00:00Z", "2026-04-10T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 21]
+  },
+  {
+    "name": "date digits never invent start ''' to '' on 12 April' Asia/Tokyo mdy",
+    "text": "April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "mdy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 33]
+  },
+  {
+    "name": "complete heading after clause , Asia/Tokyo dmy",
+    "text": "UTC noon, 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause . Asia/Tokyo dmy",
+    "text": "UTC noon. 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ! Asia/Tokyo dmy",
+    "text": "UTC noon! 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "complete heading after clause ? Asia/Tokyo dmy",
+    "text": "UTC noon? 10 April - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"],
+    "sourceIndices": [0, 21, 30],
+    "endpoints": ["undefined", "undefined", "undefined"]
+  },
+  {
+    "name": "whole date punctuation preserved April 10, 2026 Asia/Tokyo dmy",
+    "text": "UTC noon, April 10, 2026 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "whole date punctuation preserved 2026.04.10 Asia/Tokyo dmy",
+    "text": "UTC noon, 2026.04.10 - PDT 3pm; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-06T12:00:00Z",
+      "2026-04-10T22:00:00Z",
+      "2026-04-10T17:00:00Z"
+    ],
+    "originals": ["UTC noon", "PDT 3pm", "UTC 5pm"]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' noon Asia/Tokyo dmy",
+    "text": "JST tomorrow\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\n\\n' midnight Asia/Tokyo dmy",
+    "text": "JST tomorrow\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' noon Asia/Tokyo dmy",
+    "text": "JST tomorrow\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary JST tomorrow '\\r\\n\\r\\n' midnight Asia/Tokyo dmy",
+    "text": "JST tomorrow\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' noon Asia/Tokyo dmy",
+    "text": "UTC 10 April\n\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\n\\n' midnight Asia/Tokyo dmy",
+    "text": "UTC 10 April\n\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [14],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' noon Asia/Tokyo dmy",
+    "text": "UTC 10 April\r\n\r\nnoon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-07T03:00:00Z"],
+    "originals": ["noon"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "masked bare clock blank boundary UTC 10 April '\\r\\n\\r\\n' midnight Asia/Tokyo dmy",
+    "text": "UTC 10 April\r\n\r\nmidnight",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T15:00:00Z"],
+    "originals": ["midnight"],
+    "sourceIndices": [16],
+    "endpoints": ["undefined"],
+    "sourceZones": ["Asia/Tokyo"],
+    "assumptions": [
+      [
+        "Source timezone assumed: Tokyo",
+        "Date assumed: 2026-04-07",
+        "Reference date used: 2026-04-07"
+      ]
+    ]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 12 April Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 12 April; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 12 April",
+      "PDT noon to JST midnight on 12 April",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST midnight on 2026-04-12 Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST midnight on 2026-04-12; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST midnight on 2026-04-12",
+      "PDT noon to JST midnight on 2026-04-12",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST 12 April midnight Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST 12 April midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-11T15:00:00Z",
+      "2026-04-12T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST 12 April midnight",
+      "PDT noon to JST 12 April midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "native explicit end replaces heading JST tomorrow midnight Asia/Tokyo dmy",
+    "text": "UTC 10 April; PDT noon to JST tomorrow midnight; UTC 5pm",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": [
+      "2026-04-10T19:00:00Z",
+      "2026-04-07T15:00:00Z",
+      "2026-04-08T17:00:00Z"
+    ],
+    "originals": [
+      "PDT noon to JST tomorrow midnight",
+      "PDT noon to JST tomorrow midnight",
+      "UTC 5pm"
+    ],
+    "sourceZones": ["-07:00", "+09:00", "+00:00"],
+    "endpoints": ["start", "end", "undefined"]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - ''' Asia/Tokyo dmy",
+    "text": "UTC April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 24]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' - '' on 12 April' Asia/Tokyo dmy",
+    "text": "UTC April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [15, 36]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to ''' Asia/Tokyo dmy",
+    "text": "UTC April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 25]
+  },
+  {
+    "name": "date digits never invent start 'UTC '' to '' on 12 April' Asia/Tokyo dmy",
+    "text": "UTC April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [16, 37]
+  },
+  {
+    "name": "date digits never invent start ''' - ''' Asia/Tokyo dmy",
+    "text": "April 10 - PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 20]
+  },
+  {
+    "name": "date digits never invent start ''' - '' on 12 April' Asia/Tokyo dmy",
+    "text": "April 10 - PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [11, 32]
+  },
+  {
+    "name": "date digits never invent start ''' to ''' Asia/Tokyo dmy",
+    "text": "April 10 to PDT 3pm; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-06T22:00:00Z", "2026-04-06T12:00:00Z"],
+    "originals": ["PDT 3pm", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 21]
+  },
+  {
+    "name": "date digits never invent start ''' to '' on 12 April' Asia/Tokyo dmy",
+    "text": "April 10 to PDT 3pm on 12 April; UTC noon",
+    "now": "2026-04-06T22:00:00.123456789Z",
+    "sourceZone": "Asia/Tokyo",
+    "dateOrder": "dmy",
+    "instants": ["2026-04-12T22:00:00Z", "2026-04-12T12:00:00Z"],
+    "originals": ["PDT 3pm on 12 April", "UTC noon"],
+    "endpoints": ["undefined", "undefined"],
+    "rangeIds": [null, null],
+    "sourceIndices": [12, 33]
   }
 ]
