@@ -12,7 +12,7 @@ Timezone-first phrases work too: `pdt now, cst midnight`, `JST noon`, `PDT tomor
 
 The layout adapts to phones, tablets, desktop windows and foldable displays. Supported browsers place input and results clear of a hinge. Conversion runs entirely on your device with no account, conversion server or mandatory model download.
 
-Use **Appearance** in the header to choose **Dark**, **Light** or **System**. One adaptive workspace pairs a warm paper/clay Light palette with a forest/lime Dark palette and local typography. Dark is the default; System follows your device. Theme changes keep your current message and results, and preferences are saved locally. Motion respects your reduced-motion preference. See [appearance behavior](docs/developer/appearance.md).
+Use **Appearance** in the header to choose the **Original** or **Aqua** design, and **Dark**, **Light** or **System**. Original pairs warm paper/clay Light with forest/lime Dark. Aqua brings early Mac OS X styling: pearl pinstripes, glossy blue gel buttons, recessed fields and translucent menus, with a blue-glass Dark palette. Original/Dark remains the default; System follows your device. Appearance changes keep your current message and results, and preferences are saved locally. Motion respects your reduced-motion preference. See [appearance behavior](docs/developer/appearance.md).
 
 ## Use offline
 

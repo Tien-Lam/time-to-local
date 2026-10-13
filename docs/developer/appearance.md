@@ -1,6 +1,38 @@
 # Appearance
 
-Time to Local uses one workspace with two palettes. **Appearance → Theme** selects **Dark**, **Light** or **System**. Dark is the default and reset choice; System follows device colour-scheme changes live. There is no separate design selector. The compact clock/name header leads directly into **Message**, destination controls and results; a hidden page heading supplies the accessible page name. The footer contains the privacy note.
+Time to Local uses one workspace with two selectable designs. **Appearance → Design** selects **Original** or **Aqua**, independently of **Theme → Dark**, **Light** or **System**. Original/Dark is the default and reset choice; System follows device colour-scheme changes live. Appearance changes retain the message, results and transient reference date. The compact clock/name header leads directly into **Message**, destination controls and results; a hidden page heading supplies the accessible page name. The footer contains the privacy note.
+
+Aqua recreates the component treatment of early Mac OS X: one-pixel pearl pinstripes, silver title chrome, sharp inset fields, blue gel Copy buttons with curved reflection caps and illuminated lower rims, glass clock droplets and translucent menus. Dropdown arrows have inset blue gel caps inside their existing targets. Light is the classic interpretation; Dark adapts it to navy glass with pale blue accents. It uses locally available Lucida Grande/Lucida Sans Unicode with Arial/sans-serif fallback, and CSS-only gradients, shadows and blur. No Apple artwork, remote textures or runtime network assets are required. Ordinary actions and field triggers retain 44px targets; calendar cells/navigation retain their existing intrinsic 36px minimum. Independent timezone semantics and keyboard/motion behavior are shared. Decorative reflections sit below labels, ignore pointer input and disappear in forced colours. Scoped rules in `web/src/aqua.css` include the deferred calendar and forced colours; Original keeps its existing visual tokens.
+
+The material refinements use [Will Meyers' Aqua UI](https://github.com/willmeyers/aqua-ui) as a visual reference for early Aqua proportions and [Igor Duca's Aqua components](https://github.com/igorfelipeduca/aqua) as a reference for layered CSS reflections. This app implements the decoration locally on its existing controls; it does not bundle either library's historical artwork or component framework.
+
+## Owned Aqua component library
+
+The owned `components/ui` primitives and domain controls share the Aqua material
+layer in `aqua.css`. Radius tokens distinguish inset fields (3px), popup controls
+(8px), arrow gems (6px) and push capsules. Popup controls are deliberately softer
+at the app's 44px target size than the smaller historical controls. Selection and
+press keep labels and descriptions on the same blue surface, with a white visible
+keyboard-focus ring. Invalid fields retain an explicit red border and help text.
+
+| Component                      | Parts and materials                                                                                                                                                                                                                                                    |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ActionButton                   | Quiet and icon actions, pearl outline capsules, gel primary capsules; real hover/focus/press, disabled/pending, success/check and failure labels. Range endpoint Copy controls deliberately use gel.                                                                   |
+| Input and native textareas     | Recessed editor/manual-copy fields, rounded native search, disabled and invalid fields, caller-owned labels/help, native caret/selection/IME.                                                                                                                          |
+| Checkbox                       | Owned native input with pearl unchecked box, gel checked box and CSS check glyph; enclosing label preserves the 44px target. Keyboard, checked and disabled semantics remain native; forced colours restore browser paint.                                             |
+| ChoiceSelect and ZoneChoice    | Popup rectangle or editable recess, gel arrow gem and chevron; pinstriped menu, selected/focused/pressed label/description/check, guidance and empty states.                                                                                                           |
+| DateChoice                     | Angular segmented field, placeholders/literals, blue focused segments, quiet clear/calendar accessories; pearl circular navigation, selected/today/outside dates and pearl automatic-today action. Field accessories are deliberately quiet rather than push capsules. |
+| Collapsible and Disclosure     | Quiet trigger, nonanchored chevron feedback, immediate intrinsic hidden/inert panel and focus restoration.                                                                                                                                                             |
+| StatusIndicator                | Pearl idle bead, green ready bead, amber pending/paused/warning/ambiguity and red error. Caller wording and the separate live-announcement owner remain authoritative.                                                                                                 |
+| Workspace and support surfaces | Pinstripe header/panels, glass clock, pearl day-shift badge, distinct result/source/original/Copy associations; update/import/install/About surfaces reuse the same materials.                                                                                         |
+
+The development-only Aqua catalog extends the existing gallery using these actual
+owners. It includes disabled and pending material variants, search and invalid
+fields, checkbox states, editor/manual-copy textareas, every status bead, and
+clearly labeled support-surface samples. Those samples demonstrate paint and local
+actions; production lifecycle tests exercise actual update/import/clipboard paths.
+The catalog and its sample code stay outside production assets and offline caches.
+No parallel selection, date, disclosure or gesture framework is added.
 
 ## Layout and visual system
 
@@ -46,6 +78,6 @@ Reduced motion is honored on first load and live preference changes. Travel, sca
 
 Result counts distinguish independent times, ranges and alternatives. Ambiguity warnings precede all Copy actions. Explicit parser range identity groups endpoints, while ambiguous or incomplete endpoints never produce an invented Copy range pair. A complete unambiguous range offers Copy range with both dates and target offsets when they differ; endpoint copying remains available. All copy actions use the existing supersession and deferred-focus ownership guards. Mobile first-use input is compact, automatic conversion guidance is visible, and Try example cycles through a deterministic sequence starting with an unambiguous fully specified time.
 
-Legacy Liquid Lens and Glass Command records retain valid preferences while dropping the obsolete design field. The versioned preference key is unchanged. Reset restores Dark/default conversion settings, clears the reference date and detailed-log opt-in, and retains the message. Input/reference date remain transient; denied storage permits session-only preference changes and conversion. Share/update handoffs and user-explicit update activation retain their existing local-only lifecycle.
+Legacy Liquid Lens and Glass Command records retain valid preferences and resolve to Original; unknown designs do likewise. Aqua stores `design: "aqua"` in the unchanged versioned preference key. Original omits the design field when saved, preserving the legacy preference shape. Reset restores Original/Dark/default conversion settings, clears the reference date and detailed-log opt-in, and retains the message. Input/reference date remain transient; denied storage permits session-only appearance changes and conversion. Share/update handoffs and user-explicit update activation retain their existing local-only lifecycle.
 
 The approved compact-header references establish the visual direction; their static prototype predates the production motion requirement. Production acceptance follows [testing](testing.md) and the [independent review workflow](review.md), including normal/reduced-motion interruption and keyboard/pointer journeys in both palettes at desktop/narrow widths, conversion/privacy and offline/subpath/update checks. Save recordings or before/during/after sequences and full reports in ignored `.work/<ticket-id>/`; concise exact-source evidence belongs on PRs/tickets. Browser emulation does not establish physical-device, actual screen-reader or phone-performance results.
