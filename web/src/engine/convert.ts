@@ -498,9 +498,18 @@ export function convert(text: string, options: ConversionOptions): Conversion {
     for (const [c, endpoint] of endpoints) {
       // If both endpoints carry a different abbreviation, resolve each independently.
       const zoneText =
-        r.end && zones.length > 1
-          ? zones[endpoint === "end" ? zones.length - 1 : 0][0]
-          : matchedText;
+        endpoint === "start" && r.end && !prefix && rangePrefixes.length
+          ? zones
+              .filter(
+                (zone) =>
+                  rangeBoundary !== undefined &&
+                  sourceIndex + zone.index! < rangeBoundary,
+              )
+              .map((zone) => zone[0])
+              .join(" ")
+          : r.end && zones.length > 1
+            ? zones[endpoint === "end" ? zones.length - 1 : 0][0]
+            : matchedText;
       const endpointPrefix =
         endpoint === "end"
           ? rangePrefixes.length > (prefix ? 1 : 0)

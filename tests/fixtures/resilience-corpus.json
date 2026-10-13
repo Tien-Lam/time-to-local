@@ -7986,6 +7986,600 @@
       "legacyExpectedCount": 1,
       "expected": [],
       "description": "unknown explicit suffix rejects range but preserves independent clause"
+    },
+    {
+      "id": "web-zone-first-229",
+      "input": "3pm to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains Australia/Sydney before to prefix end"
+    },
+    {
+      "id": "web-zone-first-230",
+      "input": "3pm to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains UTC before to prefix end"
+    },
+    {
+      "id": "web-zone-first-231",
+      "input": "2026-04-09T15:00+00:00 to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +00:00 start retains full to prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-232",
+      "input": "2026-04-09T15:00+02:00 to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +02:00 start retains full to prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-233",
+      "input": "2026-04-09T15:00+05:45 to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +05:45 start retains full to prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-234",
+      "input": "2026-04-09T15:00-02:00 to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO -02:00 start retains full to prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-235",
+      "input": "2026-04-09T15:00Z to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO Z start retains full to prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-236",
+      "input": "2026-04-09T15:00 to JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO offsetless start retains full to prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-237",
+      "input": "PDT April 8 to JST April 10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 3pm after to"
+    },
+    {
+      "id": "web-zone-first-238",
+      "input": "PDT April 8 to JST 10 April 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed 10 April 3pm after to"
+    },
+    {
+      "id": "web-zone-first-239",
+      "input": "PDT April 8 to JST April 10 2026 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 2026 3pm after to"
+    },
+    {
+      "id": "web-zone-first-240",
+      "input": "3pm until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains Australia/Sydney before until prefix end"
+    },
+    {
+      "id": "web-zone-first-241",
+      "input": "3pm until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains UTC before until prefix end"
+    },
+    {
+      "id": "web-zone-first-242",
+      "input": "2026-04-09T15:00+00:00 until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +00:00 start retains full until prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-243",
+      "input": "2026-04-09T15:00+02:00 until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +02:00 start retains full until prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-244",
+      "input": "2026-04-09T15:00+05:45 until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +05:45 start retains full until prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-245",
+      "input": "2026-04-09T15:00-02:00 until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO -02:00 start retains full until prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-246",
+      "input": "2026-04-09T15:00Z until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO Z start retains full until prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-247",
+      "input": "2026-04-09T15:00 until JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO offsetless start retains full until prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-248",
+      "input": "PDT April 8 until JST April 10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 3pm after until"
+    },
+    {
+      "id": "web-zone-first-249",
+      "input": "PDT April 8 until JST 10 April 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed 10 April 3pm after until"
+    },
+    {
+      "id": "web-zone-first-250",
+      "input": "PDT April 8 until JST April 10 2026 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 2026 3pm after until"
+    },
+    {
+      "id": "web-zone-first-251",
+      "input": "3pm till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains Australia/Sydney before till prefix end"
+    },
+    {
+      "id": "web-zone-first-252",
+      "input": "3pm till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains UTC before till prefix end"
+    },
+    {
+      "id": "web-zone-first-253",
+      "input": "2026-04-09T15:00+00:00 till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +00:00 start retains full till prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-254",
+      "input": "2026-04-09T15:00+02:00 till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +02:00 start retains full till prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-255",
+      "input": "2026-04-09T15:00+05:45 till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +05:45 start retains full till prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-256",
+      "input": "2026-04-09T15:00-02:00 till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO -02:00 start retains full till prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-257",
+      "input": "2026-04-09T15:00Z till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO Z start retains full till prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-258",
+      "input": "2026-04-09T15:00 till JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO offsetless start retains full till prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-259",
+      "input": "PDT April 8 till JST April 10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 3pm after till"
+    },
+    {
+      "id": "web-zone-first-260",
+      "input": "PDT April 8 till JST 10 April 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed 10 April 3pm after till"
+    },
+    {
+      "id": "web-zone-first-261",
+      "input": "PDT April 8 till JST April 10 2026 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 2026 3pm after till"
+    },
+    {
+      "id": "web-zone-first-262",
+      "input": "3pm through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains Australia/Sydney before through prefix end"
+    },
+    {
+      "id": "web-zone-first-263",
+      "input": "3pm through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains UTC before through prefix end"
+    },
+    {
+      "id": "web-zone-first-264",
+      "input": "2026-04-09T15:00+00:00 through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +00:00 start retains full through prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-265",
+      "input": "2026-04-09T15:00+02:00 through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +02:00 start retains full through prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-266",
+      "input": "2026-04-09T15:00+05:45 through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +05:45 start retains full through prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-267",
+      "input": "2026-04-09T15:00-02:00 through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO -02:00 start retains full through prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-268",
+      "input": "2026-04-09T15:00Z through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO Z start retains full through prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-269",
+      "input": "2026-04-09T15:00 through JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO offsetless start retains full through prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-270",
+      "input": "PDT April 8 through JST April 10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 3pm after through"
+    },
+    {
+      "id": "web-zone-first-271",
+      "input": "PDT April 8 through JST 10 April 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed 10 April 3pm after through"
+    },
+    {
+      "id": "web-zone-first-272",
+      "input": "PDT April 8 through JST April 10 2026 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 2026 3pm after through"
+    },
+    {
+      "id": "web-zone-first-273",
+      "input": "3pm - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains Australia/Sydney before - prefix end"
+    },
+    {
+      "id": "web-zone-first-274",
+      "input": "3pm - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains UTC before - prefix end"
+    },
+    {
+      "id": "web-zone-first-275",
+      "input": "2026-04-09T15:00+00:00 - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +00:00 start retains full - prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-276",
+      "input": "2026-04-09T15:00+02:00 - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +02:00 start retains full - prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-277",
+      "input": "2026-04-09T15:00+05:45 - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +05:45 start retains full - prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-278",
+      "input": "2026-04-09T15:00-02:00 - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO -02:00 start retains full - prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-279",
+      "input": "2026-04-09T15:00Z - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO Z start retains full - prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-280",
+      "input": "2026-04-09T15:00 - JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO offsetless start retains full - prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-281",
+      "input": "PDT April 8 - JST April 10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 3pm after -"
+    },
+    {
+      "id": "web-zone-first-282",
+      "input": "PDT April 8 - JST 10 April 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed 10 April 3pm after -"
+    },
+    {
+      "id": "web-zone-first-283",
+      "input": "PDT April 8 - JST April 10 2026 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 2026 3pm after -"
+    },
+    {
+      "id": "web-zone-first-284",
+      "input": "3pm – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains Australia/Sydney before – prefix end"
+    },
+    {
+      "id": "web-zone-first-285",
+      "input": "3pm – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "unqualified clock start retains UTC before – prefix end"
+    },
+    {
+      "id": "web-zone-first-286",
+      "input": "2026-04-09T15:00+00:00 – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +00:00 start retains full – prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-287",
+      "input": "2026-04-09T15:00+02:00 – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +02:00 start retains full – prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-288",
+      "input": "2026-04-09T15:00+05:45 – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO +05:45 start retains full – prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-289",
+      "input": "2026-04-09T15:00-02:00 – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO -02:00 start retains full – prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-290",
+      "input": "2026-04-09T15:00Z – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO Z start retains full – prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-291",
+      "input": "2026-04-09T15:00 – JST 4pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "ISO offsetless start retains full – prefixed clock end"
+    },
+    {
+      "id": "web-zone-first-292",
+      "input": "PDT April 8 – JST April 10 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 3pm after –"
+    },
+    {
+      "id": "web-zone-first-293",
+      "input": "PDT April 8 – JST 10 April 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed 10 April 3pm after –"
+    },
+    {
+      "id": "web-zone-first-294",
+      "input": "PDT April 8 – JST April 10 2026 3pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "date-only start preserves explicitly timed April 10 2026 3pm after –"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."

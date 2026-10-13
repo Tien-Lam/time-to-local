@@ -2805,5 +2805,563 @@
     "instants": ["2026-04-06T18:00:00Z"],
     "sourceZones": ["+00:00"],
     "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unqualified clock start retains Australia/Sydney before to prefix end",
+    "text": "3pm to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unqualified clock start retains UTC before to prefix end",
+    "text": "3pm to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["UTC", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +00:00 start retains full to prefixed clock end",
+    "text": "2026-04-09T15:00+00:00 to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +02:00 start retains full to prefixed clock end",
+    "text": "2026-04-09T15:00+02:00 to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T13:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +05:45 start retains full to prefixed clock end",
+    "text": "2026-04-09T15:00+05:45 to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T09:15:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+05:45", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO -02:00 start retains full to prefixed clock end",
+    "text": "2026-04-09T15:00-02:00 to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T17:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["-02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO Z start retains full to prefixed clock end",
+    "text": "2026-04-09T15:00Z to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO offsetless start retains full to prefixed clock end",
+    "text": "2026-04-09T15:00 to JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 3pm after to",
+    "text": "PDT April 8 to JST April 10 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed 10 April 3pm after to",
+    "text": "PDT April 8 to JST 10 April 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 2026 3pm after to",
+    "text": "PDT April 8 to JST April 10 2026 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "unqualified clock start retains Australia/Sydney before until prefix end",
+    "text": "3pm until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unqualified clock start retains UTC before until prefix end",
+    "text": "3pm until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["UTC", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +00:00 start retains full until prefixed clock end",
+    "text": "2026-04-09T15:00+00:00 until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +02:00 start retains full until prefixed clock end",
+    "text": "2026-04-09T15:00+02:00 until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T13:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +05:45 start retains full until prefixed clock end",
+    "text": "2026-04-09T15:00+05:45 until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T09:15:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+05:45", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO -02:00 start retains full until prefixed clock end",
+    "text": "2026-04-09T15:00-02:00 until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T17:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["-02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO Z start retains full until prefixed clock end",
+    "text": "2026-04-09T15:00Z until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO offsetless start retains full until prefixed clock end",
+    "text": "2026-04-09T15:00 until JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 3pm after until",
+    "text": "PDT April 8 until JST April 10 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed 10 April 3pm after until",
+    "text": "PDT April 8 until JST 10 April 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 2026 3pm after until",
+    "text": "PDT April 8 until JST April 10 2026 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "unqualified clock start retains Australia/Sydney before till prefix end",
+    "text": "3pm till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unqualified clock start retains UTC before till prefix end",
+    "text": "3pm till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["UTC", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +00:00 start retains full till prefixed clock end",
+    "text": "2026-04-09T15:00+00:00 till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +02:00 start retains full till prefixed clock end",
+    "text": "2026-04-09T15:00+02:00 till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T13:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +05:45 start retains full till prefixed clock end",
+    "text": "2026-04-09T15:00+05:45 till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T09:15:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+05:45", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO -02:00 start retains full till prefixed clock end",
+    "text": "2026-04-09T15:00-02:00 till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T17:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["-02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO Z start retains full till prefixed clock end",
+    "text": "2026-04-09T15:00Z till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO offsetless start retains full till prefixed clock end",
+    "text": "2026-04-09T15:00 till JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 3pm after till",
+    "text": "PDT April 8 till JST April 10 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed 10 April 3pm after till",
+    "text": "PDT April 8 till JST 10 April 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 2026 3pm after till",
+    "text": "PDT April 8 till JST April 10 2026 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "unqualified clock start retains Australia/Sydney before through prefix end",
+    "text": "3pm through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unqualified clock start retains UTC before through prefix end",
+    "text": "3pm through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["UTC", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +00:00 start retains full through prefixed clock end",
+    "text": "2026-04-09T15:00+00:00 through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +02:00 start retains full through prefixed clock end",
+    "text": "2026-04-09T15:00+02:00 through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T13:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +05:45 start retains full through prefixed clock end",
+    "text": "2026-04-09T15:00+05:45 through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T09:15:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+05:45", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO -02:00 start retains full through prefixed clock end",
+    "text": "2026-04-09T15:00-02:00 through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T17:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["-02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO Z start retains full through prefixed clock end",
+    "text": "2026-04-09T15:00Z through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO offsetless start retains full through prefixed clock end",
+    "text": "2026-04-09T15:00 through JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 3pm after through",
+    "text": "PDT April 8 through JST April 10 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed 10 April 3pm after through",
+    "text": "PDT April 8 through JST 10 April 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 2026 3pm after through",
+    "text": "PDT April 8 through JST April 10 2026 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "unqualified clock start retains Australia/Sydney before - prefix end",
+    "text": "3pm - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unqualified clock start retains UTC before - prefix end",
+    "text": "3pm - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["UTC", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +00:00 start retains full - prefixed clock end",
+    "text": "2026-04-09T15:00+00:00 - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +02:00 start retains full - prefixed clock end",
+    "text": "2026-04-09T15:00+02:00 - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T13:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +05:45 start retains full - prefixed clock end",
+    "text": "2026-04-09T15:00+05:45 - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T09:15:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+05:45", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO -02:00 start retains full - prefixed clock end",
+    "text": "2026-04-09T15:00-02:00 - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T17:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["-02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO Z start retains full - prefixed clock end",
+    "text": "2026-04-09T15:00Z - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO offsetless start retains full - prefixed clock end",
+    "text": "2026-04-09T15:00 - JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 3pm after -",
+    "text": "PDT April 8 - JST April 10 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed 10 April 3pm after -",
+    "text": "PDT April 8 - JST 10 April 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 2026 3pm after -",
+    "text": "PDT April 8 - JST April 10 2026 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "unqualified clock start retains Australia/Sydney before – prefix end",
+    "text": "3pm – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unqualified clock start retains UTC before – prefix end",
+    "text": "3pm – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "UTC",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["UTC", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +00:00 start retains full – prefixed clock end",
+    "text": "2026-04-09T15:00+00:00 – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +02:00 start retains full – prefixed clock end",
+    "text": "2026-04-09T15:00+02:00 – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T13:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO +05:45 start retains full – prefixed clock end",
+    "text": "2026-04-09T15:00+05:45 – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T09:15:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+05:45", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO -02:00 start retains full – prefixed clock end",
+    "text": "2026-04-09T15:00-02:00 – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T17:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["-02:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO Z start retains full – prefixed clock end",
+    "text": "2026-04-09T15:00Z – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T15:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["+00:00", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "ISO offsetless start retains full – prefixed clock end",
+    "text": "2026-04-09T15:00 – JST 4pm",
+    "now": "2026-04-09T12:00:00Z",
+    "sourceZone": "Australia/Sydney",
+    "instants": ["2026-04-09T05:00:00Z", "2026-04-09T07:00:00Z"],
+    "sourceZones": ["Australia/Sydney", "+09:00"],
+    "endpoints": ["start", "end"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 3pm after –",
+    "text": "PDT April 8 – JST April 10 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed 10 April 3pm after –",
+    "text": "PDT April 8 – JST 10 April 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
+  },
+  {
+    "name": "date-only start preserves explicitly timed April 10 2026 3pm after –",
+    "text": "PDT April 8 – JST April 10 2026 3pm",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-10T06:00:00Z"],
+    "sourceZones": ["+09:00"]
   }
 ]

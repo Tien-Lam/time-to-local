@@ -250,18 +250,19 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
           if (separator) {
             const endIndex =
               result.index + separator.index! + separator[0].length;
-            const dateOwnsStart = results.some(
+            const completeStart = results.some(
               (date) =>
                 date !== result &&
                 date.start.isCertain("day") &&
-                !date.start.isCertain("hour") &&
+                (!date.start.isCertain("hour") ||
+                  date.start.tags().has("parser/ISOFormatParser")) &&
                 date.index < result.index &&
                 date.index + date.text.length > result.index &&
                 date.index + date.text.length <= endIndex,
             );
-            // A month-first date can overlap the apparent START clock too:
-            // "3pm on April 8 to 4pm" must not turn calendar day 8 into 8pm.
-            if (result.start.isCertain("hour") && dateOwnsStart) {
+            // Preserve a complete date or ISO timestamp overlapping a partial
+            // start clock. Otherwise overlap removal can discard its end clock.
+            if (result.start.isCertain("hour") && completeStart) {
               const resultEnd = result.index + result.text.length;
               const tags = [...result.end.tags()];
               result.start = result.end.clone();
@@ -338,6 +339,31 @@ function extend(parser: Chrono, preference: "mdy" | "dmy"): Chrono {
         { hour: (+m[3] % 12) + pm, minute: +(m[4] || 0), meridiem: pm ? 1 : 0 },
       );
     },
+  });
+  parser.refiners.push({
+    refine: (context, results) =>
+      results.flatMap((result) => {
+        if (!result.end?.isCertain("hour") || result.start.isCertain("hour"))
+          return [result];
+        const separator = result.text.match(
+          /\b(?:to|until|through|till|and)\b\s*|[-–~]\s+/i,
+        );
+        if (!separator) return [result];
+        // A native date range can attach a clock only to its final date.
+        // Keep that explicitly parsed time without inventing a start clock.
+        const end = result.clone();
+        end.start = result.end.clone();
+        end.start.addTags([...result.end.tags()]);
+        end.end = undefined;
+        end.index = result.index + separator.index! + separator[0].length;
+        end.text = context.text.slice(
+          end.index,
+          result.index + result.text.length,
+        );
+        result.text = result.text.slice(0, separator.index).trimEnd();
+        result.end = undefined;
+        return [result, end];
+      }),
   });
   return parser;
 }
