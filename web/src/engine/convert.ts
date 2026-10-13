@@ -172,7 +172,10 @@ function choicesFor(
   if (
     explicit &&
     unknownAbbr &&
-    adjacent.trim() === unknownAbbr[1] &&
+    (adjacent.trim() === unknownAbbr[1] ||
+      /^\s+(?:time(?:\s*zone)?\b|zone\b|(?:in|at)\s+)/i.test(
+        adjacent.slice(unknownAbbr[0].length),
+      )) &&
     !["AM", "PM", "IN", "AT"].includes(unknownAbbr[1]) &&
     !explicitZones(unknownAbbr[1])
   ) {
@@ -457,7 +460,11 @@ export function convert(text: string, options: ConversionOptions): Conversion {
           endIndex !== undefined &&
           p.index <= endIndex &&
           (endIndex < p.end || !text.slice(p.end, endIndex).trim()),
-      )?.index ?? endIndex;
+      )?.index ??
+      endIndex ??
+      // Native calendar ranges can inherit their end clock after our early
+      // refiner. A distinct masked prefix still owns that endpoint's zone.
+      (r.end ? rangePrefixes.find((p) => p !== prefix)?.index : undefined);
     if (prefix || rangePrefixes.length) {
       const owners =
         rangeBoundary === undefined

@@ -2456,5 +2456,354 @@
     "instants": ["2026-04-08T22:00:00Z", "2026-04-10T22:00:00Z"],
     "sourceZones": ["-07:00", "-07:00"],
     "endpoints": ["start", "end"]
+  },
+  {
+    "name": "unknown explicit suffix timezone rejects single ownership",
+    "text": "PDT noon XYZ timezone",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix timezone rejects start ownership",
+    "text": "PDT noon XYZ timezone to JST 1pm",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix timezone rejects end ownership",
+    "text": "JST noon to PDT noon XYZ timezone",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix time zone rejects single ownership",
+    "text": "PDT noon XYZ time zone",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix time zone rejects start ownership",
+    "text": "PDT noon XYZ time zone to JST 1pm",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix time zone rejects end ownership",
+    "text": "JST noon to PDT noon XYZ time zone",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix zone rejects single ownership",
+    "text": "PDT noon XYZ zone",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix zone rejects start ownership",
+    "text": "PDT noon XYZ zone to JST 1pm",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix zone rejects end ownership",
+    "text": "JST noon to PDT noon XYZ zone",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix time rejects single ownership",
+    "text": "PDT noon XYZ time",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix time rejects start ownership",
+    "text": "PDT noon XYZ time to JST 1pm",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix time rejects end ownership",
+    "text": "JST noon to PDT noon XYZ time",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix in Seattle rejects single ownership",
+    "text": "PDT noon XYZ in Seattle",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix in Seattle rejects start ownership",
+    "text": "PDT noon XYZ in Seattle to JST 1pm",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix in Seattle rejects end ownership",
+    "text": "JST noon to PDT noon XYZ in Seattle",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix at Seattle rejects single ownership",
+    "text": "PDT noon XYZ at Seattle",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix at Seattle rejects start ownership",
+    "text": "PDT noon XYZ at Seattle to JST 1pm",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "unknown explicit suffix at Seattle rejects end ownership",
+    "text": "JST noon to PDT noon XYZ at Seattle",
+    "instants": [],
+    "warning": "Unknown timezone XYZ"
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 owns zone with to",
+    "text": "PDT April 8 3pm to JST April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm to JST April 10",
+      "PDT April 8 3pm to JST April 10"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock 10 April owns zone with to",
+    "text": "PDT April 8 3pm to JST 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm to JST 10 April",
+      "PDT April 8 3pm to JST 10 April"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 2026 owns zone with to",
+    "text": "PDT April 8 3pm to JST April 10 2026",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm to JST April 10 2026",
+      "PDT April 8 3pm to JST April 10 2026"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 owns zone with until",
+    "text": "PDT April 8 3pm until JST April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm until JST April 10",
+      "PDT April 8 3pm until JST April 10"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock 10 April owns zone with until",
+    "text": "PDT April 8 3pm until JST 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm until JST 10 April",
+      "PDT April 8 3pm until JST 10 April"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 2026 owns zone with until",
+    "text": "PDT April 8 3pm until JST April 10 2026",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm until JST April 10 2026",
+      "PDT April 8 3pm until JST April 10 2026"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 owns zone with till",
+    "text": "PDT April 8 3pm till JST April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm till JST April 10",
+      "PDT April 8 3pm till JST April 10"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock 10 April owns zone with till",
+    "text": "PDT April 8 3pm till JST 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm till JST 10 April",
+      "PDT April 8 3pm till JST 10 April"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 2026 owns zone with till",
+    "text": "PDT April 8 3pm till JST April 10 2026",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm till JST April 10 2026",
+      "PDT April 8 3pm till JST April 10 2026"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 owns zone with through",
+    "text": "PDT April 8 3pm through JST April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm through JST April 10",
+      "PDT April 8 3pm through JST April 10"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock 10 April owns zone with through",
+    "text": "PDT April 8 3pm through JST 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm through JST 10 April",
+      "PDT April 8 3pm through JST 10 April"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 2026 owns zone with through",
+    "text": "PDT April 8 3pm through JST April 10 2026",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm through JST April 10 2026",
+      "PDT April 8 3pm through JST April 10 2026"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 owns zone with -",
+    "text": "PDT April 8 3pm - JST April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm - JST April 10",
+      "PDT April 8 3pm - JST April 10"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock 10 April owns zone with -",
+    "text": "PDT April 8 3pm - JST 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm - JST 10 April",
+      "PDT April 8 3pm - JST 10 April"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 2026 owns zone with -",
+    "text": "PDT April 8 3pm - JST April 10 2026",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm - JST April 10 2026",
+      "PDT April 8 3pm - JST April 10 2026"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 owns zone with –",
+    "text": "PDT April 8 3pm – JST April 10",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm – JST April 10",
+      "PDT April 8 3pm – JST April 10"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock 10 April owns zone with –",
+    "text": "PDT April 8 3pm – JST 10 April",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm – JST 10 April",
+      "PDT April 8 3pm – JST 10 April"
+    ]
+  },
+  {
+    "name": "timezone-first inherited end clock April 10 2026 owns zone with –",
+    "text": "PDT April 8 3pm – JST April 10 2026",
+    "now": "2026-04-09T12:00:00Z",
+    "instants": ["2026-04-08T22:00:00Z", "2026-04-10T06:00:00Z"],
+    "sourceZones": ["-07:00", "+09:00"],
+    "endpoints": ["start", "end"],
+    "sourceIndices": [0, 0],
+    "originals": [
+      "PDT April 8 3pm – JST April 10 2026",
+      "PDT April 8 3pm – JST April 10 2026"
+    ]
+  },
+  {
+    "name": "unknown explicit suffix rejects range but preserves independent clause",
+    "text": "PDT noon XYZ timezone to JST 1pm; UTC 6pm",
+    "instants": ["2026-04-06T18:00:00Z"],
+    "sourceZones": ["+00:00"],
+    "warning": "Unknown timezone XYZ"
   }
 ]

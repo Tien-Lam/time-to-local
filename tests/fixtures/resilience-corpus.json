@@ -7653,6 +7653,339 @@
       "legacyExpectedCount": 2,
       "expected": [],
       "description": "native complete calendar-day range preserved under overlap guard"
+    },
+    {
+      "id": "web-zone-first-192",
+      "input": "PDT noon XYZ timezone",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix timezone rejects single ownership"
+    },
+    {
+      "id": "web-zone-first-193",
+      "input": "PDT noon XYZ timezone to JST 1pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix timezone rejects start ownership"
+    },
+    {
+      "id": "web-zone-first-194",
+      "input": "JST noon to PDT noon XYZ timezone",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix timezone rejects end ownership"
+    },
+    {
+      "id": "web-zone-first-195",
+      "input": "PDT noon XYZ time zone",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix time zone rejects single ownership"
+    },
+    {
+      "id": "web-zone-first-196",
+      "input": "PDT noon XYZ time zone to JST 1pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix time zone rejects start ownership"
+    },
+    {
+      "id": "web-zone-first-197",
+      "input": "JST noon to PDT noon XYZ time zone",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix time zone rejects end ownership"
+    },
+    {
+      "id": "web-zone-first-198",
+      "input": "PDT noon XYZ zone",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix zone rejects single ownership"
+    },
+    {
+      "id": "web-zone-first-199",
+      "input": "PDT noon XYZ zone to JST 1pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix zone rejects start ownership"
+    },
+    {
+      "id": "web-zone-first-200",
+      "input": "JST noon to PDT noon XYZ zone",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix zone rejects end ownership"
+    },
+    {
+      "id": "web-zone-first-201",
+      "input": "PDT noon XYZ time",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix time rejects single ownership"
+    },
+    {
+      "id": "web-zone-first-202",
+      "input": "PDT noon XYZ time to JST 1pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix time rejects start ownership"
+    },
+    {
+      "id": "web-zone-first-203",
+      "input": "JST noon to PDT noon XYZ time",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix time rejects end ownership"
+    },
+    {
+      "id": "web-zone-first-204",
+      "input": "PDT noon XYZ in Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix in Seattle rejects single ownership"
+    },
+    {
+      "id": "web-zone-first-205",
+      "input": "PDT noon XYZ in Seattle to JST 1pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix in Seattle rejects start ownership"
+    },
+    {
+      "id": "web-zone-first-206",
+      "input": "JST noon to PDT noon XYZ in Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix in Seattle rejects end ownership"
+    },
+    {
+      "id": "web-zone-first-207",
+      "input": "PDT noon XYZ at Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix at Seattle rejects single ownership"
+    },
+    {
+      "id": "web-zone-first-208",
+      "input": "PDT noon XYZ at Seattle to JST 1pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix at Seattle rejects start ownership"
+    },
+    {
+      "id": "web-zone-first-209",
+      "input": "JST noon to PDT noon XYZ at Seattle",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 0,
+      "expected": [],
+      "description": "unknown explicit suffix at Seattle rejects end ownership"
+    },
+    {
+      "id": "web-zone-first-210",
+      "input": "PDT April 8 3pm to JST April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 owns zone with to"
+    },
+    {
+      "id": "web-zone-first-211",
+      "input": "PDT April 8 3pm to JST 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock 10 April owns zone with to"
+    },
+    {
+      "id": "web-zone-first-212",
+      "input": "PDT April 8 3pm to JST April 10 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 2026 owns zone with to"
+    },
+    {
+      "id": "web-zone-first-213",
+      "input": "PDT April 8 3pm until JST April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 owns zone with until"
+    },
+    {
+      "id": "web-zone-first-214",
+      "input": "PDT April 8 3pm until JST 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock 10 April owns zone with until"
+    },
+    {
+      "id": "web-zone-first-215",
+      "input": "PDT April 8 3pm until JST April 10 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 2026 owns zone with until"
+    },
+    {
+      "id": "web-zone-first-216",
+      "input": "PDT April 8 3pm till JST April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 owns zone with till"
+    },
+    {
+      "id": "web-zone-first-217",
+      "input": "PDT April 8 3pm till JST 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock 10 April owns zone with till"
+    },
+    {
+      "id": "web-zone-first-218",
+      "input": "PDT April 8 3pm till JST April 10 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 2026 owns zone with till"
+    },
+    {
+      "id": "web-zone-first-219",
+      "input": "PDT April 8 3pm through JST April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 owns zone with through"
+    },
+    {
+      "id": "web-zone-first-220",
+      "input": "PDT April 8 3pm through JST 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock 10 April owns zone with through"
+    },
+    {
+      "id": "web-zone-first-221",
+      "input": "PDT April 8 3pm through JST April 10 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 2026 owns zone with through"
+    },
+    {
+      "id": "web-zone-first-222",
+      "input": "PDT April 8 3pm - JST April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 owns zone with -"
+    },
+    {
+      "id": "web-zone-first-223",
+      "input": "PDT April 8 3pm - JST 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock 10 April owns zone with -"
+    },
+    {
+      "id": "web-zone-first-224",
+      "input": "PDT April 8 3pm - JST April 10 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 2026 owns zone with -"
+    },
+    {
+      "id": "web-zone-first-225",
+      "input": "PDT April 8 3pm – JST April 10",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 owns zone with –"
+    },
+    {
+      "id": "web-zone-first-226",
+      "input": "PDT April 8 3pm – JST 10 April",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock 10 April owns zone with –"
+    },
+    {
+      "id": "web-zone-first-227",
+      "input": "PDT April 8 3pm – JST April 10 2026",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 2,
+      "expected": [],
+      "description": "timezone-first inherited end clock April 10 2026 owns zone with –"
+    },
+    {
+      "id": "web-zone-first-228",
+      "input": "PDT noon XYZ timezone to JST 1pm; UTC 6pm",
+      "category": "Timezone-first clocks and relative expressions",
+      "intendedCoverage": "deterministic-baseline",
+      "legacyExpectedCount": 1,
+      "expected": [],
+      "description": "unknown explicit suffix rejects range but preserves independent clause"
     }
   ],
   "provenanceNote": "Frozen historical inputs and metadata, maintained directly as web fixtures. No native source or build is required. Original case IDs are retained for traceability; independent exact expectations are in temporal.json."
