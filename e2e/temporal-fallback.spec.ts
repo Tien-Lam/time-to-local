@@ -11,6 +11,8 @@ test("the compatibility Temporal implementation preserves exact conversions afte
     browserName !== "chromium" || isMobile,
     "This check uses Chromium's engine-wide Temporal feature flag.",
   );
+  // Two complete fixture passes, their exact assertions and offline UI recovery.
+  test.setTimeout(90_000);
   const browser = await chromium.launch({
     args: ["--js-flags=--no-harmony-temporal"],
   });
@@ -19,6 +21,7 @@ test("the compatibility Temporal implementation preserves exact conversions afte
       locale: "en-AU",
       timezoneId: "Australia/Sydney",
     });
+    context.setDefaultTimeout(10_000);
     const page = await context.newPage();
     const pageErrors: string[] = [];
     page.on("pageerror", (error) => pageErrors.push(error.message));

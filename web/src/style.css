@@ -235,12 +235,12 @@ main {
   align-items: start;
 }
 .converter-intro {
-  max-width: 48rem;
+  /* This early-painted paragraph must not move the editor when Geist loads. */
+  font-family: Arial, sans-serif;
   margin: 0 0 24px;
   color: var(--muted);
 }
 .converter-guide {
-  max-width: 48rem;
   margin-top: 32px;
   color: var(--muted);
   font-size: var(--text-label);
