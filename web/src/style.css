@@ -235,7 +235,6 @@ main {
   align-items: start;
 }
 .converter-intro {
-  max-width: 48rem;
   margin: 0 0 24px;
   color: var(--muted);
 }
