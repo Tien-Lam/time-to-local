@@ -239,7 +239,6 @@ main {
   color: var(--muted);
 }
 .converter-guide {
-  max-width: 48rem;
   margin-top: 32px;
   color: var(--muted);
   font-size: var(--text-label);
