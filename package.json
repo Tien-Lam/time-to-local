@@ -23,7 +23,7 @@
   "dependencies": {
     "@internationalized/date": "3.12.4",
     "@js-temporal/polyfill": "0.5.1",
-    "chrono-node": "2.10.2",
+    "chrono-node": "2.10.3",
     "class-variance-authority": "0.7.1",
     "react": "19.3.0",
     "react-aria-components": "1.21.1",
